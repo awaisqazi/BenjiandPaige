@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/main.css';
+const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Paige & Benji — Save the Date | Campfires, S'mores & I Dos">
@@ -105,7 +106,7 @@ import '../styles/main.css';
       <div class="activities__grid">
         <div class="activity-card reveal" data-activity="archery">
           <div class="activity-card__img-wrap">
-            <img src="/images/camp_archery_1774819085276.png" alt="Archery at summer camp" loading="lazy" />
+            <img src={`${base}/images/camp_archery_1774819085276.png`} alt="Archery at summer camp" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🏹</div>
@@ -116,7 +117,7 @@ import '../styles/main.css';
 
         <div class="activity-card reveal reveal-delay-1" data-activity="zipline">
           <div class="activity-card__img-wrap">
-            <img src="/images/camp_zipline_1774819100483.png" alt="Zip-lining through the forest" loading="lazy" />
+            <img src={`${base}/images/camp_zipline_1774819100483.png`} alt="Zip-lining through the forest" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🪂</div>
@@ -127,7 +128,7 @@ import '../styles/main.css';
 
         <div class="activity-card reveal reveal-delay-2" data-activity="waterskiing">
           <div class="activity-card__img-wrap">
-            <img src="/images/camp_waterski_1774819115529.png" alt="Water skiing on the lake" loading="lazy" />
+            <img src={`${base}/images/camp_waterski_1774819115529.png`} alt="Water skiing on the lake" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🎿</div>
@@ -138,7 +139,7 @@ import '../styles/main.css';
 
         <div class="activity-card reveal reveal-delay-3" data-activity="canoeing">
           <div class="activity-card__img-wrap">
-            <img src="/images/camp_canoe_1774819131932.png" alt="Canoeing on a calm lake" loading="lazy" />
+            <img src={`${base}/images/camp_canoe_1774819131932.png`} alt="Canoeing on a calm lake" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🛶</div>
@@ -149,7 +150,7 @@ import '../styles/main.css';
 
         <div class="activity-card reveal reveal-delay-4" data-activity="ropes">
           <div class="activity-card__img-wrap">
-            <img src="/images/camp_ropes_1774819145536.png" alt="High ropes course" loading="lazy" />
+            <img src={`${base}/images/camp_ropes_1774819145536.png`} alt="High ropes course" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🧗</div>
@@ -160,7 +161,7 @@ import '../styles/main.css';
 
         <div class="activity-card reveal reveal-delay-5" data-activity="smores">
           <div class="activity-card__img-wrap">
-            <img src="/images/camp_smores_1774819161769.png" alt="S'mores by a campfire" loading="lazy" />
+            <img src={`${base}/images/camp_smores_1774819161769.png`} alt="S'mores by a campfire" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🔥</div>
