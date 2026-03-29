@@ -1,17 +1,478 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import '../styles/main.css';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Paige & Benji — Save the Date | Campfires, S'mores & I Dos">
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero" class="hero">
+    <div class="hero__video-wrap">
+      <iframe
+        id="hero-video"
+        class="hero__video"
+        src="https://www.youtube.com/embed/X2ShL6rGqBU?autoplay=1&mute=1&loop=1&playlist=X2ShL6rGqBU&controls=0&showinfo=0&modestbranding=1&playsinline=1&enablejsapi=1"
+        title="Camp Getaway Video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+      <div class="hero__overlay"></div>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__prelude reveal">~ Save the Date ~</p>
+      <h1 class="hero__names reveal reveal-delay-1">Paige <span class="hero__amp">&</span> Benji</h1>
+      <p class="hero__tagline reveal reveal-delay-2">Campfires, S'mores & I Dos</p>
+      <p class="hero__date reveal reveal-delay-3">October 4 – 5, 2026 &bull; Kent, Connecticut</p>
+    </div>
+
+    <a href="#details" class="hero__scroll-cta" aria-label="Scroll to details">
+      <span class="hero__scroll-text">Scroll to explore</span>
+      <svg class="hero__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </a>
+
+    <!-- Floating Sound Toggle -->
+    <button id="soundToggle" class="hero__sound-btn" aria-label="Play with sound">
+      <svg id="soundOffIcon" class="hero__sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+        <path d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>
+      </svg>
+      <svg id="soundOnIcon" class="hero__sound-icon hero__sound-icon--hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+      </svg>
+      <span id="soundText">Play with Sound</span>
+    </button>
+  </section>
+
+  <!-- ===== DETAILS SECTION ===== -->
+  <section id="details" class="details">
+    <div class="section-container">
+      <h2 class="section-label reveal">When & Where</h2>
+      <p class="section-title reveal reveal-delay-1">Join Us at Camp</p>
+
+      <div class="details__cards">
+        <div class="details__card reveal reveal-delay-2">
+          <div class="details__icon">
+            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="var(--forest-mid)" stroke-width="2"/><path d="M32 12v20l12 8" stroke="var(--fire-orange)" stroke-width="3" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Sunday, October 4th</h3>
+          <p class="details__year">2026</p>
+          <p class="details__desc">Ceremony & Camp Reception</p>
+          <p class="details__note">Dinner, dancing & s'mores under the stars</p>
+        </div>
+
+        <div class="details__card reveal reveal-delay-3">
+          <div class="details__icon">
+            <svg viewBox="0 0 64 64" fill="none"><path d="M12 52 L32 20 L52 52 Z" stroke="var(--forest-mid)" stroke-width="2" fill="none"/><path d="M22 52 L32 30 L42 52" stroke="var(--fire-orange)" stroke-width="2"/><circle cx="32" cy="16" r="4" fill="var(--fire-amber)"/></svg>
+          </div>
+          <h3>Monday, October 5th</h3>
+          <p class="details__year">2026</p>
+          <p class="details__desc">Optional Overnight Celebration</p>
+          <p class="details__note">Stay the night & enjoy camp activities</p>
+        </div>
+
+        <div class="details__card details__card--location reveal reveal-delay-4">
+          <div class="details__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M32 8C22 8 14 16 14 26c0 14 18 30 18 30s18-16 18-30C50 16 42 8 32 8z" fill="var(--forest-mid)" opacity="0.15" stroke="var(--forest-mid)" stroke-width="2"/>
+              <circle cx="32" cy="26" r="8" fill="var(--fire-orange)" opacity="0.8"/>
+              <!-- Cabin icon inside pin -->
+              <path d="M28 30h8v-4l-4-4-4 4z" fill="var(--cream)" stroke="var(--cream)" stroke-width="0.5"/>
+            </svg>
+          </div>
+          <h3>Club Getaway</h3>
+          <p class="details__desc">Kent, Connecticut</p>
+          <p class="details__note">An adult summer camp in the Berkshire foothills</p>
+          <a href="https://maps.google.com/?q=Club+Getaway+Kent+CT" target="_blank" rel="noopener" class="details__map-link">
+            View on Map →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACTIVITIES SECTION ===== -->
+  <section id="activities" class="activities">
+    <div class="section-container">
+      <h2 class="section-label reveal">What Awaits</h2>
+      <p class="section-title reveal reveal-delay-1">Camp Activities</p>
+      <p class="section-subtitle reveal reveal-delay-2">Get ready for the ultimate outdoor adventure weekend</p>
+
+      <div class="activities__grid">
+        <div class="activity-card reveal" data-activity="archery">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_archery_1774819085276.png" alt="Archery at summer camp" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🏹</div>
+            <h3>Archery</h3>
+            <p>Channel your inner Katniss (or Robin Hood)</p>
+          </div>
+        </div>
+
+        <div class="activity-card reveal reveal-delay-1" data-activity="zipline">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_zipline_1774819100483.png" alt="Zip-lining through the forest" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🪂</div>
+            <h3>Zip-lining</h3>
+            <p>Soar through the Connecticut treetops</p>
+          </div>
+        </div>
+
+        <div class="activity-card reveal reveal-delay-2" data-activity="waterskiing">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_waterski_1774819115529.png" alt="Water skiing on the lake" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🎿</div>
+            <h3>Water Skiing</h3>
+            <p>Hit the lake and make a splash</p>
+          </div>
+        </div>
+
+        <div class="activity-card reveal reveal-delay-3" data-activity="canoeing">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_canoe_1774819131932.png" alt="Canoeing on a calm lake" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🛶</div>
+            <h3>Canoeing</h3>
+            <p>Paddle through peaceful waters (couples welcome)</p>
+          </div>
+        </div>
+
+        <div class="activity-card reveal reveal-delay-4" data-activity="ropes">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_ropes_1774819145536.png" alt="High ropes course" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🧗</div>
+            <h3>High Ropes</h3>
+            <p>Test your courage on the ropes course</p>
+          </div>
+        </div>
+
+        <div class="activity-card reveal reveal-delay-5" data-activity="smores">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_smores_1774819161769.png" alt="S'mores by a campfire" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🔥</div>
+            <h3>S'mores by the Fire</h3>
+            <p>The main event (and our love language)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIBE / QUIRKY SECTION ===== -->
+  <section id="vibe" class="vibe">
+    <div class="section-container">
+      <div class="vibe__content reveal">
+        <h2 class="section-label">The Vibe</h2>
+        <p class="section-title">A Few Notes from the Happy Couple</p>
+
+        <div class="vibe__cards">
+          <div class="vibe__card reveal reveal-delay-1">
+            <span class="vibe__card-icon">👗</span>
+            <h3>Dress Code</h3>
+            <p>Dress to impress, but maybe leave the bug spray as perfume at home. Think "rustic chic meets ready for s'mores."</p>
+          </div>
+
+          <div class="vibe__card reveal reveal-delay-2">
+            <span class="vibe__card-icon">🐿️</span>
+            <h3>Official Mascot</h3>
+            <p>Keep your eyes peeled for our unofficial wedding mascot: <strong>the Squirrel in a Tuxedo</strong>. If you spot him, good luck is coming your way.</p>
+            <div class="squirrel-easter-egg" id="squirrelEgg" title="You found the tuxedo squirrel!">
+              <svg viewBox="0 0 80 80" class="squirrel-svg">
+                <circle cx="40" cy="40" r="36" fill="var(--bark-mid)" opacity="0.1"/>
+                <text x="40" y="48" text-anchor="middle" font-size="32">🐿️</text>
+                <text x="40" y="66" text-anchor="middle" font-size="10" fill="var(--bark-mid)">🎩</text>
+              </svg>
+            </div>
+          </div>
+
+          <div class="vibe__card reveal reveal-delay-3">
+            <span class="vibe__card-icon">⛺</span>
+            <h3>What to Expect</h3>
+            <p>This isn't your average wedding. Think bunk beds, campfire sing-alongs, and the most fun you've had since 5th grade summer camp.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER / INVITE SECTION ===== -->
+  <footer id="footer" class="footer">
+    <div class="footer__stars" id="starsCanvas"></div>
+    <div class="footer__campfire">
+      <div class="campfire-flames">
+        <div class="flame flame--1"></div>
+        <div class="flame flame--2"></div>
+        <div class="flame flame--3"></div>
+      </div>
+      <div class="campfire-glow"></div>
+    </div>
+
+    <div class="section-container footer__content">
+      <p class="footer__label reveal">Formal Invitation to Follow</p>
+      <h2 class="footer__title reveal reveal-delay-1">Join the Camp Roster</h2>
+      <p class="footer__subtitle reveal reveal-delay-2">Drop your info below so you don't miss the official invite</p>
+
+      <form class="footer__form reveal reveal-delay-3" id="rosterForm" action="https://docs.google.com/forms/d/e/1FAIpQLScADlNbqIw2R5mgTRxkCq8quIwmWgTDDv-aTtbYxjSGrlOIMQ/formResponse" method="POST" target="hidden_iframe" novalidate>
+        <div class="footer__form-group">
+          <input type="text" id="guestName" name="entry.1891522243" placeholder="Your Name" required autocomplete="name" />
+          <span class="footer__error" id="nameError">Please enter your name</span>
+        </div>
+        <div class="footer__form-group">
+          <input type="email" id="guestEmail" name="entry.2146624595" placeholder="Your Email Address" required autocomplete="email" />
+          <span class="footer__error" id="emailError">Please enter a valid email address</span>
+        </div>
+        <button type="submit" class="footer__submit" id="submitBtn">
+          <span class="footer__submit-text">Count Me In! 🏕️</span>
+        </button>
+      </form>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+      <!-- Confirmation toast -->
+      <div class="footer__toast" id="confirmToast">
+        <span class="footer__toast-icon">🎉</span>
+        <span class="footer__toast-msg">You're on the roster! See you at camp!</span>
+      </div>
+
+      <p class="footer__copyright">Paige & Benji · October 2026 · Made with 🤎 and campfire smoke</p>
+    </div>
+  </footer>
+
+</Layout>
+
+<script>
+  // ===== Intersection Observer for scroll reveal =====
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    // Force hero elements visible immediately
+    document.querySelectorAll('.hero .reveal').forEach((el) => {
+      setTimeout(() => el.classList.add('visible'), 300);
+    });
+
+    // ===== Star field in footer =====
+    const starsContainer = document.getElementById('starsCanvas');
+    if (starsContainer) {
+      for (let i = 0; i < 120; i++) {
+        const star = document.createElement('div');
+        star.style.cssText = `
+          position:absolute;
+          width:${Math.random() * 3 + 1}px;
+          height:${Math.random() * 3 + 1}px;
+          background:${Math.random() > 0.7 ? '#fdd835' : '#fffde7'};
+          border-radius:50%;
+          top:${Math.random() * 100}%;
+          left:${Math.random() * 100}%;
+          opacity:${Math.random() * 0.7 + 0.2};
+          animation:twinkle ${Math.random() * 3 + 2}s infinite alternate;
+        `;
+        starsContainer.appendChild(star);
+      }
+
+      const style = document.createElement('style');
+      style.textContent = `@keyframes twinkle{0%{opacity:0.2;transform:scale(1)}100%{opacity:1;transform:scale(1.3)}}`;
+      document.head.appendChild(style);
+    }
+
+    // ===== Squirrel Easter Egg =====
+    const squirrel = document.getElementById('squirrelEgg');
+    if (squirrel) {
+      let clicks = 0;
+      squirrel.addEventListener('click', () => {
+        clicks++;
+        squirrel.style.transform = `rotate(${clicks * 45}deg) scale(${1 + clicks * 0.1})`;
+        if (clicks >= 3) {
+          const msg = document.createElement('div');
+          msg.textContent = '🎩🐿️ You found Sir Nutsworth III, Esq.!';
+          msg.style.cssText = `
+            position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+            background:var(--bark-dark);color:var(--cream);padding:1.5rem 2.5rem;
+            border-radius:16px;font-family:var(--font-serif);font-size:1.4rem;
+            z-index:9999;animation:fadeMsg 3s forwards;box-shadow:0 20px 60px rgba(0,0,0,0.4);
+          `;
+          document.body.appendChild(msg);
+          const fadeStyle = document.createElement('style');
+          fadeStyle.textContent = `@keyframes fadeMsg{0%{opacity:0;transform:translate(-50%,-50%) scale(0.8)}20%{opacity:1;transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(0.9)}}`;
+          document.head.appendChild(fadeStyle);
+          setTimeout(() => { msg.remove(); clicks = 0; squirrel.style.transform = ''; }, 3500);
+        }
+      });
+    }
+
+    // ===== YouTube Sound Toggle =====
+    const heroIframe = document.getElementById('hero-video') as HTMLIFrameElement;
+    const heroVideoWrap = document.querySelector('.hero__video-wrap') as HTMLElement;
+    const heroContent = document.querySelector('.hero__content') as HTMLElement;
+    const heroOverlay = document.querySelector('.hero__overlay') as HTMLElement;
+    const heroScrollCta = document.querySelector('.hero__scroll-cta') as HTMLElement;
+    const soundToggle = document.getElementById('soundToggle');
+    const soundOffIcon = document.getElementById('soundOffIcon');
+    const soundOnIcon = document.getElementById('soundOnIcon');
+    const soundTextEl = document.getElementById('soundText');
+    let videoIsMuted = true;
+
+    function enterWatchMode() {
+      // Fade out overlay, content, scroll CTA
+      heroContent?.classList.add('hero__content--hidden');
+      heroOverlay?.classList.add('hero__overlay--hidden');
+      heroScrollCta?.classList.add('hero__scroll-cta--hidden');
+
+      // Switch iframe to contained mode with controls
+      if (heroIframe) {
+        heroIframe.classList.add('hero__video--contained');
+        let newSrc = heroIframe.src
+          .replace('controls=0', 'controls=1')
+          .replace('mute=1', 'mute=0');
+        heroIframe.src = newSrc;
+      }
+      if (heroVideoWrap) {
+        heroVideoWrap.classList.add('hero__video-wrap--watch');
+      }
+    }
+
+    function exitWatchMode() {
+      // Restore overlays
+      heroContent?.classList.remove('hero__content--hidden');
+      heroOverlay?.classList.remove('hero__overlay--hidden');
+      heroScrollCta?.classList.remove('hero__scroll-cta--hidden');
+
+      // Restore iframe to cover mode without controls
+      if (heroIframe) {
+        heroIframe.classList.remove('hero__video--contained');
+        let newSrc = heroIframe.src
+          .replace('controls=1', 'controls=0')
+          .replace('mute=0', 'mute=1');
+        heroIframe.src = newSrc;
+      }
+      if (heroVideoWrap) {
+        heroVideoWrap.classList.remove('hero__video-wrap--watch');
+      }
+    }
+
+    soundToggle?.addEventListener('click', () => {
+      if (videoIsMuted) {
+        videoIsMuted = false;
+        soundOffIcon?.classList.add('hero__sound-icon--hidden');
+        soundOnIcon?.classList.remove('hero__sound-icon--hidden');
+        if (soundTextEl) soundTextEl.textContent = 'Back to Save the Date';
+        soundToggle.classList.add('hero__sound-btn--active');
+        enterWatchMode();
+      } else {
+        videoIsMuted = true;
+        soundOffIcon?.classList.remove('hero__sound-icon--hidden');
+        soundOnIcon?.classList.add('hero__sound-icon--hidden');
+        if (soundTextEl) soundTextEl.textContent = 'Play with Sound';
+        soundToggle.classList.remove('hero__sound-btn--active');
+        exitWatchMode();
+      }
+    });
+
+    // ===== Form handling =====
+    const form = document.getElementById('rosterForm') as HTMLFormElement;
+    const nameInput = document.getElementById('guestName') as HTMLInputElement;
+    const emailInput = document.getElementById('guestEmail') as HTMLInputElement;
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const toast = document.getElementById('confirmToast');
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function clearErrors() {
+      nameInput?.classList.remove('input--error');
+      emailInput?.classList.remove('input--error');
+      nameError?.classList.remove('visible');
+      emailError?.classList.remove('visible');
+    }
+
+    // Live clear errors on input
+    nameInput?.addEventListener('input', () => {
+      nameInput.classList.remove('input--error');
+      nameError?.classList.remove('visible');
+    });
+    emailInput?.addEventListener('input', () => {
+      emailInput.classList.remove('input--error');
+      emailError?.classList.remove('visible');
+    });
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        clearErrors();
+        let hasError = false;
+
+        // Validate name
+        if (!nameInput.value.trim()) {
+          nameInput.classList.add('input--error');
+          nameError?.classList.add('visible');
+          hasError = true;
+        }
+
+        // Validate email
+        const emailVal = emailInput.value.trim();
+        if (!emailVal || !emailRegex.test(emailVal)) {
+          emailInput.classList.add('input--error');
+          emailError?.classList.add('visible');
+          if (emailVal && !emailRegex.test(emailVal)) {
+            if (emailError) emailError.textContent = 'That doesn\'t look like a valid email';
+          } else {
+            if (emailError) emailError.textContent = 'Please enter a valid email address';
+          }
+          hasError = true;
+        }
+
+        if (hasError) {
+          e.preventDefault();
+          return;
+        }
+
+        // Form is valid — allow the native submit to the hidden iframe
+        const btn = document.getElementById('submitBtn') as HTMLButtonElement;
+        if (btn) {
+          btn.innerHTML = '<span>Sending… ✨</span>';
+          btn.setAttribute('disabled', 'true');
+        }
+
+        // Show confirmation toast after a short delay
+        setTimeout(() => {
+          if (toast) {
+            toast.classList.add('footer__toast--show');
+          }
+          if (btn) {
+            btn.innerHTML = '<span class="footer__submit-text">Count Me In! 🏕️</span>';
+            btn.style.background = '';
+            btn.removeAttribute('disabled');
+          }
+          form.reset();
+
+          // Auto-dismiss toast
+          setTimeout(() => {
+            toast?.classList.remove('footer__toast--show');
+          }, 4000);
+        }, 1200);
+      });
+    }
+  });
+</script>

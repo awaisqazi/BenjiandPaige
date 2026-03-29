@@ -1,0 +1,135 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Join us for Campfires, S'mores & I Dos — Paige Grecco & Benji Sills are getting married! October 4-5, 2026 at Club Getaway, Kent, CT." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1a2e1a" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  /* ===== CSS Reset & Variables ===== */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    /* Forest & Earth tones */
+    --forest-deep: #1a2e1a;
+    --forest-mid: #2d4a2d;
+    --forest-light: #3d6b3d;
+    --bark-dark: #3e2723;
+    --bark-mid: #5d4037;
+    --bark-light: #795548;
+    --bark-pale: #a1887f;
+
+    /* Warm whites & creams */
+    --cream: #fdf6e8;
+    --cream-dark: #f5e6c8;
+    --warm-white: #faf8f5;
+    --parchment: #f0e4d0;
+
+    /* Campfire accents */
+    --fire-orange: #e8611a;
+    --fire-amber: #f4a300;
+    --fire-yellow: #fdd835;
+    --fire-glow: #ff6f00;
+    --ember: #bf360c;
+    --flame-blue: #1565c0;
+    --flame-blue-light: #42a5f5;
+
+    /* Night sky */
+    --night: #0d1b0d;
+    --night-mid: #152415;
+    --star-white: #fffde7;
+
+    /* Typography */
+    --font-script: 'Caveat', cursive;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Inter', sans-serif;
+
+    /* Spacing */
+    --section-pad: clamp(4rem, 8vw, 8rem);
+    --content-max: 1200px;
+
+    /* Transitions */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--cream);
+    color: var(--bark-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* ===== Scroll Animations ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ===== Utility ===== */
+  .section-container {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 4vw, 3rem);
+  }
+</style>
