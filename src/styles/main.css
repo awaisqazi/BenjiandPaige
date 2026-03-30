@@ -472,6 +472,179 @@
 }
 
 /* ==============================
+   SCHEDULE OF EVENTS SECTION
+   ============================== */
+.schedule {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+  background: var(--cream);
+}
+
+.schedule__title {
+  font-family: var(--font-typewriter);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--bark-dark);
+  letter-spacing: 0.05em;
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* Corkboard */
+.schedule__board {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-image: url('/BenjiandPaige/images/corkboard.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  padding: clamp(2rem, 4vw, 3rem);
+  box-shadow:
+    inset 0 2px 8px rgba(0,0,0,0.15),
+    0 8px 32px rgba(0,0,0,0.2),
+    0 2px 6px rgba(0,0,0,0.1);
+  border: 6px solid #a07b3f;
+  border-image: linear-gradient(to bottom, #c9a355, #8b6930, #c9a355) 1;
+}
+
+/* Pushpins */
+.schedule__pin {
+  position: absolute;
+  top: clamp(0.5rem, 2vw, 1.2rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  z-index: 5;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+  transform: rotate(-10deg);
+}
+
+.schedule__pin--left {
+  left: clamp(1rem, 4vw, 2.5rem);
+}
+
+.schedule__pin--right {
+  right: clamp(1rem, 4vw, 2.5rem);
+  transform: rotate(15deg);
+}
+
+/* Paper note */
+.schedule__paper {
+  background: 
+    linear-gradient(180deg, rgba(245,240,224, 0.94) 0%, rgba(235,229,208, 0.94) 100%),
+    url('/BenjiandPaige/images/campgetaway.png') center/cover no-repeat;
+  border-radius: 2px;
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2rem);
+  box-shadow:
+    2px 3px 12px rgba(0,0,0,0.15),
+    -1px -1px 0 rgba(255,255,255,0.3);
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Day headings */
+.schedule__day-heading {
+  font-family: var(--font-typewriter);
+  font-size: clamp(1.3rem, 3.5vw, 2.2rem);
+  color: var(--bark-dark);
+  text-align: right;
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  padding-right: 0.5rem;
+  font-weight: 500;
+}
+
+.schedule__day-heading span {
+  font-family: var(--font-typewriter);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+
+.schedule__day-heading--day2 {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+  border-top: 1px dashed rgba(0,0,0,0.12);
+}
+
+/* Event grid */
+.schedule__grid {
+  display: grid;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.schedule__grid--4col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.schedule__grid--2col {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Individual event item */
+.schedule__item {
+  text-align: center;
+  padding: 0.5rem 0.25rem;
+}
+
+.schedule__icon {
+  width: clamp(48px, 8vw, 76px);
+  height: clamp(48px, 8vw, 76px);
+  margin: 0 auto 0.5rem;
+}
+
+.schedule__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.schedule__event-name {
+  font-family: var(--font-typewriter);
+  font-size: clamp(0.8rem, 1.6vw, 1.1rem);
+  font-weight: 700;
+  color: var(--bark-dark);
+  line-height: 1.2;
+  margin-bottom: 0.15rem;
+}
+
+.schedule__event-time {
+  font-family: var(--font-typewriter);
+  font-size: clamp(0.75rem, 1.4vw, 1rem);
+  font-weight: 600;
+  color: var(--bark-dark);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .schedule__grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .schedule__grid--2col {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .schedule__grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .schedule__grid--2col {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+  }
+
+  .schedule__day-heading {
+    text-align: center;
+  }
+}
+
+/* ==============================
    ACTIVITIES SECTION
    ============================== */
 .activities {
