@@ -133,9 +133,35 @@ const base = import.meta.env.BASE_URL;
     <h2 class="schedule__title reveal">Schedule of Events</h2>
 
     <div class="schedule__board reveal reveal-delay-1">
-      <!-- Pushpins -->
-      <div class="schedule__pin schedule__pin--left">📌</div>
-      <div class="schedule__pin schedule__pin--right">📌</div>
+      <!-- Thumbtacks pinning the map to the corkboard -->
+      <div class="schedule__pin schedule__pin--tl">
+        <svg viewBox="0 0 40 50" width="28" height="35">
+          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
+          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
+          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="schedule__pin schedule__pin--tr">
+        <svg viewBox="0 0 40 50" width="28" height="35">
+          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
+          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
+          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="schedule__pin schedule__pin--bl">
+        <svg viewBox="0 0 40 50" width="24" height="30">
+          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
+          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
+          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="schedule__pin schedule__pin--br">
+        <svg viewBox="0 0 40 50" width="24" height="30">
+          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
+          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
+          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
+        </svg>
+      </div>
 
       <div class="schedule__paper">
         <!-- Day 1 -->
@@ -171,19 +197,28 @@ const base = import.meta.env.BASE_URL;
 
           <div class="schedule__item">
             <div class="schedule__icon">
-              <!-- Couple holding Heart / Ceremony -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Big Heart -->
-                <path d="M50 35 C50 35 45 15 30 15 C15 15 15 35 15 35 C15 55 50 75 50 75 C50 75 85 55 85 35 C85 35 85 15 70 15 C55 15 50 35 50 35 Z" fill="var(--cream)" />
-                <path d="M50 35 C50 35 45 15 30 15 C15 15 15 35 15 35 C15 55 50 75 50 75 C50 75 85 55 85 35 C85 35 85 15 70 15 C55 15 50 35 50 35 Z" />
-                <!-- Groom Legs (left) -->
-                <path d="M35 75 v15 M42 70 v20" fill="var(--bark-dark)"/>
-                <path d="M30 90 h8 M40 90 h8" stroke-width="3" />
-                <!-- Bride Legs (right) -->
-                <path d="M55 70 l-5 15 M65 72 l5 13" />
-                <!-- Dress hem -->
-                <path d="M50 85 c4 2 8-2 12 0 c4 2 8-2 10-5" />
-                <path d="M55 88 c2 0 4 3 6 3 M65 85 c2 0 4 3 6 3" stroke-width="1.5" />
+              <!-- Ceremony (Refined) -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Groom Pants -->
+                <path d="M38 60 L 35 85 L 42 85 L 43 70 L 45 85 L 50 85 L 50 60 Z" fill="var(--bark-dark)" />
+                <!-- Groom Shoes -->
+                <path d="M32 88 L 42 88 L 42 84 Z" fill="var(--bark-dark)" />
+                <path d="M42 88 L 52 88 L 50 84 Z" fill="var(--bark-dark)" />
+                <path d="M33 87 L 37 87 M43 87 L 47 87" stroke="var(--cream)" stroke-width="1" />
+                <!-- Bride Dress -->
+                <path d="M50 60 C 50 60 48 85 50 85 C 53 88 56 82 59 85 C 62 88 65 82 68 85 C 71 88 74 85 75 80 C 75 70 70 55 70 55" fill="var(--cream)" />
+                <path d="M50 60 C 50 60 48 85 50 85 C 53 88 56 82 59 85 C 62 88 65 82 68 85 C 71 88 74 85 75 80 C 75 70 70 55 70 55" />
+                <!-- Dress Pleats -->
+                <path d="M58 70 L 59 80 M 64 70 L 66 80 M 70 70 L 72 78" stroke-width="1.5" />
+                <!-- Bride Legs & Heels -->
+                <path d="M58 85 L 56 93 M 65 85 L 63 93" stroke-width="1.5" />
+                <path d="M53 93 L 57 93 L 57 90 Z M60 93 L 64 93 L 64 90 Z" fill="var(--bark-dark)" />
+                <!-- Giant Heart -->
+                <path d="M50 35 C 50 35 45 5 25 5 C 5 5 5 35 15 50 C 25 65 50 80 50 80 C 50 80 75 65 85 50 C 95 35 95 5 75 5 C 55 5 50 35 50 35 Z" fill="var(--cream)" />
+                <path d="M50 35 C 50 35 45 5 25 5 C 5 5 5 35 15 50 C 25 65 50 80 50 80 C 50 80 75 65 85 50 C 95 35 95 5 75 5 C 55 5 50 35 50 35 Z" />
+                <!-- Hands on Heart -->
+                <path d="M12 40 C 9 39 9 44 12 44 C 10 45 10 49 13 48 C 12 50 14 52 16 50" stroke-width="1.5" />
+                <path d="M88 40 C 91 39 91 44 88 44 C 90 45 90 49 87 48 C 88 50 86 52 84 50" stroke-width="1.5" />
               </svg>
             </div>
             <p class="schedule__event-name">Ceremony</p>
@@ -237,16 +272,31 @@ const base = import.meta.env.BASE_URL;
         <div class="schedule__grid schedule__grid--4col">
           <div class="schedule__item">
             <div class="schedule__icon">
-              <!-- Plate and Cutlery / Dinner Reception -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="50" cy="50" r="22" />
-                <circle cx="50" cy="50" r="15" stroke-width="1" />
+              <!-- Plate and Cutlery (Refined Minimal) -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Simple scalloped plate -->
+                <path d="M50 15 C 60 15 65 20 70 25 C 75 30 80 40 80 50 C 80 60 75 70 70 75 C 65 80 60 85 50 85 C 40 85 35 80 30 75 C 25 70 20 60 20 50 C 20 40 25 30 30 25 C 35 20 40 15 50 15 Z" fill="var(--cream)" />
+                <path d="M50 15 C 60 15 65 20 70 25 C 75 30 80 40 80 50 C 80 60 75 70 70 75 C 65 80 60 85 50 85 C 40 85 35 80 30 75 C 25 70 20 60 20 50 C 20 40 25 30 30 25 C 35 20 40 15 50 15 Z" />
+                
+                <!-- Inner plate ring -->
+                <circle cx="50" cy="50" r="18" stroke-width="1.5" />
+                <!-- Dotted detail -->
+                <circle cx="50" cy="50" r="14" stroke-width="2" stroke-dasharray="0 4" />
+                
+                <!-- Scallop dividing lines -->
+                <path d="M40 20 L 44 33 M 60 20 L 56 33 M 75 35 L 65 40 M 75 65 L 65 60 M 60 80 L 56 67 M 40 80 L 44 67 M 25 65 L 35 60 M 25 35 L 35 40" stroke-width="1.5" />
+                
                 <!-- Fork -->
-                <path d="M22 30 v40 M18 30v10 M26 30v10 M18 40 q 4 5 4 10 M26 40 q -4 5 -4 10" />
+                <path d="M11 25 V 40 M15 25 V 40 M19 25 V 40" stroke-width="1.5" />
+                <path d="M11 38 C 11 45 19 45 19 38 M15 45 V 75" stroke-width="2" />
+                
                 <!-- Knife -->
-                <path d="M75 55 v15 M75 30 v25 c-4 0 -4 -25 0 -25" />
+                <path d="M85 20 V 45 C 82 45 82 40 82 30 C 82 20 85 20 85 20 Z" stroke-width="2" />
+                <path d="M85 45 V 75" stroke-width="2" />
+                
                 <!-- Spoon -->
-                <path d="M85 50 v20" /><ellipse cx="85" cy="40" rx="4" ry="10" />
+                <ellipse cx="94" cy="28" rx="4" ry="8" stroke-width="2" />
+                <path d="M94 36 V 75" stroke-width="2" />
               </svg>
             </div>
             <p class="schedule__event-name">Dinner Reception</p>
@@ -272,14 +322,19 @@ const base = import.meta.env.BASE_URL;
 
           <div class="schedule__item">
             <div class="schedule__icon">
-              <!-- Moon and Stars / Optional Overnight -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Crescent Moon -->
-                <path d="M55 20 A 30 30 0 0 0 55 80 A 40 40 0 0 1 55 20 Z" />
-                <!-- Sketchy Stars -->
-                <path d="M30 40 L35 55 L20 45 L40 45 L25 55 Z" stroke-width="1.5"/>
-                <path d="M20 70 L23 78 L15 73 L25 73 L18 78 Z" stroke-width="1.5"/>
-                <path d="M45 75 L48 83 L40 78 L50 78 L43 83 Z" stroke-width="1.5"/>
+              <!-- Moon and Stars (Refined Minimal) -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Cleaner Crescent Moon -->
+                <path d="M55 15 C 30 15 30 75 55 75 C 65 75 75 65 75 65 C 50 65 45 35 70 20 C 65 15 60 15 55 15 Z" fill="var(--cream)" />
+                <path d="M55 15 C 30 15 30 75 55 75 C 65 75 75 65 75 65 C 50 65 45 35 70 20 C 65 15 60 15 55 15 Z" stroke-width="2.5" />
+                
+                <!-- 3 Simple Stars (Overlapping triangles for a sketch look, properly contained) -->
+                <!-- Top Left Star -->
+                <path d="M30 15 L35 30 L20 20 L40 20 L25 30 Z" stroke-width="1.5" />
+                <!-- Bottom Left Star -->
+                <path d="M15 45 L20 60 L10 50 L25 50 L10 60 Z" stroke-width="1.5" />
+                <!-- Bottom Right Star -->
+                <path d="M45 55 L50 70 L40 60 L55 60 L40 70 Z" stroke-width="1.5" />
               </svg>
             </div>
             <p class="schedule__event-name">Optional Overnight</p>
@@ -333,35 +388,109 @@ const base = import.meta.env.BASE_URL;
 
           <div class="schedule__item">
             <div class="schedule__icon">
-              <!-- Bus / Check-out -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Car Top Roof -->
-                <path d="M30 45 C30 25 70 25 70 45" />
-                <!-- Main Body -->
-                <path d="M15 65 C15 45 25 45 30 45 L70 45 C75 45 85 45 85 65 Z" fill="var(--cream)"/>
-                <!-- Windows -->
-                <path d="M35 45 C35 30 65 30 65 45 Z" fill="none"/>
-                <!-- Text inside window -->
-                <text x="50" y="38" font-size="5" text-anchor="middle" font-family="var(--font-typewriter)" stroke="none" fill="var(--bark-dark)">JUST</text>
-                <text x="50" y="44" font-size="5" text-anchor="middle" font-family="var(--font-typewriter)" stroke="none" fill="var(--bark-dark)">MARRIED</text>
-                <!-- Bumper & Tires -->
-                <rect x="25" y="60" width="10" height="15" rx="2" fill="var(--bark-dark)" />
-                <rect x="65" y="60" width="10" height="15" rx="2" fill="var(--bark-dark)" />
-                <path d="M20 62 H80" stroke-width="4" stroke-linecap="butt"/>
-                <rect x="42" y="55" width="16" height="5" />
-                <!-- Cans tying lines -->
-                <path d="M35 65 L25 85 M45 65 L40 85 M55 65 L60 85 M65 65 L75 85" stroke-width="1.5" />
-                <!-- Tied Cans -->
-                <rect x="22" y="85" width="6" height="8" transform="rotate(-15 25 85)" fill="var(--cream)"/>
-                <rect x="37" y="85" width="6" height="8" transform="rotate(10 40 85)" fill="var(--cream)"/>
-                <rect x="57" y="85" width="6" height="8" transform="rotate(-5 60 85)" fill="var(--cream)"/>
-                <rect x="72" y="85" width="6" height="8" transform="rotate(20 75 85)" fill="var(--cream)"/>
+              <!-- Vintage Car / Check-out (Refined Minimal) -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Car Roof & Windows -->
+                <path d="M 30 35 C 30 15 70 15 70 35" fill="var(--cream)" />
+                <path d="M 30 35 C 30 15 70 15 70 35" />
+                <path d="M 35 35 C 40 22 60 22 65 35 Z" stroke-width="1.5" />
+                
+                <!-- Main Car Body (Beetle curve) -->
+                <path d="M 15 55 C 10 35 30 35 50 35 C 70 35 90 35 85 55 C 80 70 70 65 50 65 C 30 65 20 70 15 55 Z" fill="var(--cream)" />
+                <path d="M 15 55 C 10 35 30 35 50 35 C 70 35 90 35 85 55 C 80 70 70 65 50 65 C 30 65 20 70 15 55 Z" />
+                
+                <!-- Taillights -->
+                <circle cx="22" cy="50" r="3" fill="var(--cream)" stroke-width="1.5" />
+                <circle cx="78" cy="50" r="3" fill="var(--cream)" stroke-width="1.5" />
+                
+                <!-- Bumper -->
+                <path d="M 15 62 Q 50 68 85 62" stroke-width="3" />
+                <path d="M 30 58 V 65 M 70 58 V 65" stroke-width="2" />
+                
+                <!-- Tires -->
+                <path d="M 22 64 C 20 78 32 78 30 64" fill="var(--bark-dark)" />
+                <path d="M 78 64 C 80 78 68 78 70 64" fill="var(--bark-dark)" />
+                
+                <!-- "Just Married" Sign -->
+                <rect x="25" y="42" width="50" height="12" rx="2" fill="var(--cream)" />
+                <text x="50" y="48" font-size="4" text-anchor="middle" font-weight="bold" font-family="var(--font-typewriter)" stroke="none" fill="var(--bark-dark)">JUST MARRIED</text>
+                <text x="50" y="52" font-size="3" text-anchor="middle" font-family="var(--font-typewriter)" stroke="none" fill="var(--bark-dark)">• 10 - 05 •</text>
+                
+                <!-- Strings for cans -->
+                <path d="M 33 64 L 20 85 M 42 65 L 35 88 M 50 65 L 50 92 M 58 65 L 65 88 M 67 64 L 80 85" stroke-width="1" />
+                
+                <!-- 5 Tin Cans -->
+                <g fill="var(--cream)" stroke-width="1.5">
+                  <rect x="17" y="85" width="6" height="8" rx="1" transform="rotate(-20 20 89)" />
+                  <rect x="32" y="88" width="6" height="8" rx="1" transform="rotate(-10 35 92)" />
+                  <rect x="47" y="92" width="6" height="8" rx="1" />
+                  <rect x="62" y="88" width="6" height="8" rx="1" transform="rotate(10 65 92)" />
+                  <rect x="77" y="85" width="6" height="8" rx="1" transform="rotate(20 80 89)" />
+                </g>
               </svg>
             </div>
             <p class="schedule__event-name">Check-out</p>
             <p class="schedule__event-time">10:00am</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OUR STORY SECTION ===== -->
+  <section id="story" class="story">
+    <div class="story__backdrop"></div>
+    <div class="story__content reveal">
+      <div class="story__sign">
+        <h2 class="story__heading">Cabaret Theatre</h2>
+        <p class="story__subheading">Our Story</p>
+        <p class="story__text">
+          We met in 2015 at Rutgers University during a production of Avenue Q. Our love story began exactly where most great romances do, in a prop closet, where Benji was searching for peace and quiet and Paige immediately derailed that plan. We've been inseparable ever since, laughing our way through theater, NYC adventures, and all the little moments in between. We can't wait to celebrate this next chapter with all of you!
+        </p>
+        <a href="https://www.cabarettheatre.org" target="_blank" rel="noopener noreferrer" class="story__link">[www.cabarettheatre.org]</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PACKING LIST SECTION ===== -->
+  <section id="packing" class="packing">
+    <div class="packing__video-wrap">
+      <video autoplay muted loop playsinline>
+        <source src={`${base}/images/backdrop.mp4`} type="video/mp4" />
+      </video>
+    </div>
+    <div class="packing__overlay"></div>
+
+    <div class="packing__content reveal">
+      <div class="packing__col packing__col--left">
+        <h2 class="packing__heading">Overnight<br/>Accommodations</h2>
+        <p class="packing__desc">Cabins are provided for all guests staying overnight. Bedding and linens are included, just bring yourself and a sense of adventure!</p>
+        <div class="packing__note">
+          <span class="packing__note-icon">🏕️</span>
+          <p>Cabin assignments will be shared closer to the wedding date.</p>
+        </div>
+      </div>
+
+      <div class="packing__col packing__col--right">
+        <h2 class="packing__heading">Packing List</h2>
+        <ul class="packing__list" id="packingList">
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Comfortable clothes for outdoor activities</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Layers: t-shirts, long sleeves, sweater/jacket</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Pajamas/sleepwear</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Underwear &amp; socks</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Closed-toe shoes for activities</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Nicer outfit for ceremony or evening events</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Toiletries</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Toothbrush &amp; toothpaste</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Shampoo &amp; conditioner</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Soap/body wash</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Sunscreen</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Mosquito repellent</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Medications you normally take</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Towel <em class="packing__note-inline">(optional, towels are provided)</em></span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Water bottle</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Light rain jacket or waterproof layer</span></label></li>
+        </ul>
       </div>
     </div>
   </section>
