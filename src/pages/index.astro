@@ -144,13 +144,25 @@ const base = import.meta.env.BASE_URL;
         <div class="schedule__grid schedule__grid--4col">
           <div class="schedule__item">
             <div class="schedule__icon">
-              <!-- Suitcase / Check-in -->
+              <!-- Cabin / Check-in -->
               <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="25" y="40" width="50" height="35" rx="4"/>
-                <path d="M40 40v-8a5 5 0 0110 0v8M32 40v35M68 40v35"/>
-                <circle cx="28" cy="75" r="3" fill="var(--bark-dark)"/>
-                <circle cx="72" cy="75" r="3" fill="var(--bark-dark)"/>
-                <path d="M40 50h20M40 60h20" stroke-width="1.5" stroke-dasharray="2 3"/>
+                <!-- Roof -->
+                <path d="M15 45L50 20L85 45" />
+                <path d="M20 40L50 15L80 40" />
+                <path d="M25 35L50 10L75 35" />
+                <!-- Base -->
+                <rect x="25" y="45" width="50" height="40" />
+                <!-- Logs (horizontal lines) -->
+                <path d="M25 55h50 M25 65h50 M25 75h50" />
+                <!-- Log ends (circles on edges) -->
+                <circle cx="21" cy="45" r="4"/><circle cx="79" cy="45" r="4"/>
+                <circle cx="21" cy="55" r="4"/><circle cx="79" cy="55" r="4"/>
+                <circle cx="21" cy="65" r="4"/><circle cx="79" cy="65" r="4"/>
+                <circle cx="21" cy="75" r="4"/><circle cx="79" cy="75" r="4"/>
+                <circle cx="21" cy="85" r="4"/><circle cx="79" cy="85" r="4"/>
+                <!-- Door -->
+                <path d="M42 85V60h16v25" />
+                <circle cx="54" cy="72" r="1.5" />
               </svg>
             </div>
             <p class="schedule__event-name">Overnight Check-in</p>
@@ -159,12 +171,19 @@ const base = import.meta.env.BASE_URL;
 
           <div class="schedule__item">
             <div class="schedule__icon">
-              <!-- Rings / Ceremony -->
+              <!-- Couple holding Heart / Ceremony -->
               <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="40" cy="50" r="18"/>
-                <circle cx="60" cy="50" r="18"/>
-                <path d="M35 32l5-8l5 8z" fill="none" stroke-width="2"/>
-                <circle cx="60" cy="32" r="3" fill="var(--bark-dark)"/>
+                <!-- Big Heart -->
+                <path d="M50 35 C50 35 45 15 30 15 C15 15 15 35 15 35 C15 55 50 75 50 75 C50 75 85 55 85 35 C85 35 85 15 70 15 C55 15 50 35 50 35 Z" fill="var(--cream)" />
+                <path d="M50 35 C50 35 45 15 30 15 C15 15 15 35 15 35 C15 55 50 75 50 75 C50 75 85 55 85 35 C85 35 85 15 70 15 C55 15 50 35 50 35 Z" />
+                <!-- Groom Legs (left) -->
+                <path d="M35 75 v15 M42 70 v20" fill="var(--bark-dark)"/>
+                <path d="M30 90 h8 M40 90 h8" stroke-width="3" />
+                <!-- Bride Legs (right) -->
+                <path d="M55 70 l-5 15 M65 72 l5 13" />
+                <!-- Dress hem -->
+                <path d="M50 85 c4 2 8-2 12 0 c4 2 8-2 10-5" />
+                <path d="M55 88 c2 0 4 3 6 3 M65 85 c2 0 4 3 6 3" stroke-width="1.5" />
               </svg>
             </div>
             <p class="schedule__event-name">Ceremony</p>
@@ -173,11 +192,20 @@ const base = import.meta.env.BASE_URL;
 
           <div class="schedule__item">
             <div class="schedule__icon">
-              <!-- Cocktail / Drinks -->
+              <!-- Margarita / Cocktail Hour -->
               <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M30 30l20 25l20-25zM50 55v25M35 80h30"/>
-                <circle cx="60" cy="22" r="4" fill="var(--bark-dark)"/>
-                <path d="M60 26c-5 10-15 15-20 0" stroke-width="1.5" stroke-dasharray="2 2"/>
+                <!-- Glass Bowl -->
+                <path d="M20 20 L80 20 C80 20 70 50 50 50 C30 50 20 20 20 20 Z" />
+                <!-- Liquid line -->
+                <path d="M26 30 Q50 35 72 30" stroke-width="1.5" stroke-dasharray="2 3"/>
+                <!-- Stem -->
+                <path d="M50 50 v30" />
+                <circle cx="50" cy="65" r="4" />
+                <!-- Base -->
+                <path d="M35 80 Q50 75 65 80" />
+                <!-- Lime Slice -->
+                <circle cx="75" cy="20" r="12" />
+                <path d="M75 20 l-8-8 M75 20 l8 8 M75 20 l8-8 M75 20 l-8 8" stroke-width="1.5"/>
               </svg>
             </div>
             <p class="schedule__event-name">Cocktail Hour</p>
@@ -186,13 +214,19 @@ const base = import.meta.env.BASE_URL;
 
           <div class="schedule__item">
             <div class="schedule__icon">
-              <!-- Archery/Ping Pong -> Camp Activities -->
+              <!-- Archery / Camp Activities -->
               <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Ping pong paddle & ball -->
-                <ellipse cx="45" cy="45" rx="15" ry="20" transform="rotate(30 45 45)"/>
-                <path d="M35 55l-10 15c-1 2 1 4 3 3l15-10" fill="var(--bark-dark)"/>
-                <circle cx="70" cy="35" r="6" stroke-width="1.5" stroke-dasharray="1 2"/>
-                <circle cx="70" cy="35" r="2" fill="var(--bark-dark)"/>
+                <!-- Target tripod -->
+                <path d="M35 80 L50 60 L65 80 M50 60 V80" stroke-width="3" />
+                <!-- Target rings -->
+                <circle cx="50" cy="40" r="25" fill="var(--cream)" />
+                <circle cx="50" cy="40" r="18" />
+                <circle cx="50" cy="40" r="10" />
+                <circle cx="50" cy="40" r="3" fill="var(--bark-dark)" />
+                <!-- Arrows -->
+                <path d="M50 40 L75 15" stroke-width="2" />
+                <path d="M65 25 L75 15 L65 15" />
+                <path d="M45 25 L80 10" stroke-width="1.5" />
               </svg>
             </div>
             <p class="schedule__event-name">Camp Activities Open</p>
@@ -203,13 +237,16 @@ const base = import.meta.env.BASE_URL;
         <div class="schedule__grid schedule__grid--4col">
           <div class="schedule__item">
             <div class="schedule__icon">
-              <!-- Plate and fork -->
+              <!-- Plate and Cutlery / Dinner Reception -->
               <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="50" cy="50" r="22"/>
-                <circle cx="50" cy="50" r="14" stroke-width="1" stroke-dasharray="4 4"/>
-                <path d="M20 30v40M20 30c-2 0-4 4-4 10s2 10 4 10M80 30v40M80 30c2 0 4 4 4 10c0 4-1 8-4 10" stroke-width="2"/>
-                <line x1="80" y1="30" x2="80" y2="20" stroke-width="2"/>
-                <line x1="20" y1="30" x2="20" y2="20" stroke-width="2"/>
+                <circle cx="50" cy="50" r="22" />
+                <circle cx="50" cy="50" r="15" stroke-width="1" />
+                <!-- Fork -->
+                <path d="M22 30 v40 M18 30v10 M26 30v10 M18 40 q 4 5 4 10 M26 40 q -4 5 -4 10" />
+                <!-- Knife -->
+                <path d="M75 55 v15 M75 30 v25 c-4 0 -4 -25 0 -25" />
+                <!-- Spoon -->
+                <path d="M85 50 v20" /><ellipse cx="85" cy="40" rx="4" ry="10" />
               </svg>
             </div>
             <p class="schedule__event-name">Dinner Reception</p>
@@ -220,14 +257,13 @@ const base = import.meta.env.BASE_URL;
             <div class="schedule__icon">
               <!-- Bonfire -->
               <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Flames -->
-                <path d="M50 50 C 40 40 35 60 30 65 M50 50 C 60 40 65 60 70 65" />
-                <path d="M50 25 C 45 35 40 45 42 65 M50 25 C 55 35 60 45 58 65" />
-                <path d="M50 15 C 45 40 30 40 25 35 M50 15 C 55 40 70 40 75 35" stroke-width="1.5"/>
-                <path d="M45 40 Q 50 25 55 40 M35 50 Q 40 35 45 50 M65 50 Q 60 35 55 50" />
-                <!-- Logs Teepee -->
-                <path d="M25 80 L45 55 M75 80 L55 55 M35 85 L50 45 M65 85 L50 45" />
-                <path d="M20 70 L80 75 M25 75 L75 70" stroke-width="2" />
+                <!-- Logs Base -->
+                <path d="M25 80 L45 50 M75 80 L55 50 M35 85 L50 45 M65 85 L50 45" />
+                <!-- Flames (pointy) -->
+                <path d="M35 70 Q 30 50 40 35 Q 40 50 45 45 Q 50 20 60 30 Q 55 45 65 40 Q 60 55 70 65" stroke-linejoin="miter"/>
+                <path d="M50 75 C30 75 25 50 35 40 C35 55 45 45 50 20 C55 45 65 55 65 40 C75 50 70 75 50 75 Z" fill="var(--cream)" />
+                <path d="M50 75 C40 75 35 60 40 50 C40 60 45 55 50 35 C55 55 60 60 60 50 C65 60 60 75 50 75 Z" />
+                <path d="M30 30 l2 2 M65 25 l3 -3 M55 10 l1 -2" stroke-width="2"/>
               </svg>
             </div>
             <p class="schedule__event-name">Bonfire</p>
@@ -236,13 +272,14 @@ const base = import.meta.env.BASE_URL;
 
           <div class="schedule__item">
             <div class="schedule__icon">
-              <!-- Tent / Moon -->
+              <!-- Moon and Stars / Optional Overnight -->
               <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 75l30-40l30 40H20z"/>
-                <path d="M50 35v40M40 75l10-15l10 15"/>
-                <path d="M70 25a12 12 0 01-15 15"/>
-                <circle cx="30" cy="30" r="1.5" fill="var(--bark-dark)"/>
-                <circle cx="80" cy="40" r="1" fill="var(--bark-dark)"/>
+                <!-- Crescent Moon -->
+                <path d="M55 20 A 30 30 0 0 0 55 80 A 40 40 0 0 1 55 20 Z" />
+                <!-- Sketchy Stars -->
+                <path d="M30 40 L35 55 L20 45 L40 45 L25 55 Z" stroke-width="1.5"/>
+                <path d="M20 70 L23 78 L15 73 L25 73 L18 78 Z" stroke-width="1.5"/>
+                <path d="M45 75 L48 83 L40 78 L50 78 L43 83 Z" stroke-width="1.5"/>
               </svg>
             </div>
             <p class="schedule__event-name">Optional Overnight</p>
@@ -253,11 +290,14 @@ const base = import.meta.env.BASE_URL;
             <div class="schedule__icon">
               <!-- Disco ball / After Party -->
               <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="50" cy="50" r="20"/>
-                <path d="M35 40h30M32 50h36M35 60h30"/>
-                <path d="M40 35v30M50 30v40M60 35v30" stroke-width="1.5"/>
-                <path d="M50 10v20"/>
-                <path d="M25 25l-5-5M75 25l5-5M25 75l-5 5M75 75l5 5M15 50h-5M85 50h5" stroke-dasharray="2 4"/>
+                <!-- String -->
+                <path d="M50 0 V30" />
+                <path d="M45 30 h10 border-radius M48 30 v-5 M52 30v-5" />
+                <!-- Ball -->
+                <circle cx="50" cy="60" r="30" />
+                <!-- Grid Lines -->
+                <path d="M25 45 Q50 35 75 45 M21 55 Q50 45 79 55 M21 65 Q50 55 79 65 M25 75 Q50 65 75 75" stroke-width="1.5"/>
+                <path d="M40 32 Q 30 60 40 88 M50 30 V 90 M60 32 Q 70 60 60 88" stroke-width="1.5"/>
               </svg>
             </div>
             <p class="schedule__event-name">After Party</p>
@@ -271,13 +311,20 @@ const base = import.meta.env.BASE_URL;
         <div class="schedule__grid schedule__grid--2col">
           <div class="schedule__item">
             <div class="schedule__icon">
-              <!-- Coffee / Breakfast -->
+              <!-- Coffee Cup / Breakfast -->
               <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M30 40v15c0 10 20 10 20 0V40H30z"/>
-                <path d="M50 45h5c5 0 5-10 0-10h-5"/>
-                <path d="M35 30c-2-5 2-10-2-15M45 30c-2-5 2-10-2-15" stroke-width="1.5" stroke-dasharray="4 4"/>
-                <path d="M60 65c5-10 20-5 25 5c0 10-15 5-25-5" stroke-width="1.5"/>
-                <path d="M65 65l10 5" stroke-width="1"/>
+                <!-- Saucer -->
+                <ellipse cx="50" cy="80" rx="30" ry="10" />
+                <path d="M30 83 Q50 90 70 83" />
+                <!-- Cup Base -->
+                <path d="M25 45 C25 80, 75 80, 75 45 Z" fill="var(--cream)" />
+                <!-- Cup Lip -->
+                <ellipse cx="50" cy="45" rx="25" ry="8" fill="var(--cream)" />
+                <ellipse cx="50" cy="45" rx="20" ry="5" />
+                <!-- Handle -->
+                <path d="M75 55 C90 55, 90 70, 70 70" />
+                <!-- Steam -->
+                <path d="M40 35 Q35 25 40 15 M50 35 Q45 25 50 15 M60 35 Q55 25 60 15" stroke-width="2" />
               </svg>
             </div>
             <p class="schedule__event-name">Breakfast</p>
@@ -288,34 +335,27 @@ const base = import.meta.env.BASE_URL;
             <div class="schedule__icon">
               <!-- Bus / Check-out -->
               <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Car roof -->
-                <path d="M25 50 C 25 30, 35 25, 50 25 C 65 25, 75 30, 75 50" />
-                <!-- Car body -->
-                <path d="M15 50 L85 50" />
-                <path d="M15 50 C 10 50, 10 65, 15 65 L85 65 C 90 65, 90 50, 85 50" />
-                <path d="M25 65 V 70" />
-                <path d="M75 65 V 70" />
-                <!-- Wheels -->
-                <circle cx="25" cy="70" r="5" fill="none" />
-                <circle cx="75" cy="70" r="5" fill="none" />
-                <!-- Rear window -->
-                <path d="M30 45 C 30 35, 40 30, 50 30 C 60 30, 70 35, 70 45 Z" />
-                <text x="50" y="38" font-size="6" text-anchor="middle" font-family="var(--font-sans)" font-weight="800" stroke="none" fill="var(--bark-dark)">JUST</text>
-                <text x="50" y="44" font-size="5" text-anchor="middle" font-family="var(--font-sans)" font-weight="800" stroke="none" fill="var(--bark-dark)">MARRIED</text>
-                <!-- License Plate -->
+                <!-- Car Top Roof -->
+                <path d="M30 45 C30 25 70 25 70 45" />
+                <!-- Main Body -->
+                <path d="M15 65 C15 45 25 45 30 45 L70 45 C75 45 85 45 85 65 Z" fill="var(--cream)"/>
+                <!-- Windows -->
+                <path d="M35 45 C35 30 65 30 65 45 Z" fill="none"/>
+                <!-- Text inside window -->
+                <text x="50" y="38" font-size="5" text-anchor="middle" font-family="var(--font-typewriter)" stroke="none" fill="var(--bark-dark)">JUST</text>
+                <text x="50" y="44" font-size="5" text-anchor="middle" font-family="var(--font-typewriter)" stroke="none" fill="var(--bark-dark)">MARRIED</text>
+                <!-- Bumper & Tires -->
+                <rect x="25" y="60" width="10" height="15" rx="2" fill="var(--bark-dark)" />
+                <rect x="65" y="60" width="10" height="15" rx="2" fill="var(--bark-dark)" />
+                <path d="M20 62 H80" stroke-width="4" stroke-linecap="butt"/>
                 <rect x="42" y="55" width="16" height="5" />
-                <!-- Bumper -->
-                <path d="M20 60 h60" stroke-width="1.5" />
-                <!-- Taillights -->
-                <circle cx="20" cy="55" r="2" />
-                <circle cx="80" cy="55" r="2" />
-                <!-- Tied cans -->
-                <path d="M30 65 Q 25 80, 20 85 M40 65 Q 40 80, 30 85 M60 65 Q 60 80, 70 85 M70 65 Q 75 80, 80 85" stroke-width="1.5" />
-                <!-- Cans -->
-                <rect x="17" y="85" width="6" height="8" transform="rotate(-20 20 85)" fill="none" />
-                <rect x="27" y="85" width="5" height="7" transform="rotate(-10 30 85)" fill="none" />
-                <rect x="67" y="85" width="5" height="7" transform="rotate(10 70 85)" fill="none" />
-                <rect x="77" y="85" width="6" height="8" transform="rotate(20 80 85)" fill="none" />
+                <!-- Cans tying lines -->
+                <path d="M35 65 L25 85 M45 65 L40 85 M55 65 L60 85 M65 65 L75 85" stroke-width="1.5" />
+                <!-- Tied Cans -->
+                <rect x="22" y="85" width="6" height="8" transform="rotate(-15 25 85)" fill="var(--cream)"/>
+                <rect x="37" y="85" width="6" height="8" transform="rotate(10 40 85)" fill="var(--cream)"/>
+                <rect x="57" y="85" width="6" height="8" transform="rotate(-5 60 85)" fill="var(--cream)"/>
+                <rect x="72" y="85" width="6" height="8" transform="rotate(20 75 85)" fill="var(--cream)"/>
               </svg>
             </div>
             <p class="schedule__event-name">Check-out</p>
