@@ -530,7 +530,7 @@
 /* Paper note */
 .schedule__paper {
   background: 
-    linear-gradient(180deg, rgba(245,240,224, 0.94) 0%, rgba(235,229,208, 0.94) 100%),
+    linear-gradient(180deg, rgba(245,240,224, 0.75) 0%, rgba(235,229,208, 0.75) 100%),
     url('/BenjiandPaige/images/campgetaway.png') center/cover no-repeat;
   border-radius: 2px;
   padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2rem);
