@@ -10,6 +10,19 @@
   background: var(--night);
 }
 
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--fire-orange), var(--fire-amber));
+  border-radius: 2px;
+  z-index: 20;
+}
+
 .hero__video-wrap {
   position: absolute;
   inset: 0;
@@ -231,6 +244,116 @@
 }
 
 /* ==============================
+   POSTCARD / COUNTDOWN SECTION
+   ============================== */
+.postcard {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.postcard__bg {
+  display: block;
+  width: 100%;
+}
+
+.postcard__bg img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Countdown: absolutely positioned on the right side of the image */
+.postcard__countdown {
+  position: absolute;
+  right: clamp(2rem, 6vw, 6rem);
+  bottom: clamp(1.5rem, 5vw, 4rem);
+  z-index: 10;
+  background: rgba(13, 27, 13, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(253, 246, 232, 0.08);
+}
+
+.countdown {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.countdown__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown__number {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5.5vw, 5rem);
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1;
+  min-width: 2ch;
+  text-align: center;
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(0, 0, 0, 0.3);
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown__label {
+  font-family: var(--font-sans);
+  font-size: clamp(0.45rem, 1vw, 0.7rem);
+  letter-spacing: 0.2em;
+  color: rgba(253, 246, 232, 0.65);
+  text-transform: uppercase;
+  margin-top: 0.35rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.countdown__sep {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4.5vw, 4rem);
+  font-weight: 300;
+  color: rgba(253, 246, 232, 0.45);
+  line-height: 1;
+  padding: 0 0.05rem;
+  align-self: flex-start;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Tablet: move countdown more toward center-right */
+@media (max-width: 900px) {
+  .postcard__countdown {
+    right: clamp(1rem, 4vw, 3rem);
+    bottom: clamp(1rem, 3vw, 2.5rem);
+  }
+}
+
+/* Mobile: keep countdown bottom-right, just scale down */
+@media (max-width: 600px) {
+  .postcard__countdown {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .countdown__number {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  .countdown__sep {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+
+  .countdown__label {
+    font-size: 0.45rem;
+  }
+}
+
+/* ==============================
    DETAILS SECTION
    ============================== */
 .details {
@@ -239,17 +362,7 @@
   position: relative;
 }
 
-.details::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--fire-orange), var(--fire-amber));
-  border-radius: 2px;
-}
+
 
 .section-label {
   font-family: var(--font-script);

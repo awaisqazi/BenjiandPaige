@@ -29,7 +29,7 @@ const base = import.meta.env.BASE_URL;
       <p class="hero__date reveal reveal-delay-3">October 4 – 5, 2026 &bull; Kent, Connecticut</p>
     </div>
 
-    <a href="#details" class="hero__scroll-cta" aria-label="Scroll to details">
+    <a href="#postcard" class="hero__scroll-cta" aria-label="Scroll to next section">
       <span class="hero__scroll-text">Scroll to explore</span>
       <svg class="hero__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 5v14M19 12l-7 7-7-7"/>
@@ -47,6 +47,38 @@ const base = import.meta.env.BASE_URL;
       </svg>
       <span id="soundText">Play with Sound</span>
     </button>
+  </section>
+
+  <!-- ===== POSTCARD / COUNTDOWN SECTION ===== -->
+  <section id="postcard" class="postcard">
+    <div class="postcard__bg">
+      <img src={`${base}/images/campgetaway.png`} alt="Greetings from Camp Getaway — P + B are getting married" loading="eager" />
+    </div>
+
+    <!-- Countdown: positioned bottom-right to avoid overlapping the letter -->
+    <div class="postcard__countdown reveal">
+      <div class="countdown" id="weddingCountdown">
+        <div class="countdown__block">
+          <span class="countdown__number" id="cdDays">---</span>
+          <span class="countdown__label">DAYS</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__block">
+          <span class="countdown__number" id="cdHours">--</span>
+          <span class="countdown__label">HOURS</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__block">
+          <span class="countdown__number" id="cdMins">--</span>
+          <span class="countdown__label">MINS</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__block">
+          <span class="countdown__number" id="cdSecs">--</span>
+          <span class="countdown__label">SECS</span>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ===== DETAILS SECTION ===== -->
@@ -255,6 +287,43 @@ const base = import.meta.env.BASE_URL;
 </Layout>
 
 <script>
+  // ===== Live Countdown to October 4, 2026 at 2:00 PM ET =====
+  (function countdownTimer() {
+    // October 4, 2026, 2:00 PM ET = 18:00 UTC (ET is UTC-4 in October / EDT)
+    const weddingDate = new Date('2026-10-04T18:00:00Z');
+    const cdDays = document.getElementById('cdDays');
+    const cdHours = document.getElementById('cdHours');
+    const cdMins = document.getElementById('cdMins');
+    const cdSecs = document.getElementById('cdSecs');
+
+    function pad(n: number) { return n.toString().padStart(2, '0'); }
+
+    function update() {
+      const now = new Date();
+      const diff = weddingDate.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        if (cdDays) cdDays.textContent = '0';
+        if (cdHours) cdHours.textContent = '00';
+        if (cdMins) cdMins.textContent = '00';
+        if (cdSecs) cdSecs.textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      if (cdDays) cdDays.textContent = days.toString();
+      if (cdHours) cdHours.textContent = pad(hours);
+      if (cdMins) cdMins.textContent = pad(mins);
+      if (cdSecs) cdSecs.textContent = pad(secs);
+    }
+
+    update();
+    setInterval(update, 1000);
+  })();
   // ===== Intersection Observer for scroll reveal =====
   document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver(
