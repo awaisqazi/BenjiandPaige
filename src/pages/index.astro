@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/main.css';
-const base = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Paige & Benji — Save the Date | Campfires, S'mores & I Dos">
@@ -52,7 +51,7 @@ const base = import.meta.env.BASE_URL;
   <!-- ===== POSTCARD / COUNTDOWN SECTION ===== -->
   <section id="postcard" class="postcard">
     <div class="postcard__bg">
-      <img src={`${base}/images/campgetaway.png`} alt="Greetings from Camp Getaway — P + B are getting married" loading="eager" />
+      <img src="/images/campgetaway.png" alt="Greetings from Camp Getaway — P + B are getting married" loading="eager" />
     </div>
 
     <!-- Countdown: positioned bottom-right to avoid overlapping the letter -->
@@ -85,7 +84,7 @@ const base = import.meta.env.BASE_URL;
   <section id="details" class="venue">
     <div class="venue__video-wrap">
       <video autoplay muted loop playsinline>
-        <source src={`${base}/images/logistics.mp4`} type="video/mp4" />
+        <source src="/images/logistics.mp4" type="video/mp4" />
       </video>
     </div>
     <div class="venue__overlay"></div>
@@ -461,7 +460,7 @@ const base = import.meta.env.BASE_URL;
   <section id="packing" class="packing">
     <div class="packing__video-wrap">
       <video autoplay muted loop playsinline>
-        <source src={`${base}/images/backdrop.mp4`} type="video/mp4" />
+        <source src="/images/backdrop.mp4" type="video/mp4" />
       </video>
     </div>
 
@@ -510,7 +509,7 @@ const base = import.meta.env.BASE_URL;
       <div class="activities__grid">
         <div class="activity-card reveal" data-activity="archery">
           <div class="activity-card__img-wrap">
-            <img src={`${base}/images/camp_archery_1774819085276.png`} alt="Archery at summer camp" loading="lazy" />
+            <img src="/images/camp_archery_1774819085276.png" alt="Archery at summer camp" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🏹</div>
@@ -521,7 +520,7 @@ const base = import.meta.env.BASE_URL;
 
         <div class="activity-card reveal reveal-delay-1" data-activity="zipline">
           <div class="activity-card__img-wrap">
-            <img src={`${base}/images/camp_zipline_1774819100483.png`} alt="Zip-lining through the forest" loading="lazy" />
+            <img src="/images/camp_zipline_1774819100483.png" alt="Zip-lining through the forest" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🪂</div>
@@ -532,7 +531,7 @@ const base = import.meta.env.BASE_URL;
 
         <div class="activity-card reveal reveal-delay-2" data-activity="waterskiing">
           <div class="activity-card__img-wrap">
-            <img src={`${base}/images/camp_waterski_1774819115529.png`} alt="Water skiing on the lake" loading="lazy" />
+            <img src="/images/camp_waterski_1774819115529.png" alt="Water skiing on the lake" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🎿</div>
@@ -543,7 +542,7 @@ const base = import.meta.env.BASE_URL;
 
         <div class="activity-card reveal reveal-delay-3" data-activity="canoeing">
           <div class="activity-card__img-wrap">
-            <img src={`${base}/images/camp_canoe_1774819131932.png`} alt="Canoeing on a calm lake" loading="lazy" />
+            <img src="/images/camp_canoe_1774819131932.png" alt="Canoeing on a calm lake" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🛶</div>
@@ -554,7 +553,7 @@ const base = import.meta.env.BASE_URL;
 
         <div class="activity-card reveal reveal-delay-4" data-activity="ropes">
           <div class="activity-card__img-wrap">
-            <img src={`${base}/images/camp_ropes_1774819145536.png`} alt="High ropes course" loading="lazy" />
+            <img src="/images/camp_ropes_1774819145536.png" alt="High ropes course" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🧗</div>
@@ -565,7 +564,7 @@ const base = import.meta.env.BASE_URL;
 
         <div class="activity-card reveal reveal-delay-5" data-activity="smores">
           <div class="activity-card__img-wrap">
-            <img src={`${base}/images/camp_smores_1774819161769.png`} alt="S'mores by a campfire" loading="lazy" />
+            <img src="/images/camp_smores_1774819161769.png" alt="S'mores by a campfire" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🔥</div>
