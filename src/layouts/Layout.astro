@@ -25,6 +25,19 @@ const { title, description = "Join us for Campfires, S'mores & I Dos — Paige G
     />
 
     <title>{title}</title>
+
+    <!-- Open Graph / Social Share -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://mapouradventures.com/images/campgetaway.png" />
+    <meta property="og:url" content={Astro.url.href} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://mapouradventures.com/images/campgetaway.png" />
   </head>
   <body>
     <slot />
