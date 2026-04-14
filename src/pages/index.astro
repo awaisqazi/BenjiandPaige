@@ -81,49 +81,54 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
-  <!-- ===== DETAILS SECTION ===== -->
-  <section id="details" class="details">
-    <div class="section-container">
-      <h2 class="section-label reveal">When & Where</h2>
-      <p class="section-title reveal reveal-delay-1">Join Us at Camp</p>
+  <!-- ===== VENUE INFO SECTION ===== -->
+  <section id="details" class="venue">
+    <div class="venue__video-wrap">
+      <video autoplay muted loop playsinline>
+        <source src={`${base}/images/logistics.mp4`} type="video/mp4" />
+      </video>
+    </div>
+    <div class="venue__overlay"></div>
 
-      <div class="details__cards">
-        <div class="details__card reveal reveal-delay-2">
-          <div class="details__icon">
-            <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="var(--forest-mid)" stroke-width="2"/><path d="M32 12v20l12 8" stroke="var(--fire-orange)" stroke-width="3" stroke-linecap="round"/></svg>
-          </div>
-          <h3>Sunday, October 4th</h3>
-          <p class="details__year">2026</p>
-          <p class="details__desc">Ceremony & Camp Reception</p>
-          <p class="details__note">Dinner, dancing & s'mores under the stars</p>
+    <div class="venue__content">
+      <div class="venue__notebook reveal">
+        <!-- Colorful film-strip tape across top -->
+        <div class="venue__tape-strip" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
         </div>
 
-        <div class="details__card reveal reveal-delay-3">
-          <div class="details__icon">
-            <svg viewBox="0 0 64 64" fill="none"><path d="M12 52 L32 20 L52 52 Z" stroke="var(--forest-mid)" stroke-width="2" fill="none"/><path d="M22 52 L32 30 L42 52" stroke="var(--fire-orange)" stroke-width="2"/><circle cx="32" cy="16" r="4" fill="var(--fire-amber)"/></svg>
+        <h2 class="venue__title">Venue Info</h2>
+
+        <div class="venue__pin-row">
+          <svg class="venue__pin-icon" viewBox="0 0 24 36" fill="none">
+            <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#c0392b"/>
+            <circle cx="12" cy="12" r="5" fill="#e74c3c"/>
+            <circle cx="12" cy="12" r="2.5" fill="#c0392b"/>
+          </svg>
+          <div>
+            <p class="venue__name">Club Getaway</p>
+            <p class="venue__address">59 S Kent Rd, Kent, CT 06757</p>
           </div>
-          <h3>Monday, October 5th</h3>
-          <p class="details__year">2026</p>
-          <p class="details__desc">Optional Overnight Celebration</p>
-          <p class="details__note">Stay the night & enjoy camp activities</p>
         </div>
 
-        <div class="details__card details__card--location reveal reveal-delay-4">
-          <div class="details__icon">
-            <svg viewBox="0 0 64 64" fill="none">
-              <path d="M32 8C22 8 14 16 14 26c0 14 18 30 18 30s18-16 18-30C50 16 42 8 32 8z" fill="var(--forest-mid)" opacity="0.15" stroke="var(--forest-mid)" stroke-width="2"/>
-              <circle cx="32" cy="26" r="8" fill="var(--fire-orange)" opacity="0.8"/>
-              <!-- Cabin icon inside pin -->
-              <path d="M28 30h8v-4l-4-4-4 4z" fill="var(--cream)" stroke="var(--cream)" stroke-width="0.5"/>
-            </svg>
-          </div>
-          <h3>Club Getaway</h3>
-          <p class="details__desc">Kent, Connecticut</p>
-          <p class="details__note">An adult summer camp in the Berkshire foothills</p>
-          <a href="https://maps.google.com/?q=Club+Getaway+Kent+CT" target="_blank" rel="noopener" class="details__map-link">
-            View on Map →
-          </a>
+        <div class="venue__map-wrap">
+          <iframe
+            class="venue__map"
+            src="https://www.google.com/maps?q=Club+Getaway,+59+S+Kent+Rd,+Kent,+CT+06757&output=embed"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Club Getaway Map"
+          ></iframe>
         </div>
+
+        <a href="https://maps.google.com/?q=Club+Getaway+59+S+Kent+Rd+Kent+CT+06757" target="_blank" rel="noopener" class="venue__directions-link">
+          Get Directions →
+        </a>
       </div>
     </div>
   </section>
