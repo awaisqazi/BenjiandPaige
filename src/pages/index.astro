@@ -703,18 +703,18 @@ import '../styles/main.css';
       <h2 class="footer__title reveal reveal-delay-1">RSVP</h2>
       <p class="footer__subtitle reveal reveal-delay-2">Let us know if you'll be joining the adventure</p>
 
-      <form class="footer__form reveal reveal-delay-3" id="rosterForm" novalidate>
+      <form class="footer__form reveal reveal-delay-3" id="rosterForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdDL1uOp6ViYmHRkF3ZusEH93za_5QaKxnfkEqEQ37vlU7mQA/formResponse" method="POST" target="hidden_iframe" novalidate>
 
         <!-- Name Row -->
         <div class="footer__form-row">
           <div class="footer__form-group">
             <label for="guestFirstName" class="footer__label-text">First Name <span class="footer__req">*</span></label>
-            <input type="text" id="guestFirstName" name="entry.FIRSTNAME" placeholder="First name" required autocomplete="given-name" />
+            <input type="text" id="guestFirstName" name="entry.2024987319" placeholder="First name" required autocomplete="given-name" />
             <span class="footer__error" id="firstNameError">Please enter your first name</span>
           </div>
           <div class="footer__form-group">
             <label for="guestLastName" class="footer__label-text">Last Name <span class="footer__req">*</span></label>
-            <input type="text" id="guestLastName" name="entry.LASTNAME" placeholder="Last name" required autocomplete="family-name" />
+            <input type="text" id="guestLastName" name="entry.1752080378" placeholder="Last name" required autocomplete="family-name" />
             <span class="footer__error" id="lastNameError">Please enter your last name</span>
           </div>
         </div>
@@ -723,12 +723,12 @@ import '../styles/main.css';
         <div class="footer__form-row">
           <div class="footer__form-group">
             <label for="guestEmail" class="footer__label-text">Email Address <span class="footer__req">*</span></label>
-            <input type="email" id="guestEmail" name="entry.EMAIL" placeholder="your@email.com" required autocomplete="email" />
+            <input type="email" id="guestEmail" name="entry.1886881652" placeholder="your@email.com" required autocomplete="email" />
             <span class="footer__error" id="emailError">Please enter a valid email address</span>
           </div>
           <div class="footer__form-group">
             <label for="guestPhone" class="footer__label-text">Phone Number <span class="footer__req">*</span></label>
-            <input type="tel" id="guestPhone" name="entry.PHONE" placeholder="(555) 123-4567" required autocomplete="tel" />
+            <input type="tel" id="guestPhone" name="entry.963235069" placeholder="(555) 123-4567" required autocomplete="tel" />
             <span class="footer__error" id="phoneError">Please enter your phone number</span>
           </div>
         </div>
@@ -736,7 +736,7 @@ import '../styles/main.css';
         <!-- Address -->
         <div class="footer__form-group">
           <label for="guestAddress" class="footer__label-text">Mailing Address <span class="footer__req">*</span></label>
-          <input type="text" id="guestAddress" name="entry.ADDRESS" placeholder="Street, City, State, ZIP" required autocomplete="street-address" />
+          <input type="text" id="guestAddress" name="entry.917375245" placeholder="Street, City, State, ZIP" required autocomplete="street-address" />
           <span class="footer__error" id="addressError">Please enter your mailing address</span>
         </div>
 
@@ -745,14 +745,14 @@ import '../styles/main.css';
           <label class="footer__label-text">Will you be attending? <span class="footer__req">*</span></label>
           <div class="footer__radio-group" id="attendingGroup">
             <label class="footer__radio-card">
-              <input type="radio" name="entry.ATTENDING" value="Yes" required />
+              <input type="radio" name="entry.1747976834" value="Yes, count me in!" required />
               <span class="footer__radio-display">
                 <span class="footer__radio-emoji">🏕️</span>
                 <span>Yes, count me in!</span>
               </span>
             </label>
             <label class="footer__radio-card">
-              <input type="radio" name="entry.ATTENDING" value="No" required />
+              <input type="radio" name="entry.1747976834" value="Sorry, can't make it" required />
               <span class="footer__radio-display">
                 <span class="footer__radio-emoji">😢</span>
                 <span>Sorry, can't make it</span>
@@ -765,7 +765,7 @@ import '../styles/main.css';
         <!-- Dietary Restrictions -->
         <div class="footer__form-group">
           <label for="guestDiet" class="footer__label-text">Dietary Restrictions <span class="footer__req">*</span></label>
-          <input type="text" id="guestDiet" name="entry.DIETARY" placeholder="Vegetarian, vegan, gluten-free, allergies, none, etc." required />
+          <input type="text" id="guestDiet" name="entry.1543444031" placeholder="Vegetarian, vegan, gluten-free, allergies, none, etc." required />
           <span class="footer__error" id="dietError">Please list any dietary restrictions or type "None"</span>
         </div>
 
@@ -774,14 +774,14 @@ import '../styles/main.css';
           <label class="footer__label-text">Planning to stay overnight? <span class="footer__req">*</span></label>
           <div class="footer__radio-group" id="overnightGroup">
             <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.OVERNIGHT" value="Yes" required />
+              <input type="radio" name="entry.1379738470" value="Yes, bunk me up!" required />
               <span class="footer__radio-display">
                 <span class="footer__radio-emoji">⛺</span>
                 <span>Yes, bunk me up!</span>
               </span>
             </label>
             <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.OVERNIGHT" value="No" required />
+              <input type="radio" name="entry.1379738470" value="No, heading home" required />
               <span class="footer__radio-display">
                 <span class="footer__radio-emoji">🚗</span>
                 <span>No, heading home</span>
@@ -796,14 +796,14 @@ import '../styles/main.css';
           <label class="footer__label-text">Need the camp shuttle? <span class="footer__req">*</span></label>
           <div class="footer__radio-group" id="shuttleGroup">
             <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.SHUTTLE" value="Yes" required />
+              <input type="radio" name="entry.1513616992" value="Yes, pick me up!" required />
               <span class="footer__radio-display">
                 <span class="footer__radio-emoji">🚐</span>
                 <span>Yes, pick me up!</span>
               </span>
             </label>
             <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.SHUTTLE" value="No" required />
+              <input type="radio" name="entry.1513616992" value="No, I'll drive" required />
               <span class="footer__radio-display">
                 <span class="footer__radio-emoji">🚗</span>
                 <span>No, I'll drive</span>
@@ -820,14 +820,14 @@ import '../styles/main.css';
           <p class="footer__hint" style="margin-top:0;margin-bottom:0.5rem;">A fun, camp-style team activity. More details to come!</p>
           <div class="footer__radio-group" id="colorWarsGroup">
             <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.COLORWARS" value="Yes" required />
+              <input type="radio" name="entry.157830799" value="I'm in, let's go!" required />
               <span class="footer__radio-display">
                 <span class="footer__radio-emoji">🏆</span>
                 <span>I'm in, let's go!</span>
               </span>
             </label>
             <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.COLORWARS" value="No" required />
+              <input type="radio" name="entry.157830799" value="I'll cheer from the sidelines" required />
               <span class="footer__radio-display">
                 <span class="footer__radio-emoji">👀</span>
                 <span>I'll cheer from the sidelines</span>
@@ -840,7 +840,7 @@ import '../styles/main.css';
         <!-- Comments -->
         <div class="footer__form-group">
           <label for="guestComments" class="footer__label-text">Comments <span class="footer__req">*</span></label>
-          <textarea id="guestComments" name="entry.COMMENTS" placeholder="Anything else you'd like us to know? Special requests, plus-one info, song requests, etc." required rows="4"></textarea>
+          <textarea id="guestComments" name="entry.1599853593" placeholder="Anything else you'd like us to know? Special requests, plus-one info, song requests, etc." required rows="4"></textarea>
           <span class="footer__error" id="commentsError">Please add a comment or type "None"</span>
         </div>
 
@@ -1108,10 +1108,10 @@ import '../styles/main.css';
       });
     }
 
-    setupRadioClear('entry.ATTENDING', attendingGroup, attendingError);
-    setupRadioClear('entry.OVERNIGHT', overnightGroup, overnightError);
-    setupRadioClear('entry.SHUTTLE', shuttleGroup, shuttleError);
-    setupRadioClear('entry.COLORWARS', colorWarsGroup, colorWarsError);
+    setupRadioClear('entry.1747976834', attendingGroup, attendingError);
+    setupRadioClear('entry.1379738470', overnightGroup, overnightError);
+    setupRadioClear('entry.1513616992', shuttleGroup, shuttleError);
+    setupRadioClear('entry.157830799', colorWarsGroup, colorWarsError);
 
     // Helper: clear error on text/email/tel input
     function setupInputClear(input: HTMLInputElement | HTMLTextAreaElement | null, error: HTMLElement | null) {
@@ -1158,7 +1158,6 @@ import '../styles/main.css';
 
     if (form) {
       form.addEventListener('submit', (e) => {
-        e.preventDefault();
         clearAllErrors();
         let hasError = false;
 
@@ -1183,17 +1182,18 @@ import '../styles/main.css';
         if (validateTextInput(addressInput, addressError)) hasError = true;
 
         // Radio groups
-        if (validateRadio('entry.ATTENDING', attendingGroup, attendingError)) hasError = true;
+        if (validateRadio('entry.1747976834', attendingGroup, attendingError)) hasError = true;
 
         if (validateTextInput(dietInput, dietError)) hasError = true;
 
-        if (validateRadio('entry.OVERNIGHT', overnightGroup, overnightError)) hasError = true;
-        if (validateRadio('entry.SHUTTLE', shuttleGroup, shuttleError)) hasError = true;
-        if (validateRadio('entry.COLORWARS', colorWarsGroup, colorWarsError)) hasError = true;
+        if (validateRadio('entry.1379738470', overnightGroup, overnightError)) hasError = true;
+        if (validateRadio('entry.1513616992', shuttleGroup, shuttleError)) hasError = true;
+        if (validateRadio('entry.157830799', colorWarsGroup, colorWarsError)) hasError = true;
 
         if (validateTextInput(commentsInput, commentsError)) hasError = true;
 
         if (hasError) {
+          e.preventDefault();
           // Scroll to first error
           const firstError = form.querySelector('.input--error, .footer__error.visible');
           if (firstError) {
@@ -1202,7 +1202,7 @@ import '../styles/main.css';
           return;
         }
 
-        // Form is valid — show success
+        // Validation passed — allow native submit to hidden_iframe (Google Forms)
         const btn = document.getElementById('submitBtn') as HTMLButtonElement;
         if (btn) {
           btn.innerHTML = '<span>Sending… ✨</span>';
