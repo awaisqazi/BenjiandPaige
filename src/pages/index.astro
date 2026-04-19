@@ -575,7 +575,7 @@ import '../styles/main.css';
   <!-- ===== ACTIVITIES SECTION ===== -->
   <section id="activities" class="activities">
     <div class="section-container">
-      <h2 class="section-label reveal">What Awaits</h2>
+      <h2 class="section-label reveal"><span class="awaits-egg-trigger" id="awaitsEgg">What Awaits<img src="/images/EasterEgg.png" alt="Awais, Alex, and Benji dancing" class="awaits-egg-img" id="awaitsEggImg" /></span></h2>
       <p class="section-title reveal reveal-delay-1">Camp Activities</p>
       <p class="section-subtitle reveal reveal-delay-2">Get ready for the ultimate outdoor adventure weekend</p>
 
@@ -965,6 +965,37 @@ import '../styles/main.css';
           fadeStyle.textContent = `@keyframes fadeMsg{0%{opacity:0;transform:translate(-50%,-50%) scale(0.8)}20%{opacity:1;transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(0.9)}}`;
           document.head.appendChild(fadeStyle);
           setTimeout(() => { msg.remove(); clicks = 0; squirrel.style.transform = ''; }, 3500);
+        }
+      });
+    }
+
+    // ===== Awaits Easter Egg (5 taps) =====
+    const awaitsTrigger = document.getElementById('awaitsEgg');
+    const awaitsImg = document.getElementById('awaitsEggImg');
+    const activitiesSection = document.getElementById('activities');
+    if (awaitsTrigger && awaitsImg) {
+      let awaitsTaps: number[] = [];
+      let awaitsAnimating = false;
+
+      awaitsTrigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (awaitsAnimating) return;
+
+        const now = Date.now();
+        awaitsTaps = awaitsTaps.filter(t => now - t < 1500);
+        awaitsTaps.push(now);
+
+        if (awaitsTaps.length >= 5) {
+          awaitsAnimating = true;
+          awaitsTaps = [];
+          activitiesSection?.classList.add('activities--egg-active');
+          awaitsImg.classList.add('awaits-egg-img--active');
+
+          setTimeout(() => {
+            awaitsImg.classList.remove('awaits-egg-img--active');
+            activitiesSection?.classList.remove('activities--egg-active');
+            awaitsAnimating = false;
+          }, 4200);
         }
       });
     }

@@ -1378,6 +1378,75 @@
   }
 }
 
+/* Awaits Easter Egg */
+.awaits-egg-trigger {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  overflow: visible;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.awaits-egg-img {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  width: min(80vw, 350px);
+  max-width: none;
+  border-radius: 0;
+  box-shadow: none;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.awaits-egg-img--active {
+  animation: awaitsReveal 4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes awaitsReveal {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(100%);
+  }
+  8% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0%);
+  }
+  /* Dancing bounces */
+  14% { transform: translateX(-50%) translateY(-12px) rotate(-3deg); }
+  20% { transform: translateX(-50%) translateY(0px) rotate(2deg); }
+  26% { transform: translateX(-50%) translateY(-10px) rotate(-2deg); }
+  32% { transform: translateX(-50%) translateY(0px) rotate(3deg); }
+  38% { transform: translateX(-50%) translateY(-14px) rotate(-4deg); }
+  44% { transform: translateX(-50%) translateY(0px) rotate(1deg); }
+  50% { transform: translateX(-50%) translateY(-8px) rotate(-2deg); }
+  56% { transform: translateX(-50%) translateY(0px) rotate(3deg); }
+  62% { transform: translateX(-50%) translateY(-12px) rotate(-3deg); }
+  68% { transform: translateX(-50%) translateY(0px) rotate(2deg); }
+  74% { transform: translateX(-50%) translateY(-6px) rotate(-1deg); }
+  80% { transform: translateX(-50%) translateY(0px) rotate(0deg); }
+  /* Slide back down */
+  88% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(100%);
+  }
+}
+
+.activities--egg-active {
+  overflow: visible !important;
+  z-index: 100;
+  position: relative;
+}
+
 /* ==============================
    ACTIVITIES SECTION
    ============================== */
