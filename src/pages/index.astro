@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import '../styles/main.css';
 ---
 
-<Layout title="Paige & Benji — Save the Date | Campfires, S'mores & I Dos">
+<Layout title="Paige & Benji | Save the Date | Campfires, S'mores & I Dos">
 
   <!-- ===== HERO SECTION ===== -->
   <section id="hero" class="hero">
@@ -22,7 +22,6 @@ import '../styles/main.css';
     </div>
 
     <div class="hero__content">
-      <p class="hero__prelude reveal">~ Save the Date ~</p>
       <h1 class="hero__names reveal reveal-delay-1">Paige <span class="hero__amp">&</span> Benji</h1>
       <p class="hero__tagline reveal reveal-delay-2">Campfires, S'mores & I Dos</p>
       <p class="hero__date reveal reveal-delay-3">October 4 – 5, 2026 &bull; Kent, Connecticut</p>
@@ -51,7 +50,7 @@ import '../styles/main.css';
   <!-- ===== POSTCARD / COUNTDOWN SECTION ===== -->
   <section id="postcard" class="postcard">
     <div class="postcard__bg">
-      <img src="/images/campgetaway.png" alt="Greetings from Camp Getaway — P + B are getting married" loading="eager" />
+      <img src="/images/campgetaway.png" alt="Greetings from Camp Getaway - P + B are getting married" loading="eager" />
     </div>
 
     <!-- Countdown: positioned bottom-right to avoid overlapping the letter -->
@@ -128,6 +127,39 @@ import '../styles/main.css';
         <a href="https://maps.google.com/?q=Club+Getaway+59+S+Kent+Rd+Kent+CT+06757" target="_blank" rel="noopener" class="venue__directions-link">
           Get Directions →
         </a>
+
+        <!-- Camp Shuttle Info -->
+        <div class="venue__shuttle">
+          <div class="venue__shuttle-header">
+            <span class="venue__shuttle-icon">🚐</span>
+            <h3 class="venue__shuttle-title">Camp Shuttle</h3>
+          </div>
+          <p class="venue__shuttle-text">
+            Taking the <strong>Metro North</strong> from Grand Central Station to <strong>Harlem Valley / Wingdale</strong>? A complimentary shuttle to Club Getaway is available!
+          </p>
+          <div class="venue__shuttle-steps">
+            <div class="venue__shuttle-step">
+              <span class="venue__shuttle-step-num">1</span>
+              <p>Note your shuttle request in the comments section when you RSVP</p>
+            </div>
+            <div class="venue__shuttle-step">
+              <span class="venue__shuttle-step-num">2</span>
+              <p>Contact Club Getaway at <a href="tel:800-643-8292" class="venue__shuttle-phone">800-643-8292</a> at least <strong>2 weeks prior</strong> for train pickup times</p>
+            </div>
+          </div>
+          <p class="venue__shuttle-note">⛺ Available on a first come, first served basis</p>
+        </div>
+
+        <!-- Parking Info -->
+        <div class="venue__shuttle">
+          <div class="venue__shuttle-header">
+            <span class="venue__shuttle-icon">🅿️</span>
+            <h3 class="venue__shuttle-title">Parking</h3>
+          </div>
+          <p class="venue__shuttle-text">
+            Driving to the venue? <strong>Free parking</strong> is available on-site. Please plan to <strong>arrive at least 30 minutes early</strong> as you'll need to take a short shuttle from the parking area to the venue at the top of the hill.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -468,10 +500,17 @@ import '../styles/main.css';
     <div class="packing__content reveal">
       <div class="packing__col packing__col--left">
         <h2 class="packing__heading">Overnight<br/>Accommodations</h2>
-        <p class="packing__desc">Cabins are provided for all guests staying overnight. Bedding and linens are included, just bring yourself and a sense of adventure!</p>
+        <p class="packing__desc">We have arranged for <strong>exclusive use of the entire camp</strong> for the duration of our wedding (Sunday the 4th into Monday the 5th) and would love nothing more than for you to join us from beginning to end.</p>
+        <p class="packing__desc">While we know a wedding overnight might be unusual, we hope you'll make your reservation to stay over. We've planned an exciting schedule filled with family, friends, adventure, dancing &amp; s'mores. You won't want to miss any of it!</p>
+
         <div class="packing__note">
-          <span class="packing__note-icon">🏕️</span>
-          <p>Cabin assignments will be shared closer to the wedding date.</p>
+          <span class="packing__note-icon">🛏️</span>
+          <p>Rooms accommodate up to 5 guests with <strong>private bathrooms, A/C &amp; heat</strong>. All bedding, room towels, and housekeeping are included. You will <em>not</em> be sharing rooms or bathrooms with other couples or families.</p>
+        </div>
+
+        <div class="packing__note" style="margin-top: 0.75rem;">
+          <span class="packing__note-icon">📋</span>
+          <p>We'll be making all housing assignments. Let us know what room size you need. Individuals and couples get private rooms, and families are kept together. Have a specific request? Note it in the RSVP comments!</p>
         </div>
       </div>
 
@@ -483,6 +522,7 @@ import '../styles/main.css';
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Pajamas/sleepwear</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Underwear &amp; socks</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Closed-toe shoes for activities</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Bathing suit</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Nicer outfit for ceremony or evening events</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Toiletries</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Toothbrush &amp; toothpaste</span></label></li>
@@ -495,6 +535,39 @@ import '../styles/main.css';
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Water bottle</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Light rain jacket or waterproof layer</span></label></li>
         </ul>
+      </div>
+    </div>
+
+    <!-- Full-width pricing & booking card -->
+    <div class="lodging-pricing reveal">
+      <div class="lodging-pricing__card">
+        <h3 class="lodging-pricing__title">Overnight Stay Pricing</h3>
+        <p class="lodging-pricing__dates">Sunday, October 4th at 1:15 PM to Monday, October 5th at 10:00 AM</p>
+
+        <div class="lodging-pricing__grid">
+          <div class="lodging-pricing__item">
+            <span class="lodging-pricing__amount">$99</span>
+            <span class="lodging-pricing__label">per adult</span>
+          </div>
+          <div class="lodging-pricing__item">
+            <span class="lodging-pricing__amount">$59.40</span>
+            <span class="lodging-pricing__label">per child (ages 4–15)</span>
+          </div>
+        </div>
+
+        <p class="lodging-pricing__note">Plus 15% tax and $15 events.com booking fee</p>
+        <p class="lodging-pricing__includes">✨ Includes all meals &amp; beverages from Sunday through Monday morning breakfast</p>
+
+        <div class="lodging-pricing__booking">
+          <a href="#" class="lodging-pricing__btn lodging-pricing__btn--primary">Book Online <span class="lodging-pricing__soon">(Link Coming Soon)</span></a>
+          <div class="lodging-pricing__divider">
+            <span>or</span>
+          </div>
+          <p class="lodging-pricing__phone">
+            Call Club Getaway at <a href="tel:800-643-8292"><strong>800-643-8292</strong></a><br/>
+            <span class="lodging-pricing__ref">Reference the <strong>Grecco Wedding</strong></span>
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -626,21 +699,153 @@ import '../styles/main.css';
     </div>
 
     <div class="section-container footer__content">
-      <p class="footer__label reveal">Formal Invitation to Follow</p>
-      <h2 class="footer__title reveal reveal-delay-1">Join the Camp Roster</h2>
-      <p class="footer__subtitle reveal reveal-delay-2">Drop your info below so you don't miss the official invite</p>
+      <p class="footer__label reveal">We Can't Wait to See You</p>
+      <h2 class="footer__title reveal reveal-delay-1">RSVP</h2>
+      <p class="footer__subtitle reveal reveal-delay-2">Let us know if you'll be joining the adventure</p>
 
-      <form class="footer__form reveal reveal-delay-3" id="rosterForm" action="https://docs.google.com/forms/d/e/1FAIpQLScADlNbqIw2R5mgTRxkCq8quIwmWgTDDv-aTtbYxjSGrlOIMQ/formResponse" method="POST" target="hidden_iframe" novalidate>
-        <div class="footer__form-group">
-          <input type="text" id="guestName" name="entry.1891522243" placeholder="Your Name" required autocomplete="name" />
-          <span class="footer__error" id="nameError">Please enter your name</span>
+      <form class="footer__form reveal reveal-delay-3" id="rosterForm" novalidate>
+
+        <!-- Name Row -->
+        <div class="footer__form-row">
+          <div class="footer__form-group">
+            <label for="guestFirstName" class="footer__label-text">First Name <span class="footer__req">*</span></label>
+            <input type="text" id="guestFirstName" name="entry.FIRSTNAME" placeholder="First name" required autocomplete="given-name" />
+            <span class="footer__error" id="firstNameError">Please enter your first name</span>
+          </div>
+          <div class="footer__form-group">
+            <label for="guestLastName" class="footer__label-text">Last Name <span class="footer__req">*</span></label>
+            <input type="text" id="guestLastName" name="entry.LASTNAME" placeholder="Last name" required autocomplete="family-name" />
+            <span class="footer__error" id="lastNameError">Please enter your last name</span>
+          </div>
         </div>
-        <div class="footer__form-group">
-          <input type="email" id="guestEmail" name="entry.2146624595" placeholder="Your Email Address" required autocomplete="email" />
-          <span class="footer__error" id="emailError">Please enter a valid email address</span>
+
+        <!-- Email + Phone Row -->
+        <div class="footer__form-row">
+          <div class="footer__form-group">
+            <label for="guestEmail" class="footer__label-text">Email Address <span class="footer__req">*</span></label>
+            <input type="email" id="guestEmail" name="entry.EMAIL" placeholder="your@email.com" required autocomplete="email" />
+            <span class="footer__error" id="emailError">Please enter a valid email address</span>
+          </div>
+          <div class="footer__form-group">
+            <label for="guestPhone" class="footer__label-text">Phone Number <span class="footer__req">*</span></label>
+            <input type="tel" id="guestPhone" name="entry.PHONE" placeholder="(555) 123-4567" required autocomplete="tel" />
+            <span class="footer__error" id="phoneError">Please enter your phone number</span>
+          </div>
         </div>
+
+        <!-- Address -->
+        <div class="footer__form-group">
+          <label for="guestAddress" class="footer__label-text">Mailing Address <span class="footer__req">*</span></label>
+          <input type="text" id="guestAddress" name="entry.ADDRESS" placeholder="Street, City, State, ZIP" required autocomplete="street-address" />
+          <span class="footer__error" id="addressError">Please enter your mailing address</span>
+        </div>
+
+        <!-- Attending? -->
+        <div class="footer__form-group">
+          <label class="footer__label-text">Will you be attending? <span class="footer__req">*</span></label>
+          <div class="footer__radio-group" id="attendingGroup">
+            <label class="footer__radio-card">
+              <input type="radio" name="entry.ATTENDING" value="Yes" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">🏕️</span>
+                <span>Yes, count me in!</span>
+              </span>
+            </label>
+            <label class="footer__radio-card">
+              <input type="radio" name="entry.ATTENDING" value="No" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">😢</span>
+                <span>Sorry, can't make it</span>
+              </span>
+            </label>
+          </div>
+          <span class="footer__error" id="attendingError">Please let us know if you can make it</span>
+        </div>
+
+        <!-- Dietary Restrictions -->
+        <div class="footer__form-group">
+          <label for="guestDiet" class="footer__label-text">Dietary Restrictions <span class="footer__req">*</span></label>
+          <input type="text" id="guestDiet" name="entry.DIETARY" placeholder="Vegetarian, vegan, gluten-free, allergies, none, etc." required />
+          <span class="footer__error" id="dietError">Please list any dietary restrictions or type "None"</span>
+        </div>
+
+        <!-- Staying Overnight? -->
+        <div class="footer__form-group">
+          <label class="footer__label-text">Planning to stay overnight? <span class="footer__req">*</span></label>
+          <div class="footer__radio-group" id="overnightGroup">
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.OVERNIGHT" value="Yes" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">⛺</span>
+                <span>Yes, bunk me up!</span>
+              </span>
+            </label>
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.OVERNIGHT" value="No" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">🚗</span>
+                <span>No, heading home</span>
+              </span>
+            </label>
+          </div>
+          <span class="footer__error" id="overnightError">Please let us know your overnight plans</span>
+        </div>
+
+        <!-- Shuttle? -->
+        <div class="footer__form-group">
+          <label class="footer__label-text">Need the camp shuttle? <span class="footer__req">*</span></label>
+          <div class="footer__radio-group" id="shuttleGroup">
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.SHUTTLE" value="Yes" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">🚐</span>
+                <span>Yes, pick me up!</span>
+              </span>
+            </label>
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.SHUTTLE" value="No" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">🚗</span>
+                <span>No, I'll drive</span>
+              </span>
+            </label>
+          </div>
+          <span class="footer__error" id="shuttleError">Please let us know your transportation plans</span>
+          <p class="footer__hint">Metro North → Harlem Valley/Wingdale. Contact Club Getaway at <a href="tel:800-643-8292">800-643-8292</a> 2 weeks prior for pickup times.</p>
+        </div>
+
+        <!-- Color Wars -->
+        <div class="footer__form-group">
+          <label class="footer__label-text">Interested in Color Wars / Crazy Olympics? <span class="footer__req">*</span></label>
+          <p class="footer__hint" style="margin-top:0;margin-bottom:0.5rem;">A fun, camp-style team activity. More details to come!</p>
+          <div class="footer__radio-group" id="colorWarsGroup">
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.COLORWARS" value="Yes" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">🏆</span>
+                <span>I'm in, let's go!</span>
+              </span>
+            </label>
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.COLORWARS" value="No" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">👀</span>
+                <span>I'll cheer from the sidelines</span>
+              </span>
+            </label>
+          </div>
+          <span class="footer__error" id="colorWarsError">Please let us know if you're interested</span>
+        </div>
+
+        <!-- Comments -->
+        <div class="footer__form-group">
+          <label for="guestComments" class="footer__label-text">Comments <span class="footer__req">*</span></label>
+          <textarea id="guestComments" name="entry.COMMENTS" placeholder="Anything else you'd like us to know? Special requests, plus-one info, song requests, etc." required rows="4"></textarea>
+          <span class="footer__error" id="commentsError">Please add a comment or type "None"</span>
+        </div>
+
         <button type="submit" class="footer__submit" id="submitBtn">
-          <span class="footer__submit-text">Count Me In! 🏕️</span>
+          <span class="footer__submit-text">Send RSVP 🏕️</span>
         </button>
       </form>
       <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
@@ -648,7 +853,7 @@ import '../styles/main.css';
       <!-- Confirmation toast -->
       <div class="footer__toast" id="confirmToast">
         <span class="footer__toast-icon">🎉</span>
-        <span class="footer__toast-msg">You're on the roster! See you at camp!</span>
+        <span class="footer__toast-msg">RSVP received! See you at camp!</span>
       </div>
 
       <p class="footer__copyright">Paige & Benji · October 2026 · Made with 🤎 and campfire smoke</p>
@@ -832,49 +1037,108 @@ import '../styles/main.css';
       }
     });
 
-    // ===== Form handling =====
+    // ===== RSVP Form handling =====
     const form = document.getElementById('rosterForm') as HTMLFormElement;
-    const nameInput = document.getElementById('guestName') as HTMLInputElement;
+    const firstNameInput = document.getElementById('guestFirstName') as HTMLInputElement;
+    const lastNameInput = document.getElementById('guestLastName') as HTMLInputElement;
     const emailInput = document.getElementById('guestEmail') as HTMLInputElement;
-    const nameError = document.getElementById('nameError');
+    const phoneInput = document.getElementById('guestPhone') as HTMLInputElement;
+    const addressInput = document.getElementById('guestAddress') as HTMLInputElement;
+    const dietInput = document.getElementById('guestDiet') as HTMLInputElement;
+    const commentsInput = document.getElementById('guestComments') as HTMLTextAreaElement;
+
+    const firstNameError = document.getElementById('firstNameError');
+    const lastNameError = document.getElementById('lastNameError');
     const emailError = document.getElementById('emailError');
+    const phoneError = document.getElementById('phoneError');
+    const addressError = document.getElementById('addressError');
+    const dietError = document.getElementById('dietError');
+    const attendingError = document.getElementById('attendingError');
+    const overnightError = document.getElementById('overnightError');
+    const shuttleError = document.getElementById('shuttleError');
+    const colorWarsError = document.getElementById('colorWarsError');
+    const commentsError = document.getElementById('commentsError');
+
+    const attendingGroup = document.getElementById('attendingGroup');
+    const overnightGroup = document.getElementById('overnightGroup');
+    const shuttleGroup = document.getElementById('shuttleGroup');
+    const colorWarsGroup = document.getElementById('colorWarsGroup');
     const toast = document.getElementById('confirmToast');
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    function clearErrors() {
-      nameInput?.classList.remove('input--error');
-      emailInput?.classList.remove('input--error');
-      nameError?.classList.remove('visible');
-      emailError?.classList.remove('visible');
+    // Helper: clear error on radio group selection
+    function setupRadioClear(name: string, group: HTMLElement | null, error: HTMLElement | null) {
+      document.querySelectorAll(`input[name="${name}"]`).forEach((radio) => {
+        radio.addEventListener('change', () => {
+          group?.classList.remove('input--error');
+          error?.classList.remove('visible');
+        });
+      });
     }
 
-    // Live clear errors on input
-    nameInput?.addEventListener('input', () => {
-      nameInput.classList.remove('input--error');
-      nameError?.classList.remove('visible');
-    });
-    emailInput?.addEventListener('input', () => {
-      emailInput.classList.remove('input--error');
-      emailError?.classList.remove('visible');
-    });
+    setupRadioClear('entry.ATTENDING', attendingGroup, attendingError);
+    setupRadioClear('entry.OVERNIGHT', overnightGroup, overnightError);
+    setupRadioClear('entry.SHUTTLE', shuttleGroup, shuttleError);
+    setupRadioClear('entry.COLORWARS', colorWarsGroup, colorWarsError);
+
+    // Helper: clear error on text/email/tel input
+    function setupInputClear(input: HTMLInputElement | HTMLTextAreaElement | null, error: HTMLElement | null) {
+      input?.addEventListener('input', () => {
+        input.classList.remove('input--error');
+        error?.classList.remove('visible');
+      });
+    }
+
+    setupInputClear(firstNameInput, firstNameError);
+    setupInputClear(lastNameInput, lastNameError);
+    setupInputClear(emailInput, emailError);
+    setupInputClear(phoneInput, phoneError);
+    setupInputClear(addressInput, addressError);
+    setupInputClear(dietInput, dietError);
+    setupInputClear(commentsInput, commentsError);
+
+    function clearAllErrors() {
+      const inputs = [firstNameInput, lastNameInput, emailInput, phoneInput, addressInput, dietInput, commentsInput];
+      const errors = [firstNameError, lastNameError, emailError, phoneError, addressError, dietError, attendingError, overnightError, shuttleError, colorWarsError, commentsError];
+      const groups = [attendingGroup, overnightGroup, shuttleGroup, colorWarsGroup];
+      inputs.forEach(i => i?.classList.remove('input--error'));
+      errors.forEach(e => e?.classList.remove('visible'));
+      groups.forEach(g => g?.classList.remove('input--error'));
+    }
+
+    function validateTextInput(input: HTMLInputElement | HTMLTextAreaElement | null, error: HTMLElement | null): boolean {
+      if (!input?.value.trim()) {
+        input?.classList.add('input--error');
+        error?.classList.add('visible');
+        return true;
+      }
+      return false;
+    }
+
+    function validateRadio(name: string, group: HTMLElement | null, error: HTMLElement | null): boolean {
+      if (!document.querySelector(`input[name="${name}"]:checked`)) {
+        group?.classList.add('input--error');
+        error?.classList.add('visible');
+        return true;
+      }
+      return false;
+    }
 
     if (form) {
       form.addEventListener('submit', (e) => {
-        clearErrors();
+        e.preventDefault();
+        clearAllErrors();
         let hasError = false;
 
-        // Validate name
-        if (!nameInput.value.trim()) {
-          nameInput.classList.add('input--error');
-          nameError?.classList.add('visible');
-          hasError = true;
-        }
+        // Text fields
+        if (validateTextInput(firstNameInput, firstNameError)) hasError = true;
+        if (validateTextInput(lastNameInput, lastNameError)) hasError = true;
 
-        // Validate email
-        const emailVal = emailInput.value.trim();
+        // Email
+        const emailVal = emailInput?.value.trim() || '';
         if (!emailVal || !emailRegex.test(emailVal)) {
-          emailInput.classList.add('input--error');
+          emailInput?.classList.add('input--error');
           emailError?.classList.add('visible');
           if (emailVal && !emailRegex.test(emailVal)) {
             if (emailError) emailError.textContent = 'That doesn\'t look like a valid email';
@@ -884,12 +1148,30 @@ import '../styles/main.css';
           hasError = true;
         }
 
+        if (validateTextInput(phoneInput, phoneError)) hasError = true;
+        if (validateTextInput(addressInput, addressError)) hasError = true;
+
+        // Radio groups
+        if (validateRadio('entry.ATTENDING', attendingGroup, attendingError)) hasError = true;
+
+        if (validateTextInput(dietInput, dietError)) hasError = true;
+
+        if (validateRadio('entry.OVERNIGHT', overnightGroup, overnightError)) hasError = true;
+        if (validateRadio('entry.SHUTTLE', shuttleGroup, shuttleError)) hasError = true;
+        if (validateRadio('entry.COLORWARS', colorWarsGroup, colorWarsError)) hasError = true;
+
+        if (validateTextInput(commentsInput, commentsError)) hasError = true;
+
         if (hasError) {
-          e.preventDefault();
+          // Scroll to first error
+          const firstError = form.querySelector('.input--error, .footer__error.visible');
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
           return;
         }
 
-        // Form is valid — allow the native submit to the hidden iframe
+        // Form is valid — show success
         const btn = document.getElementById('submitBtn') as HTMLButtonElement;
         if (btn) {
           btn.innerHTML = '<span>Sending… ✨</span>';
@@ -902,7 +1184,7 @@ import '../styles/main.css';
             toast.classList.add('footer__toast--show');
           }
           if (btn) {
-            btn.innerHTML = '<span class="footer__submit-text">Count Me In! 🏕️</span>';
+            btn.innerHTML = '<span class="footer__submit-text">Send RSVP 🏕️</span>';
             btn.style.background = '';
             btn.removeAttribute('disabled');
           }
