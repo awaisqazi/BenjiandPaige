@@ -844,6 +844,21 @@ import '../styles/main.css';
           <span class="footer__error" id="commentsError">Please add a comment or type "None"</span>
         </div>
 
+        <!-- Honeypot Field (Hidden from humans) -->
+        <div class="footer__honeypot" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;">
+          <label for="guestBait" class="footer__label-text">Leave this blank</label>
+          <input type="text" id="guestBait" name="guest_bait_honey" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <!-- Human Verification (Anti-Bot) -->
+        <div class="footer__form-group footer__captcha-group" id="captchaGroup">
+          <label for="captchaAnswer" class="footer__label-text">
+            Prove you're a happy camper: What is <span id="captchaQuestion" style="color: var(--fire-amber); font-weight: 700;"></span>? <span class="footer__req">*</span>
+          </label>
+          <input type="text" id="captchaAnswer" placeholder="Your answer" required autocomplete="off" />
+          <span class="footer__error" id="captchaError">Please solve the riddle to prove you are a human</span>
+        </div>
+
         <button type="submit" class="footer__submit" id="submitBtn">
           <span class="footer__submit-text">Send RSVP 🏕️</span>
         </button>
@@ -1078,6 +1093,11 @@ import '../styles/main.css';
     const dietInput = document.getElementById('guestDiet') as HTMLInputElement;
     const commentsInput = document.getElementById('guestComments') as HTMLTextAreaElement;
 
+    // Honeypot & Captcha inputs
+    const honeypotInput = document.getElementById('guestBait') as HTMLInputElement;
+    const captchaAnswerInput = document.getElementById('captchaAnswer') as HTMLInputElement;
+    const captchaQuestion = document.getElementById('captchaQuestion');
+
     const firstNameError = document.getElementById('firstNameError');
     const lastNameError = document.getElementById('lastNameError');
     const emailError = document.getElementById('emailError');
@@ -1089,14 +1109,35 @@ import '../styles/main.css';
     const shuttleError = document.getElementById('shuttleError');
     const colorWarsError = document.getElementById('colorWarsError');
     const commentsError = document.getElementById('commentsError');
+    const captchaError = document.getElementById('captchaError');
 
     const attendingGroup = document.getElementById('attendingGroup');
     const overnightGroup = document.getElementById('overnightGroup');
     const shuttleGroup = document.getElementById('shuttleGroup');
     const colorWarsGroup = document.getElementById('colorWarsGroup');
+    const captchaGroup = document.getElementById('captchaGroup');
     const toast = document.getElementById('confirmToast');
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // ===== Dynamic Captcha Logic =====
+    let captchaNum1 = 0;
+    let captchaNum2 = 0;
+    let captchaCorrectAnswer = 0;
+
+    function generateCaptcha() {
+      captchaNum1 = Math.floor(Math.random() * 9) + 1; // 1 to 9
+      captchaNum2 = Math.floor(Math.random() * 9) + 1; // 1 to 9
+      captchaCorrectAnswer = captchaNum1 + captchaNum2;
+      if (captchaQuestion) {
+        captchaQuestion.textContent = `${captchaNum1} + ${captchaNum2}`;
+      }
+      if (captchaAnswerInput) {
+        captchaAnswerInput.value = '';
+      }
+    }
+
+    generateCaptcha();
 
     // Helper: clear error on radio group selection
     function setupRadioClear(name: string, group: HTMLElement | null, error: HTMLElement | null) {
@@ -1128,11 +1169,12 @@ import '../styles/main.css';
     setupInputClear(addressInput, addressError);
     setupInputClear(dietInput, dietError);
     setupInputClear(commentsInput, commentsError);
+    setupInputClear(captchaAnswerInput, captchaError);
 
     function clearAllErrors() {
-      const inputs = [firstNameInput, lastNameInput, emailInput, phoneInput, addressInput, dietInput, commentsInput];
-      const errors = [firstNameError, lastNameError, emailError, phoneError, addressError, dietError, attendingError, overnightError, shuttleError, colorWarsError, commentsError];
-      const groups = [attendingGroup, overnightGroup, shuttleGroup, colorWarsGroup];
+      const inputs = [firstNameInput, lastNameInput, emailInput, phoneInput, addressInput, dietInput, commentsInput, captchaAnswerInput];
+      const errors = [firstNameError, lastNameError, emailError, phoneError, addressError, dietError, attendingError, overnightError, shuttleError, colorWarsError, commentsError, captchaError];
+      const groups = [attendingGroup, overnightGroup, shuttleGroup, colorWarsGroup, captchaGroup];
       inputs.forEach(i => i?.classList.remove('input--error'));
       errors.forEach(e => e?.classList.remove('visible'));
       groups.forEach(g => g?.classList.remove('input--error'));
@@ -1160,6 +1202,37 @@ import '../styles/main.css';
       form.addEventListener('submit', (e) => {
         clearAllErrors();
         let hasError = false;
+
+        // Honeypot check: If the honeypot field is filled, we suspect a bot.
+        // We prevent the actual submission to Google Forms but act as if it succeeded
+        // to fool the bot into not retrying.
+        if (honeypotInput && honeypotInput.value.trim() !== '') {
+          e.preventDefault();
+          
+          const btn = document.getElementById('submitBtn') as HTMLButtonElement;
+          if (btn) {
+            btn.innerHTML = '<span>Sending… ✨</span>';
+            btn.setAttribute('disabled', 'true');
+          }
+
+          setTimeout(() => {
+            if (toast) {
+              toast.classList.add('footer__toast--show');
+            }
+            if (btn) {
+              btn.innerHTML = '<span class="footer__submit-text">Send RSVP 🏕️</span>';
+              btn.removeAttribute('disabled');
+            }
+            form.reset();
+            generateCaptcha();
+
+            setTimeout(() => {
+              toast?.classList.remove('footer__toast--show');
+            }, 4000);
+          }, 1200);
+
+          return;
+        }
 
         // Text fields
         if (validateTextInput(firstNameInput, firstNameError)) hasError = true;
@@ -1192,6 +1265,22 @@ import '../styles/main.css';
 
         if (validateTextInput(commentsInput, commentsError)) hasError = true;
 
+        // Captcha validation
+        const captchaAnswerVal = captchaAnswerInput?.value.trim() || '';
+        const captchaAnswerNum = parseInt(captchaAnswerVal, 10);
+        if (isNaN(captchaAnswerNum) || captchaAnswerNum !== captchaCorrectAnswer) {
+          captchaAnswerInput?.classList.add('input--error');
+          captchaError?.classList.add('visible');
+          if (captchaError) {
+            if (!captchaAnswerVal) {
+              captchaError.textContent = 'Please solve the riddle to prove you are a human';
+            } else {
+              captchaError.textContent = 'That math is a little off! Try again.';
+            }
+          }
+          hasError = true;
+        }
+
         if (hasError) {
           e.preventDefault();
           // Scroll to first error
@@ -1220,6 +1309,7 @@ import '../styles/main.css';
             btn.removeAttribute('disabled');
           }
           form.reset();
+          generateCaptcha();
 
           // Auto-dismiss toast
           setTimeout(() => {
