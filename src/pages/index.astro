@@ -495,7 +495,7 @@ import '../styles/main.css';
         <source src="/images/backdrop.mp4" type="video/mp4" />
       </video>
     </div>
-
+    <div class="packing__overlay"></div>
 
     <div class="packing__content reveal">
       <div class="packing__col packing__col--left">
@@ -535,6 +535,11 @@ import '../styles/main.css';
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Water bottle</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Light rain jacket or waterproof layer</span></label></li>
         </ul>
+        <div class="packing__reset-wrap">
+          <button class="packing__reset-btn" id="resetChecklistBtn" title="Clear checklist progress">
+            <span>🧹 Reset Checklist</span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -657,30 +662,106 @@ import '../styles/main.css';
         <p class="section-title">A Few Notes from the Happy Couple</p>
 
         <div class="vibe__cards">
-          <div class="vibe__card reveal reveal-delay-1">
-            <span class="vibe__card-icon">👗</span>
-            <h3>Dress Code</h3>
-            <p>Dress to impress, but maybe leave the bug spray as perfume at home. Think "rustic chic meets ready for s'mores."</p>
+          <!-- Card 1: Vintage Clothing Tag (Dress Code Tag) -->
+          <div class="vibe__card vibe__card--tag reveal reveal-delay-1" id="dressCodeTag">
+            <span class="vibe__tag-badge" id="outfitBadge">Dress Code</span>
+            <button class="vibe__tag-cycle-btn" id="outfitCycleBtn" title="Click to cycle outfits!">
+              <span class="vibe__card-icon" id="outfitIcon">👗</span>
+            </button>
+            <h3 id="outfitTitle">Dress Code</h3>
+            <p id="outfitDesc">Dress to impress, but maybe leave the bug spray as perfume at home. Think "rustic chic meets ready for s'mores."</p>
           </div>
 
-          <div class="vibe__card reveal reveal-delay-2">
-            <span class="vibe__card-icon">🐿️</span>
-            <h3>Official Mascot</h3>
-            <p>Keep your eyes peeled for our unofficial wedding mascot: <strong>the Squirrel in a Tuxedo</strong>. If you spot him, good luck is coming your way.</p>
-            <div class="squirrel-easter-egg" id="squirrelEgg" title="You found the tuxedo squirrel!">
-              <svg viewBox="0 0 80 80" class="squirrel-svg">
-                <circle cx="40" cy="40" r="36" fill="var(--bark-mid)" opacity="0.1"/>
-                <text x="40" y="48" text-anchor="middle" font-size="32">🐿️</text>
-                <text x="40" y="66" text-anchor="middle" font-size="10" fill="var(--bark-mid)">🎩</text>
+          <!-- Card 2: Polaroid Photo (Official Mascot - Sir Nutsworth III) -->
+          <div class="vibe__card vibe__card--polaroid reveal reveal-delay-2">
+            <div class="vibe__polaroid-tape" aria-hidden="true"></div>
+            <div class="vibe__polaroid-img-wrap">
+              <div class="squirrel-easter-egg" id="squirrelEgg" title="Click the tuxedo squirrel!">
+                <svg viewBox="0 0 80 80" class="squirrel-svg">
+                  <circle cx="40" cy="40" r="36" fill="var(--bark-mid)" opacity="0.15"/>
+                  <!-- Forest backdrop details inside polaroid -->
+                  <text x="14" y="60" font-size="12" opacity="0.3">🌲</text>
+                  <text x="64" y="55" font-size="10" opacity="0.3">🌲</text>
+                  <text x="40" y="48" text-anchor="middle" font-size="36">🐿️</text>
+                  <text x="40" y="66" text-anchor="middle" font-size="12">🎩</text>
+                </svg>
+              </div>
+            </div>
+            <h3 style="display:none;">Official Mascot</h3>
+            <div class="vibe__polaroid-caption">Sir Nutsworth III</div>
+            <p style="font-size:0.85rem; text-align:center; margin-top:0.25rem;">Keep your eyes peeled for our unofficial mascot. Spotting him brings good luck!</p>
+          </div>
+
+          <!-- Card 3: Camp Cabin Pass / Expectation Card -->
+          <div class="vibe__card vibe__card--pass reveal reveal-delay-3" id="campPassCard">
+            <div class="vibe__pass-tack" aria-hidden="true">
+              <svg viewBox="0 0 40 50" width="22" height="28">
+                <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
+                <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
+                <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
               </svg>
             </div>
-          </div>
-
-          <div class="vibe__card reveal reveal-delay-3">
-            <span class="vibe__card-icon">⛺</span>
+            <button class="vibe__cabin-btn" id="cabinNightBtn" title="Toggle Cabin Night Mode!">
+              <span class="vibe__card-icon">⛺</span>
+            </button>
             <h3>What to Expect</h3>
-            <p>This isn't your average wedding. Think bunk beds, campfire sing-alongs, and the most fun you've had since 5th grade summer camp.</p>
+            <ul class="vibe__expect-list">
+              <li>Camp bunk beds & cabin sleepovers</li>
+              <li>Campfire sing-alongs & s'mores</li>
+              <li>Classic summer camp vibes & Olympics</li>
+            </ul>
+            <p class="vibe__permit-quote">"Wait, do we need a marriage license or a camp permit for this?" 🏕️📜</p>
+            <div class="vibe__mini-fire" aria-hidden="true">
+              <div class="vibe__mini-flame"></div>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FaceTime Incoming Call Screen Overlay -->
+    <div class="facetime-overlay" id="facetimeOverlay">
+      <div class="facetime-card" id="facetimeCard">
+        <!-- Initial Incoming Screen -->
+        <div id="facetimeIncomingView">
+          <div class="facetime-avatar-wrap">
+            <img src="/images/mikestern.png" alt="Best Man Michael Stern" class="facetime-avatar" />
+          </div>
+          <div class="facetime-caller">Michael Stern</div>
+          <div class="facetime-subtitle">Best Man</div>
+          <div class="facetime-ringing">FaceTime Video...</div>
+          <div class="facetime-actions">
+            <button class="facetime-btn facetime-btn--decline" id="declineCallBtn" aria-label="Decline Call">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <button class="facetime-btn facetime-btn--accept" id="acceptCallBtn" aria-label="Accept Call">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 7a2 2 0 0 0-2-2h-3.5a1 1 0 0 1-.8-.4l-1.2-1.6A2 2 0 0 0 13.9 2h-3.8A2 2 0 0 0 8.5 3L7.3 4.6a1 1 0 0 1-.8.4H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V7z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Call Connected Screen -->
+        <div id="facetimeConnectedView" style="display: none;">
+          <div class="facetime-avatar-wrap" style="width: 80px; height: 80px; margin-bottom: 1rem;">
+            <img src="/images/mikestern.png" alt="Best Man Michael Stern" class="facetime-avatar" />
+          </div>
+          <div class="facetime-caller" style="font-size: 1.3rem;">Michael Stern</div>
+          <div class="facetime-subtitle" style="font-size: 0.8rem; margin-bottom: 1rem;">Call Connected (0:04)</div>
+          <div class="facetime-quote-box">
+            <p class="facetime-dialogue">
+              "<strong>Michael</strong>: Paige! Benji! Where are you guys? We only have this chapel rented for like 30 minutes! Wait... is that a squirrel in a tux?!"
+            </p>
+          </div>
+          <div class="facetime-banner">
+            🎉 MASCOT VERIFIED: Sir Nutsworth III, Esq. is co-officiating!
+          </div>
+          <button class="facetime-close-btn" id="closeCallBtn">Hang Up 📞</button>
         </div>
       </div>
     </div>
@@ -959,28 +1040,205 @@ import '../styles/main.css';
       document.head.appendChild(style);
     }
 
-    // ===== Squirrel Easter Egg =====
+    // ===== Vibe Section: Outfit Cycling =====
+    const outfits = [
+      {
+        badge: "Dress Code",
+        icon: "👗",
+        title: "Dress Code",
+        desc: "Dress to impress, but maybe leave the bug spray as perfume at home. Think 'rustic chic meets ready for s'mores.'"
+      },
+      {
+        badge: "Ecology Special",
+        icon: "🦥",
+        title: "Queens Zoo Uniform",
+        desc: "Paige's coordination outfit. Optimal for spotting wild animals and wearing heavy bug spray."
+      },
+      {
+        badge: "Theatre Blacks",
+        icon: "🎭",
+        title: "Rutgers Cabaret Costume",
+        desc: "Avenue Q attire. Ideal for hiding in prop closets or avoiding Benji's antics."
+      },
+      {
+        badge: "The Road Trip",
+        icon: "🚗",
+        title: "Connecticut GPS Edition",
+        desc: "Benji: 'Absolutely, GPS says we're almost there!' GPS: 'Welcome to Connecticut!' Paige: 'That's 90 minutes outside of NYC!'"
+      }
+    ];
+
+    let currentOutfitIndex = 0;
+    const outfitBadge = document.getElementById('outfitBadge');
+    const outfitIcon = document.getElementById('outfitIcon');
+    const outfitTitle = document.getElementById('outfitTitle');
+    const outfitDesc = document.getElementById('outfitDesc');
+    const outfitCycleBtn = document.getElementById('outfitCycleBtn');
+
+    if (outfitCycleBtn) {
+      outfitCycleBtn.addEventListener('click', () => {
+        currentOutfitIndex = (currentOutfitIndex + 1) % outfits.length;
+        const currentOutfit = outfits[currentOutfitIndex];
+
+        // Apply a quick elastic scale animation on click
+        outfitCycleBtn.style.transform = 'scale(0.8) rotate(-15deg)';
+        setTimeout(() => {
+          outfitCycleBtn.style.transform = '';
+        }, 150);
+
+        if (outfitBadge) outfitBadge.textContent = currentOutfit.badge;
+        if (outfitIcon) outfitIcon.textContent = currentOutfit.icon;
+        if (outfitTitle) outfitTitle.textContent = currentOutfit.title;
+        if (outfitDesc) outfitDesc.innerHTML = currentOutfit.desc;
+      });
+    }
+
+    // ===== Vibe Section: Cabin Night Mode Toggle =====
+    const cabinNightBtn = document.getElementById('cabinNightBtn');
+    const campPassCard = document.getElementById('campPassCard');
+
+    if (cabinNightBtn && campPassCard) {
+      cabinNightBtn.addEventListener('click', () => {
+        campPassCard.classList.toggle('vibe__card--pass-night');
+
+        // Animation bounce effect on click
+        cabinNightBtn.style.transform = 'scale(0.8) rotate(15deg)';
+        setTimeout(() => {
+          cabinNightBtn.style.transform = '';
+        }, 150);
+      });
+    }
+
+    // ===== Packing List Persistence & Reset =====
+    const packingCheckboxes = document.querySelectorAll('.packing__checkbox') as NodeListOf<HTMLInputElement>;
+    const resetChecklistBtn = document.getElementById('resetChecklistBtn');
+
+    // Load states on bootup
+    try {
+      const savedPackingState = localStorage.getItem('grecco_packing_list');
+      if (savedPackingState) {
+        const checkedIndices = JSON.parse(savedPackingState) as number[];
+        packingCheckboxes.forEach((checkbox, index) => {
+          if (checkedIndices.includes(index)) {
+            checkbox.checked = true;
+            const span = checkbox.nextElementSibling as HTMLElement;
+            if (span) {
+              span.style.textDecoration = 'line-through';
+              span.style.opacity = '0.45';
+            }
+          }
+        });
+      }
+    } catch (err) {
+      console.warn('LocalStorage packing list read failed:', err);
+    }
+
+    // Save states on change
+    packingCheckboxes.forEach((checkbox, index) => {
+      checkbox.addEventListener('change', () => {
+        const span = checkbox.nextElementSibling as HTMLElement;
+        if (span) {
+          if (checkbox.checked) {
+            span.style.textDecoration = 'line-through';
+            span.style.opacity = '0.45';
+          } else {
+            span.style.textDecoration = '';
+            span.style.opacity = '';
+          }
+        }
+
+        const checkedIndices: number[] = [];
+        packingCheckboxes.forEach((cb, idx) => {
+          if (cb.checked) checkedIndices.push(idx);
+        });
+        try {
+          localStorage.setItem('grecco_packing_list', JSON.stringify(checkedIndices));
+        } catch (err) {
+          console.warn('LocalStorage packing list write failed:', err);
+        }
+      });
+    });
+
+    // Reset checklist action
+    if (resetChecklistBtn) {
+      resetChecklistBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        packingCheckboxes.forEach((checkbox) => {
+          checkbox.checked = false;
+          const span = checkbox.nextElementSibling as HTMLElement;
+          if (span) {
+            span.style.textDecoration = '';
+            span.style.opacity = '';
+          }
+        });
+        try {
+          localStorage.removeItem('grecco_packing_list');
+        } catch (err) {
+          console.warn('LocalStorage packing list remove failed:', err);
+        }
+
+        // Play visual pop click bounce animation
+        resetChecklistBtn.style.transform = 'scale(0.9) rotate(-3deg)';
+        setTimeout(() => {
+          resetChecklistBtn.style.transform = '';
+        }, 150);
+      });
+    }
+
+
+    // ===== Vibe Section: Polaroid & FaceTime Call Easter Egg =====
     const squirrel = document.getElementById('squirrelEgg');
-    if (squirrel) {
+    const facetimeOverlay = document.getElementById('facetimeOverlay');
+    const declineCallBtn = document.getElementById('declineCallBtn');
+    const acceptCallBtn = document.getElementById('acceptCallBtn');
+    const closeCallBtn = document.getElementById('closeCallBtn');
+    const facetimeIncomingView = document.getElementById('facetimeIncomingView');
+    const facetimeConnectedView = document.getElementById('facetimeConnectedView');
+    const facetimeCard = document.getElementById('facetimeCard');
+
+    if (squirrel && facetimeOverlay) {
       let clicks = 0;
       squirrel.addEventListener('click', () => {
         clicks++;
-        squirrel.style.transform = `rotate(${clicks * 45}deg) scale(${1 + clicks * 0.1})`;
+        squirrel.style.transform = `rotate(${clicks * 30}deg) scale(${1 + clicks * 0.05})`;
+
         if (clicks >= 3) {
-          const msg = document.createElement('div');
-          msg.textContent = '🎩🐿️ You found Sir Nutsworth III, Esq.!';
-          msg.style.cssText = `
-            position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
-            background:var(--bark-dark);color:var(--cream);padding:1.5rem 2.5rem;
-            border-radius:16px;font-family:var(--font-serif);font-size:1.4rem;
-            z-index:9999;animation:fadeMsg 3s forwards;box-shadow:0 20px 60px rgba(0,0,0,0.4);
-          `;
-          document.body.appendChild(msg);
-          const fadeStyle = document.createElement('style');
-          fadeStyle.textContent = `@keyframes fadeMsg{0%{opacity:0;transform:translate(-50%,-50%) scale(0.8)}20%{opacity:1;transform:translate(-50%,-50%) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(0.9)}}`;
-          document.head.appendChild(fadeStyle);
-          setTimeout(() => { msg.remove(); clicks = 0; squirrel.style.transform = ''; }, 3500);
+          // Reset card positions and open FaceTime overlay
+          clicks = 0;
+          setTimeout(() => {
+            squirrel.style.transform = '';
+          }, 300);
+
+          // Reset FaceTime state
+          if (facetimeIncomingView) facetimeIncomingView.style.display = 'block';
+          if (facetimeConnectedView) facetimeConnectedView.style.display = 'none';
+          if (facetimeCard) facetimeCard.className = 'facetime-card';
+
+          facetimeOverlay.classList.add('facetime-overlay--active');
         }
+      });
+    }
+
+    // FaceTime decline calls
+    if (declineCallBtn && facetimeOverlay) {
+      declineCallBtn.addEventListener('click', () => {
+        facetimeOverlay.classList.remove('facetime-overlay--active');
+      });
+    }
+
+    // FaceTime accept call action
+    if (acceptCallBtn && facetimeIncomingView && facetimeConnectedView && facetimeCard) {
+      acceptCallBtn.addEventListener('click', () => {
+        facetimeIncomingView.style.display = 'none';
+        facetimeConnectedView.style.display = 'block';
+        facetimeCard.classList.add('facetime-card--connected');
+      });
+    }
+
+    // FaceTime close call action
+    if (closeCallBtn && facetimeOverlay) {
+      closeCallBtn.addEventListener('click', () => {
+        facetimeOverlay.classList.remove('facetime-overlay--active');
       });
     }
 

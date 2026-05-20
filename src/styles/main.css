@@ -1038,11 +1038,27 @@
 
 /* ==============================
    PACKING LIST SECTION
-   ============================== */
+   ============================= */
 .packing {
   position: relative;
   overflow: hidden;
   min-height: 80vh;
+}
+
+/* Seamless gradient transition from forest dark to warm beige, and finally to navy lodging card */
+.packing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(23, 42, 27, 0.4) 0%,
+    rgba(237, 232, 218, 0.1) 15%,
+    rgba(237, 232, 218, 0.1) 80%,
+    rgba(4, 37, 71, 0.5) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
 }
 
 .packing__video-wrap {
@@ -1055,93 +1071,199 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 1; /* full opacity for crisp rendering */
 }
 
 .packing__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(237, 232, 218, 0.75);
+  background: radial-gradient(
+    circle at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
   z-index: 2;
+  pointer-events: none;
 }
 
 .packing__content {
   position: relative;
   z-index: 3;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  max-width: 1000px;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  max-width: 1050px;
   margin: 0 auto;
-  padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(4.5rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem) 3.5rem;
   align-items: start;
+}
+
+/* --- Left Column: Camp Clipboard --- */
+.packing__col--left {
+  position: relative;
+  background: rgba(253, 252, 246, 0.93);
+  border: 1px solid rgba(139, 115, 85, 0.22);
+  border-radius: 12px 10px 14px 8px;
+  padding: 3.5rem clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: 
+    0 18px 45px rgba(0, 0, 0, 0.12),
+    0 3px 10px rgba(0, 0, 0, 0.06),
+    inset 0 0 40px rgba(139, 115, 85, 0.05);
+  transform: rotate(-0.6deg);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+}
+
+.packing__col--left:hover {
+  transform: rotate(-0.2deg) translateY(-3px);
+  box-shadow: 
+    0 22px 50px rgba(0, 0, 0, 0.15),
+    0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Clipboard Brass Head Clip */
+.packing__col--left::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 32px;
+  background: linear-gradient(135deg, #bfab8c 0%, #a69170 100%);
+  border-radius: 6px 6px 2px 2px;
+  border: 1px solid #8e7b5b;
+  box-shadow: 
+    0 4px 8px rgba(0,0,0,0.15),
+    inset 0 1px 2px rgba(255,255,255,0.3);
+  z-index: 4;
+}
+
+/* Clipboard Clip Rivets and Springs */
+.packing__col--left::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 14px;
+  background: #6e5e48;
+  border-radius: 3px;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+  z-index: 5;
+}
+
+/* --- Right Column: Lined Canary Yellow Legal Pad --- */
+.packing__col--right {
+  position: relative;
+  background: #fffdf0; /* canary legal pad color */
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  padding: 3rem clamp(1.2rem, 3.5vw, 2.2rem) 2.2rem;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.12),
+    0 3px 8px rgba(0, 0, 0, 0.06);
+  transform: rotate(0.8deg);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+}
+
+.packing__col--right:hover {
+  transform: rotate(0.4deg) translateY(-3px);
+  box-shadow: 
+    0 20px 48px rgba(0, 0, 0, 0.15),
+    0 5px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Red Leather Binding Top of Legal Pad */
+.packing__col--right::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 22px;
+  background: linear-gradient(180deg, #912b21 0%, #7d241c 100%);
+  border-radius: 4px 4px 0 0;
+  border-bottom: 2px solid #5a1812;
+  box-shadow: 
+    inset 0 1px 2px rgba(255,255,255,0.15),
+    0 2px 5px rgba(0,0,0,0.15);
+  z-index: 4;
 }
 
 .packing__heading {
   font-family: var(--font-typewriter);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.3rem);
   color: var(--bark-dark);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  line-height: 1.15;
-  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  margin-bottom: clamp(1rem, 2vw, 1.4rem);
 }
 
 .packing__desc {
   font-family: var(--font-typewriter);
-  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+  font-size: clamp(0.88rem, 1.5vw, 1rem);
   color: var(--bark-dark);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  opacity: 0.85;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  opacity: 0.9;
 }
 
 .packing__note {
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
-  padding: 1rem;
-  background: rgba(250, 249, 242, 0.4);
-  border-radius: 6px;
-  border-left: 3px solid var(--forest-mid);
+  padding: 1.1rem;
+  background: rgba(139, 115, 85, 0.06);
+  border-radius: 8px;
+  border-left: 4px solid var(--forest-mid);
+  margin-top: 1rem;
 }
 
 .packing__note-icon {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   flex-shrink: 0;
 }
 
 .packing__note p {
   font-family: var(--font-typewriter);
-  font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+  font-size: clamp(0.8rem, 1.35vw, 0.92rem);
   color: var(--bark-dark);
   line-height: 1.5;
   margin: 0;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
+/* Lined Double Red Margins */
 .packing__list {
   list-style: none;
   padding: 0;
   margin: 0;
+  position: relative;
+  border-left: 2px double rgba(217, 83, 79, 0.35); /* dual margin lines */
+  padding-left: clamp(1.2rem, 3vw, 1.8rem);
+  margin-left: 0.2rem;
 }
 
+/* Rule Lined blue rows */
 .packing__list li {
   font-family: var(--font-typewriter);
-  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-size: clamp(0.82rem, 1.4vw, 0.96rem);
   color: var(--bark-dark);
-  padding: 0.35rem 0;
-  border-bottom: 1px dotted rgba(0, 0, 0, 0.1);
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(66, 135, 245, 0.16); /* notebook rule line */
   transition: opacity 0.3s ease;
 }
 
 .packing__list li:last-child {
-  border-bottom: none;
+  border-bottom: 1px solid rgba(66, 135, 245, 0.16); /* keep line for last */
 }
 
 .packing__list label {
   display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
+  align-items: center;
+  gap: 0.75rem;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
@@ -1150,58 +1272,117 @@
   transform: translateX(4px);
 }
 
-/* Hide native checkbox */
+/* Custom Handwritten / Crayon Checkbox */
 .packing__checkbox {
   appearance: none;
   -webkit-appearance: none;
-  width: 16px;
-  height: 16px;
-  min-width: 16px;
-  border: 2px solid var(--forest-mid);
-  border-radius: 3px;
-  background: rgba(250, 249, 242, 0.4);
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border: 2px solid rgba(34, 139, 34, 0.45);
+  border-radius: 4px;
+  background: transparent;
   cursor: pointer;
   position: relative;
-  top: 2px;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  top: -1px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.packing__checkbox:hover {
+  background: rgba(34, 139, 34, 0.06);
+  border-color: rgba(34, 139, 34, 0.75);
+  transform: scale(1.08);
 }
 
 .packing__checkbox:checked {
-  background: var(--forest-mid);
-  border-color: var(--forest-mid);
+  background: rgba(34, 139, 34, 0.08);
+  border-color: rgba(34, 139, 34, 0.85);
 }
 
+/* Handdrawn pen checkmark tick */
 .packing__checkbox:checked::after {
-  content: '✓';
+  content: '';
   position: absolute;
-  top: -2px;
-  left: 1px;
-  font-size: 12px;
-  color: white;
-  font-weight: bold;
+  width: 6px;
+  height: 10px;
+  border: solid rgba(34, 139, 34, 0.95);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  top: 1px;
+  left: 4px;
 }
 
 /* Strikethrough + dim when checked */
 .packing__checkbox:checked + span {
   text-decoration: line-through;
-  opacity: 0.45;
+  color: var(--bark-mid);
+  opacity: 0.5;
 }
 
 .packing__note-inline {
-  font-size: 0.85em;
+  font-size: 0.82em;
   opacity: 0.6;
   font-style: italic;
 }
 
-/* Responsive */
+/* Reset Checklist button wrapper */
+.packing__reset-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.4rem;
+}
+
+.packing__reset-btn {
+  font-family: var(--font-typewriter);
+  font-size: 0.82rem;
+  background: transparent;
+  border: 1px dashed rgba(34, 139, 34, 0.35);
+  color: var(--forest-dark);
+  padding: 0.35rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.packing__reset-btn:hover {
+  background: rgba(34, 139, 34, 0.08);
+  border-color: rgba(34, 139, 34, 0.8);
+  color: var(--forest-mid);
+  transform: translateY(-1px);
+}
+
+.packing__reset-btn:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Overrides */
 @media (max-width: 768px) {
   .packing__content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3.5rem;
+    padding-top: 3.5rem;
   }
 
-  .packing__heading {
-    text-align: center;
+  .packing__col--left,
+  .packing__col--right {
+    transform: none !important; /* remove tilt for clean reading on mobile */
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .packing__col--left:hover,
+  .packing__col--right:hover {
+    transform: none !important;
+  }
+
+  .packing__list {
+    margin-left: 0;
   }
 }
 
@@ -1582,18 +1763,270 @@
   margin-top: 3rem;
 }
 
+.vibe__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem 2rem;
+  margin-top: 3.5rem;
+  align-items: start;
+}
+
+/* Base Scrapbook Card styles */
 .vibe__card {
   background: var(--warm-white);
-  border-radius: 20px;
-  padding: 2rem;
-  border: 1px solid rgba(52, 92, 13, 0.1);
+  padding: 2.2rem 2rem 2rem;
+  box-shadow: 0 4px 15px rgba(4, 37, 71, 0.05);
   transition: transform 0.4s var(--ease-out-expo), box-shadow 0.4s;
   position: relative;
 }
 
-.vibe__card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(4, 37, 71, 0.08);
+/* Card 1: Vintage Clothing Tag (Dress Code) */
+.vibe__card--tag {
+  border-radius: 4px;
+  transform: rotate(-2deg);
+  border: 1px solid rgba(52, 92, 13, 0.15);
+  border-top: 24px solid var(--forest-mid);
+  clip-path: polygon(12% 0%, 88% 0%, 100% 12%, 100% 100%, 0% 100%, 0% 12%);
+}
+
+.vibe__card--tag::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--parchment);
+  border-radius: 50%;
+  border: 1.5px solid rgba(4, 37, 71, 0.3);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 5;
+}
+
+/* Hanging String */
+.vibe__card--tag::after {
+  content: '';
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  width: 2px;
+  height: 32px;
+  background: #c5b497;
+  transform: translateX(-50%) rotate(5deg);
+  z-index: 4;
+}
+
+/* Outfit Cycling Button Style */
+.vibe__tag-cycle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  outline: none;
+}
+
+.vibe__tag-cycle-btn:hover {
+  transform: scale(1.25) rotate(15deg);
+}
+
+.vibe__tag-cycle-btn:active {
+  transform: scale(0.95);
+}
+
+/* Card 2: Polaroid Photo Card (Mascot) */
+.vibe__card--polaroid {
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 1.25rem 1.25rem 2.5rem 1.25rem;
+  background: #ffffff;
+  transform: rotate(2.5deg);
+  box-shadow: 0 10px 25px rgba(4, 37, 71, 0.08);
+}
+
+/* Custom Washi Tape for Polaroid */
+.vibe__polaroid-tape {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-5deg);
+  width: 90px;
+  height: 28px;
+  background-color: rgba(232, 97, 26, 0.6); /* --fire-orange tint */
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(250, 249, 242, 0.3) 10px, rgba(250, 249, 242, 0.3) 20px);
+  border-left: 2px dashed rgba(255,255,255,0.4);
+  border-right: 2px dashed rgba(255,255,255,0.4);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Polaroid image box containing the cute squirrel */
+.vibe__polaroid-img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #f4f2e9;
+  border: 1px solid rgba(4, 37, 71, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  box-shadow: inset 0 2px 8px rgba(4, 37, 71, 0.06);
+}
+
+.squirrel-easter-egg {
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-block;
+  user-select: none;
+}
+
+.squirrel-svg {
+  width: 120px;
+  height: 120px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+}
+
+/* Polaroid bottom cursive caption */
+.vibe__polaroid-caption {
+  font-family: var(--font-script);
+  font-size: 1.6rem;
+  color: var(--bark-dark);
+  text-align: center;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+/* Card 3: Yellow Camp Pass Checklist Card */
+.vibe__card--pass {
+  background: #fdfae7; /* aged warm yellow pass */
+  border-radius: 4px;
+  border-left: 6px dashed #d5caaa;
+  padding: 2.2rem 2rem 2.2rem;
+  transform: rotate(1deg);
+  border: 1px solid rgba(4, 37, 71, 0.08);
+  border-left: 8px dashed rgba(4, 37, 71, 0.15);
+  box-shadow: 0 8px 22px rgba(4, 37, 71, 0.06);
+  transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease, transform 0.4s var(--ease-out-expo);
+}
+
+/* Camp Pass Thumbtack */
+.vibe__pass-tack {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  z-index: 10;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+.vibe__pass-tack svg {
+  transform: rotate(-15deg);
+}
+
+/* Expectation List custom camp ticks */
+.vibe__expect-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+
+.vibe__expect-list li {
+  font-family: var(--font-typewriter);
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--bark-dark);
+  line-height: 1.5;
+}
+
+.vibe__expect-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--forest-mid);
+  font-weight: bold;
+}
+
+.vibe__cabin-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.3s ease;
+}
+
+.vibe__cabin-btn:hover {
+  transform: scale(1.2) rotate(-10deg);
+}
+
+/* Cabin Night Mode Styles */
+.vibe__card--pass-night {
+  background-color: var(--night-mid) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.vibe__card--pass-night h3,
+.vibe__card--pass-night p,
+.vibe__card--pass-night li {
+  color: var(--cream) !important;
+}
+
+.vibe__card--pass-night li::before {
+  color: var(--fire-amber) !important;
+}
+
+.vibe__card--pass-night .vibe__cabin-btn {
+  filter: drop-shadow(0 0 8px #f4a300);
+}
+
+/* Mini Campfire Animation on Expectation Night mode */
+.vibe__mini-fire {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  height: 40px;
+}
+
+.vibe__card--pass-night .vibe__mini-fire {
+  display: flex;
+}
+
+.vibe__mini-flame {
+  width: 12px;
+  height: 20px;
+  background: var(--fire-orange);
+  border-radius: 50% 50% 20% 20%;
+  animation: miniFlicker 0.6s infinite alternate;
+  filter: blur(0.5px);
+  box-shadow: 0 0 10px var(--fire-amber);
+}
+
+@keyframes miniFlicker {
+  0% { transform: scale(1) rotate(-2deg); opacity: 0.8; }
+  100% { transform: scale(1.2) rotate(2deg); opacity: 1; }
+}
+
+/* Card hover scaling (without ruining tilts) */
+.vibe__card--tag:hover {
+  transform: rotate(-1deg) translateY(-8px);
+  box-shadow: 0 16px 40px rgba(4, 37, 71, 0.12);
+}
+
+.vibe__card--polaroid:hover {
+  transform: rotate(1deg) translateY(-8px);
+  box-shadow: 0 20px 45px rgba(4, 37, 71, 0.15);
+}
+
+.vibe__card--pass:hover {
+  transform: rotate(0deg) translateY(-8px);
+  box-shadow: 0 16px 35px rgba(4, 37, 71, 0.12);
 }
 
 .vibe__card-icon {
@@ -1616,22 +2049,238 @@
   color: var(--bark-mid);
   line-height: 1.6;
 }
-
-/* Squirrel Easter Egg */
-.squirrel-easter-egg {
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: transform 0.3s;
+/* Vintage Outfit State Badge */
+.vibe__tag-badge {
   display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background: var(--cream-dark);
+  color: var(--forest-mid);
+  font-family: var(--font-typewriter);
+  font-size: 0.7rem;
+  font-weight: bold;
+  border-radius: 4px;
+  border: 1px dashed var(--forest-mid);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
 }
 
-.squirrel-easter-egg:hover {
-  transform: rotate(15deg) scale(1.15);
+/* Camp Permit License Quote */
+.vibe__permit-quote {
+  font-family: var(--font-typewriter);
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--bark-pale);
+  margin-top: 1rem;
+  border-top: 1px dashed rgba(4, 37, 71, 0.1);
+  padding-top: 0.75rem;
 }
 
-.squirrel-svg {
-  width: 64px;
-  height: 64px;
+.vibe__card--pass-night .vibe__permit-quote {
+  color: var(--star-white) !important;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================
+   FACETIME INCOMING CALL SCREEN EASTER EGG
+   ========================================== */
+.facetime-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 24, 48, 0.85); /* Deep navy tint overlay */
+  backdrop-filter: blur(15px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.facetime-overlay--active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.facetime-card {
+  width: 100%;
+  max-width: 380px;
+  background: #111e2d;
+  border-radius: 36px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transform: scale(0.9);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #ffffff;
+  font-family: var(--font-sans);
+}
+
+.facetime-overlay--active .facetime-card {
+  transform: scale(1);
+}
+
+.facetime-avatar-wrap {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem auto;
+  border: 3px solid var(--fire-orange);
+  position: relative;
+  background: #253344;
+  box-shadow: 0 0 30px rgba(232, 97, 26, 0.4);
+  overflow: hidden;
+}
+
+.facetime-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.facetime-caller {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.facetime-subtitle {
+  font-size: 0.9rem;
+  color: #7994b3;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.facetime-ringing {
+  font-size: 0.9rem;
+  color: var(--fire-orange);
+  animation: ringTwinkle 1.2s infinite alternate;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin-bottom: 2.5rem;
+}
+
+@keyframes ringTwinkle {
+  0% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.facetime-actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+}
+
+.facetime-btn {
+  border: none;
+  cursor: pointer;
+  outline: none;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+}
+
+.facetime-btn svg {
+  width: 28px;
+  height: 28px;
+}
+
+.facetime-btn--decline {
+  background: #ff3b30;
+  box-shadow: 0 10px 25px rgba(255, 59, 48, 0.3);
+}
+
+.facetime-btn--decline:hover {
+  transform: scale(1.1) rotate(-90deg);
+}
+
+.facetime-btn--accept {
+  background: #34c759;
+  box-shadow: 0 10px 25px rgba(52, 199, 89, 0.3);
+  animation: bounceBtn 1.5s infinite;
+}
+
+.facetime-btn--accept:hover {
+  transform: scale(1.1);
+}
+
+@keyframes bounceBtn {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Call Connected View */
+.facetime-card--connected {
+  background: #090f16;
+}
+
+.facetime-quote-box {
+  background: #111e2d;
+  border-radius: 20px;
+  padding: 1.5rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.facetime-dialogue {
+  font-family: var(--font-typewriter);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--cream);
+  margin: 0;
+}
+
+.facetime-dialogue strong {
+  color: var(--fire-orange);
+}
+
+.facetime-banner {
+  margin-top: 1.5rem;
+  background: rgba(52, 199, 89, 0.15);
+  color: #34c759;
+  border: 1px dashed #34c759;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: bold;
+  animation: bannerPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes bannerPopIn {
+  0% { transform: translateY(20px) scale(0.85); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.facetime-close-btn {
+  margin-top: 2rem;
+  background: var(--forest-mid);
+  color: var(--cream);
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 24px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.facetime-close-btn:hover {
+  background: var(--forest-light);
 }
 
 /* ==============================
