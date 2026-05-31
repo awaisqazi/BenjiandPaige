@@ -492,7 +492,14 @@ import letterEnc from '../generated/letter.enc.json';
       transition: opacity 0.5s ease, transform 1.05s cubic-bezier(0.62, 0, 0.32, 1);
     }
     #letter-mount.is-revealed { opacity: 1; transform: scale(1); pointer-events: auto; }
-    #letter-mount.is-flow { position: static; transform: none; overflow: visible; z-index: auto; transition: none; }
+    #letter-mount.is-flow {
+      position: static;
+      transform: none;
+      overflow: visible;
+      z-index: auto;
+      transition: none;
+      will-change: auto;
+    }
 
     @media (prefers-reduced-motion: reduce) {
       .env-stage, .env__card, .env__half--upper, .env__flap, .env__seal, .env__lock-shackle, #letter-mount { transition: none !important; animation: none !important; }
@@ -527,6 +534,10 @@ import letterEnc from '../generated/letter.enc.json';
 
     const wait = (ms) => new Promise((r) => setTimeout(r, ms));
     const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const UNLOCK_CACHE_KEY = 'wedding_unlock_v1';
+    const UNLOCK_CACHE_VERSION = 1;
+    const UNLOCK_CACHE_TTL_MS = 15 * 60 * 1000;
+    const UNLOCK_CACHE_TOUCH_MS = 10 * 1000;
 
     document.documentElement.classList.add('env-locked');
 
@@ -545,15 +556,48 @@ import letterEnc from '../generated/letter.enc.json';
 
     // ---------- crypto ----------
     const b64dec = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
-    async function decryptLetter(blob, password) {
+    const b64enc = (bytes) => btoa(String.fromCharCode(...bytes));
+    let blobFingerprintPromise;
+
+    async function getBlobFingerprint() {
+      if (!blobFingerprintPromise) {
+        const fingerprintSource = JSON.stringify({
+          v: ENC.v,
+          kdf: ENC.kdf,
+          hash: ENC.hash,
+          iterations: ENC.iterations,
+          salt: ENC.salt,
+          iv: ENC.iv,
+          ct: ENC.ct,
+        });
+        blobFingerprintPromise = crypto.subtle
+          .digest('SHA-256', new TextEncoder().encode(fingerprintSource))
+          .then((digest) => b64enc(new Uint8Array(digest)));
+      }
+      return blobFingerprintPromise;
+    }
+
+    async function deriveLetterKey(blob, password, extractable = false) {
       const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
-      const key = await crypto.subtle.deriveKey(
+      return crypto.subtle.deriveKey(
         { name: 'PBKDF2', salt: b64dec(blob.salt), iterations: blob.iterations, hash: blob.hash },
         base,
         { name: 'AES-GCM', length: 256 },
-        false,
+        extractable,
         ['decrypt'],
       );
+    }
+
+    async function importLetterKey(keyB64) {
+      return crypto.subtle.importKey('raw', b64dec(keyB64), { name: 'AES-GCM' }, false, ['decrypt']);
+    }
+
+    async function exportLetterKey(key) {
+      const raw = await crypto.subtle.exportKey('raw', key);
+      return b64enc(new Uint8Array(raw));
+    }
+
+    async function decryptLetterWithKey(blob, key) {
       const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64dec(blob.iv) }, key, b64dec(blob.ct));
       return new TextDecoder().decode(pt);
     }
@@ -579,6 +623,101 @@ import letterEnc from '../generated/letter.enc.json';
         link.onerror = () => resolve();
         document.head.appendChild(link);
       });
+    }
+
+    // ---------- short-lived unlock cache ----------
+    let unlocked = false;
+    let unlockCacheRecord = null;
+    let lastCacheTouch = 0;
+    let activityTrackingStarted = false;
+
+    function clearUnlockCache() {
+      try {
+        localStorage.removeItem(UNLOCK_CACHE_KEY);
+      } catch (err) {
+        // localStorage may be unavailable in some private browsing modes.
+      }
+      unlockCacheRecord = null;
+    }
+
+    function readUnlockCache() {
+      try {
+        const raw = localStorage.getItem(UNLOCK_CACHE_KEY);
+        if (!raw) return null;
+        const record = JSON.parse(raw);
+        if (!record || typeof record !== 'object') {
+          clearUnlockCache();
+          return null;
+        }
+        return record;
+      } catch (err) {
+        clearUnlockCache();
+        return null;
+      }
+    }
+
+    function writeUnlockCache(record) {
+      try {
+        localStorage.setItem(UNLOCK_CACHE_KEY, JSON.stringify(record));
+        unlockCacheRecord = record;
+        lastCacheTouch = record.lastActiveAt;
+        return true;
+      } catch (err) {
+        unlockCacheRecord = null;
+        return false;
+      }
+    }
+
+    function isFreshUnlockRecord(record, blobFingerprint) {
+      const lastActiveAt = Number(record.lastActiveAt);
+      const age = Date.now() - lastActiveAt;
+      return (
+        record.version === UNLOCK_CACHE_VERSION &&
+        record.blobFingerprint === blobFingerprint &&
+        typeof record.keyB64 === 'string' &&
+        Number.isFinite(age) &&
+        age >= 0 &&
+        age < UNLOCK_CACHE_TTL_MS
+      );
+    }
+
+    async function saveUnlockCache(key) {
+      const [blobFingerprint, keyB64] = await Promise.all([
+        getBlobFingerprint(),
+        exportLetterKey(key),
+      ]);
+      writeUnlockCache({
+        version: UNLOCK_CACHE_VERSION,
+        blobFingerprint,
+        keyB64,
+        lastActiveAt: Date.now(),
+      });
+    }
+
+    function touchUnlockCache(force = false) {
+      if (!unlocked || !unlockCacheRecord) return;
+
+      const now = Date.now();
+      const lastActiveAt = Number(unlockCacheRecord.lastActiveAt);
+      const age = now - lastActiveAt;
+
+      if (!Number.isFinite(age) || age < 0 || age >= UNLOCK_CACHE_TTL_MS) {
+        clearUnlockCache();
+        return;
+      }
+
+      if (!force && now - lastCacheTouch < UNLOCK_CACHE_TOUCH_MS) return;
+      writeUnlockCache({ ...unlockCacheRecord, lastActiveAt: now });
+    }
+
+    function startUnlockActivityTracking() {
+      if (activityTrackingStarted) return;
+      activityTrackingStarted = true;
+
+      ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach((eventName) => {
+        window.addEventListener(eventName, () => touchUnlockCache(false), { passive: true });
+      });
+      document.addEventListener('visibilitychange', () => touchUnlockCache(true));
     }
 
     // ---------- unlock flow ----------
@@ -677,14 +816,24 @@ import letterEnc from '../generated/letter.enc.json';
       unlockBtn.textContent = 'Opening…';
 
       let html;
+      let key;
       try {
-        html = await decryptLetter(ENC, pw);
+        key = await deriveLetterKey(ENC, pw, true);
+        html = await decryptLetterWithKey(ENC, key);
       } catch (err) {
         unlockBtn.textContent = originalLabel;
         failAttempt();
         unlockBtn.disabled = false;
         return;
       }
+
+      if (passInput) passInput.value = '';
+      try {
+        await saveUnlockCache(key);
+      } catch (err) {
+        clearUnlockCache();
+      }
+
       opening = true;
       await playUnlock(html);
     });
@@ -754,7 +903,36 @@ import letterEnc from '../generated/letter.enc.json';
       mount.classList.add('is-revealed');
       mount.classList.add('is-flow'); // hand off from the fixed zoom layer to normal page flow
       document.documentElement.classList.remove('env-locked');
+      unlocked = true;
+      startUnlockActivityTracking();
+      touchUnlockCache(true);
       if (stage && stage.parentNode) stage.parentNode.removeChild(stage);
     }
+
+    async function tryCachedUnlock() {
+      const record = readUnlockCache();
+      if (!record) return;
+
+      const blobFingerprint = await getBlobFingerprint();
+      if (!isFreshUnlockRecord(record, blobFingerprint)) {
+        clearUnlockCache();
+        return;
+      }
+
+      try {
+        opening = true;
+        const key = await importLetterKey(record.keyB64);
+        const html = await decryptLetterWithKey(ENC, key);
+        injectAndRun(html);
+        await loadSiteCss();
+        writeUnlockCache({ ...record, lastActiveAt: Date.now() });
+        finishReveal();
+      } catch (err) {
+        opening = false;
+        clearUnlockCache();
+      }
+    }
+
+    tryCachedUnlock().catch(() => clearUnlockCache());
   </script>
 </Layout>
