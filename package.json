@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "encrypt": "node scripts/encrypt-content.mjs"
+    "encrypt": "node scripts/encrypt-content.mjs",
+    "favicon": "node scripts/convert-favicon.mjs"
   },
   "dependencies": {
     "astro": "^6.1.1"

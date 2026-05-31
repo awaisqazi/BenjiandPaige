@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "You're invited! Tap the wax seal and enter the password to unwrap all the details." } = Astro.props;
+const { title, description = "A secret message from the Happy Campers awaits you! 🌲 Tap the wax seal and whisper the magic words to uncover the adventure inside. ✉️🔥" } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,16 +28,16 @@ const { title, description = "You're invited! Tap the wax seal and enter the pas
 
     <!-- Open Graph / Social Share -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content="You've got mail! ✉️" />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://mapouradventures.com/images/og-cover.svg" />
+    <meta property="og:image" content="https://mapouradventures.com/images/wedding_invite_og.png" />
     <meta property="og:url" content={Astro.url.href} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content="You've got mail! ✉️" />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://mapouradventures.com/images/og-cover.svg" />
+    <meta name="twitter:image" content="https://mapouradventures.com/images/wedding_invite_og.png" />
   </head>
   <body>
     <slot />
