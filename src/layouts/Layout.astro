@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Join us for Campfires, S'mores & I Dos — Paige Grecco & Benji Sills are getting married! October 4-5, 2026 at Club Getaway, Kent, CT." } = Astro.props;
+const { title, description = "You're invited! Tap the wax seal and enter the password to unwrap all the details." } = Astro.props;
 ---
 
 <!doctype html>
@@ -30,14 +30,14 @@ const { title, description = "Join us for Campfires, S'mores & I Dos — Paige G
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://mapouradventures.com/images/campgetaway.png" />
+    <meta property="og:image" content="https://mapouradventures.com/images/og-cover.svg" />
     <meta property="og:url" content={Astro.url.href} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://mapouradventures.com/images/campgetaway.png" />
+    <meta name="twitter:image" content="https://mapouradventures.com/images/og-cover.svg" />
   </head>
   <body>
     <slot />

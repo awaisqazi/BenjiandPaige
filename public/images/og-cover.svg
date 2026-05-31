@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="You're Invited">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="6%" r="120%">
+      <stop offset="0%" stop-color="#0a4570"/>
+      <stop offset="38%" stop-color="#053257"/>
+      <stop offset="64%" stop-color="#042547"/>
+      <stop offset="100%" stop-color="#010d1d"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="100%" r="70%">
+      <stop offset="0%" stop-color="#f4a300" stop-opacity="0.34"/>
+      <stop offset="55%" stop-color="#e8611a" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#e8611a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#efe9da"/>
+    </linearGradient>
+    <radialGradient id="wax" cx="38%" cy="32%" r="75%">
+      <stop offset="0%" stop-color="#4f821c"/>
+      <stop offset="55%" stop-color="#345C0D"/>
+      <stop offset="100%" stop-color="#1d3307"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#sky)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- stars -->
+  <g fill="#fffde7">
+    <circle cx="140" cy="90" r="2.5" opacity="0.8"/>
+    <circle cx="300" cy="150" r="1.8" opacity="0.6"/>
+    <circle cx="520" cy="80" r="2.2" opacity="0.75"/>
+    <circle cx="760" cy="120" r="1.6" opacity="0.55"/>
+    <circle cx="980" cy="90" r="2.6" opacity="0.85"/>
+    <circle cx="1080" cy="180" r="1.8" opacity="0.6"/>
+    <circle cx="220" cy="240" r="1.5" opacity="0.5"/>
+    <circle cx="900" cy="240" r="1.6" opacity="0.55"/>
+  </g>
+
+  <!-- pine ridge -->
+  <path fill="#010a16" d="M0 630 V520 L60 560 L110 470 L160 555 L210 500 L270 575 L330 485 L390 560 L450 505 L520 580 L580 490 L640 560 L700 510 L770 580 L830 495 L900 560 L960 510 L1030 575 L1090 500 L1150 555 L1200 520 V630 Z"/>
+
+  <!-- envelope -->
+  <g transform="translate(600 300)">
+    <rect x="-210" y="-130" width="420" height="270" rx="14" fill="url(#paper)" stroke="#d8cfb8" stroke-width="2"/>
+    <!-- bottom/side fold seams -->
+    <path d="M-210 -116 L0 40 L210 -116" fill="none" stroke="#d3c9b0" stroke-width="2" opacity="0.7"/>
+    <!-- top flap -->
+    <path d="M-210 -130 L210 -130 L0 30 Z" fill="#f2ecdc" stroke="#d8cfb8" stroke-width="2"/>
+    <!-- wax seal -->
+    <circle cx="0" cy="6" r="46" fill="url(#wax)" stroke="#1d3307" stroke-width="2"/>
+    <text x="0" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" fill="#eef3e2">P&amp;B</text>
+  </g>
+
+  <!-- words -->
+  <text x="600" y="510" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="58" fill="#FAF9F2">You're Invited</text>
+  <text x="600" y="556" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" letter-spacing="6" fill="#f4a300">TAP THE SEAL &#183; ENTER THE PASSWORD</text>
+</svg>

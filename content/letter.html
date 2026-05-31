@@ -1,0 +1,1593 @@
+<!--
+  ============================================================================
+  PROTECTED WEDDING CONTENT — Paige & Benji
+  ============================================================================
+  This file holds ALL the private wedding content + its behavior script.
+  It is encrypted into src/generated/letter.enc.json by `npm run encrypt`
+  and only decrypted in the browser after the correct password is entered.
+
+  EDIT HERE, then run `npm run encrypt` before pushing. See PUBLISHING.md.
+  The behavior script below is PLAIN JS (no TypeScript) on purpose — it is
+  injected and executed at runtime, so it must run in the browser as-is.
+  ============================================================================
+-->
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero" class="hero">
+    <div class="hero__video-wrap">
+      <iframe
+        id="hero-video"
+        class="hero__video"
+        src="https://www.youtube.com/embed/X2ShL6rGqBU?autoplay=1&mute=1&loop=1&playlist=X2ShL6rGqBU&controls=0&showinfo=0&modestbranding=1&playsinline=1&enablejsapi=1"
+        title="Camp Getaway Video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+      <div class="hero__overlay"></div>
+    </div>
+
+    <div class="hero__content">
+      <h1 class="hero__names reveal reveal-delay-1">Paige <span class="hero__amp">&</span> Benji</h1>
+      <p class="hero__tagline reveal reveal-delay-2">Campfires, S'mores & I Dos</p>
+      <p class="hero__date reveal reveal-delay-3">October 4 – 5, 2026 &bull; Kent, Connecticut</p>
+    </div>
+
+    <a href="#postcard" class="hero__scroll-cta" aria-label="Scroll to next section">
+      <span class="hero__scroll-text">Scroll to explore</span>
+      <svg class="hero__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </a>
+
+    <!-- Floating Sound Toggle -->
+    <button id="soundToggle" class="hero__sound-btn" aria-label="Play with sound">
+      <svg id="soundOffIcon" class="hero__sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+        <path d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>
+      </svg>
+      <svg id="soundOnIcon" class="hero__sound-icon hero__sound-icon--hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+      </svg>
+      <span id="soundText">Play with Sound</span>
+    </button>
+  </section>
+
+  <!-- ===== POSTCARD / COUNTDOWN SECTION ===== -->
+  <section id="postcard" class="postcard">
+    <div class="postcard__bg">
+      <img src="/images/campgetaway.png" alt="Greetings from Camp Getaway - P + B are getting married" loading="eager" />
+    </div>
+
+    <!-- Countdown: positioned bottom-right to avoid overlapping the letter -->
+    <div class="postcard__countdown reveal">
+      <div class="countdown" id="weddingCountdown">
+        <div class="countdown__block">
+          <span class="countdown__number" id="cdDays">---</span>
+          <span class="countdown__label">DAYS</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__block">
+          <span class="countdown__number" id="cdHours">--</span>
+          <span class="countdown__label">HOURS</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__block">
+          <span class="countdown__number" id="cdMins">--</span>
+          <span class="countdown__label">MINS</span>
+        </div>
+        <span class="countdown__sep">:</span>
+        <div class="countdown__block">
+          <span class="countdown__number" id="cdSecs">--</span>
+          <span class="countdown__label">SECS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VENUE INFO SECTION ===== -->
+  <section id="details" class="venue">
+    <div class="venue__video-wrap">
+      <video autoplay muted loop playsinline>
+        <source src="/images/logistics.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="venue__overlay"></div>
+
+    <div class="venue__content">
+      <div class="venue__notebook reveal">
+        <!-- Colorful film-strip tape across top -->
+        <div class="venue__tape-strip" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+
+        <h2 class="venue__title">Venue Info</h2>
+
+        <div class="venue__pin-row">
+          <svg class="venue__pin-icon" viewBox="0 0 24 36" fill="none">
+            <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#c0392b"/>
+            <circle cx="12" cy="12" r="5" fill="#e74c3c"/>
+            <circle cx="12" cy="12" r="2.5" fill="#c0392b"/>
+          </svg>
+          <div>
+            <p class="venue__name">Club Getaway</p>
+            <p class="venue__address">59 S Kent Rd, Kent, CT 06757</p>
+          </div>
+        </div>
+
+        <div class="venue__map-wrap">
+          <iframe
+            class="venue__map"
+            src="https://www.google.com/maps?q=Club+Getaway,+59+S+Kent+Rd,+Kent,+CT+06757&output=embed"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Club Getaway Map"
+          ></iframe>
+        </div>
+
+        <a href="https://maps.google.com/?q=Club+Getaway+59+S+Kent+Rd+Kent+CT+06757" target="_blank" rel="noopener" class="venue__directions-link">
+          Get Directions →
+        </a>
+
+        <!-- Camp Shuttle Info -->
+        <div class="venue__shuttle">
+          <div class="venue__shuttle-header">
+            <span class="venue__shuttle-icon">🚐</span>
+            <h3 class="venue__shuttle-title">Camp Shuttle</h3>
+          </div>
+          <p class="venue__shuttle-text">
+            Taking the <strong>Metro North</strong> from Grand Central Station to <strong>Harlem Valley / Wingdale</strong>? A complimentary shuttle to Club Getaway is available!
+          </p>
+          <div class="venue__shuttle-steps">
+            <div class="venue__shuttle-step">
+              <span class="venue__shuttle-step-num">1</span>
+              <p>Note your shuttle request in the comments section when you RSVP</p>
+            </div>
+            <div class="venue__shuttle-step">
+              <span class="venue__shuttle-step-num">2</span>
+              <p>Contact Club Getaway at <a href="tel:800-643-8292" class="venue__shuttle-phone">800-643-8292</a> at least <strong>2 weeks prior</strong> for train pickup times</p>
+            </div>
+          </div>
+          <p class="venue__shuttle-note">⛺ Available on a first come, first served basis</p>
+        </div>
+
+        <!-- Parking Info -->
+        <div class="venue__shuttle">
+          <div class="venue__shuttle-header">
+            <span class="venue__shuttle-icon">🅿️</span>
+            <h3 class="venue__shuttle-title">Parking</h3>
+          </div>
+          <p class="venue__shuttle-text">
+            Driving to the venue? <strong>Free parking</strong> is available on-site. Please plan to <strong>arrive at least 30 minutes early</strong> as you'll need to take a short shuttle from the parking area to the venue at the top of the hill.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCHEDULE OF EVENTS SECTION ===== -->
+  <section id="schedule" class="schedule">
+    <h2 class="schedule__title reveal">Schedule of Events</h2>
+
+    <div class="schedule__board reveal reveal-delay-1">
+      <!-- Thumbtacks pinning the map to the corkboard -->
+      <div class="schedule__pin schedule__pin--tl">
+        <svg viewBox="0 0 40 50" width="28" height="35">
+          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
+          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
+          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="schedule__pin schedule__pin--tr">
+        <svg viewBox="0 0 40 50" width="28" height="35">
+          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
+          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
+          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="schedule__pin schedule__pin--bl">
+        <svg viewBox="0 0 40 50" width="24" height="30">
+          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
+          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
+          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="schedule__pin schedule__pin--br">
+        <svg viewBox="0 0 40 50" width="24" height="30">
+          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
+          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
+          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
+        </svg>
+      </div>
+
+      <div class="schedule__paper">
+        <!-- Day 1 -->
+        <h3 class="schedule__day-heading">Sunday, <span>October 4th</span></h3>
+
+        <div class="schedule__grid schedule__grid--4col">
+          <div class="schedule__item">
+            <div class="schedule__icon">
+              <!-- Cabin / Check-in -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Roof -->
+                <path d="M15 45L50 20L85 45" />
+                <path d="M20 40L50 15L80 40" />
+                <path d="M25 35L50 10L75 35" />
+                <!-- Base -->
+                <rect x="25" y="45" width="50" height="40" />
+                <!-- Logs (horizontal lines) -->
+                <path d="M25 55h50 M25 65h50 M25 75h50" />
+                <!-- Log ends (circles on edges) -->
+                <circle cx="21" cy="45" r="4"/><circle cx="79" cy="45" r="4"/>
+                <circle cx="21" cy="55" r="4"/><circle cx="79" cy="55" r="4"/>
+                <circle cx="21" cy="65" r="4"/><circle cx="79" cy="65" r="4"/>
+                <circle cx="21" cy="75" r="4"/><circle cx="79" cy="75" r="4"/>
+                <circle cx="21" cy="85" r="4"/><circle cx="79" cy="85" r="4"/>
+                <!-- Door -->
+                <path d="M42 85V60h16v25" />
+                <circle cx="54" cy="72" r="1.5" />
+              </svg>
+            </div>
+            <p class="schedule__event-name">Overnight Check-in</p>
+            <p class="schedule__event-time">1:15 PM</p>
+          </div>
+
+          <div class="schedule__item">
+            <div class="schedule__icon">
+              <!-- Ceremony (Refined) -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Groom Pants -->
+                <path d="M38 60 L 35 85 L 42 85 L 43 70 L 45 85 L 50 85 L 50 60 Z" fill="var(--bark-dark)" />
+                <!-- Groom Shoes -->
+                <path d="M32 88 L 42 88 L 42 84 Z" fill="var(--bark-dark)" />
+                <path d="M42 88 L 52 88 L 50 84 Z" fill="var(--bark-dark)" />
+                <path d="M33 87 L 37 87 M43 87 L 47 87" stroke="var(--cream)" stroke-width="1" />
+                <!-- Bride Dress -->
+                <path d="M50 60 C 50 60 48 85 50 85 C 53 88 56 82 59 85 C 62 88 65 82 68 85 C 71 88 74 85 75 80 C 75 70 70 55 70 55" fill="var(--cream)" />
+                <path d="M50 60 C 50 60 48 85 50 85 C 53 88 56 82 59 85 C 62 88 65 82 68 85 C 71 88 74 85 75 80 C 75 70 70 55 70 55" />
+                <!-- Dress Pleats -->
+                <path d="M58 70 L 59 80 M 64 70 L 66 80 M 70 70 L 72 78" stroke-width="1.5" />
+                <!-- Bride Legs & Heels -->
+                <path d="M58 85 L 56 93 M 65 85 L 63 93" stroke-width="1.5" />
+                <path d="M53 93 L 57 93 L 57 90 Z M60 93 L 64 93 L 64 90 Z" fill="var(--bark-dark)" />
+                <!-- Giant Heart -->
+                <path d="M50 35 C 50 35 45 5 25 5 C 5 5 5 35 15 50 C 25 65 50 80 50 80 C 50 80 75 65 85 50 C 95 35 95 5 75 5 C 55 5 50 35 50 35 Z" fill="var(--cream)" />
+                <path d="M50 35 C 50 35 45 5 25 5 C 5 5 5 35 15 50 C 25 65 50 80 50 80 C 50 80 75 65 85 50 C 95 35 95 5 75 5 C 55 5 50 35 50 35 Z" />
+                <!-- Hands on Heart -->
+                <path d="M12 40 C 9 39 9 44 12 44 C 10 45 10 49 13 48 C 12 50 14 52 16 50" stroke-width="1.5" />
+                <path d="M88 40 C 91 39 91 44 88 44 C 90 45 90 49 87 48 C 88 50 86 52 84 50" stroke-width="1.5" />
+              </svg>
+            </div>
+            <p class="schedule__event-name">Ceremony</p>
+            <p class="schedule__event-time">2:00pm</p>
+          </div>
+
+          <div class="schedule__item">
+            <div class="schedule__icon">
+              <!-- Margarita / Cocktail Hour -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Glass Bowl -->
+                <path d="M20 20 L80 20 C80 20 70 50 50 50 C30 50 20 20 20 20 Z" />
+                <!-- Liquid line -->
+                <path d="M26 30 Q50 35 72 30" stroke-width="1.5" stroke-dasharray="2 3"/>
+                <!-- Stem -->
+                <path d="M50 50 v30" />
+                <circle cx="50" cy="65" r="4" />
+                <!-- Base -->
+                <path d="M35 80 Q50 75 65 80" />
+                <!-- Lime Slice -->
+                <circle cx="75" cy="20" r="12" />
+                <path d="M75 20 l-8-8 M75 20 l8 8 M75 20 l8-8 M75 20 l-8 8" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <p class="schedule__event-name">Cocktail Hour</p>
+            <p class="schedule__event-time">3:00pm</p>
+          </div>
+
+          <div class="schedule__item">
+            <div class="schedule__icon">
+              <!-- Archery / Camp Activities -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Target tripod -->
+                <path d="M35 80 L50 60 L65 80 M50 60 V80" stroke-width="3" />
+                <!-- Target rings -->
+                <circle cx="50" cy="40" r="25" fill="var(--cream)" />
+                <circle cx="50" cy="40" r="18" />
+                <circle cx="50" cy="40" r="10" />
+                <circle cx="50" cy="40" r="3" fill="var(--bark-dark)" />
+                <!-- Arrows -->
+                <path d="M50 40 L75 15" stroke-width="2" />
+                <path d="M65 25 L75 15 L65 15" />
+                <path d="M45 25 L80 10" stroke-width="1.5" />
+              </svg>
+            </div>
+            <p class="schedule__event-name">Camp Activities Open</p>
+            <p class="schedule__event-time">4:00PM</p>
+          </div>
+        </div>
+
+        <div class="schedule__grid schedule__grid--4col">
+          <div class="schedule__item">
+            <div class="schedule__icon">
+              <!-- Plate and Cutlery (Refined Minimal) -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Simple scalloped plate -->
+                <path d="M50 15 C 60 15 65 20 70 25 C 75 30 80 40 80 50 C 80 60 75 70 70 75 C 65 80 60 85 50 85 C 40 85 35 80 30 75 C 25 70 20 60 20 50 C 20 40 25 30 30 25 C 35 20 40 15 50 15 Z" fill="var(--cream)" />
+                <path d="M50 15 C 60 15 65 20 70 25 C 75 30 80 40 80 50 C 80 60 75 70 70 75 C 65 80 60 85 50 85 C 40 85 35 80 30 75 C 25 70 20 60 20 50 C 20 40 25 30 30 25 C 35 20 40 15 50 15 Z" />
+
+                <!-- Inner plate ring -->
+                <circle cx="50" cy="50" r="18" stroke-width="1.5" />
+                <!-- Dotted detail -->
+                <circle cx="50" cy="50" r="14" stroke-width="2" stroke-dasharray="0 4" />
+
+                <!-- Scallop dividing lines -->
+                <path d="M40 20 L 44 33 M 60 20 L 56 33 M 75 35 L 65 40 M 75 65 L 65 60 M 60 80 L 56 67 M 40 80 L 44 67 M 25 65 L 35 60 M 25 35 L 35 40" stroke-width="1.5" />
+
+                <!-- Fork -->
+                <path d="M11 25 V 40 M15 25 V 40 M19 25 V 40" stroke-width="1.5" />
+                <path d="M11 38 C 11 45 19 45 19 38 M15 45 V 75" stroke-width="2" />
+
+                <!-- Knife -->
+                <path d="M85 20 V 45 C 82 45 82 40 82 30 C 82 20 85 20 85 20 Z" stroke-width="2" />
+                <path d="M85 45 V 75" stroke-width="2" />
+
+                <!-- Spoon -->
+                <ellipse cx="94" cy="28" rx="4" ry="8" stroke-width="2" />
+                <path d="M94 36 V 75" stroke-width="2" />
+              </svg>
+            </div>
+            <p class="schedule__event-name">Dinner Reception</p>
+            <p class="schedule__event-time">6:30PM</p>
+          </div>
+
+          <div class="schedule__item">
+            <div class="schedule__icon">
+              <!-- Bonfire -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Logs Base -->
+                <path d="M25 80 L45 50 M75 80 L55 50 M35 85 L50 45 M65 85 L50 45" />
+                <!-- Flames (pointy) -->
+                <path d="M35 70 Q 30 50 40 35 Q 40 50 45 45 Q 50 20 60 30 Q 55 45 65 40 Q 60 55 70 65" stroke-linejoin="miter"/>
+                <path d="M50 75 C30 75 25 50 35 40 C35 55 45 45 50 20 C55 45 65 55 65 40 C75 50 70 75 50 75 Z" fill="var(--cream)" />
+                <path d="M50 75 C40 75 35 60 40 50 C40 60 45 55 50 35 C55 55 60 60 60 50 C65 60 60 75 50 75 Z" />
+                <path d="M30 30 l2 2 M65 25 l3 -3 M55 10 l1 -2" stroke-width="2"/>
+              </svg>
+            </div>
+            <p class="schedule__event-name">Bonfire</p>
+            <p class="schedule__event-time">8:00pm</p>
+          </div>
+
+          <div class="schedule__item">
+            <div class="schedule__icon">
+              <!-- Moon and Stars (Refined Minimal) -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Cleaner Crescent Moon -->
+                <path d="M55 15 C 30 15 30 75 55 75 C 65 75 75 65 75 65 C 50 65 45 35 70 20 C 65 15 60 15 55 15 Z" fill="var(--cream)" />
+                <path d="M55 15 C 30 15 30 75 55 75 C 65 75 75 65 75 65 C 50 65 45 35 70 20 C 65 15 60 15 55 15 Z" stroke-width="2.5" />
+
+                <!-- 3 Simple Stars (Overlapping triangles for a sketch look, properly contained) -->
+                <!-- Top Left Star -->
+                <path d="M30 15 L35 30 L20 20 L40 20 L25 30 Z" stroke-width="1.5" />
+                <!-- Bottom Left Star -->
+                <path d="M15 45 L20 60 L10 50 L25 50 L10 60 Z" stroke-width="1.5" />
+                <!-- Bottom Right Star -->
+                <path d="M45 55 L50 70 L40 60 L55 60 L40 70 Z" stroke-width="1.5" />
+              </svg>
+            </div>
+            <p class="schedule__event-name">Optional Overnight</p>
+            <p class="schedule__event-time">9:30pm</p>
+          </div>
+
+          <div class="schedule__item">
+            <div class="schedule__icon">
+              <!-- Disco ball / After Party -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <!-- String -->
+                <path d="M50 0 V30" />
+                <path d="M45 30 h10 border-radius M48 30 v-5 M52 30v-5" />
+                <!-- Ball -->
+                <circle cx="50" cy="60" r="30" />
+                <!-- Grid Lines -->
+                <path d="M25 45 Q50 35 75 45 M21 55 Q50 45 79 55 M21 65 Q50 55 79 65 M25 75 Q50 65 75 75" stroke-width="1.5"/>
+                <path d="M40 32 Q 30 60 40 88 M50 30 V 90 M60 32 Q 70 60 60 88" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <p class="schedule__event-name">After Party</p>
+            <p class="schedule__event-time">10:00pm</p>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <h3 class="schedule__day-heading schedule__day-heading--day2">Monday, <span>October 5th</span></h3>
+
+        <div class="schedule__grid schedule__grid--2col">
+          <div class="schedule__item">
+            <div class="schedule__icon">
+              <!-- Coffee Cup / Breakfast -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Saucer -->
+                <ellipse cx="50" cy="80" rx="30" ry="10" />
+                <path d="M30 83 Q50 90 70 83" />
+                <!-- Cup Base -->
+                <path d="M25 45 C25 80, 75 80, 75 45 Z" fill="var(--cream)" />
+                <!-- Cup Lip -->
+                <ellipse cx="50" cy="45" rx="25" ry="8" fill="var(--cream)" />
+                <ellipse cx="50" cy="45" rx="20" ry="5" />
+                <!-- Handle -->
+                <path d="M75 55 C90 55, 90 70, 70 70" />
+                <!-- Steam -->
+                <path d="M40 35 Q35 25 40 15 M50 35 Q45 25 50 15 M60 35 Q55 25 60 15" stroke-width="2" />
+              </svg>
+            </div>
+            <p class="schedule__event-name">Breakfast</p>
+            <p class="schedule__event-time">8:00am</p>
+          </div>
+
+          <div class="schedule__item">
+            <div class="schedule__icon">
+              <!-- Vintage Car / Check-out (Refined Minimal) -->
+              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Car Roof & Windows -->
+                <path d="M 30 35 C 30 15 70 15 70 35" fill="var(--cream)" />
+                <path d="M 30 35 C 30 15 70 15 70 35" />
+                <path d="M 35 35 C 40 22 60 22 65 35 Z" stroke-width="1.5" />
+
+                <!-- Main Car Body (Beetle curve) -->
+                <path d="M 15 55 C 10 35 30 35 50 35 C 70 35 90 35 85 55 C 80 70 70 65 50 65 C 30 65 20 70 15 55 Z" fill="var(--cream)" />
+                <path d="M 15 55 C 10 35 30 35 50 35 C 70 35 90 35 85 55 C 80 70 70 65 50 65 C 30 65 20 70 15 55 Z" />
+
+                <!-- Taillights -->
+                <circle cx="22" cy="50" r="3" fill="var(--cream)" stroke-width="1.5" />
+                <circle cx="78" cy="50" r="3" fill="var(--cream)" stroke-width="1.5" />
+
+                <!-- Bumper -->
+                <path d="M 15 62 Q 50 68 85 62" stroke-width="3" />
+                <path d="M 30 58 V 65 M 70 58 V 65" stroke-width="2" />
+
+                <!-- Tires -->
+                <path d="M 22 64 C 20 78 32 78 30 64" fill="var(--bark-dark)" />
+                <path d="M 78 64 C 80 78 68 78 70 64" fill="var(--bark-dark)" />
+
+                <!-- "Just Married" Sign -->
+                <rect x="25" y="42" width="50" height="12" rx="2" fill="var(--cream)" />
+                <text x="50" y="48" font-size="4" text-anchor="middle" font-weight="bold" font-family="var(--font-typewriter)" stroke="none" fill="var(--bark-dark)">JUST MARRIED</text>
+                <text x="50" y="52" font-size="3" text-anchor="middle" font-family="var(--font-typewriter)" stroke="none" fill="var(--bark-dark)">• 10 - 05 •</text>
+
+                <!-- Strings for cans -->
+                <path d="M 33 64 L 20 85 M 42 65 L 35 88 M 50 65 L 50 92 M 58 65 L 65 88 M 67 64 L 80 85" stroke-width="1" />
+
+                <!-- 5 Tin Cans -->
+                <g fill="var(--cream)" stroke-width="1.5">
+                  <rect x="17" y="85" width="6" height="8" rx="1" transform="rotate(-20 20 89)" />
+                  <rect x="32" y="88" width="6" height="8" rx="1" transform="rotate(-10 35 92)" />
+                  <rect x="47" y="92" width="6" height="8" rx="1" />
+                  <rect x="62" y="88" width="6" height="8" rx="1" transform="rotate(10 65 92)" />
+                  <rect x="77" y="85" width="6" height="8" rx="1" transform="rotate(20 80 89)" />
+                </g>
+              </svg>
+            </div>
+            <p class="schedule__event-name">Check-out</p>
+            <p class="schedule__event-time">10:00am</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OUR STORY SECTION ===== -->
+  <section id="story" class="story">
+    <div class="story__backdrop"></div>
+    <div class="story__content reveal">
+      <div class="story__sign">
+        <h2 class="story__heading">Cabaret Theatre</h2>
+        <p class="story__subheading">Our Story</p>
+        <p class="story__text">
+          We met in 2015 at Rutgers University during a production of Avenue Q. Our love story began exactly where most great romances do, in a prop closet, where Benji was searching for peace and quiet and Paige immediately derailed that plan. We've been inseparable ever since, laughing our way through theater, NYC adventures, and all the little moments in between. We can't wait to celebrate this next chapter with all of you!
+        </p>
+        <a href="https://www.cabarettheatre.org" target="_blank" rel="noopener noreferrer" class="story__link">[www.cabarettheatre.org]</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PACKING LIST SECTION ===== -->
+  <section id="packing" class="packing">
+    <div class="packing__video-wrap">
+      <video autoplay muted loop playsinline>
+        <source src="/images/backdrop.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="packing__overlay"></div>
+
+    <div class="packing__content reveal">
+      <div class="packing__col packing__col--left">
+        <h2 class="packing__heading">Overnight<br/>Accommodations</h2>
+        <p class="packing__desc">We have arranged for <strong>exclusive use of the entire camp</strong> for the duration of our wedding (Sunday the 4th into Monday the 5th) and would love nothing more than for you to join us from beginning to end.</p>
+        <p class="packing__desc">While we know a wedding overnight might be unusual, we hope you'll make your reservation to stay over. We've planned an exciting schedule filled with family, friends, adventure, dancing &amp; s'mores. You won't want to miss any of it!</p>
+
+        <div class="packing__note">
+          <span class="packing__note-icon">🛏️</span>
+          <p>Rooms accommodate up to 5 guests with <strong>private bathrooms, A/C &amp; heat</strong>. All bedding, room towels, and housekeeping are included. You will <em>not</em> be sharing rooms or bathrooms with other couples or families.</p>
+        </div>
+
+        <div class="packing__note" style="margin-top: 0.75rem;">
+          <span class="packing__note-icon">📋</span>
+          <p>We'll be making all housing assignments. Let us know what room size you need. Individuals and couples get private rooms, and families are kept together. Have a specific request? Note it in the RSVP comments!</p>
+        </div>
+      </div>
+
+      <div class="packing__col packing__col--right">
+        <h2 class="packing__heading">Packing List</h2>
+        <ul class="packing__list" id="packingList">
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Comfortable clothes for outdoor activities</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Layers: t-shirts, long sleeves, sweater/jacket</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Pajamas/sleepwear</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Underwear &amp; socks</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Closed-toe shoes for activities</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Bathing suit</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Nicer outfit for ceremony or evening events</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Toiletries</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Toothbrush &amp; toothpaste</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Shampoo &amp; conditioner</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Soap/body wash</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Sunscreen</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Mosquito repellent</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Medications you normally take</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Towel <em class="packing__note-inline">(optional, towels are provided)</em></span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Water bottle</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Light rain jacket or waterproof layer</span></label></li>
+        </ul>
+        <div class="packing__reset-wrap">
+          <button class="packing__reset-btn" id="resetChecklistBtn" title="Clear checklist progress">
+            <span>🧹 Reset Checklist</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full-width pricing & booking card -->
+    <div class="lodging-pricing reveal">
+      <div class="lodging-pricing__card">
+        <h3 class="lodging-pricing__title">Overnight Stay Pricing</h3>
+        <p class="lodging-pricing__dates">Sunday, October 4th at 1:15 PM to Monday, October 5th at 10:00 AM</p>
+
+        <div class="lodging-pricing__grid">
+          <div class="lodging-pricing__item">
+            <span class="lodging-pricing__amount">$99</span>
+            <span class="lodging-pricing__label">per adult</span>
+          </div>
+          <div class="lodging-pricing__item">
+            <span class="lodging-pricing__amount">$59.40</span>
+            <span class="lodging-pricing__label">per child (ages 4–15)</span>
+          </div>
+        </div>
+
+        <p class="lodging-pricing__note">Plus 15% tax and $15 events.com booking fee</p>
+        <p class="lodging-pricing__includes">✨ Includes all meals &amp; beverages from Sunday through Monday morning breakfast</p>
+
+        <div class="lodging-pricing__booking">
+          <a href="#" class="lodging-pricing__btn lodging-pricing__btn--primary">Book Online <span class="lodging-pricing__soon">(Link Coming Soon)</span></a>
+          <div class="lodging-pricing__divider">
+            <span>or</span>
+          </div>
+          <p class="lodging-pricing__phone">
+            Call Club Getaway at <a href="tel:800-643-8292"><strong>800-643-8292</strong></a><br/>
+            <span class="lodging-pricing__ref">Reference the <strong>Grecco Wedding</strong></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACTIVITIES SECTION ===== -->
+  <section id="activities" class="activities">
+    <div class="section-container">
+      <h2 class="section-label reveal"><span class="awaits-egg-trigger" id="awaitsEgg">What Awaits<img src="/images/EasterEgg.png" alt="Awais, Alex, and Benji dancing" class="awaits-egg-img" id="awaitsEggImg" /></span></h2>
+      <p class="section-title reveal reveal-delay-1">Camp Activities</p>
+      <p class="section-subtitle reveal reveal-delay-2">Get ready for the ultimate outdoor adventure weekend</p>
+
+      <div class="activities__grid">
+        <div class="activity-card reveal" data-activity="archery">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_archery_1774819085276.png" alt="Archery at summer camp" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🏹</div>
+            <h3>Archery</h3>
+            <p>Channel your inner Katniss (or Robin Hood)</p>
+          </div>
+        </div>
+
+        <div class="activity-card reveal reveal-delay-1" data-activity="zipline">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_zipline_1774819100483.png" alt="Zip-lining through the forest" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🪂</div>
+            <h3>Zip-lining</h3>
+            <p>Soar through the Connecticut treetops</p>
+          </div>
+        </div>
+
+        <div class="activity-card reveal reveal-delay-2" data-activity="waterskiing">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_waterski_1774819115529.png" alt="Water skiing on the lake" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🎿</div>
+            <h3>Water Skiing</h3>
+            <p>Hit the lake and make a splash</p>
+          </div>
+        </div>
+
+        <div class="activity-card reveal reveal-delay-3" data-activity="canoeing">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_canoe_1774819131932.png" alt="Canoeing on a calm lake" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🛶</div>
+            <h3>Canoeing</h3>
+            <p>Paddle through peaceful waters (couples welcome)</p>
+          </div>
+        </div>
+
+        <div class="activity-card reveal reveal-delay-4" data-activity="ropes">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_ropes_1774819145536.png" alt="High ropes course" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🧗</div>
+            <h3>High Ropes</h3>
+            <p>Test your courage on the ropes course</p>
+          </div>
+        </div>
+
+        <div class="activity-card reveal reveal-delay-5" data-activity="smores">
+          <div class="activity-card__img-wrap">
+            <img src="/images/camp_smores_1774819161769.png" alt="S'mores by a campfire" loading="lazy" />
+          </div>
+          <div class="activity-card__body">
+            <div class="activity-card__emoji">🔥</div>
+            <h3>S'mores by the Fire</h3>
+            <p>The main event (and our love language)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VIBE / QUIRKY SECTION ===== -->
+  <section id="vibe" class="vibe">
+    <div class="section-container">
+      <div class="vibe__content reveal">
+        <h2 class="section-label">The Vibe</h2>
+        <p class="section-title">A Few Notes from the Happy Couple</p>
+
+        <div class="vibe__cards">
+          <!-- Card 1: Vintage Clothing Tag (Dress Code Tag) -->
+          <div class="vibe__card vibe__card--tag reveal reveal-delay-1" id="dressCodeTag">
+            <span class="vibe__tag-badge" id="outfitBadge">Dress Code</span>
+            <button class="vibe__tag-cycle-btn" id="outfitCycleBtn" title="Click to cycle outfits!">
+              <span class="vibe__card-icon" id="outfitIcon">👗</span>
+            </button>
+            <h3 id="outfitTitle">Dress Code</h3>
+            <p id="outfitDesc">Dress to impress, but maybe leave the bug spray as perfume at home. Think "rustic chic meets ready for s'mores."</p>
+          </div>
+
+          <!-- Card 2: Polaroid Photo (Official Mascot - Sir Nutsworth III) -->
+          <div class="vibe__card vibe__card--polaroid reveal reveal-delay-2">
+            <div class="vibe__polaroid-tape" aria-hidden="true"></div>
+            <div class="vibe__polaroid-img-wrap">
+              <div class="squirrel-easter-egg" id="squirrelEgg" title="Click the tuxedo squirrel!">
+                <svg viewBox="0 0 80 80" class="squirrel-svg">
+                  <circle cx="40" cy="40" r="36" fill="var(--bark-mid)" opacity="0.15"/>
+                  <!-- Forest backdrop details inside polaroid -->
+                  <text x="14" y="60" font-size="12" opacity="0.3">🌲</text>
+                  <text x="64" y="55" font-size="10" opacity="0.3">🌲</text>
+                  <text x="40" y="48" text-anchor="middle" font-size="36">🐿️</text>
+                  <text x="40" y="66" text-anchor="middle" font-size="12">🎩</text>
+                </svg>
+              </div>
+            </div>
+            <h3 style="display:none;">Official Mascot</h3>
+            <div class="vibe__polaroid-caption">Sir Nutsworth III</div>
+            <p style="font-size:0.85rem; text-align:center; margin-top:0.25rem;">Keep your eyes peeled for our unofficial mascot. Spotting him brings good luck!</p>
+          </div>
+
+          <!-- Card 3: Camp Cabin Pass / Expectation Card -->
+          <div class="vibe__card vibe__card--pass reveal reveal-delay-3" id="campPassCard">
+            <div class="vibe__pass-tack" aria-hidden="true">
+              <svg viewBox="0 0 40 50" width="22" height="28">
+                <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
+                <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
+                <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
+              </svg>
+            </div>
+            <button class="vibe__cabin-btn" id="cabinNightBtn" title="Toggle Cabin Night Mode!">
+              <span class="vibe__card-icon">⛺</span>
+            </button>
+            <h3>What to Expect</h3>
+            <ul class="vibe__expect-list">
+              <li>Camp bunk beds & cabin sleepovers</li>
+              <li>Campfire sing-alongs & s'mores</li>
+              <li>Classic summer camp vibes & Olympics</li>
+            </ul>
+            <p class="vibe__permit-quote">"Wait, do we need a marriage license or a camp permit for this?" 🏕️📜</p>
+            <div class="vibe__mini-fire" aria-hidden="true">
+              <div class="vibe__mini-flame"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FaceTime Incoming Call Screen Overlay -->
+    <div class="facetime-overlay" id="facetimeOverlay">
+      <div class="facetime-card" id="facetimeCard">
+        <!-- Initial Incoming Screen -->
+        <div id="facetimeIncomingView">
+          <div class="facetime-avatar-wrap">
+            <img src="/images/mikestern.png" alt="Best Man Michael Stern" class="facetime-avatar" />
+          </div>
+          <div class="facetime-caller">Michael Stern</div>
+          <div class="facetime-subtitle">Best Man</div>
+          <div class="facetime-ringing">FaceTime Video...</div>
+          <div class="facetime-actions">
+            <button class="facetime-btn facetime-btn--decline" id="declineCallBtn" aria-label="Decline Call">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <button class="facetime-btn facetime-btn--accept" id="acceptCallBtn" aria-label="Accept Call">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 7a2 2 0 0 0-2-2h-3.5a1 1 0 0 1-.8-.4l-1.2-1.6A2 2 0 0 0 13.9 2h-3.8A2 2 0 0 0 8.5 3L7.3 4.6a1 1 0 0 1-.8.4H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V7z"></path>
+                <circle cx="12" cy="13" r="4"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Call Connected Screen -->
+        <div id="facetimeConnectedView" style="display: none;">
+          <div class="facetime-avatar-wrap" style="width: 80px; height: 80px; margin-bottom: 1rem;">
+            <img src="/images/mikestern.png" alt="Best Man Michael Stern" class="facetime-avatar" />
+          </div>
+          <div class="facetime-caller" style="font-size: 1.3rem;">Michael Stern</div>
+          <div class="facetime-subtitle" style="font-size: 0.8rem; margin-bottom: 1rem;">Call Connected (0:04)</div>
+          <div class="facetime-quote-box">
+            <p class="facetime-dialogue">
+              "<strong>Michael</strong>: Paige! Benji! Where are you guys? We only have this chapel rented for like 30 minutes! Wait... is that a squirrel in a tux?!"
+            </p>
+          </div>
+          <div class="facetime-banner">
+            🎉 MASCOT VERIFIED: Sir Nutsworth III, Esq. is co-officiating!
+          </div>
+          <button class="facetime-close-btn" id="closeCallBtn">Hang Up 📞</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER / INVITE SECTION ===== -->
+  <footer id="footer" class="footer">
+    <div class="footer__stars" id="starsCanvas"></div>
+    <div class="footer__campfire">
+      <div class="campfire-flames">
+        <div class="flame flame--1"></div>
+        <div class="flame flame--2"></div>
+        <div class="flame flame--3"></div>
+      </div>
+      <div class="campfire-glow"></div>
+    </div>
+
+    <div class="section-container footer__content">
+      <p class="footer__label reveal">We Can't Wait to See You</p>
+      <h2 class="footer__title reveal reveal-delay-1">RSVP</h2>
+      <p class="footer__subtitle reveal reveal-delay-2">Let us know if you'll be joining the adventure</p>
+
+      <form class="footer__form reveal reveal-delay-3" id="rosterForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdDL1uOp6ViYmHRkF3ZusEH93za_5QaKxnfkEqEQ37vlU7mQA/formResponse" method="POST" target="hidden_iframe" novalidate>
+
+        <!-- Name Row -->
+        <div class="footer__form-row">
+          <div class="footer__form-group">
+            <label for="guestFirstName" class="footer__label-text">First Name <span class="footer__req">*</span></label>
+            <input type="text" id="guestFirstName" name="entry.2024987319" placeholder="First name" required autocomplete="given-name" />
+            <span class="footer__error" id="firstNameError">Please enter your first name</span>
+          </div>
+          <div class="footer__form-group">
+            <label for="guestLastName" class="footer__label-text">Last Name <span class="footer__req">*</span></label>
+            <input type="text" id="guestLastName" name="entry.1752080378" placeholder="Last name" required autocomplete="family-name" />
+            <span class="footer__error" id="lastNameError">Please enter your last name</span>
+          </div>
+        </div>
+
+        <!-- Email + Phone Row -->
+        <div class="footer__form-row">
+          <div class="footer__form-group">
+            <label for="guestEmail" class="footer__label-text">Email Address <span class="footer__req">*</span></label>
+            <input type="email" id="guestEmail" name="entry.1886881652" placeholder="your@email.com" required autocomplete="email" />
+            <span class="footer__error" id="emailError">Please enter a valid email address</span>
+          </div>
+          <div class="footer__form-group">
+            <label for="guestPhone" class="footer__label-text">Phone Number <span class="footer__req">*</span></label>
+            <input type="tel" id="guestPhone" name="entry.963235069" placeholder="(555) 123-4567" required autocomplete="tel" />
+            <span class="footer__error" id="phoneError">Please enter your phone number</span>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="footer__form-group">
+          <label for="guestAddress" class="footer__label-text">Mailing Address <span class="footer__req">*</span></label>
+          <input type="text" id="guestAddress" name="entry.917375245" placeholder="Street, City, State, ZIP" required autocomplete="street-address" />
+          <span class="footer__error" id="addressError">Please enter your mailing address</span>
+        </div>
+
+        <!-- Attending? -->
+        <div class="footer__form-group">
+          <label class="footer__label-text">Will you be attending? <span class="footer__req">*</span></label>
+          <div class="footer__radio-group" id="attendingGroup">
+            <label class="footer__radio-card">
+              <input type="radio" name="entry.1747976834" value="Yes, count me in!" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">🏕️</span>
+                <span>Yes, count me in!</span>
+              </span>
+            </label>
+            <label class="footer__radio-card">
+              <input type="radio" name="entry.1747976834" value="Sorry, can't make it" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">😢</span>
+                <span>Sorry, can't make it</span>
+              </span>
+            </label>
+          </div>
+          <span class="footer__error" id="attendingError">Please let us know if you can make it</span>
+        </div>
+
+        <!-- Dietary Restrictions -->
+        <div class="footer__form-group">
+          <label for="guestDiet" class="footer__label-text">Dietary Restrictions <span class="footer__req">*</span></label>
+          <input type="text" id="guestDiet" name="entry.1543444031" placeholder="Vegetarian, vegan, gluten-free, allergies, none, etc." required />
+          <span class="footer__error" id="dietError">Please list any dietary restrictions or type "None"</span>
+        </div>
+
+        <!-- Staying Overnight? -->
+        <div class="footer__form-group">
+          <label class="footer__label-text">Planning to stay overnight? <span class="footer__req">*</span></label>
+          <div class="footer__radio-group" id="overnightGroup">
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.1379738470" value="Yes, bunk me up!" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">⛺</span>
+                <span>Yes, bunk me up!</span>
+              </span>
+            </label>
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.1379738470" value="No, heading home" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">🚗</span>
+                <span>No, heading home</span>
+              </span>
+            </label>
+          </div>
+          <span class="footer__error" id="overnightError">Please let us know your overnight plans</span>
+        </div>
+
+        <!-- Shuttle? -->
+        <div class="footer__form-group">
+          <label class="footer__label-text">Need the camp shuttle? <span class="footer__req">*</span></label>
+          <div class="footer__radio-group" id="shuttleGroup">
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.1513616992" value="Yes, pick me up!" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">🚐</span>
+                <span>Yes, pick me up!</span>
+              </span>
+            </label>
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.1513616992" value="No, I'll drive" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">🚗</span>
+                <span>No, I'll drive</span>
+              </span>
+            </label>
+          </div>
+          <span class="footer__error" id="shuttleError">Please let us know your transportation plans</span>
+          <p class="footer__hint">Metro North → Harlem Valley/Wingdale. Contact Club Getaway at <a href="tel:800-643-8292">800-643-8292</a> 2 weeks prior for pickup times.</p>
+        </div>
+
+        <!-- Color Wars -->
+        <div class="footer__form-group">
+          <label class="footer__label-text">Interested in Color Wars / Crazy Olympics? <span class="footer__req">*</span></label>
+          <p class="footer__hint" style="margin-top:0;margin-bottom:0.5rem;">A fun, camp-style team activity. More details to come!</p>
+          <div class="footer__radio-group" id="colorWarsGroup">
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.157830799" value="I'm in, let's go!" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">🏆</span>
+                <span>I'm in, let's go!</span>
+              </span>
+            </label>
+            <label class="footer__radio-card footer__radio-card--sm">
+              <input type="radio" name="entry.157830799" value="I'll cheer from the sidelines" required />
+              <span class="footer__radio-display">
+                <span class="footer__radio-emoji">👀</span>
+                <span>I'll cheer from the sidelines</span>
+              </span>
+            </label>
+          </div>
+          <span class="footer__error" id="colorWarsError">Please let us know if you're interested</span>
+        </div>
+
+        <!-- Comments -->
+        <div class="footer__form-group">
+          <label for="guestComments" class="footer__label-text">Comments <span class="footer__req">*</span></label>
+          <textarea id="guestComments" name="entry.1599853593" placeholder="Anything else you'd like us to know? Special requests, plus-one info, song requests, etc." required rows="4"></textarea>
+          <span class="footer__error" id="commentsError">Please add a comment or type "None"</span>
+        </div>
+
+        <!-- Honeypot Field (Hidden from humans) -->
+        <div class="footer__honeypot" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;">
+          <label for="guestBait" class="footer__label-text">Leave this blank</label>
+          <input type="text" id="guestBait" name="guest_bait_honey" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <!-- Human Verification (Anti-Bot) -->
+        <div class="footer__form-group footer__captcha-group" id="captchaGroup">
+          <label for="captchaAnswer" class="footer__label-text">
+            Prove you're a happy camper: What is <span id="captchaQuestion" style="color: var(--fire-amber); font-weight: 700;"></span>? <span class="footer__req">*</span>
+          </label>
+          <input type="text" id="captchaAnswer" placeholder="Your answer" required autocomplete="off" />
+          <span class="footer__error" id="captchaError">Please solve the riddle to prove you are a human</span>
+        </div>
+
+        <button type="submit" class="footer__submit" id="submitBtn">
+          <span class="footer__submit-text">Send RSVP 🏕️</span>
+        </button>
+      </form>
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+      <!-- Confirmation toast -->
+      <div class="footer__toast" id="confirmToast">
+        <span class="footer__toast-icon">🎉</span>
+        <span class="footer__toast-msg">RSVP received! See you at camp!</span>
+      </div>
+
+      <p class="footer__copyright">Paige & Benji · October 2026 · Made with 🤎 and campfire smoke</p>
+    </div>
+  </footer>
+
+<script>
+  /* =========================================================================
+     Behavior for the protected content. PLAIN JS (no TypeScript) — this is
+     injected & executed at runtime after decryption, so it must run as-is.
+     Wrapped in one IIFE that runs immediately: by injection time the DOM
+     already exists, so there is no DOMContentLoaded wrapper and the whole
+     thing runs exactly once.
+     ========================================================================= */
+  (function initLetter() {
+    // ===== Live Countdown to October 4, 2026 at 2:00 PM ET =====
+    // October 4, 2026, 2:00 PM ET = 18:00 UTC (ET is UTC-4 in October / EDT)
+    var weddingDate = new Date('2026-10-04T18:00:00Z');
+    var cdDays = document.getElementById('cdDays');
+    var cdHours = document.getElementById('cdHours');
+    var cdMins = document.getElementById('cdMins');
+    var cdSecs = document.getElementById('cdSecs');
+
+    function pad(n) { return n.toString().padStart(2, '0'); }
+
+    function updateCountdown() {
+      var now = new Date();
+      var diff = weddingDate.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        if (cdDays) cdDays.textContent = '0';
+        if (cdHours) cdHours.textContent = '00';
+        if (cdMins) cdMins.textContent = '00';
+        if (cdSecs) cdSecs.textContent = '00';
+        return;
+      }
+
+      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      var secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      if (cdDays) cdDays.textContent = days.toString();
+      if (cdHours) cdHours.textContent = pad(hours);
+      if (cdMins) cdMins.textContent = pad(mins);
+      if (cdSecs) cdSecs.textContent = pad(secs);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ===== Intersection Observer for scroll reveal =====
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+
+    // Force hero elements visible immediately
+    document.querySelectorAll('.hero .reveal').forEach(function (el) {
+      setTimeout(function () { el.classList.add('visible'); }, 300);
+    });
+
+    // ===== Star field in footer =====
+    var starsContainer = document.getElementById('starsCanvas');
+    if (starsContainer) {
+      for (var i = 0; i < 120; i++) {
+        var star = document.createElement('div');
+        star.style.cssText =
+          'position:absolute;' +
+          'width:' + (Math.random() * 3 + 1) + 'px;' +
+          'height:' + (Math.random() * 3 + 1) + 'px;' +
+          'background:' + (Math.random() > 0.7 ? '#fdd835' : '#fffde7') + ';' +
+          'border-radius:50%;' +
+          'top:' + (Math.random() * 100) + '%;' +
+          'left:' + (Math.random() * 100) + '%;' +
+          'opacity:' + (Math.random() * 0.7 + 0.2) + ';' +
+          'animation:twinkle ' + (Math.random() * 3 + 2) + 's infinite alternate;';
+        starsContainer.appendChild(star);
+      }
+
+      var twinkleStyle = document.createElement('style');
+      twinkleStyle.textContent = '@keyframes twinkle{0%{opacity:0.2;transform:scale(1)}100%{opacity:1;transform:scale(1.3)}}';
+      document.head.appendChild(twinkleStyle);
+    }
+
+    // ===== Vibe Section: Outfit Cycling =====
+    var outfits = [
+      {
+        badge: "Dress Code",
+        icon: "👗",
+        title: "Dress Code",
+        desc: "Dress to impress, but maybe leave the bug spray as perfume at home. Think 'rustic chic meets ready for s'mores.'"
+      },
+      {
+        badge: "Ecology Special",
+        icon: "🦥",
+        title: "Queens Zoo Uniform",
+        desc: "Paige's coordination outfit. Optimal for spotting wild animals and wearing heavy bug spray."
+      },
+      {
+        badge: "Theatre Blacks",
+        icon: "🎭",
+        title: "Rutgers Cabaret Costume",
+        desc: "Avenue Q attire. Ideal for hiding in prop closets or avoiding Benji's antics."
+      },
+      {
+        badge: "The Road Trip",
+        icon: "🚗",
+        title: "Connecticut GPS Edition",
+        desc: "Benji: 'Absolutely, GPS says we're almost there!' GPS: 'Welcome to Connecticut!' Paige: 'That's 90 minutes outside of NYC!'"
+      }
+    ];
+
+    var currentOutfitIndex = 0;
+    var outfitBadge = document.getElementById('outfitBadge');
+    var outfitIcon = document.getElementById('outfitIcon');
+    var outfitTitle = document.getElementById('outfitTitle');
+    var outfitDesc = document.getElementById('outfitDesc');
+    var outfitCycleBtn = document.getElementById('outfitCycleBtn');
+
+    if (outfitCycleBtn) {
+      outfitCycleBtn.addEventListener('click', function () {
+        currentOutfitIndex = (currentOutfitIndex + 1) % outfits.length;
+        var currentOutfit = outfits[currentOutfitIndex];
+
+        // Apply a quick elastic scale animation on click
+        outfitCycleBtn.style.transform = 'scale(0.8) rotate(-15deg)';
+        setTimeout(function () {
+          outfitCycleBtn.style.transform = '';
+        }, 150);
+
+        if (outfitBadge) outfitBadge.textContent = currentOutfit.badge;
+        if (outfitIcon) outfitIcon.textContent = currentOutfit.icon;
+        if (outfitTitle) outfitTitle.textContent = currentOutfit.title;
+        if (outfitDesc) outfitDesc.innerHTML = currentOutfit.desc;
+      });
+    }
+
+    // ===== Vibe Section: Cabin Night Mode Toggle =====
+    var cabinNightBtn = document.getElementById('cabinNightBtn');
+    var campPassCard = document.getElementById('campPassCard');
+
+    if (cabinNightBtn && campPassCard) {
+      cabinNightBtn.addEventListener('click', function () {
+        campPassCard.classList.toggle('vibe__card--pass-night');
+
+        // Animation bounce effect on click
+        cabinNightBtn.style.transform = 'scale(0.8) rotate(15deg)';
+        setTimeout(function () {
+          cabinNightBtn.style.transform = '';
+        }, 150);
+      });
+    }
+
+    // ===== Packing List Persistence & Reset =====
+    var packingCheckboxes = document.querySelectorAll('.packing__checkbox');
+    var resetChecklistBtn = document.getElementById('resetChecklistBtn');
+
+    // Load states on bootup
+    try {
+      var savedPackingState = localStorage.getItem('grecco_packing_list');
+      if (savedPackingState) {
+        var checkedIndices = JSON.parse(savedPackingState);
+        packingCheckboxes.forEach(function (checkbox, index) {
+          if (checkedIndices.includes(index)) {
+            checkbox.checked = true;
+            var span = checkbox.nextElementSibling;
+            if (span) {
+              span.style.textDecoration = 'line-through';
+              span.style.opacity = '0.45';
+            }
+          }
+        });
+      }
+    } catch (err) {
+      console.warn('LocalStorage packing list read failed:', err);
+    }
+
+    // Save states on change
+    packingCheckboxes.forEach(function (checkbox, index) {
+      checkbox.addEventListener('change', function () {
+        var span = checkbox.nextElementSibling;
+        if (span) {
+          if (checkbox.checked) {
+            span.style.textDecoration = 'line-through';
+            span.style.opacity = '0.45';
+          } else {
+            span.style.textDecoration = '';
+            span.style.opacity = '';
+          }
+        }
+
+        var checkedIndices = [];
+        packingCheckboxes.forEach(function (cb, idx) {
+          if (cb.checked) checkedIndices.push(idx);
+        });
+        try {
+          localStorage.setItem('grecco_packing_list', JSON.stringify(checkedIndices));
+        } catch (err) {
+          console.warn('LocalStorage packing list write failed:', err);
+        }
+      });
+    });
+
+    // Reset checklist action
+    if (resetChecklistBtn) {
+      resetChecklistBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        packingCheckboxes.forEach(function (checkbox) {
+          checkbox.checked = false;
+          var span = checkbox.nextElementSibling;
+          if (span) {
+            span.style.textDecoration = '';
+            span.style.opacity = '';
+          }
+        });
+        try {
+          localStorage.removeItem('grecco_packing_list');
+        } catch (err) {
+          console.warn('LocalStorage packing list remove failed:', err);
+        }
+
+        // Play visual pop click bounce animation
+        resetChecklistBtn.style.transform = 'scale(0.9) rotate(-3deg)';
+        setTimeout(function () {
+          resetChecklistBtn.style.transform = '';
+        }, 150);
+      });
+    }
+
+    // ===== Vibe Section: Polaroid & FaceTime Call Easter Egg =====
+    var squirrel = document.getElementById('squirrelEgg');
+    var facetimeOverlay = document.getElementById('facetimeOverlay');
+    var declineCallBtn = document.getElementById('declineCallBtn');
+    var acceptCallBtn = document.getElementById('acceptCallBtn');
+    var closeCallBtn = document.getElementById('closeCallBtn');
+    var facetimeIncomingView = document.getElementById('facetimeIncomingView');
+    var facetimeConnectedView = document.getElementById('facetimeConnectedView');
+    var facetimeCard = document.getElementById('facetimeCard');
+
+    if (squirrel && facetimeOverlay) {
+      var squirrelClicks = 0;
+      squirrel.addEventListener('click', function () {
+        squirrelClicks++;
+        squirrel.style.transform = 'rotate(' + (squirrelClicks * 30) + 'deg) scale(' + (1 + squirrelClicks * 0.05) + ')';
+
+        if (squirrelClicks >= 3) {
+          // Reset card positions and open FaceTime overlay
+          squirrelClicks = 0;
+          setTimeout(function () {
+            squirrel.style.transform = '';
+          }, 300);
+
+          // Reset FaceTime state
+          if (facetimeIncomingView) facetimeIncomingView.style.display = 'block';
+          if (facetimeConnectedView) facetimeConnectedView.style.display = 'none';
+          if (facetimeCard) facetimeCard.className = 'facetime-card';
+
+          facetimeOverlay.classList.add('facetime-overlay--active');
+        }
+      });
+    }
+
+    // FaceTime decline calls
+    if (declineCallBtn && facetimeOverlay) {
+      declineCallBtn.addEventListener('click', function () {
+        facetimeOverlay.classList.remove('facetime-overlay--active');
+      });
+    }
+
+    // FaceTime accept call action
+    if (acceptCallBtn && facetimeIncomingView && facetimeConnectedView && facetimeCard) {
+      acceptCallBtn.addEventListener('click', function () {
+        facetimeIncomingView.style.display = 'none';
+        facetimeConnectedView.style.display = 'block';
+        facetimeCard.classList.add('facetime-card--connected');
+      });
+    }
+
+    // FaceTime close call action
+    if (closeCallBtn && facetimeOverlay) {
+      closeCallBtn.addEventListener('click', function () {
+        facetimeOverlay.classList.remove('facetime-overlay--active');
+      });
+    }
+
+    // ===== Awaits Easter Egg (5 taps) =====
+    var awaitsTrigger = document.getElementById('awaitsEgg');
+    var awaitsImg = document.getElementById('awaitsEggImg');
+    var activitiesSection = document.getElementById('activities');
+    if (awaitsTrigger && awaitsImg) {
+      var awaitsTaps = [];
+      var awaitsAnimating = false;
+
+      awaitsTrigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (awaitsAnimating) return;
+
+        var now = Date.now();
+        awaitsTaps = awaitsTaps.filter(function (t) { return now - t < 1500; });
+        awaitsTaps.push(now);
+
+        if (awaitsTaps.length >= 5) {
+          awaitsAnimating = true;
+          awaitsTaps = [];
+          if (activitiesSection) activitiesSection.classList.add('activities--egg-active');
+          awaitsImg.classList.add('awaits-egg-img--active');
+
+          setTimeout(function () {
+            awaitsImg.classList.remove('awaits-egg-img--active');
+            if (activitiesSection) activitiesSection.classList.remove('activities--egg-active');
+            awaitsAnimating = false;
+          }, 4200);
+        }
+      });
+    }
+
+    // ===== YouTube Sound Toggle =====
+    var heroIframe = document.getElementById('hero-video');
+    var heroVideoWrap = document.querySelector('.hero__video-wrap');
+    var heroContent = document.querySelector('.hero__content');
+    var heroOverlay = document.querySelector('.hero__overlay');
+    var heroScrollCta = document.querySelector('.hero__scroll-cta');
+    var soundToggle = document.getElementById('soundToggle');
+    var soundOffIcon = document.getElementById('soundOffIcon');
+    var soundOnIcon = document.getElementById('soundOnIcon');
+    var soundTextEl = document.getElementById('soundText');
+    var videoIsMuted = true;
+
+    function enterWatchMode() {
+      // Fade out overlay, content, scroll CTA
+      if (heroContent) heroContent.classList.add('hero__content--hidden');
+      if (heroOverlay) heroOverlay.classList.add('hero__overlay--hidden');
+      if (heroScrollCta) heroScrollCta.classList.add('hero__scroll-cta--hidden');
+
+      // Switch iframe to contained mode with controls
+      if (heroIframe) {
+        heroIframe.classList.add('hero__video--contained');
+        var newSrc = heroIframe.src
+          .replace('controls=0', 'controls=1')
+          .replace('mute=1', 'mute=0');
+        heroIframe.src = newSrc;
+      }
+      if (heroVideoWrap) {
+        heroVideoWrap.classList.add('hero__video-wrap--watch');
+      }
+    }
+
+    function exitWatchMode() {
+      // Restore overlays
+      if (heroContent) heroContent.classList.remove('hero__content--hidden');
+      if (heroOverlay) heroOverlay.classList.remove('hero__overlay--hidden');
+      if (heroScrollCta) heroScrollCta.classList.remove('hero__scroll-cta--hidden');
+
+      // Restore iframe to cover mode without controls
+      if (heroIframe) {
+        heroIframe.classList.remove('hero__video--contained');
+        var newSrc = heroIframe.src
+          .replace('controls=1', 'controls=0')
+          .replace('mute=0', 'mute=1');
+        heroIframe.src = newSrc;
+      }
+      if (heroVideoWrap) {
+        heroVideoWrap.classList.remove('hero__video-wrap--watch');
+      }
+    }
+
+    if (soundToggle) {
+      soundToggle.addEventListener('click', function () {
+        if (videoIsMuted) {
+          videoIsMuted = false;
+          if (soundOffIcon) soundOffIcon.classList.add('hero__sound-icon--hidden');
+          if (soundOnIcon) soundOnIcon.classList.remove('hero__sound-icon--hidden');
+          if (soundTextEl) soundTextEl.textContent = 'Back to Save the Date';
+          soundToggle.classList.add('hero__sound-btn--active');
+          enterWatchMode();
+        } else {
+          videoIsMuted = true;
+          if (soundOffIcon) soundOffIcon.classList.remove('hero__sound-icon--hidden');
+          if (soundOnIcon) soundOnIcon.classList.add('hero__sound-icon--hidden');
+          if (soundTextEl) soundTextEl.textContent = 'Play with Sound';
+          soundToggle.classList.remove('hero__sound-btn--active');
+          exitWatchMode();
+        }
+      });
+    }
+
+    // ===== RSVP Form handling =====
+    var form = document.getElementById('rosterForm');
+    var firstNameInput = document.getElementById('guestFirstName');
+    var lastNameInput = document.getElementById('guestLastName');
+    var emailInput = document.getElementById('guestEmail');
+    var phoneInput = document.getElementById('guestPhone');
+    var addressInput = document.getElementById('guestAddress');
+    var dietInput = document.getElementById('guestDiet');
+    var commentsInput = document.getElementById('guestComments');
+
+    // Honeypot & Captcha inputs
+    var honeypotInput = document.getElementById('guestBait');
+    var captchaAnswerInput = document.getElementById('captchaAnswer');
+    var captchaQuestion = document.getElementById('captchaQuestion');
+
+    var firstNameError = document.getElementById('firstNameError');
+    var lastNameError = document.getElementById('lastNameError');
+    var emailError = document.getElementById('emailError');
+    var phoneError = document.getElementById('phoneError');
+    var addressError = document.getElementById('addressError');
+    var dietError = document.getElementById('dietError');
+    var attendingError = document.getElementById('attendingError');
+    var overnightError = document.getElementById('overnightError');
+    var shuttleError = document.getElementById('shuttleError');
+    var colorWarsError = document.getElementById('colorWarsError');
+    var commentsError = document.getElementById('commentsError');
+    var captchaError = document.getElementById('captchaError');
+
+    var attendingGroup = document.getElementById('attendingGroup');
+    var overnightGroup = document.getElementById('overnightGroup');
+    var shuttleGroup = document.getElementById('shuttleGroup');
+    var colorWarsGroup = document.getElementById('colorWarsGroup');
+    var captchaGroup = document.getElementById('captchaGroup');
+    var toast = document.getElementById('confirmToast');
+
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // ===== Dynamic Captcha Logic =====
+    var captchaNum1 = 0;
+    var captchaNum2 = 0;
+    var captchaCorrectAnswer = 0;
+
+    function generateCaptcha() {
+      captchaNum1 = Math.floor(Math.random() * 9) + 1; // 1 to 9
+      captchaNum2 = Math.floor(Math.random() * 9) + 1; // 1 to 9
+      captchaCorrectAnswer = captchaNum1 + captchaNum2;
+      if (captchaQuestion) {
+        captchaQuestion.textContent = captchaNum1 + ' + ' + captchaNum2;
+      }
+      if (captchaAnswerInput) {
+        captchaAnswerInput.value = '';
+      }
+    }
+
+    generateCaptcha();
+
+    // Helper: clear error on radio group selection
+    function setupRadioClear(name, group, error) {
+      document.querySelectorAll('input[name="' + name + '"]').forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          if (group) group.classList.remove('input--error');
+          if (error) error.classList.remove('visible');
+        });
+      });
+    }
+
+    setupRadioClear('entry.1747976834', attendingGroup, attendingError);
+    setupRadioClear('entry.1379738470', overnightGroup, overnightError);
+    setupRadioClear('entry.1513616992', shuttleGroup, shuttleError);
+    setupRadioClear('entry.157830799', colorWarsGroup, colorWarsError);
+
+    // Helper: clear error on text/email/tel input
+    function setupInputClear(input, error) {
+      if (input) {
+        input.addEventListener('input', function () {
+          input.classList.remove('input--error');
+          if (error) error.classList.remove('visible');
+        });
+      }
+    }
+
+    setupInputClear(firstNameInput, firstNameError);
+    setupInputClear(lastNameInput, lastNameError);
+    setupInputClear(emailInput, emailError);
+    setupInputClear(phoneInput, phoneError);
+    setupInputClear(addressInput, addressError);
+    setupInputClear(dietInput, dietError);
+    setupInputClear(commentsInput, commentsError);
+    setupInputClear(captchaAnswerInput, captchaError);
+
+    function clearAllErrors() {
+      var inputs = [firstNameInput, lastNameInput, emailInput, phoneInput, addressInput, dietInput, commentsInput, captchaAnswerInput];
+      var errors = [firstNameError, lastNameError, emailError, phoneError, addressError, dietError, attendingError, overnightError, shuttleError, colorWarsError, commentsError, captchaError];
+      var groups = [attendingGroup, overnightGroup, shuttleGroup, colorWarsGroup, captchaGroup];
+      inputs.forEach(function (i) { if (i) i.classList.remove('input--error'); });
+      errors.forEach(function (e) { if (e) e.classList.remove('visible'); });
+      groups.forEach(function (g) { if (g) g.classList.remove('input--error'); });
+    }
+
+    function validateTextInput(input, error) {
+      if (!input || !input.value.trim()) {
+        if (input) input.classList.add('input--error');
+        if (error) error.classList.add('visible');
+        return true;
+      }
+      return false;
+    }
+
+    function validateRadio(name, group, error) {
+      if (!document.querySelector('input[name="' + name + '"]:checked')) {
+        if (group) group.classList.add('input--error');
+        if (error) error.classList.add('visible');
+        return true;
+      }
+      return false;
+    }
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        clearAllErrors();
+        var hasError = false;
+
+        // Honeypot check: If the honeypot field is filled, we suspect a bot.
+        // We prevent the actual submission to Google Forms but act as if it succeeded
+        // to fool the bot into not retrying.
+        if (honeypotInput && honeypotInput.value.trim() !== '') {
+          e.preventDefault();
+
+          var botBtn = document.getElementById('submitBtn');
+          if (botBtn) {
+            botBtn.innerHTML = '<span>Sending… ✨</span>';
+            botBtn.setAttribute('disabled', 'true');
+          }
+
+          setTimeout(function () {
+            if (toast) {
+              toast.classList.add('footer__toast--show');
+            }
+            if (botBtn) {
+              botBtn.innerHTML = '<span class="footer__submit-text">Send RSVP 🏕️</span>';
+              botBtn.removeAttribute('disabled');
+            }
+            form.reset();
+            generateCaptcha();
+
+            setTimeout(function () {
+              if (toast) toast.classList.remove('footer__toast--show');
+            }, 4000);
+          }, 1200);
+
+          return;
+        }
+
+        // Text fields
+        if (validateTextInput(firstNameInput, firstNameError)) hasError = true;
+        if (validateTextInput(lastNameInput, lastNameError)) hasError = true;
+
+        // Email
+        var emailVal = (emailInput && emailInput.value.trim()) || '';
+        if (!emailVal || !emailRegex.test(emailVal)) {
+          if (emailInput) emailInput.classList.add('input--error');
+          if (emailError) emailError.classList.add('visible');
+          if (emailVal && !emailRegex.test(emailVal)) {
+            if (emailError) emailError.textContent = 'That doesn\'t look like a valid email';
+          } else {
+            if (emailError) emailError.textContent = 'Please enter a valid email address';
+          }
+          hasError = true;
+        }
+
+        if (validateTextInput(phoneInput, phoneError)) hasError = true;
+        if (validateTextInput(addressInput, addressError)) hasError = true;
+
+        // Radio groups
+        if (validateRadio('entry.1747976834', attendingGroup, attendingError)) hasError = true;
+
+        if (validateTextInput(dietInput, dietError)) hasError = true;
+
+        if (validateRadio('entry.1379738470', overnightGroup, overnightError)) hasError = true;
+        if (validateRadio('entry.1513616992', shuttleGroup, shuttleError)) hasError = true;
+        if (validateRadio('entry.157830799', colorWarsGroup, colorWarsError)) hasError = true;
+
+        if (validateTextInput(commentsInput, commentsError)) hasError = true;
+
+        // Captcha validation
+        var captchaAnswerVal = (captchaAnswerInput && captchaAnswerInput.value.trim()) || '';
+        var captchaAnswerNum = parseInt(captchaAnswerVal, 10);
+        if (isNaN(captchaAnswerNum) || captchaAnswerNum !== captchaCorrectAnswer) {
+          if (captchaAnswerInput) captchaAnswerInput.classList.add('input--error');
+          if (captchaError) captchaError.classList.add('visible');
+          if (captchaError) {
+            if (!captchaAnswerVal) {
+              captchaError.textContent = 'Please solve the riddle to prove you are a human';
+            } else {
+              captchaError.textContent = 'That math is a little off! Try again.';
+            }
+          }
+          hasError = true;
+        }
+
+        if (hasError) {
+          e.preventDefault();
+          // Scroll to first error
+          var firstError = form.querySelector('.input--error, .footer__error.visible');
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          return;
+        }
+
+        // Validation passed — allow native submit to hidden_iframe (Google Forms)
+        var btn = document.getElementById('submitBtn');
+        if (btn) {
+          btn.innerHTML = '<span>Sending… ✨</span>';
+          btn.setAttribute('disabled', 'true');
+        }
+
+        // Show confirmation toast after a short delay
+        setTimeout(function () {
+          if (toast) {
+            toast.classList.add('footer__toast--show');
+          }
+          if (btn) {
+            btn.innerHTML = '<span class="footer__submit-text">Send RSVP 🏕️</span>';
+            btn.style.background = '';
+            btn.removeAttribute('disabled');
+          }
+          form.reset();
+          generateCaptcha();
+
+          // Auto-dismiss toast
+          setTimeout(function () {
+            if (toast) toast.classList.remove('footer__toast--show');
+          }, 4000);
+        }, 1200);
+      });
+    }
+  })();
+</script>

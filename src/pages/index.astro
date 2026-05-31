@@ -1,1580 +1,760 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import '../styles/main.css';
+import letterEnc from '../generated/letter.enc.json';
+// NOTE: the wedding content + its CSS are NOT imported here. The content ships
+// as the encrypted blob below and is only decrypted/injected after unlock;
+// the section styles (public/styles/site.css) are lazy-loaded at that point.
 ---
 
-<Layout title="Paige & Benji | Save the Date | Campfires, S'mores & I Dos">
+<Layout title="You're Invited">
+  <!-- ============================================================
+       SEALED ENVELOPE — the only thing a locked visitor ever sees.
+       No dates, venue, or schedule live out here.
+       ============================================================ -->
+  <main id="envelope-stage" class="env-stage" aria-label="A sealed invitation">
+    <div class="env-stage__stars" id="envStars" aria-hidden="true"></div>
+    <div class="env-stage__ridge" aria-hidden="true"></div>
 
-  <!-- ===== HERO SECTION ===== -->
-  <section id="hero" class="hero">
-    <div class="hero__video-wrap">
-      <iframe
-        id="hero-video"
-        class="hero__video"
-        src="https://www.youtube.com/embed/X2ShL6rGqBU?autoplay=1&mute=1&loop=1&playlist=X2ShL6rGqBU&controls=0&showinfo=0&modestbranding=1&playsinline=1&enablejsapi=1"
-        title="Camp Getaway Video"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
-      <div class="hero__overlay"></div>
-    </div>
+    <div class="env-wrap">
+      <div class="env" id="envelope">
+        <!-- inside / back wall -->
+        <div class="env__back" aria-hidden="true"></div>
 
-    <div class="hero__content">
-      <h1 class="hero__names reveal reveal-delay-1">Paige <span class="hero__amp">&</span> Benji</h1>
-      <p class="hero__tagline reveal reveal-delay-2">Campfires, S'mores & I Dos</p>
-      <p class="hero__date reveal reveal-delay-3">October 4 – 5, 2026 &bull; Kent, Connecticut</p>
-    </div>
-
-    <a href="#postcard" class="hero__scroll-cta" aria-label="Scroll to next section">
-      <span class="hero__scroll-text">Scroll to explore</span>
-      <svg class="hero__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 5v14M19 12l-7 7-7-7"/>
-      </svg>
-    </a>
-
-    <!-- Floating Sound Toggle -->
-    <button id="soundToggle" class="hero__sound-btn" aria-label="Play with sound">
-      <svg id="soundOffIcon" class="hero__sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
-        <path d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>
-      </svg>
-      <svg id="soundOnIcon" class="hero__sound-icon hero__sound-icon--hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
-      </svg>
-      <span id="soundText">Play with Sound</span>
-    </button>
-  </section>
-
-  <!-- ===== POSTCARD / COUNTDOWN SECTION ===== -->
-  <section id="postcard" class="postcard">
-    <div class="postcard__bg">
-      <img src="/images/campgetaway.png" alt="Greetings from Camp Getaway - P + B are getting married" loading="eager" />
-    </div>
-
-    <!-- Countdown: positioned bottom-right to avoid overlapping the letter -->
-    <div class="postcard__countdown reveal">
-      <div class="countdown" id="weddingCountdown">
-        <div class="countdown__block">
-          <span class="countdown__number" id="cdDays">---</span>
-          <span class="countdown__label">DAYS</span>
-        </div>
-        <span class="countdown__sep">:</span>
-        <div class="countdown__block">
-          <span class="countdown__number" id="cdHours">--</span>
-          <span class="countdown__label">HOURS</span>
-        </div>
-        <span class="countdown__sep">:</span>
-        <div class="countdown__block">
-          <span class="countdown__number" id="cdMins">--</span>
-          <span class="countdown__label">MINS</span>
-        </div>
-        <span class="countdown__sep">:</span>
-        <div class="countdown__block">
-          <span class="countdown__number" id="cdSecs">--</span>
-          <span class="countdown__label">SECS</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== VENUE INFO SECTION ===== -->
-  <section id="details" class="venue">
-    <div class="venue__video-wrap">
-      <video autoplay muted loop playsinline>
-        <source src="/images/logistics.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <div class="venue__overlay"></div>
-
-    <div class="venue__content">
-      <div class="venue__notebook reveal">
-        <!-- Colorful film-strip tape across top -->
-        <div class="venue__tape-strip" aria-hidden="true">
-          <span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span>
-        </div>
-
-        <h2 class="venue__title">Venue Info</h2>
-
-        <div class="venue__pin-row">
-          <svg class="venue__pin-icon" viewBox="0 0 24 36" fill="none">
-            <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#c0392b"/>
-            <circle cx="12" cy="12" r="5" fill="#e74c3c"/>
-            <circle cx="12" cy="12" r="2.5" fill="#c0392b"/>
-          </svg>
-          <div>
-            <p class="venue__name">Club Getaway</p>
-            <p class="venue__address">59 S Kent Rd, Kent, CT 06757</p>
-          </div>
-        </div>
-
-        <div class="venue__map-wrap">
-          <iframe
-            class="venue__map"
-            src="https://www.google.com/maps?q=Club+Getaway,+59+S+Kent+Rd,+Kent,+CT+06757&output=embed"
-            allowfullscreen
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Club Getaway Map"
-          ></iframe>
-        </div>
-
-        <a href="https://maps.google.com/?q=Club+Getaway+59+S+Kent+Rd+Kent+CT+06757" target="_blank" rel="noopener" class="venue__directions-link">
-          Get Directions →
-        </a>
-
-        <!-- Camp Shuttle Info -->
-        <div class="venue__shuttle">
-          <div class="venue__shuttle-header">
-            <span class="venue__shuttle-icon">🚐</span>
-            <h3 class="venue__shuttle-title">Camp Shuttle</h3>
-          </div>
-          <p class="venue__shuttle-text">
-            Taking the <strong>Metro North</strong> from Grand Central Station to <strong>Harlem Valley / Wingdale</strong>? A complimentary shuttle to Club Getaway is available!
-          </p>
-          <div class="venue__shuttle-steps">
-            <div class="venue__shuttle-step">
-              <span class="venue__shuttle-step-num">1</span>
-              <p>Note your shuttle request in the comments section when you RSVP</p>
-            </div>
-            <div class="venue__shuttle-step">
-              <span class="venue__shuttle-step-num">2</span>
-              <p>Contact Club Getaway at <a href="tel:800-643-8292" class="venue__shuttle-phone">800-643-8292</a> at least <strong>2 weeks prior</strong> for train pickup times</p>
-            </div>
-          </div>
-          <p class="venue__shuttle-note">⛺ Available on a first come, first served basis</p>
-        </div>
-
-        <!-- Parking Info -->
-        <div class="venue__shuttle">
-          <div class="venue__shuttle-header">
-            <span class="venue__shuttle-icon">🅿️</span>
-            <h3 class="venue__shuttle-title">Parking</h3>
-          </div>
-          <p class="venue__shuttle-text">
-            Driving to the venue? <strong>Free parking</strong> is available on-site. Please plan to <strong>arrive at least 30 minutes early</strong> as you'll need to take a short shuttle from the parking area to the venue at the top of the hill.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SCHEDULE OF EVENTS SECTION ===== -->
-  <section id="schedule" class="schedule">
-    <h2 class="schedule__title reveal">Schedule of Events</h2>
-
-    <div class="schedule__board reveal reveal-delay-1">
-      <!-- Thumbtacks pinning the map to the corkboard -->
-      <div class="schedule__pin schedule__pin--tl">
-        <svg viewBox="0 0 40 50" width="28" height="35">
-          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
-          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
-          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
-        </svg>
-      </div>
-      <div class="schedule__pin schedule__pin--tr">
-        <svg viewBox="0 0 40 50" width="28" height="35">
-          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
-          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
-          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
-        </svg>
-      </div>
-      <div class="schedule__pin schedule__pin--bl">
-        <svg viewBox="0 0 40 50" width="24" height="30">
-          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
-          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
-          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
-        </svg>
-      </div>
-      <div class="schedule__pin schedule__pin--br">
-        <svg viewBox="0 0 40 50" width="24" height="30">
-          <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
-          <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
-          <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
-        </svg>
-      </div>
-
-      <div class="schedule__paper">
-        <!-- Day 1 -->
-        <h3 class="schedule__day-heading">Sunday, <span>October 4th</span></h3>
-
-        <div class="schedule__grid schedule__grid--4col">
-          <div class="schedule__item">
-            <div class="schedule__icon">
-              <!-- Cabin / Check-in -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Roof -->
-                <path d="M15 45L50 20L85 45" />
-                <path d="M20 40L50 15L80 40" />
-                <path d="M25 35L50 10L75 35" />
-                <!-- Base -->
-                <rect x="25" y="45" width="50" height="40" />
-                <!-- Logs (horizontal lines) -->
-                <path d="M25 55h50 M25 65h50 M25 75h50" />
-                <!-- Log ends (circles on edges) -->
-                <circle cx="21" cy="45" r="4"/><circle cx="79" cy="45" r="4"/>
-                <circle cx="21" cy="55" r="4"/><circle cx="79" cy="55" r="4"/>
-                <circle cx="21" cy="65" r="4"/><circle cx="79" cy="65" r="4"/>
-                <circle cx="21" cy="75" r="4"/><circle cx="79" cy="75" r="4"/>
-                <circle cx="21" cy="85" r="4"/><circle cx="79" cy="85" r="4"/>
-                <!-- Door -->
-                <path d="M42 85V60h16v25" />
-                <circle cx="54" cy="72" r="1.5" />
-              </svg>
-            </div>
-            <p class="schedule__event-name">Overnight Check-in</p>
-            <p class="schedule__event-time">1:15 PM</p>
-          </div>
-
-          <div class="schedule__item">
-            <div class="schedule__icon">
-              <!-- Ceremony (Refined) -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Groom Pants -->
-                <path d="M38 60 L 35 85 L 42 85 L 43 70 L 45 85 L 50 85 L 50 60 Z" fill="var(--bark-dark)" />
-                <!-- Groom Shoes -->
-                <path d="M32 88 L 42 88 L 42 84 Z" fill="var(--bark-dark)" />
-                <path d="M42 88 L 52 88 L 50 84 Z" fill="var(--bark-dark)" />
-                <path d="M33 87 L 37 87 M43 87 L 47 87" stroke="var(--cream)" stroke-width="1" />
-                <!-- Bride Dress -->
-                <path d="M50 60 C 50 60 48 85 50 85 C 53 88 56 82 59 85 C 62 88 65 82 68 85 C 71 88 74 85 75 80 C 75 70 70 55 70 55" fill="var(--cream)" />
-                <path d="M50 60 C 50 60 48 85 50 85 C 53 88 56 82 59 85 C 62 88 65 82 68 85 C 71 88 74 85 75 80 C 75 70 70 55 70 55" />
-                <!-- Dress Pleats -->
-                <path d="M58 70 L 59 80 M 64 70 L 66 80 M 70 70 L 72 78" stroke-width="1.5" />
-                <!-- Bride Legs & Heels -->
-                <path d="M58 85 L 56 93 M 65 85 L 63 93" stroke-width="1.5" />
-                <path d="M53 93 L 57 93 L 57 90 Z M60 93 L 64 93 L 64 90 Z" fill="var(--bark-dark)" />
-                <!-- Giant Heart -->
-                <path d="M50 35 C 50 35 45 5 25 5 C 5 5 5 35 15 50 C 25 65 50 80 50 80 C 50 80 75 65 85 50 C 95 35 95 5 75 5 C 55 5 50 35 50 35 Z" fill="var(--cream)" />
-                <path d="M50 35 C 50 35 45 5 25 5 C 5 5 5 35 15 50 C 25 65 50 80 50 80 C 50 80 75 65 85 50 C 95 35 95 5 75 5 C 55 5 50 35 50 35 Z" />
-                <!-- Hands on Heart -->
-                <path d="M12 40 C 9 39 9 44 12 44 C 10 45 10 49 13 48 C 12 50 14 52 16 50" stroke-width="1.5" />
-                <path d="M88 40 C 91 39 91 44 88 44 C 90 45 90 49 87 48 C 88 50 86 52 84 50" stroke-width="1.5" />
-              </svg>
-            </div>
-            <p class="schedule__event-name">Ceremony</p>
-            <p class="schedule__event-time">2:00pm</p>
-          </div>
-
-          <div class="schedule__item">
-            <div class="schedule__icon">
-              <!-- Margarita / Cocktail Hour -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Glass Bowl -->
-                <path d="M20 20 L80 20 C80 20 70 50 50 50 C30 50 20 20 20 20 Z" />
-                <!-- Liquid line -->
-                <path d="M26 30 Q50 35 72 30" stroke-width="1.5" stroke-dasharray="2 3"/>
-                <!-- Stem -->
-                <path d="M50 50 v30" />
-                <circle cx="50" cy="65" r="4" />
-                <!-- Base -->
-                <path d="M35 80 Q50 75 65 80" />
-                <!-- Lime Slice -->
-                <circle cx="75" cy="20" r="12" />
-                <path d="M75 20 l-8-8 M75 20 l8 8 M75 20 l8-8 M75 20 l-8 8" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <p class="schedule__event-name">Cocktail Hour</p>
-            <p class="schedule__event-time">3:00pm</p>
-          </div>
-
-          <div class="schedule__item">
-            <div class="schedule__icon">
-              <!-- Archery / Camp Activities -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Target tripod -->
-                <path d="M35 80 L50 60 L65 80 M50 60 V80" stroke-width="3" />
-                <!-- Target rings -->
-                <circle cx="50" cy="40" r="25" fill="var(--cream)" />
-                <circle cx="50" cy="40" r="18" />
-                <circle cx="50" cy="40" r="10" />
-                <circle cx="50" cy="40" r="3" fill="var(--bark-dark)" />
-                <!-- Arrows -->
-                <path d="M50 40 L75 15" stroke-width="2" />
-                <path d="M65 25 L75 15 L65 15" />
-                <path d="M45 25 L80 10" stroke-width="1.5" />
-              </svg>
-            </div>
-            <p class="schedule__event-name">Camp Activities Open</p>
-            <p class="schedule__event-time">4:00PM</p>
-          </div>
-        </div>
-
-        <div class="schedule__grid schedule__grid--4col">
-          <div class="schedule__item">
-            <div class="schedule__icon">
-              <!-- Plate and Cutlery (Refined Minimal) -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Simple scalloped plate -->
-                <path d="M50 15 C 60 15 65 20 70 25 C 75 30 80 40 80 50 C 80 60 75 70 70 75 C 65 80 60 85 50 85 C 40 85 35 80 30 75 C 25 70 20 60 20 50 C 20 40 25 30 30 25 C 35 20 40 15 50 15 Z" fill="var(--cream)" />
-                <path d="M50 15 C 60 15 65 20 70 25 C 75 30 80 40 80 50 C 80 60 75 70 70 75 C 65 80 60 85 50 85 C 40 85 35 80 30 75 C 25 70 20 60 20 50 C 20 40 25 30 30 25 C 35 20 40 15 50 15 Z" />
-                
-                <!-- Inner plate ring -->
-                <circle cx="50" cy="50" r="18" stroke-width="1.5" />
-                <!-- Dotted detail -->
-                <circle cx="50" cy="50" r="14" stroke-width="2" stroke-dasharray="0 4" />
-                
-                <!-- Scallop dividing lines -->
-                <path d="M40 20 L 44 33 M 60 20 L 56 33 M 75 35 L 65 40 M 75 65 L 65 60 M 60 80 L 56 67 M 40 80 L 44 67 M 25 65 L 35 60 M 25 35 L 35 40" stroke-width="1.5" />
-                
-                <!-- Fork -->
-                <path d="M11 25 V 40 M15 25 V 40 M19 25 V 40" stroke-width="1.5" />
-                <path d="M11 38 C 11 45 19 45 19 38 M15 45 V 75" stroke-width="2" />
-                
-                <!-- Knife -->
-                <path d="M85 20 V 45 C 82 45 82 40 82 30 C 82 20 85 20 85 20 Z" stroke-width="2" />
-                <path d="M85 45 V 75" stroke-width="2" />
-                
-                <!-- Spoon -->
-                <ellipse cx="94" cy="28" rx="4" ry="8" stroke-width="2" />
-                <path d="M94 36 V 75" stroke-width="2" />
-              </svg>
-            </div>
-            <p class="schedule__event-name">Dinner Reception</p>
-            <p class="schedule__event-time">6:30PM</p>
-          </div>
-
-          <div class="schedule__item">
-            <div class="schedule__icon">
-              <!-- Bonfire -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Logs Base -->
-                <path d="M25 80 L45 50 M75 80 L55 50 M35 85 L50 45 M65 85 L50 45" />
-                <!-- Flames (pointy) -->
-                <path d="M35 70 Q 30 50 40 35 Q 40 50 45 45 Q 50 20 60 30 Q 55 45 65 40 Q 60 55 70 65" stroke-linejoin="miter"/>
-                <path d="M50 75 C30 75 25 50 35 40 C35 55 45 45 50 20 C55 45 65 55 65 40 C75 50 70 75 50 75 Z" fill="var(--cream)" />
-                <path d="M50 75 C40 75 35 60 40 50 C40 60 45 55 50 35 C55 55 60 60 60 50 C65 60 60 75 50 75 Z" />
-                <path d="M30 30 l2 2 M65 25 l3 -3 M55 10 l1 -2" stroke-width="2"/>
-              </svg>
-            </div>
-            <p class="schedule__event-name">Bonfire</p>
-            <p class="schedule__event-time">8:00pm</p>
-          </div>
-
-          <div class="schedule__item">
-            <div class="schedule__icon">
-              <!-- Moon and Stars (Refined Minimal) -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Cleaner Crescent Moon -->
-                <path d="M55 15 C 30 15 30 75 55 75 C 65 75 75 65 75 65 C 50 65 45 35 70 20 C 65 15 60 15 55 15 Z" fill="var(--cream)" />
-                <path d="M55 15 C 30 15 30 75 55 75 C 65 75 75 65 75 65 C 50 65 45 35 70 20 C 65 15 60 15 55 15 Z" stroke-width="2.5" />
-                
-                <!-- 3 Simple Stars (Overlapping triangles for a sketch look, properly contained) -->
-                <!-- Top Left Star -->
-                <path d="M30 15 L35 30 L20 20 L40 20 L25 30 Z" stroke-width="1.5" />
-                <!-- Bottom Left Star -->
-                <path d="M15 45 L20 60 L10 50 L25 50 L10 60 Z" stroke-width="1.5" />
-                <!-- Bottom Right Star -->
-                <path d="M45 55 L50 70 L40 60 L55 60 L40 70 Z" stroke-width="1.5" />
-              </svg>
-            </div>
-            <p class="schedule__event-name">Optional Overnight</p>
-            <p class="schedule__event-time">9:30pm</p>
-          </div>
-
-          <div class="schedule__item">
-            <div class="schedule__icon">
-              <!-- Disco ball / After Party -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- String -->
-                <path d="M50 0 V30" />
-                <path d="M45 30 h10 border-radius M48 30 v-5 M52 30v-5" />
-                <!-- Ball -->
-                <circle cx="50" cy="60" r="30" />
-                <!-- Grid Lines -->
-                <path d="M25 45 Q50 35 75 45 M21 55 Q50 45 79 55 M21 65 Q50 55 79 65 M25 75 Q50 65 75 75" stroke-width="1.5"/>
-                <path d="M40 32 Q 30 60 40 88 M50 30 V 90 M60 32 Q 70 60 60 88" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <p class="schedule__event-name">After Party</p>
-            <p class="schedule__event-time">10:00pm</p>
-          </div>
-        </div>
-
-        <!-- Day 2 -->
-        <h3 class="schedule__day-heading schedule__day-heading--day2">Monday, <span>October 5th</span></h3>
-
-        <div class="schedule__grid schedule__grid--2col">
-          <div class="schedule__item">
-            <div class="schedule__icon">
-              <!-- Coffee Cup / Breakfast -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Saucer -->
-                <ellipse cx="50" cy="80" rx="30" ry="10" />
-                <path d="M30 83 Q50 90 70 83" />
-                <!-- Cup Base -->
-                <path d="M25 45 C25 80, 75 80, 75 45 Z" fill="var(--cream)" />
-                <!-- Cup Lip -->
-                <ellipse cx="50" cy="45" rx="25" ry="8" fill="var(--cream)" />
-                <ellipse cx="50" cy="45" rx="20" ry="5" />
-                <!-- Handle -->
-                <path d="M75 55 C90 55, 90 70, 70 70" />
-                <!-- Steam -->
-                <path d="M40 35 Q35 25 40 15 M50 35 Q45 25 50 15 M60 35 Q55 25 60 15" stroke-width="2" />
-              </svg>
-            </div>
-            <p class="schedule__event-name">Breakfast</p>
-            <p class="schedule__event-time">8:00am</p>
-          </div>
-
-          <div class="schedule__item">
-            <div class="schedule__icon">
-              <!-- Vintage Car / Check-out (Refined Minimal) -->
-              <svg viewBox="0 0 100 100" fill="none" class="sketch-icon" stroke="var(--bark-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <!-- Car Roof & Windows -->
-                <path d="M 30 35 C 30 15 70 15 70 35" fill="var(--cream)" />
-                <path d="M 30 35 C 30 15 70 15 70 35" />
-                <path d="M 35 35 C 40 22 60 22 65 35 Z" stroke-width="1.5" />
-                
-                <!-- Main Car Body (Beetle curve) -->
-                <path d="M 15 55 C 10 35 30 35 50 35 C 70 35 90 35 85 55 C 80 70 70 65 50 65 C 30 65 20 70 15 55 Z" fill="var(--cream)" />
-                <path d="M 15 55 C 10 35 30 35 50 35 C 70 35 90 35 85 55 C 80 70 70 65 50 65 C 30 65 20 70 15 55 Z" />
-                
-                <!-- Taillights -->
-                <circle cx="22" cy="50" r="3" fill="var(--cream)" stroke-width="1.5" />
-                <circle cx="78" cy="50" r="3" fill="var(--cream)" stroke-width="1.5" />
-                
-                <!-- Bumper -->
-                <path d="M 15 62 Q 50 68 85 62" stroke-width="3" />
-                <path d="M 30 58 V 65 M 70 58 V 65" stroke-width="2" />
-                
-                <!-- Tires -->
-                <path d="M 22 64 C 20 78 32 78 30 64" fill="var(--bark-dark)" />
-                <path d="M 78 64 C 80 78 68 78 70 64" fill="var(--bark-dark)" />
-                
-                <!-- "Just Married" Sign -->
-                <rect x="25" y="42" width="50" height="12" rx="2" fill="var(--cream)" />
-                <text x="50" y="48" font-size="4" text-anchor="middle" font-weight="bold" font-family="var(--font-typewriter)" stroke="none" fill="var(--bark-dark)">JUST MARRIED</text>
-                <text x="50" y="52" font-size="3" text-anchor="middle" font-family="var(--font-typewriter)" stroke="none" fill="var(--bark-dark)">• 10 - 05 •</text>
-                
-                <!-- Strings for cans -->
-                <path d="M 33 64 L 20 85 M 42 65 L 35 88 M 50 65 L 50 92 M 58 65 L 65 88 M 67 64 L 80 85" stroke-width="1" />
-                
-                <!-- 5 Tin Cans -->
-                <g fill="var(--cream)" stroke-width="1.5">
-                  <rect x="17" y="85" width="6" height="8" rx="1" transform="rotate(-20 20 89)" />
-                  <rect x="32" y="88" width="6" height="8" rx="1" transform="rotate(-10 35 92)" />
-                  <rect x="47" y="92" width="6" height="8" rx="1" />
-                  <rect x="62" y="88" width="6" height="8" rx="1" transform="rotate(10 65 92)" />
-                  <rect x="77" y="85" width="6" height="8" rx="1" transform="rotate(20 80 89)" />
-                </g>
-              </svg>
-            </div>
-            <p class="schedule__event-name">Check-out</p>
-            <p class="schedule__event-time">10:00am</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== OUR STORY SECTION ===== -->
-  <section id="story" class="story">
-    <div class="story__backdrop"></div>
-    <div class="story__content reveal">
-      <div class="story__sign">
-        <h2 class="story__heading">Cabaret Theatre</h2>
-        <p class="story__subheading">Our Story</p>
-        <p class="story__text">
-          We met in 2015 at Rutgers University during a production of Avenue Q. Our love story began exactly where most great romances do, in a prop closet, where Benji was searching for peace and quiet and Paige immediately derailed that plan. We've been inseparable ever since, laughing our way through theater, NYC adventures, and all the little moments in between. We can't wait to celebrate this next chapter with all of you!
-        </p>
-        <a href="https://www.cabarettheatre.org" target="_blank" rel="noopener noreferrer" class="story__link">[www.cabarettheatre.org]</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PACKING LIST SECTION ===== -->
-  <section id="packing" class="packing">
-    <div class="packing__video-wrap">
-      <video autoplay muted loop playsinline>
-        <source src="/images/backdrop.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <div class="packing__overlay"></div>
-
-    <div class="packing__content reveal">
-      <div class="packing__col packing__col--left">
-        <h2 class="packing__heading">Overnight<br/>Accommodations</h2>
-        <p class="packing__desc">We have arranged for <strong>exclusive use of the entire camp</strong> for the duration of our wedding (Sunday the 4th into Monday the 5th) and would love nothing more than for you to join us from beginning to end.</p>
-        <p class="packing__desc">While we know a wedding overnight might be unusual, we hope you'll make your reservation to stay over. We've planned an exciting schedule filled with family, friends, adventure, dancing &amp; s'mores. You won't want to miss any of it!</p>
-
-        <div class="packing__note">
-          <span class="packing__note-icon">🛏️</span>
-          <p>Rooms accommodate up to 5 guests with <strong>private bathrooms, A/C &amp; heat</strong>. All bedding, room towels, and housekeeping are included. You will <em>not</em> be sharing rooms or bathrooms with other couples or families.</p>
-        </div>
-
-        <div class="packing__note" style="margin-top: 0.75rem;">
-          <span class="packing__note-icon">📋</span>
-          <p>We'll be making all housing assignments. Let us know what room size you need. Individuals and couples get private rooms, and families are kept together. Have a specific request? Note it in the RSVP comments!</p>
-        </div>
-      </div>
-
-      <div class="packing__col packing__col--right">
-        <h2 class="packing__heading">Packing List</h2>
-        <ul class="packing__list" id="packingList">
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Comfortable clothes for outdoor activities</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Layers: t-shirts, long sleeves, sweater/jacket</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Pajamas/sleepwear</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Underwear &amp; socks</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Closed-toe shoes for activities</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Bathing suit</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Nicer outfit for ceremony or evening events</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Toiletries</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Toothbrush &amp; toothpaste</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Shampoo &amp; conditioner</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Soap/body wash</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Sunscreen</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Mosquito repellent</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Medications you normally take</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Towel <em class="packing__note-inline">(optional, towels are provided)</em></span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Water bottle</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Light rain jacket or waterproof layer</span></label></li>
-        </ul>
-        <div class="packing__reset-wrap">
-          <button class="packing__reset-btn" id="resetChecklistBtn" title="Clear checklist progress">
-            <span>🧹 Reset Checklist</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Full-width pricing & booking card -->
-    <div class="lodging-pricing reveal">
-      <div class="lodging-pricing__card">
-        <h3 class="lodging-pricing__title">Overnight Stay Pricing</h3>
-        <p class="lodging-pricing__dates">Sunday, October 4th at 1:15 PM to Monday, October 5th at 10:00 AM</p>
-
-        <div class="lodging-pricing__grid">
-          <div class="lodging-pricing__item">
-            <span class="lodging-pricing__amount">$99</span>
-            <span class="lodging-pricing__label">per adult</span>
-          </div>
-          <div class="lodging-pricing__item">
-            <span class="lodging-pricing__amount">$59.40</span>
-            <span class="lodging-pricing__label">per child (ages 4–15)</span>
-          </div>
-        </div>
-
-        <p class="lodging-pricing__note">Plus 15% tax and $15 events.com booking fee</p>
-        <p class="lodging-pricing__includes">✨ Includes all meals &amp; beverages from Sunday through Monday morning breakfast</p>
-
-        <div class="lodging-pricing__booking">
-          <a href="#" class="lodging-pricing__btn lodging-pricing__btn--primary">Book Online <span class="lodging-pricing__soon">(Link Coming Soon)</span></a>
-          <div class="lodging-pricing__divider">
-            <span>or</span>
-          </div>
-          <p class="lodging-pricing__phone">
-            Call Club Getaway at <a href="tel:800-643-8292"><strong>800-643-8292</strong></a><br/>
-            <span class="lodging-pricing__ref">Reference the <strong>Grecco Wedding</strong></span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ACTIVITIES SECTION ===== -->
-  <section id="activities" class="activities">
-    <div class="section-container">
-      <h2 class="section-label reveal"><span class="awaits-egg-trigger" id="awaitsEgg">What Awaits<img src="/images/EasterEgg.png" alt="Awais, Alex, and Benji dancing" class="awaits-egg-img" id="awaitsEggImg" /></span></h2>
-      <p class="section-title reveal reveal-delay-1">Camp Activities</p>
-      <p class="section-subtitle reveal reveal-delay-2">Get ready for the ultimate outdoor adventure weekend</p>
-
-      <div class="activities__grid">
-        <div class="activity-card reveal" data-activity="archery">
-          <div class="activity-card__img-wrap">
-            <img src="/images/camp_archery_1774819085276.png" alt="Archery at summer camp" loading="lazy" />
-          </div>
-          <div class="activity-card__body">
-            <div class="activity-card__emoji">🏹</div>
-            <h3>Archery</h3>
-            <p>Channel your inner Katniss (or Robin Hood)</p>
-          </div>
-        </div>
-
-        <div class="activity-card reveal reveal-delay-1" data-activity="zipline">
-          <div class="activity-card__img-wrap">
-            <img src="/images/camp_zipline_1774819100483.png" alt="Zip-lining through the forest" loading="lazy" />
-          </div>
-          <div class="activity-card__body">
-            <div class="activity-card__emoji">🪂</div>
-            <h3>Zip-lining</h3>
-            <p>Soar through the Connecticut treetops</p>
-          </div>
-        </div>
-
-        <div class="activity-card reveal reveal-delay-2" data-activity="waterskiing">
-          <div class="activity-card__img-wrap">
-            <img src="/images/camp_waterski_1774819115529.png" alt="Water skiing on the lake" loading="lazy" />
-          </div>
-          <div class="activity-card__body">
-            <div class="activity-card__emoji">🎿</div>
-            <h3>Water Skiing</h3>
-            <p>Hit the lake and make a splash</p>
-          </div>
-        </div>
-
-        <div class="activity-card reveal reveal-delay-3" data-activity="canoeing">
-          <div class="activity-card__img-wrap">
-            <img src="/images/camp_canoe_1774819131932.png" alt="Canoeing on a calm lake" loading="lazy" />
-          </div>
-          <div class="activity-card__body">
-            <div class="activity-card__emoji">🛶</div>
-            <h3>Canoeing</h3>
-            <p>Paddle through peaceful waters (couples welcome)</p>
-          </div>
-        </div>
-
-        <div class="activity-card reveal reveal-delay-4" data-activity="ropes">
-          <div class="activity-card__img-wrap">
-            <img src="/images/camp_ropes_1774819145536.png" alt="High ropes course" loading="lazy" />
-          </div>
-          <div class="activity-card__body">
-            <div class="activity-card__emoji">🧗</div>
-            <h3>High Ropes</h3>
-            <p>Test your courage on the ropes course</p>
-          </div>
-        </div>
-
-        <div class="activity-card reveal reveal-delay-5" data-activity="smores">
-          <div class="activity-card__img-wrap">
-            <img src="/images/camp_smores_1774819161769.png" alt="S'mores by a campfire" loading="lazy" />
-          </div>
-          <div class="activity-card__body">
-            <div class="activity-card__emoji">🔥</div>
-            <h3>S'mores by the Fire</h3>
-            <p>The main event (and our love language)</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== VIBE / QUIRKY SECTION ===== -->
-  <section id="vibe" class="vibe">
-    <div class="section-container">
-      <div class="vibe__content reveal">
-        <h2 class="section-label">The Vibe</h2>
-        <p class="section-title">A Few Notes from the Happy Couple</p>
-
-        <div class="vibe__cards">
-          <!-- Card 1: Vintage Clothing Tag (Dress Code Tag) -->
-          <div class="vibe__card vibe__card--tag reveal reveal-delay-1" id="dressCodeTag">
-            <span class="vibe__tag-badge" id="outfitBadge">Dress Code</span>
-            <button class="vibe__tag-cycle-btn" id="outfitCycleBtn" title="Click to cycle outfits!">
-              <span class="vibe__card-icon" id="outfitIcon">👗</span>
-            </button>
-            <h3 id="outfitTitle">Dress Code</h3>
-            <p id="outfitDesc">Dress to impress, but maybe leave the bug spray as perfume at home. Think "rustic chic meets ready for s'mores."</p>
-          </div>
-
-          <!-- Card 2: Polaroid Photo (Official Mascot - Sir Nutsworth III) -->
-          <div class="vibe__card vibe__card--polaroid reveal reveal-delay-2">
-            <div class="vibe__polaroid-tape" aria-hidden="true"></div>
-            <div class="vibe__polaroid-img-wrap">
-              <div class="squirrel-easter-egg" id="squirrelEgg" title="Click the tuxedo squirrel!">
-                <svg viewBox="0 0 80 80" class="squirrel-svg">
-                  <circle cx="40" cy="40" r="36" fill="var(--bark-mid)" opacity="0.15"/>
-                  <!-- Forest backdrop details inside polaroid -->
-                  <text x="14" y="60" font-size="12" opacity="0.3">🌲</text>
-                  <text x="64" y="55" font-size="10" opacity="0.3">🌲</text>
-                  <text x="40" y="48" text-anchor="middle" font-size="36">🐿️</text>
-                  <text x="40" y="66" text-anchor="middle" font-size="12">🎩</text>
-                </svg>
+        <!-- the folded card that lifts out and unfolds -->
+        <div class="env__card" id="envCard">
+          <div class="env__card3d" id="envCard3d">
+            <!-- lower half: bottom of the hero "cover" (names) — always present -->
+            <div class="env__half env__half--lower">
+              <div class="env__cover env__cover--lower">
+                <div class="env__cover-names">Paige <span>&amp;</span> Benji</div>
+                <div class="env__cover-tag">Campfires, S'mores &amp; I Dos</div>
               </div>
             </div>
-            <h3 style="display:none;">Official Mascot</h3>
-            <div class="vibe__polaroid-caption">Sir Nutsworth III</div>
-            <p style="font-size:0.85rem; text-align:center; margin-top:0.25rem;">Keep your eyes peeled for our unofficial mascot. Spotting him brings good luck!</p>
-          </div>
-
-          <!-- Card 3: Camp Cabin Pass / Expectation Card -->
-          <div class="vibe__card vibe__card--pass reveal reveal-delay-3" id="campPassCard">
-            <div class="vibe__pass-tack" aria-hidden="true">
-              <svg viewBox="0 0 40 50" width="22" height="28">
-                <circle cx="20" cy="14" r="12" fill="#c0392b" stroke="#922b21" stroke-width="1.5"/>
-                <ellipse cx="20" cy="14" rx="6" ry="4" fill="rgba(255,255,255,0.25)" transform="rotate(-30 20 14)"/>
-                <path d="M20 26 L22 44 L20 50 L18 44 Z" fill="#888" stroke="#666" stroke-width="0.5"/>
-              </svg>
-            </div>
-            <button class="vibe__cabin-btn" id="cabinNightBtn" title="Toggle Cabin Night Mode!">
-              <span class="vibe__card-icon">⛺</span>
-            </button>
-            <h3>What to Expect</h3>
-            <ul class="vibe__expect-list">
-              <li>Camp bunk beds & cabin sleepovers</li>
-              <li>Campfire sing-alongs & s'mores</li>
-              <li>Classic summer camp vibes & Olympics</li>
-            </ul>
-            <p class="vibe__permit-quote">"Wait, do we need a marriage license or a camp permit for this?" 🏕️📜</p>
-            <div class="vibe__mini-fire" aria-hidden="true">
-              <div class="vibe__mini-flame"></div>
+            <!-- upper half: folds at the centre crease -->
+            <div class="env__half env__half--upper" id="envCardUpper">
+              <!-- front = top of the hero cover (revealed when unfolded) -->
+              <div class="env__cover env__cover--upper">
+                <div class="env__cover-prelude">~ Save the Date ~</div>
+                <div class="env__cover-play" aria-hidden="true">
+                  <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="22"/><path d="M19 15 L34 24 L19 33 Z"/></svg>
+                </div>
+              </div>
+              <!-- back = the closed-card monogram (seen while folded) -->
+              <div class="env__cover-back">
+                <div class="env__card-monogram">P <span>&amp;</span> B</div>
+                <div class="env__card-sub">You're Invited</div>
+                <div class="env__card-rule"></div>
+                <div class="env__card-foot">A Camp Affair</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- FaceTime Incoming Call Screen Overlay -->
-    <div class="facetime-overlay" id="facetimeOverlay">
-      <div class="facetime-card" id="facetimeCard">
-        <!-- Initial Incoming Screen -->
-        <div id="facetimeIncomingView">
-          <div class="facetime-avatar-wrap">
-            <img src="/images/mikestern.png" alt="Best Man Michael Stern" class="facetime-avatar" />
-          </div>
-          <div class="facetime-caller">Michael Stern</div>
-          <div class="facetime-subtitle">Best Man</div>
-          <div class="facetime-ringing">FaceTime Video...</div>
-          <div class="facetime-actions">
-            <button class="facetime-btn facetime-btn--decline" id="declineCallBtn" aria-label="Decline Call">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-            <button class="facetime-btn facetime-btn--accept" id="acceptCallBtn" aria-label="Accept Call">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M23 7a2 2 0 0 0-2-2h-3.5a1 1 0 0 1-.8-.4l-1.2-1.6A2 2 0 0 0 13.9 2h-3.8A2 2 0 0 0 8.5 3L7.3 4.6a1 1 0 0 1-.8.4H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V7z"></path>
-                <circle cx="12" cy="13" r="4"></circle>
-              </svg>
-            </button>
-          </div>
+        <!-- front pocket (hides the card) -->
+        <div class="env__front" aria-hidden="true"></div>
+
+        <!-- faint hand-written address on the pocket -->
+        <div class="env__address" aria-hidden="true">
+          <span class="env__address-line">To: Our Favorite People</span>
+          <span class="env__address-line env__address-line--sm">♡ from the Happy Campers ♡</span>
         </div>
 
-        <!-- Call Connected Screen -->
-        <div id="facetimeConnectedView" style="display: none;">
-          <div class="facetime-avatar-wrap" style="width: 80px; height: 80px; margin-bottom: 1rem;">
-            <img src="/images/mikestern.png" alt="Best Man Michael Stern" class="facetime-avatar" />
-          </div>
-          <div class="facetime-caller" style="font-size: 1.3rem;">Michael Stern</div>
-          <div class="facetime-subtitle" style="font-size: 0.8rem; margin-bottom: 1rem;">Call Connected (0:04)</div>
-          <div class="facetime-quote-box">
-            <p class="facetime-dialogue">
-              "<strong>Michael</strong>: Paige! Benji! Where are you guys? We only have this chapel rented for like 30 minutes! Wait... is that a squirrel in a tux?!"
-            </p>
-          </div>
-          <div class="facetime-banner">
-            🎉 MASCOT VERIFIED: Sir Nutsworth III, Esq. is co-officiating!
-          </div>
-          <button class="facetime-close-btn" id="closeCallBtn">Hang Up 📞</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER / INVITE SECTION ===== -->
-  <footer id="footer" class="footer">
-    <div class="footer__stars" id="starsCanvas"></div>
-    <div class="footer__campfire">
-      <div class="campfire-flames">
-        <div class="flame flame--1"></div>
-        <div class="flame flame--2"></div>
-        <div class="flame flame--3"></div>
-      </div>
-      <div class="campfire-glow"></div>
-    </div>
-
-    <div class="section-container footer__content">
-      <p class="footer__label reveal">We Can't Wait to See You</p>
-      <h2 class="footer__title reveal reveal-delay-1">RSVP</h2>
-      <p class="footer__subtitle reveal reveal-delay-2">Let us know if you'll be joining the adventure</p>
-
-      <form class="footer__form reveal reveal-delay-3" id="rosterForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdDL1uOp6ViYmHRkF3ZusEH93za_5QaKxnfkEqEQ37vlU7mQA/formResponse" method="POST" target="hidden_iframe" novalidate>
-
-        <!-- Name Row -->
-        <div class="footer__form-row">
-          <div class="footer__form-group">
-            <label for="guestFirstName" class="footer__label-text">First Name <span class="footer__req">*</span></label>
-            <input type="text" id="guestFirstName" name="entry.2024987319" placeholder="First name" required autocomplete="given-name" />
-            <span class="footer__error" id="firstNameError">Please enter your first name</span>
-          </div>
-          <div class="footer__form-group">
-            <label for="guestLastName" class="footer__label-text">Last Name <span class="footer__req">*</span></label>
-            <input type="text" id="guestLastName" name="entry.1752080378" placeholder="Last name" required autocomplete="family-name" />
-            <span class="footer__error" id="lastNameError">Please enter your last name</span>
-          </div>
-        </div>
-
-        <!-- Email + Phone Row -->
-        <div class="footer__form-row">
-          <div class="footer__form-group">
-            <label for="guestEmail" class="footer__label-text">Email Address <span class="footer__req">*</span></label>
-            <input type="email" id="guestEmail" name="entry.1886881652" placeholder="your@email.com" required autocomplete="email" />
-            <span class="footer__error" id="emailError">Please enter a valid email address</span>
-          </div>
-          <div class="footer__form-group">
-            <label for="guestPhone" class="footer__label-text">Phone Number <span class="footer__req">*</span></label>
-            <input type="tel" id="guestPhone" name="entry.963235069" placeholder="(555) 123-4567" required autocomplete="tel" />
-            <span class="footer__error" id="phoneError">Please enter your phone number</span>
-          </div>
-        </div>
-
-        <!-- Address -->
-        <div class="footer__form-group">
-          <label for="guestAddress" class="footer__label-text">Mailing Address <span class="footer__req">*</span></label>
-          <input type="text" id="guestAddress" name="entry.917375245" placeholder="Street, City, State, ZIP" required autocomplete="street-address" />
-          <span class="footer__error" id="addressError">Please enter your mailing address</span>
-        </div>
-
-        <!-- Attending? -->
-        <div class="footer__form-group">
-          <label class="footer__label-text">Will you be attending? <span class="footer__req">*</span></label>
-          <div class="footer__radio-group" id="attendingGroup">
-            <label class="footer__radio-card">
-              <input type="radio" name="entry.1747976834" value="Yes, count me in!" required />
-              <span class="footer__radio-display">
-                <span class="footer__radio-emoji">🏕️</span>
-                <span>Yes, count me in!</span>
-              </span>
-            </label>
-            <label class="footer__radio-card">
-              <input type="radio" name="entry.1747976834" value="Sorry, can't make it" required />
-              <span class="footer__radio-display">
-                <span class="footer__radio-emoji">😢</span>
-                <span>Sorry, can't make it</span>
-              </span>
-            </label>
-          </div>
-          <span class="footer__error" id="attendingError">Please let us know if you can make it</span>
-        </div>
-
-        <!-- Dietary Restrictions -->
-        <div class="footer__form-group">
-          <label for="guestDiet" class="footer__label-text">Dietary Restrictions <span class="footer__req">*</span></label>
-          <input type="text" id="guestDiet" name="entry.1543444031" placeholder="Vegetarian, vegan, gluten-free, allergies, none, etc." required />
-          <span class="footer__error" id="dietError">Please list any dietary restrictions or type "None"</span>
-        </div>
-
-        <!-- Staying Overnight? -->
-        <div class="footer__form-group">
-          <label class="footer__label-text">Planning to stay overnight? <span class="footer__req">*</span></label>
-          <div class="footer__radio-group" id="overnightGroup">
-            <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.1379738470" value="Yes, bunk me up!" required />
-              <span class="footer__radio-display">
-                <span class="footer__radio-emoji">⛺</span>
-                <span>Yes, bunk me up!</span>
-              </span>
-            </label>
-            <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.1379738470" value="No, heading home" required />
-              <span class="footer__radio-display">
-                <span class="footer__radio-emoji">🚗</span>
-                <span>No, heading home</span>
-              </span>
-            </label>
-          </div>
-          <span class="footer__error" id="overnightError">Please let us know your overnight plans</span>
-        </div>
-
-        <!-- Shuttle? -->
-        <div class="footer__form-group">
-          <label class="footer__label-text">Need the camp shuttle? <span class="footer__req">*</span></label>
-          <div class="footer__radio-group" id="shuttleGroup">
-            <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.1513616992" value="Yes, pick me up!" required />
-              <span class="footer__radio-display">
-                <span class="footer__radio-emoji">🚐</span>
-                <span>Yes, pick me up!</span>
-              </span>
-            </label>
-            <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.1513616992" value="No, I'll drive" required />
-              <span class="footer__radio-display">
-                <span class="footer__radio-emoji">🚗</span>
-                <span>No, I'll drive</span>
-              </span>
-            </label>
-          </div>
-          <span class="footer__error" id="shuttleError">Please let us know your transportation plans</span>
-          <p class="footer__hint">Metro North → Harlem Valley/Wingdale. Contact Club Getaway at <a href="tel:800-643-8292">800-643-8292</a> 2 weeks prior for pickup times.</p>
-        </div>
-
-        <!-- Color Wars -->
-        <div class="footer__form-group">
-          <label class="footer__label-text">Interested in Color Wars / Crazy Olympics? <span class="footer__req">*</span></label>
-          <p class="footer__hint" style="margin-top:0;margin-bottom:0.5rem;">A fun, camp-style team activity. More details to come!</p>
-          <div class="footer__radio-group" id="colorWarsGroup">
-            <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.157830799" value="I'm in, let's go!" required />
-              <span class="footer__radio-display">
-                <span class="footer__radio-emoji">🏆</span>
-                <span>I'm in, let's go!</span>
-              </span>
-            </label>
-            <label class="footer__radio-card footer__radio-card--sm">
-              <input type="radio" name="entry.157830799" value="I'll cheer from the sidelines" required />
-              <span class="footer__radio-display">
-                <span class="footer__radio-emoji">👀</span>
-                <span>I'll cheer from the sidelines</span>
-              </span>
-            </label>
-          </div>
-          <span class="footer__error" id="colorWarsError">Please let us know if you're interested</span>
-        </div>
-
-        <!-- Comments -->
-        <div class="footer__form-group">
-          <label for="guestComments" class="footer__label-text">Comments <span class="footer__req">*</span></label>
-          <textarea id="guestComments" name="entry.1599853593" placeholder="Anything else you'd like us to know? Special requests, plus-one info, song requests, etc." required rows="4"></textarea>
-          <span class="footer__error" id="commentsError">Please add a comment or type "None"</span>
-        </div>
-
-        <!-- Honeypot Field (Hidden from humans) -->
-        <div class="footer__honeypot" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;">
-          <label for="guestBait" class="footer__label-text">Leave this blank</label>
-          <input type="text" id="guestBait" name="guest_bait_honey" tabindex="-1" autocomplete="off" />
-        </div>
-
-        <!-- Human Verification (Anti-Bot) -->
-        <div class="footer__form-group footer__captcha-group" id="captchaGroup">
-          <label for="captchaAnswer" class="footer__label-text">
-            Prove you're a happy camper: What is <span id="captchaQuestion" style="color: var(--fire-amber); font-weight: 700;"></span>? <span class="footer__req">*</span>
-          </label>
-          <input type="text" id="captchaAnswer" placeholder="Your answer" required autocomplete="off" />
-          <span class="footer__error" id="captchaError">Please solve the riddle to prove you are a human</span>
-        </div>
-
-        <button type="submit" class="footer__submit" id="submitBtn">
-          <span class="footer__submit-text">Send RSVP 🏕️</span>
+        <!-- postmark stamp (easter egg) -->
+        <button class="env__stamp" id="envStamp" type="button" aria-label="Postmark">
+          <span class="env__stamp-inner">
+            <span class="env__stamp-top">★ CAMP POST ★</span>
+            <span class="env__stamp-mid">🌲</span>
+            <span class="env__stamp-bot" id="envStampText">RETURN TO SENDER</span>
+          </span>
         </button>
-      </form>
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
-      <!-- Confirmation toast -->
-      <div class="footer__toast" id="confirmToast">
-        <span class="footer__toast-icon">🎉</span>
-        <span class="footer__toast-msg">RSVP received! See you at camp!</span>
+        <!-- top flap (opens in 3D) -->
+        <div class="env__flap" id="envFlap" aria-hidden="true"></div>
+
+        <!-- wax seal w/ rich padlock = the lock / click target -->
+        <button class="env__seal" id="envSeal" type="button" aria-label="Open the invitation">
+          <svg class="env__lock" id="envLock" viewBox="0 0 64 76" aria-hidden="true">
+            <path class="env__lock-shackle" id="envLockShackle" d="M17 38 V24 a15 15 0 0 1 30 0 V38" />
+            <rect class="env__lock-body" x="11" y="36" width="42" height="34" rx="8" />
+            <circle class="env__lock-hole" cx="32" cy="50" r="5" />
+            <rect class="env__lock-hole" x="29.5" y="52" width="5" height="12" rx="2.5" />
+            <ellipse class="env__lock-shine" cx="24" cy="46" rx="5" ry="8" />
+          </svg>
+          <span class="env__seal-mono">P &amp; B</span>
+        </button>
+        <span class="env__seal-bubble" id="envSealBubble" hidden>🐿️ Sir Nutsworth III, at your service.</span>
       </div>
 
-      <p class="footer__copyright">Paige & Benji · October 2026 · Made with 🤎 and campfire smoke</p>
+      <!-- password form (hidden until the seal is tapped) -->
+      <form class="env-unlock" id="envUnlock" hidden autocomplete="off">
+        <label class="env-unlock__label" for="envPass">Whisper the magic words</label>
+        <div class="env-unlock__row">
+          <input
+            class="env-unlock__input"
+            id="envPass"
+            type="password"
+            name="env-pass"
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            spellcheck="false"
+            placeholder="Password"
+            aria-describedby="envErr"
+          />
+          <button class="env-unlock__btn" id="envUnlockBtn" type="submit">Unlock</button>
+        </div>
+        <p class="env-unlock__err" id="envErr" hidden>That's not quite it — try again.</p>
+      </form>
+
+      <p class="env-hint" id="envHint">🔒 Tap the wax seal to open</p>
     </div>
-  </footer>
+  </main>
 
-</Layout>
+  <!-- decrypted content is injected here -->
+  <div id="letter-mount"></div>
 
-<script>
-  // ===== Live Countdown to October 4, 2026 at 2:00 PM ET =====
-  (function countdownTimer() {
-    // October 4, 2026, 2:00 PM ET = 18:00 UTC (ET is UTC-4 in October / EDT)
-    const weddingDate = new Date('2026-10-04T18:00:00Z');
-    const cdDays = document.getElementById('cdDays');
-    const cdHours = document.getElementById('cdHours');
-    const cdMins = document.getElementById('cdMins');
-    const cdSecs = document.getElementById('cdSecs');
+  <!-- Encrypted payload: ciphertext + KDF params only. No plaintext, no password. -->
+  <script type="application/json" id="letter-data" is:inline set:html={JSON.stringify(letterEnc)}></script>
 
-    function pad(n: number) { return n.toString().padStart(2, '0'); }
+  <style is:global>
+    /* ===========================================================
+       ENVELOPE UNLOCK SHELL — self-contained (does not need site.css)
+       =========================================================== */
+    :root {
+      --env-w: min(90vw, 460px);
+      --env-h: calc(var(--env-w) * 0.66);
+    }
+    html.env-locked,
+    html.env-locked body { overflow: hidden; }
 
-    function update() {
-      const now = new Date();
-      const diff = weddingDate.getTime() - now.getTime();
+    .env-stage {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 1rem;
+      background: radial-gradient(120% 85% at 50% 4%, #0a4570 0%, #053257 34%, #042547 58%, #021830 80%, #010d1d 100%);
+      transition: opacity 0.6s ease;
+    }
+    .env-stage.is-gone { opacity: 0; pointer-events: none; }
+    /* during the zoom, melt the cream envelope back into the night sky (dark→dark handoff) */
+    .env-stage.is-zooming .env__back,
+    .env-stage.is-zooming .env__front,
+    .env-stage.is-zooming .env__flap,
+    .env-stage.is-zooming .env__stamp,
+    .env-stage.is-zooming .env__address,
+    .env-stage.is-zooming .env-unlock,
+    .env-stage.is-zooming .env-hint { opacity: 0; transition: opacity 0.4s ease; pointer-events: none; }
+    /* warm campfire glow at the bottom */
+    .env-stage::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -28%;
+      width: 130%;
+      height: 60%;
+      transform: translateX(-50%);
+      background: radial-gradient(closest-side, rgba(244, 163, 0, 0.30), rgba(232, 97, 26, 0.12) 52%, transparent 74%);
+      pointer-events: none;
+    }
+    .env-stage__stars { position: absolute; inset: 0; pointer-events: none; }
+    .env-stage__stars i {
+      position: absolute;
+      display: block;
+      background: var(--star-white, #fffde7);
+      border-radius: 50%;
+      animation: envTwinkle 3.4s infinite alternate ease-in-out;
+    }
+    @keyframes envTwinkle { from { opacity: 0.2; transform: scale(1); } to { opacity: 1; transform: scale(1.45); } }
 
-      if (diff <= 0) {
-        if (cdDays) cdDays.textContent = '0';
-        if (cdHours) cdHours.textContent = '00';
-        if (cdMins) cdMins.textContent = '00';
-        if (cdSecs) cdSecs.textContent = '00';
+    .env-stage__ridge {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 15vh;
+      background: #010a16;
+      pointer-events: none;
+      clip-path: polygon(0% 100%, 0% 58%, 4% 82%, 8% 44%, 12% 80%, 16% 56%, 20% 86%, 24% 46%, 28% 82%, 32% 60%, 36% 88%, 40% 44%, 44% 80%, 48% 62%, 52% 86%, 56% 46%, 60% 82%, 64% 56%, 68% 88%, 72% 48%, 76% 80%, 80% 60%, 84% 86%, 88% 46%, 92% 82%, 96% 62%, 100% 80%, 100% 100%);
+    }
+
+    .env-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      z-index: 2;
+    }
+
+    .env {
+      position: relative;
+      width: var(--env-w);
+      height: var(--env-h);
+      perspective: 1500px;
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 26px 42px rgba(0, 0, 0, 0.45));
+    }
+
+    .env__back {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      border-radius: 8px;
+      background: linear-gradient(160deg, #e9e2d0, #ddd3bd);
+      box-shadow: inset 0 8px 22px rgba(0, 0, 0, 0.30);
+    }
+
+    /* ---- folding card ---- */
+    .env__card {
+      position: absolute;
+      left: 7%; right: 7%; top: 11%; bottom: 13%;
+      z-index: 2;
+      transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform;
+    }
+    .env__card.is-lifting { transform: translateY(-52%); z-index: 30; }
+    .env__card.is-zoom {
+      transform: translateY(-52%) scale(2.7);
+      opacity: 0;
+      transition: transform 1.0s cubic-bezier(0.62, 0, 0.32, 1), opacity 0.7s ease 0.15s;
+      z-index: 30;
+    }
+
+    .env__card3d {
+      position: absolute;
+      inset: 0;
+      transform-style: preserve-3d;
+    }
+    .env__half {
+      position: absolute;
+      left: 0; right: 0;
+      height: 50%;
+      backface-visibility: hidden;
+    }
+    .env__half--lower { top: 50%; }
+    .env__half--upper {
+      top: 0;
+      transform-origin: bottom center;
+      transform: rotateX(180deg);          /* folded down over the lower half */
+      transform-style: preserve-3d;
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .env__half--upper.is-unfolded { transform: rotateX(0deg); }
+
+    .env__cover {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--cream);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    }
+    /* dark hero-like cover, split across the crease */
+    .env__cover--lower {
+      background: linear-gradient(180deg, #042c4f 0%, #021830 70%, #010f20 100%);
+      border-radius: 0 0 7px 7px;
+      gap: 0.25rem;
+      padding-top: 0.3rem;
+    }
+    .env__cover--upper {
+      background: linear-gradient(180deg, #0a3b63 0%, #063055 100%);
+      border-radius: 7px 7px 0 0;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      padding-bottom: 0.4rem;
+    }
+    .env__cover-names { font-family: var(--font-serif); font-size: clamp(1.5rem, 5.5vw, 2.4rem); line-height: 1; color: var(--cream); }
+    .env__cover-names span { color: var(--fire-amber); }
+    .env__cover-tag { font-family: var(--font-script); font-size: clamp(0.85rem, 3vw, 1.15rem); color: var(--fire-amber); }
+    .env__cover-prelude { font-family: var(--font-script); font-size: clamp(0.9rem, 3vw, 1.2rem); color: var(--fire-amber); }
+    .env__cover-play svg { width: clamp(34px, 12%, 46px); height: auto; }
+    .env__cover-play circle { fill: rgba(255, 255, 255, 0.12); stroke: rgba(255, 253, 231, 0.7); stroke-width: 2; }
+    .env__cover-play path { fill: var(--cream); }
+
+    /* the closed-card face (cream) seen while folded */
+    .env__cover-back {
+      position: absolute;
+      inset: 0;
+      transform: rotateX(180deg);
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 7px;
+      background: linear-gradient(165deg, #ffffff, #f5f1e6);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+    .env__card-monogram { font-family: var(--font-serif); font-size: clamp(1.8rem, 6vw, 2.8rem); color: var(--forest-mid); letter-spacing: 0.04em; line-height: 1; }
+    .env__card-monogram span { color: var(--fire-amber); }
+    .env__card-sub { font-family: var(--font-script); font-size: clamp(1rem, 3.4vw, 1.4rem); color: var(--bark-dark); margin-top: 0.3rem; }
+    .env__card-rule { width: 42%; height: 1px; background: linear-gradient(90deg, transparent, var(--forest-mid), transparent); margin: 0.5rem auto; opacity: 0.6; }
+    .env__card-foot { font-family: var(--font-typewriter); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bark-pale); }
+
+    /* ---- front pocket ---- */
+    .env__front {
+      position: absolute;
+      left: 0; right: 0; bottom: 0; top: 36%;
+      z-index: 3;
+      background: linear-gradient(160deg, #f4efe1, #e7dfcc);
+      clip-path: polygon(0 14%, 50% 0, 100% 14%, 100% 100%, 0 100%);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.10);
+      border-radius: 0 0 8px 8px;
+    }
+    .env__front::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      clip-path: inherit;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.06), transparent 28%, transparent 72%, rgba(0, 0, 0, 0.06));
+    }
+
+    .env__address {
+      position: absolute;
+      left: 11%; bottom: 13%;
+      z-index: 5;
+      transform: rotate(-2deg);
+      pointer-events: none;
+    }
+    .env__address-line { display: block; font-family: var(--font-script); color: #3a4a5a; opacity: 0.82; font-size: clamp(0.9rem, 3.2vw, 1.2rem); line-height: 1.25; }
+    .env__address-line--sm { font-size: clamp(0.72rem, 2.6vw, 0.92rem); opacity: 0.62; }
+
+    .env__stamp {
+      position: absolute;
+      top: 7%; right: 7%;
+      z-index: 14;
+      transform: rotate(-9deg);
+      border: 2px dashed rgba(4, 37, 71, 0.55);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.35);
+      padding: 0.28rem 0.42rem;
+      cursor: pointer;
+      color: var(--bark-dark);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .env__stamp-inner { display: flex; flex-direction: column; align-items: center; gap: 1px; }
+    .env__stamp-top { font-family: var(--font-typewriter); font-size: 0.42rem; letter-spacing: 0.08em; }
+    .env__stamp-mid { font-size: 0.85rem; line-height: 1; }
+    .env__stamp-bot { font-family: var(--font-typewriter); font-size: 0.4rem; letter-spacing: 0.04em; max-width: 86px; text-align: center; }
+    .env__stamp.is-thunk { animation: stampThunk 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    @keyframes stampThunk { 0% { transform: rotate(-9deg) scale(1); } 40% { transform: rotate(-5deg) scale(1.2); } 100% { transform: rotate(-9deg) scale(1); } }
+
+    .env__flap {
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 54%;
+      z-index: 12;
+      background: linear-gradient(160deg, #f2ecdc, #e3dac4);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top center;
+      transform: rotateX(0deg);
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      backface-visibility: hidden;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.10);
+    }
+    .env__flap.is-open { transform: rotateX(-172deg); z-index: 2; }
+    .env__flap.is-flutter { animation: envFlutter 0.7s ease; }
+    @keyframes envFlutter { 0%, 100% { transform: rotateX(0); } 25% { transform: rotateX(-17deg); } 55% { transform: rotateX(-6deg); } 80% { transform: rotateX(-12deg); } }
+
+    /* ---- wax seal + rich padlock ---- */
+    .env__seal {
+      position: absolute;
+      top: 41%; left: 50%;
+      width: clamp(66px, 19%, 96px);
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      border: none;
+      cursor: pointer;
+      border-radius: 50%;
+      background: radial-gradient(circle at 36% 30%, #4f821c, #345C0D 55%, #1d3307);
+      box-shadow: 0 3px 9px rgba(0, 0, 0, 0.38), inset 0 2px 6px rgba(255, 255, 255, 0.28), inset 0 -5px 9px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      padding: 12% 0 9%;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    /* scalloped wax rim */
+    .env__seal::before {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background:
+        repeating-conic-gradient(from 0deg, #345C0D 0deg 12deg, #2a4a0a 12deg 24deg);
+      z-index: -1;
+      filter: blur(0.4px);
+    }
+    .env__lock { width: 52%; height: 52%; overflow: visible; }
+    .env__lock-shackle {
+      fill: none;
+      stroke: #f3d883;
+      stroke-width: 7;
+      stroke-linecap: round;
+      transform-box: fill-box;
+      transform-origin: 92% 96%;
+      transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .env__lock-body { fill: #ecca6a; stroke: #b8902f; stroke-width: 2; }
+    .env__lock-hole { fill: #6b4f17; }
+    .env__lock-shine { fill: rgba(255, 255, 255, 0.35); }
+    .env__lock.is-open .env__lock-shackle { transform: rotate(-38deg) translateY(-3px); }
+    .env__lock.is-rattle { animation: lockRattle 0.45s ease; }
+    @keyframes lockRattle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-7deg); } 55% { transform: rotate(6deg); } 80% { transform: rotate(-3deg); } }
+    .env__seal-mono { font-family: var(--font-serif); font-weight: 700; font-size: clamp(0.55rem, 2vw, 0.78rem); letter-spacing: 0.06em; color: #eef3e2; }
+    .env__seal.is-bounce { animation: sealBounce 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    @keyframes sealBounce { 0% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.1); } 100% { transform: translate(-50%, -50%) scale(1); } }
+    .env__seal.is-cracking { animation: sealCrack 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; pointer-events: none; }
+    @keyframes sealCrack { 0% { transform: translate(-50%, -50%) scale(1) rotate(0); } 35% { transform: translate(-50%, -50%) scale(1.18) rotate(-6deg); } 100% { transform: translate(-50%, -50%) scale(0) rotate(16deg); opacity: 0; } }
+
+    .env__seal-bubble {
+      position: absolute;
+      top: 6%; left: 50%;
+      transform: translate(-50%, -10px);
+      z-index: 25;
+      background: #fff;
+      color: var(--bark-dark);
+      font-family: var(--font-script);
+      font-size: 1rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 10px;
+      white-space: nowrap;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .env__seal-bubble[hidden] { display: none; }
+    .env__seal-bubble.is-shown { opacity: 1; transform: translate(-50%, -22px); }
+    .env__seal-bubble::after { content: ""; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: #fff; border-bottom: 0; }
+
+    .env-puff { position: absolute; top: 26%; font-size: 1.15rem; z-index: 26; pointer-events: none; animation: envPuff 1.3s ease forwards; }
+    @keyframes envPuff { 0% { opacity: 0; transform: translate(0, 0) scale(0.6); } 20% { opacity: 1; } 100% { opacity: 0; transform: translate(var(--dx, 0), -95px) scale(1.2); } }
+
+    .env-hint { color: var(--cream); font-family: var(--font-script); font-size: 1.35rem; opacity: 0.92; text-align: center; transition: opacity 0.4s ease, transform 0.4s ease; }
+    .env-hint.is-hidden { opacity: 0; transform: translateY(8px); pointer-events: none; }
+
+    .env-unlock { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; opacity: 0; transform: translateY(14px); }
+    .env-unlock[hidden] { display: none; }
+    .env-unlock.is-shown { animation: envRevealUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes envRevealUp { to { opacity: 1; transform: translateY(0); } }
+    .env-unlock__label { color: var(--fire-amber); font-family: var(--font-script); font-size: 1.4rem; }
+    .env-unlock__row { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+    .env-unlock__input {
+      font-size: 16px;
+      font-family: var(--font-sans);
+      padding: 0.7rem 0.9rem;
+      border-radius: 10px;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--bark-dark);
+      width: min(64vw, 240px);
+      outline: none;
+    }
+    .env-unlock__input:focus { border-color: var(--fire-amber); }
+    .env-unlock__btn {
+      font-family: var(--font-sans);
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, var(--forest-mid), var(--forest-light));
+      color: var(--cream);
+      min-width: 96px;
+    }
+    .env-unlock__btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .env-unlock.is-wrong .env-unlock__input { animation: envShake 0.4s ease; border-color: #ff6b6b; }
+    .env-unlock__err { color: #ffb4a8; font-family: var(--font-sans); font-size: 0.85rem; }
+    .env-unlock__err[hidden] { display: none; }
+    @keyframes envShake { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-6px); } 40% { transform: translateX(6px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(4px); } }
+
+    /* the decrypted page: grows from the unfolded card's spot, then becomes the page */
+    #letter-mount {
+      position: fixed;
+      inset: 0;
+      z-index: 9500;
+      opacity: 0;
+      transform: scale(0.34);
+      transform-origin: 50% 42%;
+      pointer-events: none;
+      overflow: hidden;
+      will-change: transform, opacity;
+      transition: opacity 0.5s ease, transform 1.05s cubic-bezier(0.62, 0, 0.32, 1);
+    }
+    #letter-mount.is-revealed { opacity: 1; transform: scale(1); pointer-events: auto; }
+    #letter-mount.is-flow { position: static; transform: none; overflow: visible; z-index: auto; transition: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .env-stage, .env__card, .env__half--upper, .env__flap, .env__seal, .env__lock-shackle, #letter-mount { transition: none !important; animation: none !important; }
+    }
+  </style>
+
+  <script>
+    // @ts-nocheck — intentionally DOM-heavy plain JS; elements are known to exist at runtime.
+    // ===========================================================
+    //  Envelope unlock — crypto + animation. Generic code only;
+    //  no wedding data lives here (it's all in the encrypted blob).
+    // ===========================================================
+    const ENC = JSON.parse(document.getElementById('letter-data').textContent);
+
+    const stage = document.getElementById('envelope-stage');
+    const envEl = document.getElementById('envelope');
+    const seal = document.getElementById('envSeal');
+    const lockSvg = document.getElementById('envLock');
+    const sealBubble = document.getElementById('envSealBubble');
+    const flap = document.getElementById('envFlap');
+    const card = document.getElementById('envCard');
+    const cardUpper = document.getElementById('envCardUpper');
+    const stamp = document.getElementById('envStamp');
+    const stampText = document.getElementById('envStampText');
+    const unlock = document.getElementById('envUnlock');
+    const passInput = document.getElementById('envPass');
+    const unlockBtn = document.getElementById('envUnlockBtn');
+    const errEl = document.getElementById('envErr');
+    const hintEl = document.getElementById('envHint');
+    const starsEl = document.getElementById('envStars');
+    const mount = document.getElementById('letter-mount');
+
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    const reduceMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.documentElement.classList.add('env-locked');
+
+    // scatter a few twinkling stars in the night sky
+    if (starsEl) {
+      let starHtml = '';
+      for (let i = 0; i < 46; i++) {
+        const size = (Math.random() * 2.4 + 1).toFixed(1);
+        starHtml +=
+          '<i style="left:' + (Math.random() * 100).toFixed(2) + '%;top:' + (Math.random() * 68).toFixed(2) +
+          '%;width:' + size + 'px;height:' + size + 'px;animation-delay:' + (Math.random() * 4).toFixed(2) +
+          's;opacity:' + (Math.random() * 0.6 + 0.3).toFixed(2) + '"></i>';
+      }
+      starsEl.innerHTML = starHtml;
+    }
+
+    // ---------- crypto ----------
+    const b64dec = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+    async function decryptLetter(blob, password) {
+      const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
+      const key = await crypto.subtle.deriveKey(
+        { name: 'PBKDF2', salt: b64dec(blob.salt), iterations: blob.iterations, hash: blob.hash },
+        base,
+        { name: 'AES-GCM', length: 256 },
+        false,
+        ['decrypt'],
+      );
+      const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64dec(blob.iv) }, key, b64dec(blob.ct));
+      return new TextDecoder().decode(pt);
+    }
+
+    function injectAndRun(html) {
+      mount.innerHTML = html;
+      mount.querySelectorAll('script').forEach((old) => {
+        const s = document.createElement('script');
+        if (old.type) s.type = old.type;
+        s.textContent = old.textContent;
+        old.replaceWith(s);
+      });
+    }
+
+    function loadSiteCss() {
+      return new Promise((resolve) => {
+        if (document.getElementById('site-css')) return resolve();
+        const link = document.createElement('link');
+        link.id = 'site-css';
+        link.rel = 'stylesheet';
+        link.href = '/styles/site.css';
+        link.onload = () => resolve();
+        link.onerror = () => resolve();
+        document.head.appendChild(link);
+      });
+    }
+
+    // ---------- unlock flow ----------
+    let opening = false;
+    let sealClicks = 0;
+
+    function openPasswordField() {
+      if (unlock.hidden) {
+        unlock.hidden = false;
+        void unlock.offsetWidth;
+        unlock.classList.add('is-shown');
+        if (hintEl) hintEl.classList.add('is-hidden');
+      }
+      setTimeout(() => { if (passInput) passInput.focus(); }, 80);
+    }
+
+    seal.addEventListener('click', () => {
+      if (opening) return;
+      openPasswordField();
+      // easter egg: every 3 taps the lock rattles + the mascot pipes up
+      sealClicks++;
+      seal.classList.remove('is-bounce');
+      void seal.offsetWidth;
+      seal.classList.add('is-bounce');
+      if (sealClicks % 3 === 0 && sealBubble) {
+        if (lockSvg) { lockSvg.classList.remove('is-rattle'); void lockSvg.offsetWidth; lockSvg.classList.add('is-rattle'); }
+        sealBubble.hidden = false;
+        void sealBubble.offsetWidth;
+        sealBubble.classList.add('is-shown');
+        setTimeout(() => sealBubble.classList.remove('is-shown'), 2200);
+      }
+    });
+
+    // easter egg: postmark cycles silly one-liners
+    const stampLines = [
+      'RETURN TO SENDER',
+      "POSTAGE: ONE (1) S'MORE",
+      'VIA AVENUE Q EXPRESS',
+      'FRAGILE: CONTAINS PUPPETS',
+      'RETURN TO THE PROP CLOSET',
+      'PAR AVION · PAR CANOE',
+    ];
+    let stampIdx = 0;
+    if (stamp && stampText) {
+      stamp.addEventListener('click', (e) => {
+        e.stopPropagation();
+        stampIdx = (stampIdx + 1) % stampLines.length;
+        stampText.textContent = stampLines[stampIdx];
+        stamp.classList.remove('is-thunk');
+        void stamp.offsetWidth;
+        stamp.classList.add('is-thunk');
+      });
+    }
+
+    // easter egg: 5 quick taps on the envelope body → flap flutter + emoji puff
+    let bodyTaps = [];
+    envEl.addEventListener('click', (e) => {
+      if (opening) return;
+      if (e.target.closest('#envSeal') || e.target.closest('#envStamp')) return;
+      const now = Date.now();
+      bodyTaps = bodyTaps.filter((t) => now - t < 1500);
+      bodyTaps.push(now);
+      if (bodyTaps.length >= 5) {
+        bodyTaps = [];
+        flap.classList.remove('is-flutter');
+        void flap.offsetWidth;
+        flap.classList.add('is-flutter');
+        puff();
+      }
+    });
+
+    function puff() {
+      const emojis = ['🌲', '🔥', '🐿️', '✨', '🍁'];
+      for (let i = 0; i < 6; i++) {
+        const p = document.createElement('span');
+        p.className = 'env-puff';
+        p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        p.style.left = (40 + Math.random() * 20).toFixed(0) + '%';
+        p.style.setProperty('--dx', (Math.random() * 120 - 60).toFixed(0) + 'px');
+        p.style.animationDelay = (Math.random() * 0.15).toFixed(2) + 's';
+        envEl.appendChild(p);
+        setTimeout(() => p.remove(), 1400);
+      }
+    }
+
+    // password submit
+    let attempts = 0;
+    unlock.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (opening) return;
+      const pw = passInput.value;
+      if (!pw) return;
+
+      unlockBtn.disabled = true;
+      const originalLabel = unlockBtn.textContent;
+      unlockBtn.textContent = 'Opening…';
+
+      let html;
+      try {
+        html = await decryptLetter(ENC, pw);
+      } catch (err) {
+        unlockBtn.textContent = originalLabel;
+        failAttempt();
+        unlockBtn.disabled = false;
+        return;
+      }
+      opening = true;
+      await playUnlock(html);
+    });
+
+    function failAttempt() {
+      attempts++;
+      if (errEl) errEl.hidden = false;
+      unlock.classList.remove('is-wrong');
+      void unlock.offsetWidth;
+      unlock.classList.add('is-wrong');
+      if (passInput) passInput.select();
+      if (attempts >= 5) {
+        unlockBtn.disabled = true;
+        let n = 5;
+        unlockBtn.textContent = 'Wait ' + n + 's';
+        const iv = setInterval(() => {
+          n--;
+          if (n <= 0) {
+            clearInterval(iv);
+            unlockBtn.disabled = false;
+            unlockBtn.textContent = 'Unlock';
+            attempts = 0;
+          } else {
+            unlockBtn.textContent = 'Wait ' + n + 's';
+          }
+        }, 1000);
+      }
+    }
+
+    async function playUnlock(html) {
+      // inject the content + run its script; the muted hero starts playing, hidden, behind the stage
+      injectAndRun(html);
+      await loadSiteCss();
+
+      if (reduceMotion()) {
+        finishReveal();
         return;
       }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-      if (cdDays) cdDays.textContent = days.toString();
-      if (cdHours) cdHours.textContent = pad(hours);
-      if (cdMins) cdMins.textContent = pad(mins);
-      if (cdSecs) cdSecs.textContent = pad(secs);
+      // 1) the padlock springs open
+      if (lockSvg) lockSvg.classList.add('is-open');
+      if (sealBubble) sealBubble.classList.remove('is-shown');
+      await wait(520);
+      // 2) the wax seal cracks
+      seal.classList.add('is-cracking');
+      await wait(420);
+      // 3) the top flap swings open
+      flap.classList.add('is-open');
+      await wait(560);
+      // 4) the folded card lifts up out of the pocket
+      card.classList.add('is-lifting');
+      await wait(620);
+      // 5) the card unfolds along the horizontal crease → reveals the hero "cover"
+      if (cardUpper) cardUpper.classList.add('is-unfolded');
+      await wait(880);
+      // 6) zoom in: melt the cream envelope into the night sky, then grow the live hero
+      //    from the card's spot (dark cover → dark hero = a seamless handoff)
+      stage.classList.add('is-zooming');
+      await wait(120);
+      void mount.offsetWidth;
+      mount.classList.add('is-revealed');
+      await wait(1050);
+      finishReveal();
     }
 
-    update();
-    setInterval(update, 1000);
-  })();
-  // ===== Intersection Observer for scroll reveal =====
-  document.addEventListener('DOMContentLoaded', () => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-
-    // Force hero elements visible immediately
-    document.querySelectorAll('.hero .reveal').forEach((el) => {
-      setTimeout(() => el.classList.add('visible'), 300);
-    });
-
-    // ===== Star field in footer =====
-    const starsContainer = document.getElementById('starsCanvas');
-    if (starsContainer) {
-      for (let i = 0; i < 120; i++) {
-        const star = document.createElement('div');
-        star.style.cssText = `
-          position:absolute;
-          width:${Math.random() * 3 + 1}px;
-          height:${Math.random() * 3 + 1}px;
-          background:${Math.random() > 0.7 ? '#fdd835' : '#fffde7'};
-          border-radius:50%;
-          top:${Math.random() * 100}%;
-          left:${Math.random() * 100}%;
-          opacity:${Math.random() * 0.7 + 0.2};
-          animation:twinkle ${Math.random() * 3 + 2}s infinite alternate;
-        `;
-        starsContainer.appendChild(star);
-      }
-
-      const style = document.createElement('style');
-      style.textContent = `@keyframes twinkle{0%{opacity:0.2;transform:scale(1)}100%{opacity:1;transform:scale(1.3)}}`;
-      document.head.appendChild(style);
+    function finishReveal() {
+      mount.classList.add('is-revealed');
+      mount.classList.add('is-flow'); // hand off from the fixed zoom layer to normal page flow
+      document.documentElement.classList.remove('env-locked');
+      if (stage && stage.parentNode) stage.parentNode.removeChild(stage);
     }
-
-    // ===== Vibe Section: Outfit Cycling =====
-    const outfits = [
-      {
-        badge: "Dress Code",
-        icon: "👗",
-        title: "Dress Code",
-        desc: "Dress to impress, but maybe leave the bug spray as perfume at home. Think 'rustic chic meets ready for s'mores.'"
-      },
-      {
-        badge: "Ecology Special",
-        icon: "🦥",
-        title: "Queens Zoo Uniform",
-        desc: "Paige's coordination outfit. Optimal for spotting wild animals and wearing heavy bug spray."
-      },
-      {
-        badge: "Theatre Blacks",
-        icon: "🎭",
-        title: "Rutgers Cabaret Costume",
-        desc: "Avenue Q attire. Ideal for hiding in prop closets or avoiding Benji's antics."
-      },
-      {
-        badge: "The Road Trip",
-        icon: "🚗",
-        title: "Connecticut GPS Edition",
-        desc: "Benji: 'Absolutely, GPS says we're almost there!' GPS: 'Welcome to Connecticut!' Paige: 'That's 90 minutes outside of NYC!'"
-      }
-    ];
-
-    let currentOutfitIndex = 0;
-    const outfitBadge = document.getElementById('outfitBadge');
-    const outfitIcon = document.getElementById('outfitIcon');
-    const outfitTitle = document.getElementById('outfitTitle');
-    const outfitDesc = document.getElementById('outfitDesc');
-    const outfitCycleBtn = document.getElementById('outfitCycleBtn');
-
-    if (outfitCycleBtn) {
-      outfitCycleBtn.addEventListener('click', () => {
-        currentOutfitIndex = (currentOutfitIndex + 1) % outfits.length;
-        const currentOutfit = outfits[currentOutfitIndex];
-
-        // Apply a quick elastic scale animation on click
-        outfitCycleBtn.style.transform = 'scale(0.8) rotate(-15deg)';
-        setTimeout(() => {
-          outfitCycleBtn.style.transform = '';
-        }, 150);
-
-        if (outfitBadge) outfitBadge.textContent = currentOutfit.badge;
-        if (outfitIcon) outfitIcon.textContent = currentOutfit.icon;
-        if (outfitTitle) outfitTitle.textContent = currentOutfit.title;
-        if (outfitDesc) outfitDesc.innerHTML = currentOutfit.desc;
-      });
-    }
-
-    // ===== Vibe Section: Cabin Night Mode Toggle =====
-    const cabinNightBtn = document.getElementById('cabinNightBtn');
-    const campPassCard = document.getElementById('campPassCard');
-
-    if (cabinNightBtn && campPassCard) {
-      cabinNightBtn.addEventListener('click', () => {
-        campPassCard.classList.toggle('vibe__card--pass-night');
-
-        // Animation bounce effect on click
-        cabinNightBtn.style.transform = 'scale(0.8) rotate(15deg)';
-        setTimeout(() => {
-          cabinNightBtn.style.transform = '';
-        }, 150);
-      });
-    }
-
-    // ===== Packing List Persistence & Reset =====
-    const packingCheckboxes = document.querySelectorAll('.packing__checkbox') as NodeListOf<HTMLInputElement>;
-    const resetChecklistBtn = document.getElementById('resetChecklistBtn');
-
-    // Load states on bootup
-    try {
-      const savedPackingState = localStorage.getItem('grecco_packing_list');
-      if (savedPackingState) {
-        const checkedIndices = JSON.parse(savedPackingState) as number[];
-        packingCheckboxes.forEach((checkbox, index) => {
-          if (checkedIndices.includes(index)) {
-            checkbox.checked = true;
-            const span = checkbox.nextElementSibling as HTMLElement;
-            if (span) {
-              span.style.textDecoration = 'line-through';
-              span.style.opacity = '0.45';
-            }
-          }
-        });
-      }
-    } catch (err) {
-      console.warn('LocalStorage packing list read failed:', err);
-    }
-
-    // Save states on change
-    packingCheckboxes.forEach((checkbox, index) => {
-      checkbox.addEventListener('change', () => {
-        const span = checkbox.nextElementSibling as HTMLElement;
-        if (span) {
-          if (checkbox.checked) {
-            span.style.textDecoration = 'line-through';
-            span.style.opacity = '0.45';
-          } else {
-            span.style.textDecoration = '';
-            span.style.opacity = '';
-          }
-        }
-
-        const checkedIndices: number[] = [];
-        packingCheckboxes.forEach((cb, idx) => {
-          if (cb.checked) checkedIndices.push(idx);
-        });
-        try {
-          localStorage.setItem('grecco_packing_list', JSON.stringify(checkedIndices));
-        } catch (err) {
-          console.warn('LocalStorage packing list write failed:', err);
-        }
-      });
-    });
-
-    // Reset checklist action
-    if (resetChecklistBtn) {
-      resetChecklistBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        packingCheckboxes.forEach((checkbox) => {
-          checkbox.checked = false;
-          const span = checkbox.nextElementSibling as HTMLElement;
-          if (span) {
-            span.style.textDecoration = '';
-            span.style.opacity = '';
-          }
-        });
-        try {
-          localStorage.removeItem('grecco_packing_list');
-        } catch (err) {
-          console.warn('LocalStorage packing list remove failed:', err);
-        }
-
-        // Play visual pop click bounce animation
-        resetChecklistBtn.style.transform = 'scale(0.9) rotate(-3deg)';
-        setTimeout(() => {
-          resetChecklistBtn.style.transform = '';
-        }, 150);
-      });
-    }
-
-
-    // ===== Vibe Section: Polaroid & FaceTime Call Easter Egg =====
-    const squirrel = document.getElementById('squirrelEgg');
-    const facetimeOverlay = document.getElementById('facetimeOverlay');
-    const declineCallBtn = document.getElementById('declineCallBtn');
-    const acceptCallBtn = document.getElementById('acceptCallBtn');
-    const closeCallBtn = document.getElementById('closeCallBtn');
-    const facetimeIncomingView = document.getElementById('facetimeIncomingView');
-    const facetimeConnectedView = document.getElementById('facetimeConnectedView');
-    const facetimeCard = document.getElementById('facetimeCard');
-
-    if (squirrel && facetimeOverlay) {
-      let clicks = 0;
-      squirrel.addEventListener('click', () => {
-        clicks++;
-        squirrel.style.transform = `rotate(${clicks * 30}deg) scale(${1 + clicks * 0.05})`;
-
-        if (clicks >= 3) {
-          // Reset card positions and open FaceTime overlay
-          clicks = 0;
-          setTimeout(() => {
-            squirrel.style.transform = '';
-          }, 300);
-
-          // Reset FaceTime state
-          if (facetimeIncomingView) facetimeIncomingView.style.display = 'block';
-          if (facetimeConnectedView) facetimeConnectedView.style.display = 'none';
-          if (facetimeCard) facetimeCard.className = 'facetime-card';
-
-          facetimeOverlay.classList.add('facetime-overlay--active');
-        }
-      });
-    }
-
-    // FaceTime decline calls
-    if (declineCallBtn && facetimeOverlay) {
-      declineCallBtn.addEventListener('click', () => {
-        facetimeOverlay.classList.remove('facetime-overlay--active');
-      });
-    }
-
-    // FaceTime accept call action
-    if (acceptCallBtn && facetimeIncomingView && facetimeConnectedView && facetimeCard) {
-      acceptCallBtn.addEventListener('click', () => {
-        facetimeIncomingView.style.display = 'none';
-        facetimeConnectedView.style.display = 'block';
-        facetimeCard.classList.add('facetime-card--connected');
-      });
-    }
-
-    // FaceTime close call action
-    if (closeCallBtn && facetimeOverlay) {
-      closeCallBtn.addEventListener('click', () => {
-        facetimeOverlay.classList.remove('facetime-overlay--active');
-      });
-    }
-
-    // ===== Awaits Easter Egg (5 taps) =====
-    const awaitsTrigger = document.getElementById('awaitsEgg');
-    const awaitsImg = document.getElementById('awaitsEggImg');
-    const activitiesSection = document.getElementById('activities');
-    if (awaitsTrigger && awaitsImg) {
-      let awaitsTaps: number[] = [];
-      let awaitsAnimating = false;
-
-      awaitsTrigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (awaitsAnimating) return;
-
-        const now = Date.now();
-        awaitsTaps = awaitsTaps.filter(t => now - t < 1500);
-        awaitsTaps.push(now);
-
-        if (awaitsTaps.length >= 5) {
-          awaitsAnimating = true;
-          awaitsTaps = [];
-          activitiesSection?.classList.add('activities--egg-active');
-          awaitsImg.classList.add('awaits-egg-img--active');
-
-          setTimeout(() => {
-            awaitsImg.classList.remove('awaits-egg-img--active');
-            activitiesSection?.classList.remove('activities--egg-active');
-            awaitsAnimating = false;
-          }, 4200);
-        }
-      });
-    }
-
-    // ===== YouTube Sound Toggle =====
-    const heroIframe = document.getElementById('hero-video') as HTMLIFrameElement;
-    const heroVideoWrap = document.querySelector('.hero__video-wrap') as HTMLElement;
-    const heroContent = document.querySelector('.hero__content') as HTMLElement;
-    const heroOverlay = document.querySelector('.hero__overlay') as HTMLElement;
-    const heroScrollCta = document.querySelector('.hero__scroll-cta') as HTMLElement;
-    const soundToggle = document.getElementById('soundToggle');
-    const soundOffIcon = document.getElementById('soundOffIcon');
-    const soundOnIcon = document.getElementById('soundOnIcon');
-    const soundTextEl = document.getElementById('soundText');
-    let videoIsMuted = true;
-
-    function enterWatchMode() {
-      // Fade out overlay, content, scroll CTA
-      heroContent?.classList.add('hero__content--hidden');
-      heroOverlay?.classList.add('hero__overlay--hidden');
-      heroScrollCta?.classList.add('hero__scroll-cta--hidden');
-
-      // Switch iframe to contained mode with controls
-      if (heroIframe) {
-        heroIframe.classList.add('hero__video--contained');
-        let newSrc = heroIframe.src
-          .replace('controls=0', 'controls=1')
-          .replace('mute=1', 'mute=0');
-        heroIframe.src = newSrc;
-      }
-      if (heroVideoWrap) {
-        heroVideoWrap.classList.add('hero__video-wrap--watch');
-      }
-    }
-
-    function exitWatchMode() {
-      // Restore overlays
-      heroContent?.classList.remove('hero__content--hidden');
-      heroOverlay?.classList.remove('hero__overlay--hidden');
-      heroScrollCta?.classList.remove('hero__scroll-cta--hidden');
-
-      // Restore iframe to cover mode without controls
-      if (heroIframe) {
-        heroIframe.classList.remove('hero__video--contained');
-        let newSrc = heroIframe.src
-          .replace('controls=1', 'controls=0')
-          .replace('mute=0', 'mute=1');
-        heroIframe.src = newSrc;
-      }
-      if (heroVideoWrap) {
-        heroVideoWrap.classList.remove('hero__video-wrap--watch');
-      }
-    }
-
-    soundToggle?.addEventListener('click', () => {
-      if (videoIsMuted) {
-        videoIsMuted = false;
-        soundOffIcon?.classList.add('hero__sound-icon--hidden');
-        soundOnIcon?.classList.remove('hero__sound-icon--hidden');
-        if (soundTextEl) soundTextEl.textContent = 'Back to Save the Date';
-        soundToggle.classList.add('hero__sound-btn--active');
-        enterWatchMode();
-      } else {
-        videoIsMuted = true;
-        soundOffIcon?.classList.remove('hero__sound-icon--hidden');
-        soundOnIcon?.classList.add('hero__sound-icon--hidden');
-        if (soundTextEl) soundTextEl.textContent = 'Play with Sound';
-        soundToggle.classList.remove('hero__sound-btn--active');
-        exitWatchMode();
-      }
-    });
-
-    // ===== RSVP Form handling =====
-    const form = document.getElementById('rosterForm') as HTMLFormElement;
-    const firstNameInput = document.getElementById('guestFirstName') as HTMLInputElement;
-    const lastNameInput = document.getElementById('guestLastName') as HTMLInputElement;
-    const emailInput = document.getElementById('guestEmail') as HTMLInputElement;
-    const phoneInput = document.getElementById('guestPhone') as HTMLInputElement;
-    const addressInput = document.getElementById('guestAddress') as HTMLInputElement;
-    const dietInput = document.getElementById('guestDiet') as HTMLInputElement;
-    const commentsInput = document.getElementById('guestComments') as HTMLTextAreaElement;
-
-    // Honeypot & Captcha inputs
-    const honeypotInput = document.getElementById('guestBait') as HTMLInputElement;
-    const captchaAnswerInput = document.getElementById('captchaAnswer') as HTMLInputElement;
-    const captchaQuestion = document.getElementById('captchaQuestion');
-
-    const firstNameError = document.getElementById('firstNameError');
-    const lastNameError = document.getElementById('lastNameError');
-    const emailError = document.getElementById('emailError');
-    const phoneError = document.getElementById('phoneError');
-    const addressError = document.getElementById('addressError');
-    const dietError = document.getElementById('dietError');
-    const attendingError = document.getElementById('attendingError');
-    const overnightError = document.getElementById('overnightError');
-    const shuttleError = document.getElementById('shuttleError');
-    const colorWarsError = document.getElementById('colorWarsError');
-    const commentsError = document.getElementById('commentsError');
-    const captchaError = document.getElementById('captchaError');
-
-    const attendingGroup = document.getElementById('attendingGroup');
-    const overnightGroup = document.getElementById('overnightGroup');
-    const shuttleGroup = document.getElementById('shuttleGroup');
-    const colorWarsGroup = document.getElementById('colorWarsGroup');
-    const captchaGroup = document.getElementById('captchaGroup');
-    const toast = document.getElementById('confirmToast');
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    // ===== Dynamic Captcha Logic =====
-    let captchaNum1 = 0;
-    let captchaNum2 = 0;
-    let captchaCorrectAnswer = 0;
-
-    function generateCaptcha() {
-      captchaNum1 = Math.floor(Math.random() * 9) + 1; // 1 to 9
-      captchaNum2 = Math.floor(Math.random() * 9) + 1; // 1 to 9
-      captchaCorrectAnswer = captchaNum1 + captchaNum2;
-      if (captchaQuestion) {
-        captchaQuestion.textContent = `${captchaNum1} + ${captchaNum2}`;
-      }
-      if (captchaAnswerInput) {
-        captchaAnswerInput.value = '';
-      }
-    }
-
-    generateCaptcha();
-
-    // Helper: clear error on radio group selection
-    function setupRadioClear(name: string, group: HTMLElement | null, error: HTMLElement | null) {
-      document.querySelectorAll(`input[name="${name}"]`).forEach((radio) => {
-        radio.addEventListener('change', () => {
-          group?.classList.remove('input--error');
-          error?.classList.remove('visible');
-        });
-      });
-    }
-
-    setupRadioClear('entry.1747976834', attendingGroup, attendingError);
-    setupRadioClear('entry.1379738470', overnightGroup, overnightError);
-    setupRadioClear('entry.1513616992', shuttleGroup, shuttleError);
-    setupRadioClear('entry.157830799', colorWarsGroup, colorWarsError);
-
-    // Helper: clear error on text/email/tel input
-    function setupInputClear(input: HTMLInputElement | HTMLTextAreaElement | null, error: HTMLElement | null) {
-      input?.addEventListener('input', () => {
-        input.classList.remove('input--error');
-        error?.classList.remove('visible');
-      });
-    }
-
-    setupInputClear(firstNameInput, firstNameError);
-    setupInputClear(lastNameInput, lastNameError);
-    setupInputClear(emailInput, emailError);
-    setupInputClear(phoneInput, phoneError);
-    setupInputClear(addressInput, addressError);
-    setupInputClear(dietInput, dietError);
-    setupInputClear(commentsInput, commentsError);
-    setupInputClear(captchaAnswerInput, captchaError);
-
-    function clearAllErrors() {
-      const inputs = [firstNameInput, lastNameInput, emailInput, phoneInput, addressInput, dietInput, commentsInput, captchaAnswerInput];
-      const errors = [firstNameError, lastNameError, emailError, phoneError, addressError, dietError, attendingError, overnightError, shuttleError, colorWarsError, commentsError, captchaError];
-      const groups = [attendingGroup, overnightGroup, shuttleGroup, colorWarsGroup, captchaGroup];
-      inputs.forEach(i => i?.classList.remove('input--error'));
-      errors.forEach(e => e?.classList.remove('visible'));
-      groups.forEach(g => g?.classList.remove('input--error'));
-    }
-
-    function validateTextInput(input: HTMLInputElement | HTMLTextAreaElement | null, error: HTMLElement | null): boolean {
-      if (!input?.value.trim()) {
-        input?.classList.add('input--error');
-        error?.classList.add('visible');
-        return true;
-      }
-      return false;
-    }
-
-    function validateRadio(name: string, group: HTMLElement | null, error: HTMLElement | null): boolean {
-      if (!document.querySelector(`input[name="${name}"]:checked`)) {
-        group?.classList.add('input--error');
-        error?.classList.add('visible');
-        return true;
-      }
-      return false;
-    }
-
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        clearAllErrors();
-        let hasError = false;
-
-        // Honeypot check: If the honeypot field is filled, we suspect a bot.
-        // We prevent the actual submission to Google Forms but act as if it succeeded
-        // to fool the bot into not retrying.
-        if (honeypotInput && honeypotInput.value.trim() !== '') {
-          e.preventDefault();
-          
-          const btn = document.getElementById('submitBtn') as HTMLButtonElement;
-          if (btn) {
-            btn.innerHTML = '<span>Sending… ✨</span>';
-            btn.setAttribute('disabled', 'true');
-          }
-
-          setTimeout(() => {
-            if (toast) {
-              toast.classList.add('footer__toast--show');
-            }
-            if (btn) {
-              btn.innerHTML = '<span class="footer__submit-text">Send RSVP 🏕️</span>';
-              btn.removeAttribute('disabled');
-            }
-            form.reset();
-            generateCaptcha();
-
-            setTimeout(() => {
-              toast?.classList.remove('footer__toast--show');
-            }, 4000);
-          }, 1200);
-
-          return;
-        }
-
-        // Text fields
-        if (validateTextInput(firstNameInput, firstNameError)) hasError = true;
-        if (validateTextInput(lastNameInput, lastNameError)) hasError = true;
-
-        // Email
-        const emailVal = emailInput?.value.trim() || '';
-        if (!emailVal || !emailRegex.test(emailVal)) {
-          emailInput?.classList.add('input--error');
-          emailError?.classList.add('visible');
-          if (emailVal && !emailRegex.test(emailVal)) {
-            if (emailError) emailError.textContent = 'That doesn\'t look like a valid email';
-          } else {
-            if (emailError) emailError.textContent = 'Please enter a valid email address';
-          }
-          hasError = true;
-        }
-
-        if (validateTextInput(phoneInput, phoneError)) hasError = true;
-        if (validateTextInput(addressInput, addressError)) hasError = true;
-
-        // Radio groups
-        if (validateRadio('entry.1747976834', attendingGroup, attendingError)) hasError = true;
-
-        if (validateTextInput(dietInput, dietError)) hasError = true;
-
-        if (validateRadio('entry.1379738470', overnightGroup, overnightError)) hasError = true;
-        if (validateRadio('entry.1513616992', shuttleGroup, shuttleError)) hasError = true;
-        if (validateRadio('entry.157830799', colorWarsGroup, colorWarsError)) hasError = true;
-
-        if (validateTextInput(commentsInput, commentsError)) hasError = true;
-
-        // Captcha validation
-        const captchaAnswerVal = captchaAnswerInput?.value.trim() || '';
-        const captchaAnswerNum = parseInt(captchaAnswerVal, 10);
-        if (isNaN(captchaAnswerNum) || captchaAnswerNum !== captchaCorrectAnswer) {
-          captchaAnswerInput?.classList.add('input--error');
-          captchaError?.classList.add('visible');
-          if (captchaError) {
-            if (!captchaAnswerVal) {
-              captchaError.textContent = 'Please solve the riddle to prove you are a human';
-            } else {
-              captchaError.textContent = 'That math is a little off! Try again.';
-            }
-          }
-          hasError = true;
-        }
-
-        if (hasError) {
-          e.preventDefault();
-          // Scroll to first error
-          const firstError = form.querySelector('.input--error, .footer__error.visible');
-          if (firstError) {
-            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-          return;
-        }
-
-        // Validation passed — allow native submit to hidden_iframe (Google Forms)
-        const btn = document.getElementById('submitBtn') as HTMLButtonElement;
-        if (btn) {
-          btn.innerHTML = '<span>Sending… ✨</span>';
-          btn.setAttribute('disabled', 'true');
-        }
-
-        // Show confirmation toast after a short delay
-        setTimeout(() => {
-          if (toast) {
-            toast.classList.add('footer__toast--show');
-          }
-          if (btn) {
-            btn.innerHTML = '<span class="footer__submit-text">Send RSVP 🏕️</span>';
-            btn.style.background = '';
-            btn.removeAttribute('disabled');
-          }
-          form.reset();
-          generateCaptcha();
-
-          // Auto-dismiss toast
-          setTimeout(() => {
-            toast?.classList.remove('footer__toast--show');
-          }, 4000);
-        }, 1200);
-      });
-    }
-  });
-</script>
+  </script>
+</Layout>

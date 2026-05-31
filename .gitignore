@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# local editor/agent config
+.claude/
+
+# large local media (screen recordings, etc.)
+*.mov

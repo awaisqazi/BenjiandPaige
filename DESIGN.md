@@ -387,3 +387,20 @@ All JavaScript is in a single `<script>` block at the bottom of `src/pages/index
 | Corkboard frame colors kept gold (`#a07b3f`) | Represents a physical wooden frame — not a brand color, just realistic material |
 | Font Special Elite for camp text | Typewriter aesthetic reinforces camp/rustic/handmade feel |
 | Video backgrounds (no controls) | Immersive backdrop — content focus, not video player UX |
+
+---
+
+## Password Gate & Publishing Workflow
+
+The site is **password-protected** with a sealed-envelope unlock animation. A visitor sees only a themed envelope (wax seal, "P & B" monogram, postmark, tuxedo-squirrel mascot, pine-ridge night sky); tapping the seal asks for the password; the correct password cracks the seal, opens the flap, lifts a card out, and zooms into the hero video as the full page assembles. No dates, venue, or schedule appear anywhere outside the lock.
+
+### How it works
+- **Real content** lives in **`content/letter.html`** (all the markup that used to be in `index.astro` lines 8–957, plus its behavior as **plain JS** in one IIFE at the bottom).
+- **`npm run encrypt`** (`scripts/encrypt-content.mjs`) encrypts that file with the password via PBKDF2 → AES-GCM and writes **`src/generated/letter.enc.json`** (committed). The deployed site ships only this ciphertext; the password is never stored and is not visible in DevTools.
+- **`src/pages/index.astro`** is now the envelope lock screen + the decrypt/inject/animation logic. The wedding-section styles moved to **`public/styles/site.css`** and are lazy-loaded only after unlock.
+- **Password:** `PaigeAndBenji123!` (supplied only at encrypt time via the `WEDDING_PASSWORD` env var or prompt — never committed).
+
+### ⚠️ Publishing rule
+After editing `content/letter.html`, **always run `npm run encrypt` before committing/pushing**, or the live site will keep the old content. Keep `content/letter.html`'s `<script>` as plain JS (no TypeScript syntax) — it runs in the browser as-is. Full step-by-step in **[PUBLISHING.md](./PUBLISHING.md)**.
+
+> Note: the section file paths/line numbers elsewhere in this document predate the password gate — the section *markup* now lives in `content/letter.html` rather than `src/pages/index.astro`, and styles in `public/styles/site.css` rather than `src/styles/main.css`.
