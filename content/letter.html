@@ -883,7 +883,7 @@
               <input type="radio" name="entry.1379738470" value="Yes, bunk me up!" required />
               <span class="footer__radio-display">
                 <span class="footer__radio-emoji">⛺</span>
-                <span>Yes, bunk me up!</span>
+                <span>Yes, cabin me up!</span>
               </span>
             </label>
             <label class="footer__radio-card footer__radio-card--sm">
@@ -943,14 +943,6 @@
           <span class="footer__error" id="colorWarsError">Please let us know if you're interested</span>
         </div>
 
-        <!-- Human Verification (Anti-Bot) -->
-        <div class="footer__form-group footer__captcha-group" id="captchaGroup">
-          <label for="captchaAnswer" class="footer__label-text">
-            Prove you're a happy camper: What is <span id="captchaQuestion" style="color: var(--fire-amber); font-weight: 700;"></span>? <span class="footer__req">*</span>
-          </label>
-          <input type="text" id="captchaAnswer" placeholder="Your answer" required autocomplete="off" />
-          <span class="footer__error" id="captchaError">Please solve the riddle to prove you are a human</span>
-        </div>
         </div>
 
         <!-- Comments -->
@@ -1381,10 +1373,8 @@
     var dietInput = document.getElementById('guestDiet');
     var commentsInput = document.getElementById('guestComments');
 
-    // Honeypot & Captcha inputs
+    // Honeypot input
     var honeypotInput = document.getElementById('guestBait');
-    var captchaAnswerInput = document.getElementById('captchaAnswer');
-    var captchaQuestion = document.getElementById('captchaQuestion');
 
     var firstNameError = document.getElementById('firstNameError');
     var lastNameError = document.getElementById('lastNameError');
@@ -1397,13 +1387,11 @@
     var shuttleError = document.getElementById('shuttleError');
     var colorWarsError = document.getElementById('colorWarsError');
     var commentsError = document.getElementById('commentsError');
-    var captchaError = document.getElementById('captchaError');
 
     var attendingGroup = document.getElementById('attendingGroup');
     var overnightGroup = document.getElementById('overnightGroup');
     var shuttleGroup = document.getElementById('shuttleGroup');
     var colorWarsGroup = document.getElementById('colorWarsGroup');
-    var captchaGroup = document.getElementById('captchaGroup');
     var toast = document.getElementById('confirmToast');
     var toastMsg = document.getElementById('toastMsg');
     var campDetailsGroup = document.getElementById('campDetailsGroup');
@@ -1418,25 +1406,6 @@
     var DECLINE_VALUE = "Sorry, can't make it";
 
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    // ===== Dynamic Captcha Logic =====
-    var captchaNum1 = 0;
-    var captchaNum2 = 0;
-    var captchaCorrectAnswer = 0;
-
-    function generateCaptcha() {
-      captchaNum1 = Math.floor(Math.random() * 9) + 1; // 1 to 9
-      captchaNum2 = Math.floor(Math.random() * 9) + 1; // 1 to 9
-      captchaCorrectAnswer = captchaNum1 + captchaNum2;
-      if (captchaQuestion) {
-        captchaQuestion.textContent = captchaNum1 + ' + ' + captchaNum2;
-      }
-      if (captchaAnswerInput) {
-        captchaAnswerInput.value = '';
-      }
-    }
-
-    generateCaptcha();
 
     Array.prototype.forEach.call(attendeeOnlyInputs, function (input) {
       if (input.required) {
@@ -1461,9 +1430,9 @@
     }
 
     function clearAttendeeOnlyErrors() {
-      var errors = [dietError, overnightError, shuttleError, colorWarsError, captchaError];
-      var groups = [overnightGroup, shuttleGroup, colorWarsGroup, captchaGroup];
-      var inputs = [dietInput, captchaAnswerInput];
+      var errors = [dietError, overnightError, shuttleError, colorWarsError];
+      var groups = [overnightGroup, shuttleGroup, colorWarsGroup];
+      var inputs = [dietInput];
       errors.forEach(function (error) { if (error) error.classList.remove('visible'); });
       groups.forEach(function (group) { if (group) group.classList.remove('input--error'); });
       inputs.forEach(function (input) { if (input) input.classList.remove('input--error'); });
@@ -1581,12 +1550,11 @@
     setupInputClear(addressInput, addressError);
     setupInputClear(dietInput, dietError);
     setupInputClear(commentsInput, commentsError);
-    setupInputClear(captchaAnswerInput, captchaError);
 
     function clearAllErrors() {
-      var inputs = [firstNameInput, lastNameInput, emailInput, phoneInput, addressInput, dietInput, commentsInput, captchaAnswerInput];
-      var errors = [firstNameError, lastNameError, emailError, phoneError, addressError, dietError, attendingError, overnightError, shuttleError, colorWarsError, commentsError, captchaError];
-      var groups = [attendingGroup, overnightGroup, shuttleGroup, colorWarsGroup, captchaGroup];
+      var inputs = [firstNameInput, lastNameInput, emailInput, phoneInput, addressInput, dietInput, commentsInput];
+      var errors = [firstNameError, lastNameError, emailError, phoneError, addressError, dietError, attendingError, overnightError, shuttleError, colorWarsError, commentsError];
+      var groups = [attendingGroup, overnightGroup, shuttleGroup, colorWarsGroup];
       inputs.forEach(function (i) { if (i) i.classList.remove('input--error'); });
       errors.forEach(function (e) { if (e) e.classList.remove('visible'); });
       groups.forEach(function (g) { if (g) g.classList.remove('input--error'); });
@@ -1640,7 +1608,6 @@
               toastMsg.textContent = declining ? "RSVP received. We'll miss you around the campfire." : 'RSVP received! See you at camp!';
             }
             form.reset();
-            generateCaptcha();
             syncAttendanceState();
 
             setTimeout(function () {
@@ -1682,22 +1649,6 @@
           if (validateRadio('entry.157830799', colorWarsGroup, colorWarsError)) hasError = true;
 
           if (validateTextInput(commentsInput, commentsError)) hasError = true;
-
-          // Captcha validation
-          var captchaAnswerVal = (captchaAnswerInput && captchaAnswerInput.value.trim()) || '';
-          var captchaAnswerNum = parseInt(captchaAnswerVal, 10);
-          if (isNaN(captchaAnswerNum) || captchaAnswerNum !== captchaCorrectAnswer) {
-            if (captchaAnswerInput) captchaAnswerInput.classList.add('input--error');
-            if (captchaError) captchaError.classList.add('visible');
-            if (captchaError) {
-              if (!captchaAnswerVal) {
-                captchaError.textContent = 'Please solve the riddle to prove you are a human';
-              } else {
-                captchaError.textContent = 'That math is a little off! Try again.';
-              }
-            }
-            hasError = true;
-          }
         }
 
         if (hasError) {
@@ -1731,7 +1682,6 @@
             setSubmitIdleLabel(isDeclining());
           }
           form.reset();
-          generateCaptcha();
           syncAttendanceState();
 
           // Auto-dismiss toast
