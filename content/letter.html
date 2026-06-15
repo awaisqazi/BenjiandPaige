@@ -508,16 +508,16 @@
       <div class="packing__col packing__col--left">
         <h2 class="packing__heading">Overnight<br/>Accommodations</h2>
         <p class="packing__desc">We have arranged for <strong>exclusive use of the entire camp</strong> for the duration of our wedding (Sunday the 4th into Monday the 5th) and would love nothing more than for you to join us from beginning to end.</p>
-        <p class="packing__desc">While we know a wedding overnight might be unusual, we hope you'll make your reservation to stay over. We've planned an exciting schedule filled with family, friends, adventure, dancing &amp; s'mores. You won't want to miss any of it!</p>
+        <p class="packing__desc">While we know a wedding overnight might be unusual, we hope you'll reserve your cabin and stay over. We've planned an exciting schedule filled with family, friends, adventure, dancing &amp; s'mores. You won't want to miss any of it!</p>
 
         <div class="packing__note">
           <span class="packing__note-icon">🛏️</span>
-          <p>Rooms accommodate up to 5 guests with <strong>private bathrooms, A/C &amp; heat</strong>. All bedding, room towels, and housekeeping are included. You will <em>not</em> be sharing rooms or bathrooms with other couples or families.</p>
+          <p>Cabins include between 2 and 5 beds with <strong>private bathrooms, A/C &amp; heat</strong>. Bedding, room towels, and housekeeping are included.</p>
         </div>
 
         <div class="packing__note" style="margin-top: 0.75rem;">
           <span class="packing__note-icon">📋</span>
-          <p>We'll be making all housing assignments. Let us know what room size you need. Individuals and couples get private rooms, and families are kept together. Have a specific request? Note it in the RSVP comments!</p>
+          <p>Club Getaway will collect reservations first, then we'll help assign cabins. Individuals and couples get private rooms, and families will be kept together whenever possible. Have a specific request? Note it when you book or in the RSVP comments!</p>
         </div>
       </div>
 
@@ -558,20 +558,25 @@
 
         <div class="lodging-pricing__grid">
           <div class="lodging-pricing__item">
-            <span class="lodging-pricing__amount">$99</span>
-            <span class="lodging-pricing__label">per adult</span>
+            <span class="lodging-pricing__amount">$109</span>
+            <span class="lodging-pricing__label">per adult subtotal + tax</span>
           </div>
           <div class="lodging-pricing__item">
-            <span class="lodging-pricing__amount">$59.40</span>
-            <span class="lodging-pricing__label">per child (ages 4–15)</span>
+            <span class="lodging-pricing__amount">$66.40</span>
+            <span class="lodging-pricing__label">per child subtotal + tax (ages 4–17)</span>
+          </div>
+          <div class="lodging-pricing__item">
+            <span class="lodging-pricing__amount">$0</span>
+            <span class="lodging-pricing__label">infants 3 and under</span>
           </div>
         </div>
 
-        <p class="lodging-pricing__note">Plus 15% tax and $15 events.com booking fee</p>
+        <p class="lodging-pricing__note">Prices shown before applicable tax, which may vary. Adult subtotal includes a $99 stay + $10 registration fee. Child subtotal includes a $56.40 stay + $10 registration fee.</p>
         <p class="lodging-pricing__includes">✨ Includes all meals &amp; beverages from Sunday through Monday morning breakfast</p>
 
         <div class="lodging-pricing__booking">
-          <a href="#" class="lodging-pricing__btn lodging-pricing__btn--primary">Book Online <span class="lodging-pricing__soon">(Link Coming Soon)</span></a>
+          <p class="lodging-pricing__helper">Click below to reserve your cabin directly with Club Getaway.</p>
+          <a href="https://events.clubgetaway.com/events/paige-benji-wedding-october-4th-5th/" target="_blank" rel="noopener noreferrer" class="lodging-pricing__btn lodging-pricing__btn--primary">Reserve Your Cabin</a>
           <div class="lodging-pricing__divider">
             <span>or</span>
           </div>
@@ -614,14 +619,14 @@
           </div>
         </div>
 
-        <div class="activity-card reveal reveal-delay-2" data-activity="waterskiing">
+        <div class="activity-card reveal reveal-delay-2" data-activity="minigolf">
           <div class="activity-card__img-wrap">
-            <img src="/images/camp_waterski_1774819115529.png" alt="Water skiing on the lake" loading="lazy" />
+            <img src="/images/camp_minigolf_1774819120000.png" alt="Mini golf at camp" loading="lazy" />
           </div>
           <div class="activity-card__body">
-            <div class="activity-card__emoji">🎿</div>
-            <h3>Water Skiing</h3>
-            <p>Hit the lake and make a splash</p>
+            <div class="activity-card__emoji">⛳</div>
+            <h3>Mini Golf</h3>
+            <p>Putt your way to camp glory</p>
           </div>
         </div>
 
@@ -713,7 +718,7 @@
             </button>
             <h3>What to Expect</h3>
             <ul class="vibe__expect-list">
-              <li>Camp bunk beds & cabin sleepovers</li>
+              <li>Private cabin rooms with classic camp energy</li>
               <li>Campfire sing-alongs & s'mores</li>
               <li>Classic summer camp vibes & Olympics</li>
             </ul>
@@ -850,6 +855,19 @@
           <span class="footer__error" id="attendingError">Please let us know if you can make it</span>
         </div>
 
+        <div class="footer__decline-card" id="declinePostcard" aria-hidden="true">
+          <button type="button" class="footer__postcard-stamp" id="declineStamp" aria-label="Tap the camp stamp for a hidden note">
+            <span>Camp<br/>Mail</span>
+          </button>
+          <div class="footer__decline-copy">
+            <p class="footer__decline-kicker">Postcard received</p>
+            <p class="footer__decline-message">We'll miss you around the campfire.</p>
+            <p class="footer__decline-subcopy">Leave a note below if you'd like to send Paige &amp; Benji a little hello.</p>
+            <p class="footer__secret-note" id="declineSecretNote" aria-live="polite" aria-hidden="true">Hidden note from Paige &amp; Benji: we'll save you a s'more in spirit.</p>
+          </div>
+        </div>
+
+        <div class="footer__camp-details" id="campDetailsGroup" aria-hidden="false">
         <!-- Dietary Restrictions -->
         <div class="footer__form-group">
           <label for="guestDiet" class="footer__label-text">Dietary Restrictions <span class="footer__req">*</span></label>
@@ -925,9 +943,19 @@
           <span class="footer__error" id="colorWarsError">Please let us know if you're interested</span>
         </div>
 
+        <!-- Human Verification (Anti-Bot) -->
+        <div class="footer__form-group footer__captcha-group" id="captchaGroup">
+          <label for="captchaAnswer" class="footer__label-text">
+            Prove you're a happy camper: What is <span id="captchaQuestion" style="color: var(--fire-amber); font-weight: 700;"></span>? <span class="footer__req">*</span>
+          </label>
+          <input type="text" id="captchaAnswer" placeholder="Your answer" required autocomplete="off" />
+          <span class="footer__error" id="captchaError">Please solve the riddle to prove you are a human</span>
+        </div>
+        </div>
+
         <!-- Comments -->
         <div class="footer__form-group">
-          <label for="guestComments" class="footer__label-text">Comments <span class="footer__req">*</span></label>
+          <label for="guestComments" class="footer__label-text">Comments <span class="footer__req" id="commentsReq">*</span><span class="footer__optional-note" id="commentsOptional" hidden>(optional)</span></label>
           <textarea id="guestComments" name="entry.1599853593" placeholder="Anything else you'd like us to know? Special requests, plus-one info, song requests, etc." required rows="4"></textarea>
           <span class="footer__error" id="commentsError">Please add a comment or type "None"</span>
         </div>
@@ -936,15 +964,6 @@
         <div class="footer__honeypot" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;">
           <label for="guestBait" class="footer__label-text">Leave this blank</label>
           <input type="text" id="guestBait" name="guest_bait_honey" tabindex="-1" autocomplete="off" />
-        </div>
-
-        <!-- Human Verification (Anti-Bot) -->
-        <div class="footer__form-group footer__captcha-group" id="captchaGroup">
-          <label for="captchaAnswer" class="footer__label-text">
-            Prove you're a happy camper: What is <span id="captchaQuestion" style="color: var(--fire-amber); font-weight: 700;"></span>? <span class="footer__req">*</span>
-          </label>
-          <input type="text" id="captchaAnswer" placeholder="Your answer" required autocomplete="off" />
-          <span class="footer__error" id="captchaError">Please solve the riddle to prove you are a human</span>
         </div>
 
         <button type="submit" class="footer__submit" id="submitBtn">
@@ -956,7 +975,7 @@
       <!-- Confirmation toast -->
       <div class="footer__toast" id="confirmToast">
         <span class="footer__toast-icon">🎉</span>
-        <span class="footer__toast-msg">RSVP received! See you at camp!</span>
+        <span class="footer__toast-msg" id="toastMsg">RSVP received! See you at camp!</span>
       </div>
 
       <p class="footer__copyright">Paige & Benji · October 2026 · Made with 🤎 and campfire smoke</p>
@@ -1386,6 +1405,17 @@
     var colorWarsGroup = document.getElementById('colorWarsGroup');
     var captchaGroup = document.getElementById('captchaGroup');
     var toast = document.getElementById('confirmToast');
+    var toastMsg = document.getElementById('toastMsg');
+    var campDetailsGroup = document.getElementById('campDetailsGroup');
+    var declinePostcard = document.getElementById('declinePostcard');
+    var declineStamp = document.getElementById('declineStamp');
+    var declineSecretNote = document.getElementById('declineSecretNote');
+    var commentsReq = document.getElementById('commentsReq');
+    var commentsOptional = document.getElementById('commentsOptional');
+    var submitBtn = document.getElementById('submitBtn');
+    var attendeeOnlyInputs = campDetailsGroup ? campDetailsGroup.querySelectorAll('input, textarea, select') : [];
+    var commentsDefaultPlaceholder = commentsInput ? commentsInput.getAttribute('placeholder') : '';
+    var DECLINE_VALUE = "Sorry, can't make it";
 
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -1408,6 +1438,111 @@
 
     generateCaptcha();
 
+    Array.prototype.forEach.call(attendeeOnlyInputs, function (input) {
+      if (input.required) {
+        input.setAttribute('data-required-when-attending', 'true');
+      }
+    });
+
+    function getAttendanceValue() {
+      var checked = document.querySelector('input[name="entry.1747976834"]:checked');
+      return checked ? checked.value : '';
+    }
+
+    function isDeclining() {
+      return getAttendanceValue() === DECLINE_VALUE;
+    }
+
+    function setSubmitIdleLabel(declining) {
+      if (!submitBtn || submitBtn.disabled) return;
+      submitBtn.innerHTML = declining
+        ? '<span class="footer__submit-text">Send Our Regrets 💌</span>'
+        : '<span class="footer__submit-text">Send RSVP 🏕️</span>';
+    }
+
+    function clearAttendeeOnlyErrors() {
+      var errors = [dietError, overnightError, shuttleError, colorWarsError, captchaError];
+      var groups = [overnightGroup, shuttleGroup, colorWarsGroup, captchaGroup];
+      var inputs = [dietInput, captchaAnswerInput];
+      errors.forEach(function (error) { if (error) error.classList.remove('visible'); });
+      groups.forEach(function (group) { if (group) group.classList.remove('input--error'); });
+      inputs.forEach(function (input) { if (input) input.classList.remove('input--error'); });
+    }
+
+    function syncAttendanceState() {
+      var declining = isDeclining();
+
+      if (form) form.classList.toggle('footer__form--declining', declining);
+      if (campDetailsGroup) campDetailsGroup.setAttribute('aria-hidden', declining ? 'true' : 'false');
+      if (declinePostcard) declinePostcard.setAttribute('aria-hidden', declining ? 'false' : 'true');
+
+      Array.prototype.forEach.call(attendeeOnlyInputs, function (input) {
+        input.disabled = declining;
+        if (input.getAttribute('data-required-when-attending') === 'true') {
+          if (declining) {
+            input.removeAttribute('required');
+          } else {
+            input.setAttribute('required', '');
+          }
+        }
+      });
+
+      if (commentsInput) {
+        if (declining) {
+          commentsInput.removeAttribute('required');
+          commentsInput.setAttribute('placeholder', "Send us a little note if you'd like (optional).");
+          commentsInput.classList.remove('input--error');
+          if (commentsError) commentsError.classList.remove('visible');
+        } else {
+          commentsInput.setAttribute('required', '');
+          commentsInput.setAttribute('placeholder', commentsDefaultPlaceholder);
+        }
+      }
+
+      if (commentsReq) commentsReq.hidden = declining;
+      if (commentsOptional) commentsOptional.hidden = !declining;
+
+      if (declining) {
+        clearAttendeeOnlyErrors();
+        if (declineSecretNote) {
+          declineSecretNote.classList.remove('footer__secret-note--visible');
+          declineSecretNote.setAttribute('aria-hidden', 'true');
+        }
+      }
+
+      setSubmitIdleLabel(declining);
+    }
+
+    if (declineStamp && declineSecretNote) {
+      var declineStampTaps = 0;
+      var declineStampResetTimer;
+      var declineSecretTimer;
+
+      declineStamp.addEventListener('click', function () {
+        declineStampTaps++;
+        declineStamp.classList.add('footer__postcard-stamp--tapped');
+        setTimeout(function () {
+          declineStamp.classList.remove('footer__postcard-stamp--tapped');
+        }, 220);
+
+        clearTimeout(declineStampResetTimer);
+        declineStampResetTimer = setTimeout(function () {
+          declineStampTaps = 0;
+        }, 1300);
+
+        if (declineStampTaps >= 3) {
+          declineStampTaps = 0;
+          clearTimeout(declineSecretTimer);
+          declineSecretNote.classList.add('footer__secret-note--visible');
+          declineSecretNote.setAttribute('aria-hidden', 'false');
+          declineSecretTimer = setTimeout(function () {
+            declineSecretNote.classList.remove('footer__secret-note--visible');
+            declineSecretNote.setAttribute('aria-hidden', 'true');
+          }, 4200);
+        }
+      });
+    }
+
     // Helper: clear error on radio group selection
     function setupRadioClear(name, group, error) {
       document.querySelectorAll('input[name="' + name + '"]').forEach(function (radio) {
@@ -1422,6 +1557,12 @@
     setupRadioClear('entry.1379738470', overnightGroup, overnightError);
     setupRadioClear('entry.1513616992', shuttleGroup, shuttleError);
     setupRadioClear('entry.157830799', colorWarsGroup, colorWarsError);
+
+    document.querySelectorAll('input[name="entry.1747976834"]').forEach(function (radio) {
+      radio.addEventListener('change', syncAttendanceState);
+    });
+
+    syncAttendanceState();
 
     // Helper: clear error on text/email/tel input
     function setupInputClear(input, error) {
@@ -1473,6 +1614,7 @@
       form.addEventListener('submit', function (e) {
         clearAllErrors();
         var hasError = false;
+        var declining = isDeclining();
 
         // Honeypot check: If the honeypot field is filled, we suspect a bot.
         // We prevent the actual submission to Google Forms but act as if it succeeded
@@ -1491,11 +1633,15 @@
               toast.classList.add('footer__toast--show');
             }
             if (botBtn) {
-              botBtn.innerHTML = '<span class="footer__submit-text">Send RSVP 🏕️</span>';
               botBtn.removeAttribute('disabled');
+              setSubmitIdleLabel(isDeclining());
+            }
+            if (toastMsg) {
+              toastMsg.textContent = declining ? "RSVP received. We'll miss you around the campfire." : 'RSVP received! See you at camp!';
             }
             form.reset();
             generateCaptcha();
+            syncAttendanceState();
 
             setTimeout(function () {
               if (toast) toast.classList.remove('footer__toast--show');
@@ -1528,28 +1674,30 @@
         // Radio groups
         if (validateRadio('entry.1747976834', attendingGroup, attendingError)) hasError = true;
 
-        if (validateTextInput(dietInput, dietError)) hasError = true;
+        if (!declining) {
+          if (validateTextInput(dietInput, dietError)) hasError = true;
 
-        if (validateRadio('entry.1379738470', overnightGroup, overnightError)) hasError = true;
-        if (validateRadio('entry.1513616992', shuttleGroup, shuttleError)) hasError = true;
-        if (validateRadio('entry.157830799', colorWarsGroup, colorWarsError)) hasError = true;
+          if (validateRadio('entry.1379738470', overnightGroup, overnightError)) hasError = true;
+          if (validateRadio('entry.1513616992', shuttleGroup, shuttleError)) hasError = true;
+          if (validateRadio('entry.157830799', colorWarsGroup, colorWarsError)) hasError = true;
 
-        if (validateTextInput(commentsInput, commentsError)) hasError = true;
+          if (validateTextInput(commentsInput, commentsError)) hasError = true;
 
-        // Captcha validation
-        var captchaAnswerVal = (captchaAnswerInput && captchaAnswerInput.value.trim()) || '';
-        var captchaAnswerNum = parseInt(captchaAnswerVal, 10);
-        if (isNaN(captchaAnswerNum) || captchaAnswerNum !== captchaCorrectAnswer) {
-          if (captchaAnswerInput) captchaAnswerInput.classList.add('input--error');
-          if (captchaError) captchaError.classList.add('visible');
-          if (captchaError) {
-            if (!captchaAnswerVal) {
-              captchaError.textContent = 'Please solve the riddle to prove you are a human';
-            } else {
-              captchaError.textContent = 'That math is a little off! Try again.';
+          // Captcha validation
+          var captchaAnswerVal = (captchaAnswerInput && captchaAnswerInput.value.trim()) || '';
+          var captchaAnswerNum = parseInt(captchaAnswerVal, 10);
+          if (isNaN(captchaAnswerNum) || captchaAnswerNum !== captchaCorrectAnswer) {
+            if (captchaAnswerInput) captchaAnswerInput.classList.add('input--error');
+            if (captchaError) captchaError.classList.add('visible');
+            if (captchaError) {
+              if (!captchaAnswerVal) {
+                captchaError.textContent = 'Please solve the riddle to prove you are a human';
+              } else {
+                captchaError.textContent = 'That math is a little off! Try again.';
+              }
             }
+            hasError = true;
           }
-          hasError = true;
         }
 
         if (hasError) {
@@ -1571,16 +1719,20 @@
 
         // Show confirmation toast after a short delay
         setTimeout(function () {
+          if (toastMsg) {
+            toastMsg.textContent = declining ? "RSVP received. We'll miss you around the campfire." : 'RSVP received! See you at camp!';
+          }
           if (toast) {
             toast.classList.add('footer__toast--show');
           }
           if (btn) {
-            btn.innerHTML = '<span class="footer__submit-text">Send RSVP 🏕️</span>';
             btn.style.background = '';
             btn.removeAttribute('disabled');
+            setSubmitIdleLabel(isDeclining());
           }
           form.reset();
           generateCaptcha();
+          syncAttendanceState();
 
           // Auto-dismiss toast
           setTimeout(function () {

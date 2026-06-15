@@ -1426,7 +1426,7 @@
 
 .lodging-pricing__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -1455,15 +1455,17 @@
   font-size: 0.82rem;
   color: rgba(250, 249, 242, 0.65);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.07em;
+  line-height: 1.35;
 }
 
 .lodging-pricing__note {
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  color: rgba(250, 249, 242, 0.4);
+  color: rgba(250, 249, 242, 0.48);
   margin: 0 0 0.35rem;
   font-style: italic;
+  line-height: 1.45;
 }
 
 .lodging-pricing__includes {
@@ -1477,6 +1479,14 @@
 .lodging-pricing__booking {
   padding-top: 1.25rem;
   border-top: 1px solid rgba(250, 249, 242, 0.1);
+}
+
+.lodging-pricing__helper {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: rgba(250, 249, 242, 0.78);
+  margin: 0 0 0.85rem;
+  line-height: 1.5;
 }
 
 .lodging-pricing__btn {
@@ -1495,9 +1505,15 @@
 .lodging-pricing__btn--primary {
   background: linear-gradient(135deg, var(--forest-mid), var(--forest-light));
   color: var(--cream);
-  opacity: 0.65;
-  pointer-events: none;
-  cursor: not-allowed;
+  box-shadow: 0 10px 26px rgba(52, 92, 13, 0.28);
+}
+
+.lodging-pricing__btn--primary:hover,
+.lodging-pricing__btn--primary:focus-visible {
+  background: linear-gradient(135deg, var(--forest-light), var(--fire-orange));
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(52, 92, 13, 0.4);
+  outline: none;
 }
 
 .lodging-pricing__soon {
@@ -1553,7 +1569,7 @@
   color: rgba(250, 249, 242, 0.55);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .lodging-pricing__grid {
     grid-template-columns: 1fr;
   }
@@ -2409,6 +2425,173 @@
   flex-direction: column;
   gap: 1.2rem;
   text-align: left;
+  transition: gap 0.35s ease;
+}
+
+.footer__form--declining {
+  gap: 0.95rem;
+}
+
+.footer__camp-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-height: 1200px;
+  opacity: 1;
+  overflow: hidden;
+  transform: translateY(0);
+  transition:
+    max-height 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.45s ease;
+}
+
+.footer__form--declining .footer__camp-details {
+  max-height: 0;
+  opacity: 0;
+  margin: -0.3rem 0 -0.75rem;
+  pointer-events: none;
+  transform: translateY(-10px);
+}
+
+.footer__decline-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.95rem;
+  align-items: center;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 1rem;
+  border: 0 dashed transparent;
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(52, 92, 13, 0.16) 0 1px, transparent 1px) 0 0 / 18px 18px,
+    linear-gradient(180deg, rgba(244, 163, 0, 0.08), rgba(250, 249, 242, 0.08));
+  box-shadow: inset 0 0 0 rgba(250, 249, 242, 0);
+  pointer-events: none;
+  transform: translateY(-10px) rotate(0deg);
+  transition:
+    max-height 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    padding 0.45s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer__form--declining .footer__decline-card {
+  max-height: 320px;
+  opacity: 1;
+  padding: 1rem 1rem 1rem 1.1rem;
+  border-width: 1px;
+  border-color: rgba(244, 163, 0, 0.28);
+  box-shadow: inset 0 0 0 1px rgba(250, 249, 242, 0.05), 0 10px 24px rgba(2, 24, 48, 0.18);
+  pointer-events: auto;
+  transform: translateY(0) rotate(-0.4deg);
+}
+
+.footer__decline-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 0 16px, rgba(232, 97, 26, 0.18) 16px 18px, transparent 18px 100%),
+    radial-gradient(circle at 18% 20%, rgba(250, 249, 242, 0.08), transparent 35%);
+  pointer-events: none;
+}
+
+.footer__postcard-stamp {
+  position: relative;
+  z-index: 1;
+  width: 58px;
+  height: 58px;
+  border: 2px dashed rgba(244, 163, 0, 0.7);
+  border-radius: 6px;
+  background: rgba(4, 37, 71, 0.42);
+  color: var(--fire-amber);
+  font-family: var(--font-typewriter);
+  font-size: 0.58rem;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transform: rotate(7deg);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease;
+}
+
+.footer__postcard-stamp:hover,
+.footer__postcard-stamp:focus-visible {
+  background: rgba(52, 92, 13, 0.45);
+  transform: rotate(3deg) scale(1.04);
+  outline: none;
+}
+
+.footer__postcard-stamp--tapped {
+  transform: rotate(0deg) scale(0.9) !important;
+}
+
+.footer__decline-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.footer__decline-kicker {
+  font-family: var(--font-typewriter);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(250, 249, 242, 0.52);
+  margin: 0 0 0.2rem;
+}
+
+.footer__decline-message {
+  font-family: var(--font-script);
+  font-size: clamp(1.25rem, 3vw, 1.7rem);
+  color: var(--fire-amber);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.footer__decline-subcopy {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: rgba(250, 249, 242, 0.64);
+  line-height: 1.45;
+  margin: 0.35rem 0 0;
+}
+
+.footer__secret-note {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-4px);
+  font-family: var(--font-script);
+  font-size: 1.05rem;
+  color: var(--cream);
+  line-height: 1.25;
+  margin: 0;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.3s ease,
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    margin 0.3s ease;
+}
+
+.footer__secret-note--visible {
+  max-height: 5rem;
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 0.55rem;
+}
+
+.footer__optional-note {
+  margin-left: 0.25rem;
+  color: rgba(250, 249, 242, 0.45);
+  font-weight: 400;
+  font-style: italic;
 }
 
 .footer__form-row {
@@ -2681,6 +2864,24 @@
 
   .footer__radio-group {
     grid-template-columns: 1fr;
+  }
+
+  .footer__decline-card {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__postcard-stamp {
+    justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__form,
+  .footer__camp-details,
+  .footer__decline-card,
+  .footer__postcard-stamp,
+  .footer__secret-note {
+    transition: none !important;
   }
 }
 
