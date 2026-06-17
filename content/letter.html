@@ -563,29 +563,369 @@
       <h2 class="section-label route__label-head reveal">The Journey</h2>
       <p class="route__quip reveal reveal-delay-1">"Recalculating… destination: I&nbsp;Do."</p>
       <div class="route__map reveal reveal-delay-2" id="routeMap">
-        <svg class="route__svg" viewBox="0 0 800 300" role="img" aria-label="An illustrated route from the Cabaret Theatre prop closet through NYC adventures to Camp Getaway in Kent, Connecticut">
-          <path class="route__line" id="routeLine" d="M70 232 C 180 150, 250 250, 360 178 S 560 110, 730 72" fill="none" stroke="#4a7a1a" stroke-width="4" stroke-linecap="round" pathLength="1" />
-          <g class="route__pin" data-pin="0" transform="translate(70 232)">
-            <path d="M0 0 C -13 -16 -16 -26 -8 -33 C -2 -38 2 -38 8 -33 C 16 -26 13 -16 0 0 Z" fill="#f4a300" stroke="#bf360c" stroke-width="2" />
-            <circle cx="0" cy="-27" r="5" fill="#042547" />
+        <div class="route__stage">
+        <svg class="route__svg" viewBox="0 0 800 440" role="img" aria-label="An illustrated dusk landscape of the journey: from the Cabaret Theatre prop closet where Paige and Benji met in 2015, through years of NYC adventures, to their 2026 wedding at the glowing campfire of Camp Getaway in Kent, Connecticut" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <!-- Dusk sky: night navy fading to a warm campfire-amber horizon -->
+            <linearGradient id="rSky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#02132a" />
+              <stop offset="32%" stop-color="#08294b" />
+              <stop offset="56%" stop-color="#274a66" />
+              <stop offset="74%" stop-color="#7b4730" />
+              <stop offset="88%" stop-color="#c8692b" />
+              <stop offset="100%" stop-color="#f1a23a" />
+            </linearGradient>
+            <radialGradient id="rMoon" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%" stop-color="#fffef2" />
+              <stop offset="45%" stop-color="#fff6d6" stop-opacity="0.55" />
+              <stop offset="100%" stop-color="#fff6d6" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="rHillFar" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#5d7a63" />
+              <stop offset="100%" stop-color="#496a52" />
+            </linearGradient>
+            <linearGradient id="rHillMid" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3a5f34" />
+              <stop offset="100%" stop-color="#2c4a24" />
+            </linearGradient>
+            <linearGradient id="rGround" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3a6516" />
+              <stop offset="100%" stop-color="#244209" />
+            </linearGradient>
+            <linearGradient id="rPath" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ecdcae" />
+              <stop offset="100%" stop-color="#cdb074" />
+            </linearGradient>
+            <radialGradient id="rCampfire" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%" stop-color="#fff2bd" />
+              <stop offset="32%" stop-color="#ffbf52" />
+              <stop offset="66%" stop-color="#f4730a" stop-opacity="0.45" />
+              <stop offset="100%" stop-color="#e8611a" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="rSpot" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fff3c4" stop-opacity="0.5" />
+              <stop offset="100%" stop-color="#fff3c4" stop-opacity="0" />
+            </linearGradient>
+            <radialGradient id="rVignette" cx="0.5" cy="0.42" r="0.75">
+              <stop offset="60%" stop-color="#000000" stop-opacity="0" />
+              <stop offset="100%" stop-color="#02132a" stop-opacity="0.45" />
+            </radialGradient>
+
+            <!-- Reusable layered pine -->
+            <symbol id="rPineSym" viewBox="0 0 40 66">
+              <rect x="17.5" y="52" width="5" height="13" fill="#4a3018" />
+              <path d="M20 3 L34 27 L27 27 L39 49 L1 49 L13 27 L6 27 Z" fill="#274a1c" />
+              <path d="M20 3 L6 27 L13 27 L1 49 L20 49 Z" fill="#356226" opacity="0.85" />
+            </symbol>
+          </defs>
+
+          <!-- ===================== SKY ===================== -->
+          <rect x="0" y="0" width="800" height="320" fill="url(#rSky)" />
+
+          <!-- Moon + glow -->
+          <g aria-hidden="true">
+            <circle cx="118" cy="72" r="50" fill="url(#rMoon)" class="route__moon-glow" />
+            <circle cx="118" cy="72" r="20" fill="#fffef2" />
+            <circle cx="111" cy="66" r="4" fill="#f0ead2" opacity="0.7" />
+            <circle cx="125" cy="80" r="3" fill="#f0ead2" opacity="0.6" />
+            <circle cx="123" cy="64" r="2.2" fill="#f0ead2" opacity="0.5" />
           </g>
-          <g class="route__pin" data-pin="1" transform="translate(360 178)">
-            <path d="M0 0 C -13 -16 -16 -26 -8 -33 C -2 -38 2 -38 8 -33 C 16 -26 13 -16 0 0 Z" fill="#f4a300" stroke="#bf360c" stroke-width="2" />
-            <circle cx="0" cy="-27" r="5" fill="#042547" />
+
+          <!-- Stars -->
+          <g class="route__stars" aria-hidden="true" fill="#fffde7">
+            <circle class="route__star" cx="56" cy="40" r="1.6" style="animation-delay:0s" />
+            <circle class="route__star" cx="188" cy="30" r="1.3" style="animation-delay:.6s" />
+            <circle class="route__star" cx="232" cy="74" r="1.7" style="animation-delay:1.2s" />
+            <circle class="route__star" cx="300" cy="42" r="1.2" style="animation-delay:.3s" />
+            <circle class="route__star" cx="356" cy="92" r="1.5" style="animation-delay:1.6s" />
+            <circle class="route__star" cx="300" cy="124" r="1.1" style="animation-delay:.9s" />
+            <circle class="route__star" cx="452" cy="34" r="1.6" style="animation-delay:2.1s" />
+            <circle class="route__star" cx="520" cy="70" r="1.3" style="animation-delay:.5s" />
+            <circle class="route__star" cx="470" cy="112" r="1.2" style="animation-delay:1.4s" />
+            <circle class="route__star" cx="580" cy="40" r="1.7" style="animation-delay:1.0s" />
+            <circle class="route__star" cx="642" cy="92" r="1.3" style="animation-delay:2.3s" />
+            <circle class="route__star" cx="704" cy="52" r="1.5" style="animation-delay:.2s" />
+            <circle class="route__star" cx="758" cy="88" r="1.2" style="animation-delay:1.8s" />
+            <circle class="route__star" cx="742" cy="28" r="1.6" style="animation-delay:.7s" />
+            <circle class="route__star" cx="210" cy="118" r="1.1" style="animation-delay:2.0s" />
+            <circle class="route__star" cx="560" cy="120" r="1.2" style="animation-delay:1.1s" />
+            <circle class="route__star" cx="660" cy="138" r="1.0" style="animation-delay:.4s" />
+            <circle class="route__star" cx="86" cy="120" r="1.2" style="animation-delay:1.7s" />
+            <!-- twinkle sparkles -->
+            <path class="route__star" d="M408 60 l1.4 4 4 1.4 -4 1.4 -1.4 4 -1.4 -4 -4 -1.4 4 -1.4 Z" style="animation-delay:.9s" />
+            <path class="route__star" d="M150 78 l1 3 3 1 -3 1 -1 3 -1 -3 -3 -1 3 -1 Z" style="animation-delay:1.9s" />
           </g>
-          <g class="route__pin route__pin--final" data-pin="2" transform="translate(730 72)">
-            <path d="M0 0 C -13 -16 -16 -26 -8 -33 C -2 -38 2 -38 8 -33 C 16 -26 13 -16 0 0 Z" fill="#f4a300" stroke="#bf360c" stroke-width="2" />
-            <circle cx="0" cy="-27" r="5" fill="#042547" />
+
+          <!-- Distant birds -->
+          <g class="route__birds" aria-hidden="true" fill="none" stroke="#0c2238" stroke-width="1.4" stroke-linecap="round">
+            <path d="M246 58 q5 -5 10 0 q5 -5 10 0" />
+            <path d="M276 72 q4 -4 8 0 q4 -4 8 0" />
           </g>
-          <text class="route__pin-label" x="70" y="262" text-anchor="middle">Prop Closet</text>
-          <text class="route__pin-label" x="360" y="208" text-anchor="middle">NYC Adventures</text>
-          <text class="route__pin-label" x="730" y="104" text-anchor="middle">Camp Getaway</text>
-          <!-- Traveler rides the path during the draw-in (positioned by JS). -->
-          <g class="route__traveler" id="routeTraveler" aria-hidden="true">
-            <text font-size="26" text-anchor="middle" dy="0.35em">🏕️</text>
+
+          <!-- Soft clouds near the horizon -->
+          <g aria-hidden="true" fill="#f4c98a" opacity="0.25">
+            <ellipse cx="300" cy="178" rx="78" ry="11" />
+            <ellipse cx="540" cy="158" rx="62" ry="9" />
           </g>
+
+          <!-- ===================== HILLS ===================== -->
+          <path fill="url(#rHillFar)" d="M0 236 C 120 200, 240 214, 360 226 C 500 244, 620 206, 800 228 L800 320 L0 320 Z" />
+          <!-- tiny distant pines on the far ridge -->
+          <g class="route__ridge-pines" aria-hidden="true">
+            <use href="#rPineSym" x="30" y="206" width="16" height="26" />
+            <use href="#rPineSym" x="48" y="210" width="13" height="21" />
+            <use href="#rPineSym" x="500" y="200" width="15" height="24" />
+            <use href="#rPineSym" x="516" y="204" width="12" height="20" />
+            <use href="#rPineSym" x="600" y="210" width="14" height="22" />
+          </g>
+          <path fill="url(#rHillMid)" d="M0 272 C 150 240, 300 264, 430 258 C 560 252, 690 272, 800 256 L800 320 L0 320 Z" />
+
+          <!-- ===================== GROUND ===================== -->
+          <rect x="0" y="300" width="800" height="140" fill="url(#rGround)" />
+          <!-- subtle grass speckle -->
+          <g aria-hidden="true" fill="#4a7a1a" opacity="0.5">
+            <circle cx="60" cy="370" r="1.6" /><circle cx="140" cy="392" r="1.4" /><circle cx="220" cy="360" r="1.5" />
+            <circle cx="300" cy="400" r="1.4" /><circle cx="380" cy="372" r="1.6" /><circle cx="470" cy="396" r="1.4" />
+            <circle cx="560" cy="364" r="1.5" /><circle cx="640" cy="402" r="1.4" /><circle cx="740" cy="378" r="1.6" />
+            <circle cx="110" cy="416" r="1.4" /><circle cx="420" cy="416" r="1.4" /><circle cx="700" cy="418" r="1.4" />
+          </g>
+
+          <!-- ===================== THE TRAIL (drawn in by JS) ===================== -->
+          <path class="route__line-shadow" d="M104 332 C 190 350, 280 352, 360 332 C 420 318, 452 318, 510 328 C 576 340, 632 344, 696 334" fill="none" stroke="rgba(2,19,42,0.28)" stroke-width="13" stroke-linecap="round" pathLength="1" />
+          <path class="route__line-body" d="M104 332 C 190 350, 280 352, 360 332 C 420 318, 452 318, 510 328 C 576 340, 632 344, 696 334" fill="none" stroke="url(#rPath)" stroke-width="9" stroke-linecap="round" pathLength="1" />
+          <path class="route__line" id="routeLine" d="M104 332 C 190 350, 280 352, 360 332 C 420 318, 452 318, 510 328 C 576 340, 632 344, 696 334" fill="none" stroke="#8a6b34" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0.012 0.03" pathLength="1" opacity="0.7" />
+
+          <!-- ===================== LANDMARK: THEATRE (2015) ===================== -->
+          <g class="route__landmark route__landmark--theatre" transform="translate(110 300)">
+            <!-- spotlight beams into the dusk -->
+            <g class="route__spot">
+              <path d="M-8 -64 L-46 -150 L-22 -150 Z" fill="url(#rSpot)" />
+              <path d="M8 -64 L46 -150 L22 -150 Z" fill="url(#rSpot)" />
+            </g>
+            <!-- ground shadow -->
+            <ellipse cx="0" cy="2" rx="42" ry="7" fill="#02132a" opacity="0.25" />
+            <!-- facade -->
+            <rect x="-34" y="-66" width="68" height="66" rx="2" fill="#0d3a6b" stroke="#042547" stroke-width="1.5" />
+            <rect x="-37" y="-72" width="74" height="9" rx="2" fill="#042547" />
+            <!-- lit windows -->
+            <rect x="-27" y="-58" width="9" height="9" fill="#ffcf5e" /><rect x="18" y="-58" width="9" height="9" fill="#ffcf5e" />
+            <rect x="-27" y="-44" width="9" height="9" fill="#ffcf5e" opacity="0.85" /><rect x="18" y="-44" width="9" height="9" fill="#ffcf5e" opacity="0.85" />
+            <!-- doorway with warm glow -->
+            <rect x="-10" y="-24" width="20" height="24" rx="1" fill="#3a1f0c" />
+            <rect x="-8" y="-22" width="16" height="22" fill="#f4a300" opacity="0.85" />
+            <line x1="0" y1="-22" x2="0" y2="0" stroke="#3a1f0c" stroke-width="1.4" />
+            <!-- red curtain swag over the marquee -->
+            <path d="M-30 -48 C -22 -56 -14 -48 -6 -56 C 2 -48 10 -56 18 -48 C 26 -56 30 -48 30 -48 Z" fill="#7c1518" />
+            <!-- marquee sign -->
+            <rect x="-28" y="-50" width="56" height="15" rx="2" fill="#f4a300" stroke="#bf360c" stroke-width="1.2" />
+            <path d="M0 -47.5 l1.6 3.4 3.7 .4 -2.8 2.5 .8 3.7 -3.3 -1.9 -3.3 1.9 .8 -3.7 -2.8 -2.5 3.7 -.4 Z" fill="#7c1518" />
+            <!-- marquee bulbs -->
+            <g class="route__bulbs" fill="#fff3b0">
+              <circle cx="-24" cy="-35.5" r="1.5" style="animation-delay:0s" /><circle cx="-16" cy="-35.5" r="1.5" style="animation-delay:.3s" />
+              <circle cx="-8" cy="-35.5" r="1.5" style="animation-delay:.6s" /><circle cx="0" cy="-35.5" r="1.5" style="animation-delay:.9s" />
+              <circle cx="8" cy="-35.5" r="1.5" style="animation-delay:1.2s" /><circle cx="16" cy="-35.5" r="1.5" style="animation-delay:1.5s" />
+              <circle cx="24" cy="-35.5" r="1.5" style="animation-delay:1.8s" />
+            </g>
+            <!-- rooftop pennant -->
+            <line x1="0" y1="-72" x2="0" y2="-86" stroke="#042547" stroke-width="1.4" />
+            <path class="route__pennant" d="M0 -86 L14 -82 L0 -78 Z" fill="#e8611a" />
+          </g>
+
+          <!-- ===================== LANDMARK: NYC (the city years) ===================== -->
+          <g class="route__landmark route__landmark--city" transform="translate(390 300)">
+            <ellipse cx="2" cy="2" rx="80" ry="8" fill="#02132a" opacity="0.25" />
+            <!-- Statue of Liberty hint (far left) -->
+            <g transform="translate(-74 0)">
+              <rect x="-7" y="-14" width="14" height="14" fill="#8a8775" /><rect x="-9" y="-2" width="18" height="3" fill="#6f6c5b" />
+              <path d="M-4 -14 L-2 -34 L2 -34 L4 -14 Z" fill="#6f9b7e" />
+              <circle cx="0" cy="-38" r="4" fill="#6f9b7e" />
+              <path d="M-6 -38 l1.4 -5 M-3 -40 l.7 -5 M0 -41 l0 -5 M3 -40 l-.7 -5 M6 -38 l-1.4 -5" stroke="#6f9b7e" stroke-width="1" />
+              <line x1="4" y1="-36" x2="9" y2="-48" stroke="#6f9b7e" stroke-width="1.6" />
+              <circle class="route__torch" cx="9" cy="-50" r="2.4" fill="#ffd36b" />
+            </g>
+            <!-- skyline -->
+            <rect x="-52" y="-58" width="20" height="58" fill="#0d3a6b" stroke="#042547" stroke-width="1" />
+            <rect x="-30" y="-92" width="22" height="92" fill="#1a5294" stroke="#042547" stroke-width="1" />
+            <rect x="-6" y="-72" width="20" height="72" fill="#0d3a6b" stroke="#042547" stroke-width="1" />
+            <rect x="16" y="-108" width="20" height="108" fill="#15406f" stroke="#042547" stroke-width="1" />
+            <rect x="38" y="-52" width="18" height="52" fill="#1a5294" stroke="#042547" stroke-width="1" />
+            <!-- the tall one's spire + step + beacon -->
+            <path d="M16 -108 L26 -124 L36 -108 Z" fill="#15406f" stroke="#042547" stroke-width="1" />
+            <line x1="26" y1="-124" x2="26" y2="-134" stroke="#042547" stroke-width="1.4" />
+            <circle class="route__beacon" cx="26" cy="-136" r="2.4" fill="#ff5a4d" />
+            <!-- the second tall one's antenna -->
+            <line x1="-19" y1="-92" x2="-19" y2="-102" stroke="#042547" stroke-width="1.2" />
+            <!-- water tower -->
+            <g transform="translate(4 -72)">
+              <path d="M-5 0 L-5 -6 L5 -6 L5 0 Z" fill="#3a1f0c" /><path d="M-5 -6 L0 -12 L5 -6 Z" fill="#5a3a1c" />
+              <line x1="-4" y1="0" x2="-4" y2="4" stroke="#3a1f0c" stroke-width="1" /><line x1="4" y1="0" x2="4" y2="4" stroke="#3a1f0c" stroke-width="1" />
+            </g>
+            <!-- lit windows -->
+            <g fill="#ffcf5e">
+              <rect x="-48" y="-52" width="4" height="5" /><rect x="-40" y="-52" width="4" height="5" /><rect x="-48" y="-42" width="4" height="5" /><rect x="-40" y="-42" width="4" height="5" opacity=".6" /><rect x="-48" y="-32" width="4" height="5" opacity=".6" /><rect x="-40" y="-32" width="4" height="5" />
+              <rect x="-26" y="-86" width="4" height="5" /><rect x="-18" y="-86" width="4" height="5" opacity=".6" /><rect x="-26" y="-74" width="4" height="5" /><rect x="-18" y="-74" width="4" height="5" /><rect x="-26" y="-62" width="4" height="5" opacity=".6" /><rect x="-18" y="-62" width="4" height="5" /><rect x="-26" y="-50" width="4" height="5" /><rect x="-18" y="-50" width="4" height="5" opacity=".6" /><rect x="-26" y="-38" width="4" height="5" /><rect x="-18" y="-38" width="4" height="5" />
+              <rect x="-2" y="-66" width="4" height="5" /><rect x="6" y="-66" width="4" height="5" opacity=".6" /><rect x="-2" y="-54" width="4" height="5" /><rect x="6" y="-54" width="4" height="5" /><rect x="-2" y="-42" width="4" height="5" opacity=".6" /><rect x="6" y="-42" width="4" height="5" />
+              <rect x="20" y="-100" width="4" height="5" /><rect x="28" y="-100" width="4" height="5" opacity=".6" /><rect x="20" y="-88" width="4" height="5" /><rect x="28" y="-88" width="4" height="5" /><rect x="20" y="-76" width="4" height="5" opacity=".6" /><rect x="28" y="-76" width="4" height="5" /><rect x="20" y="-64" width="4" height="5" /><rect x="28" y="-64" width="4" height="5" opacity=".6" /><rect x="20" y="-52" width="4" height="5" /><rect x="28" y="-52" width="4" height="5" /><rect x="20" y="-40" width="4" height="5" opacity=".6" /><rect x="28" y="-40" width="4" height="5" />
+              <rect x="42" y="-46" width="4" height="5" /><rect x="50" y="-46" width="4" height="5" opacity=".6" /><rect x="42" y="-36" width="4" height="5" /><rect x="50" y="-36" width="4" height="5" />
+            </g>
+          </g>
+
+          <!-- ===================== LANDMARK: CAMP GETAWAY (2026, the finale) ===================== -->
+          <g class="route__landmark route__landmark--camp" transform="translate(690 300)">
+            <!-- big warm glow -->
+            <circle class="route__camp-glow" cx="0" cy="-18" r="86" fill="url(#rCampfire)" />
+            <ellipse cx="0" cy="2" rx="70" ry="8" fill="#02132a" opacity="0.22" />
+            <!-- back pines -->
+            <use class="route__pine" href="#rPineSym" x="-66" y="-66" width="40" height="66" />
+            <use class="route__pine" href="#rPineSym" x="34" y="-70" width="42" height="70" />
+            <use class="route__pine" href="#rPineSym" x="-40" y="-54" width="30" height="54" />
+            <use class="route__pine" href="#rPineSym" x="20" y="-52" width="28" height="52" />
+            <!-- fairy lights strung between two poles -->
+            <line x1="-58" y1="-2" x2="-58" y2="-64" stroke="#4a3018" stroke-width="2" />
+            <line x1="58" y1="-2" x2="58" y2="-64" stroke="#4a3018" stroke-width="2" />
+            <path d="M-58 -64 Q 0 -38 58 -64" fill="none" stroke="#2a1c0c" stroke-width="1" />
+            <g class="route__bulbs">
+              <circle cx="-44" cy="-54.5" r="2" fill="#fff0a8" style="animation-delay:0s" />
+              <circle cx="-29" cy="-48" r="2" fill="#ffd36b" style="animation-delay:.4s" />
+              <circle cx="-14" cy="-43.5" r="2" fill="#fff0a8" style="animation-delay:.8s" />
+              <circle cx="0" cy="-42" r="2" fill="#ffd36b" style="animation-delay:1.2s" />
+              <circle cx="14" cy="-43.5" r="2" fill="#fff0a8" style="animation-delay:1.6s" />
+              <circle cx="29" cy="-48" r="2" fill="#ffd36b" style="animation-delay:2.0s" />
+              <circle cx="44" cy="-54.5" r="2" fill="#fff0a8" style="animation-delay:2.4s" />
+            </g>
+            <!-- tent -->
+            <g transform="translate(-34 0)">
+              <path d="M-18 0 L0 -26 L18 0 Z" fill="#345C0D" stroke="#1d3307" stroke-width="1.4" />
+              <path d="M0 -26 L0 0" stroke="#1d3307" stroke-width="1.2" />
+              <path d="M-6 0 L0 -14 L6 0 Z" fill="#21330a" />
+              <line x1="0" y1="-26" x2="0" y2="-31" stroke="#1d3307" stroke-width="1.2" />
+              <path class="route__pennant" d="M0 -31 L9 -28 L0 -25 Z" fill="#f4a300" />
+            </g>
+            <!-- smoke -->
+            <path class="route__smoke" d="M6 -16 C 0 -30 12 -40 6 -54 C 1 -64 11 -74 6 -86" fill="none" stroke="#e8e0cf" stroke-width="4" stroke-linecap="round" opacity="0.16" />
+            <!-- campfire -->
+            <g transform="translate(6 -4)">
+              <line x1="-9" y1="2" x2="9" y2="2" stroke="#4a3018" stroke-width="3" stroke-linecap="round" />
+              <line x1="-7" y1="5" x2="8" y2="-2" stroke="#5a3a1c" stroke-width="3" stroke-linecap="round" />
+              <g class="route__fire">
+                <path d="M-7 2 C -10 -7 -3 -9 0 -15 C 3 -7 10 -7 7 2 Z" fill="#e8611a" />
+                <path d="M-4 2 C -6 -4 -1 -5 0 -10 C 3 -4 4 -3 4 2 Z" fill="#fdd835" />
+              </g>
+            </g>
+            <!-- two little log seats -->
+            <ellipse cx="-22" cy="-2" rx="6" ry="2.6" fill="#5a3a1c" />
+            <ellipse cx="30" cy="-2" rx="6" ry="2.6" fill="#5a3a1c" />
+            <!-- fireflies -->
+            <g class="route__flies" fill="#fff0a8">
+              <circle class="route__fly" cx="-50" cy="-30" r="1.6" style="animation-delay:0s" />
+              <circle class="route__fly" cx="40" cy="-36" r="1.6" style="animation-delay:1.1s" />
+              <circle class="route__fly" cx="-20" cy="-58" r="1.4" style="animation-delay:2.0s" />
+              <circle class="route__fly" cx="52" cy="-20" r="1.4" style="animation-delay:.7s" />
+              <circle class="route__fly" cx="-58" cy="-12" r="1.4" style="animation-delay:1.6s" />
+            </g>
+          </g>
+
+          <!-- ===================== WAYPOINT PINS (pop in as the traveler passes) ===================== -->
+          <g class="route__pin" data-pin="0" transform="translate(110 216)">
+            <g class="route__pin-fx">
+              <circle class="route__pin-halo" cx="0" cy="6" r="15" />
+              <path d="M0 6 C -14 -12 -17 -23 -9 -31 C -3 -36 3 -36 9 -31 C 17 -23 14 -12 0 6 Z" fill="#e8611a" stroke="#bf360c" stroke-width="2" />
+              <circle cx="0" cy="-22" r="11" fill="#fff6e3" />
+              <text x="0" y="-22" text-anchor="middle" dy="0.36em" font-size="13">🎭</text>
+            </g>
+          </g>
+          <g class="route__pin" data-pin="1" transform="translate(390 182)">
+            <g class="route__pin-fx">
+              <circle class="route__pin-halo" cx="0" cy="6" r="15" />
+              <path d="M0 6 C -14 -12 -17 -23 -9 -31 C -3 -36 3 -36 9 -31 C 17 -23 14 -12 0 6 Z" fill="#f4a300" stroke="#bf360c" stroke-width="2" />
+              <circle cx="0" cy="-22" r="11" fill="#fff6e3" />
+              <text x="0" y="-22" text-anchor="middle" dy="0.36em" font-size="13">🗽</text>
+            </g>
+          </g>
+          <g class="route__pin route__pin--final" data-pin="2" transform="translate(690 186)">
+            <g class="route__pin-fx">
+              <circle class="route__pin-halo" cx="0" cy="6" r="17" />
+              <path d="M0 6 C -15 -13 -18 -25 -10 -33 C -3 -39 3 -39 10 -33 C 18 -25 15 -13 0 6 Z" fill="#345C0D" stroke="#1d3307" stroke-width="2" />
+              <circle cx="0" cy="-24" r="12" fill="#fff6e3" />
+              <text x="0" y="-24" text-anchor="middle" dy="0.36em" font-size="14">⛺</text>
+            </g>
+          </g>
+
+          <!-- ===================== LABEL PLACARDS ===================== -->
+          <g class="route__placard" transform="translate(110 358)">
+            <rect x="-76" y="0" width="152" height="44" rx="9" fill="#FAF9F2" opacity="0.94" stroke="#f4a300" stroke-width="1.5" />
+            <text class="route__name" x="0" y="18" text-anchor="middle">Cabaret Theatre</text>
+            <text class="route__sub" x="0" y="36" text-anchor="middle">prop closet · Rutgers</text>
+          </g>
+          <g class="route__placard" transform="translate(390 348)">
+            <rect x="-72" y="0" width="144" height="44" rx="9" fill="#FAF9F2" opacity="0.94" stroke="#f4a300" stroke-width="1.5" />
+            <text class="route__name" x="0" y="18" text-anchor="middle">NYC Adventures</text>
+            <text class="route__sub" x="0" y="36" text-anchor="middle">the city years</text>
+          </g>
+          <g class="route__placard" transform="translate(688 358)">
+            <rect x="-76" y="0" width="152" height="44" rx="9" fill="#FAF9F2" opacity="0.96" stroke="#345C0D" stroke-width="1.5" />
+            <text class="route__name route__name--final" x="0" y="18" text-anchor="middle">Camp Getaway</text>
+            <text class="route__sub" x="0" y="36" text-anchor="middle">Kent, CT · the wedding</text>
+          </g>
+
+          <!-- year mile-markers -->
+          <text class="route__year route__year--start" x="110" y="424" text-anchor="middle">— 2015 —</text>
+          <text class="route__year route__year--end" x="690" y="424" text-anchor="middle">— 2026 —</text>
+
+          <!-- the couple walks the trail (positioned by JS) -->
+          <g class="route__couple" id="routeCouple" aria-hidden="true">
+            <g class="route__couple-bob">
+              <ellipse cx="0" cy="1.5" rx="14" ry="3" fill="#02132a" opacity="0.3" />
+
+              <!-- Paige — long auburn hair, olive sweater -->
+              <g class="route__walker">
+                <rect class="route__leg route__leg--a" x="-9.4" y="-12" width="3" height="13" rx="1.5" fill="#6b6152" />
+                <rect class="route__leg route__leg--b" x="-5.6" y="-12" width="3" height="13" rx="1.5" fill="#6b6152" />
+                <path class="route__arm" d="M-10.6 -22 q -2.4 4 -1.6 9" fill="none" stroke="#34401f" stroke-width="2.6" stroke-linecap="round" />
+                <path d="M-10.8 -11 C -11.2 -19 -11 -22.5 -7 -23.5 C -3 -22.5 -2.8 -19 -3.2 -11 Z" fill="#3d4a2a" />
+                <path d="M-11.4 -25.5 C -12.8 -19 -11.8 -12.5 -10.2 -12.5 L -4 -12.5 C -2.4 -18 -2.6 -25 -7 -29.5 C -9.2 -29 -11 -27.8 -11.4 -25.5 Z" fill="#8a4a26" />
+                <circle cx="-7" cy="-27.2" r="4.2" fill="#f2cda4" />
+                <path d="M-11.3 -27 C -11.3 -32.8 -2.7 -32.8 -2.7 -27 C -4.9 -29.8 -9.1 -29.8 -11.3 -27 Z" fill="#8a4a26" />
+                <path class="route__arm" d="M-3.4 -20 C 0 -19 1.5 -17 1.2 -15.2" fill="none" stroke="#3d4a2a" stroke-width="2.6" stroke-linecap="round" />
+              </g>
+
+              <!-- Benji — short dark hair, black glasses, mauve henley -->
+              <g class="route__walker">
+                <rect class="route__leg route__leg--b" x="3.4" y="-12" width="3.1" height="13" rx="1.5" fill="#33333c" />
+                <rect class="route__leg route__leg--a" x="7.4" y="-12" width="3.1" height="13" rx="1.5" fill="#33333c" />
+                <path class="route__arm" d="M10.8 -23 q 2.4 4 1.6 9" fill="none" stroke="#5c4f53" stroke-width="2.8" stroke-linecap="round" />
+                <path d="M2.6 -11 C 2.2 -19.5 2.4 -23.5 7 -24.5 C 11.6 -23.5 11.8 -19.5 11.4 -11 Z" fill="#6e5f63" />
+                <line x1="7" y1="-23" x2="7" y2="-16" stroke="#54484c" stroke-width="0.7" />
+                <circle cx="7" cy="-28.2" r="4.4" fill="#ecc196" />
+                <path d="M2.6 -29 C 2.6 -34.4 11.4 -34.4 11.4 -29 C 10.4 -31.8 8.6 -32.4 7 -32.4 C 5.4 -32.4 3.6 -31.8 2.6 -29 Z" fill="#241a12" />
+                <g stroke="#15151a" stroke-width="0.75" fill="rgba(245,250,255,0.14)">
+                  <rect x="4.3" y="-29.2" width="2.5" height="2.3" rx="0.6" />
+                  <rect x="7.2" y="-29.2" width="2.5" height="2.3" rx="0.6" />
+                  <line x1="6.8" y1="-28.05" x2="7.2" y2="-28.05" />
+                  <line x1="4.3" y1="-28.4" x2="3.2" y2="-28.7" />
+                </g>
+                <path class="route__arm" d="M3.2 -20 C 0 -19 -1.4 -17 -1 -15.2" fill="none" stroke="#6e5f63" stroke-width="2.6" stroke-linecap="round" />
+              </g>
+
+              <!-- joined hands -->
+              <circle cx="0.1" cy="-15.2" r="2" fill="#f0c8a0" />
+            </g>
+          </g>
+
+          <!-- gentle vignette to frame the scene -->
+          <rect x="0" y="0" width="800" height="440" fill="url(#rVignette)" pointer-events="none" />
         </svg>
-        <p class="route__legend" aria-hidden="true">🏠 Prop Closet &nbsp;→&nbsp; 🗽 NYC Adventures &nbsp;→&nbsp; ⛺ Camp Getaway &nbsp;·&nbsp; 2015 → 2026</p>
+        <!-- cinematic letterbox bars (shown only while the camera is moving) -->
+        <div class="route__bar route__bar--top" aria-hidden="true"></div>
+        <div class="route__bar route__bar--bottom" aria-hidden="true"></div>
+        <!-- narrative caption that fades in as the camera settles on each scene -->
+        <div class="route__caption" id="routeCaption" aria-hidden="true">
+          <span class="route__caption-eyebrow"></span>
+          <span class="route__caption-text"></span>
+        </div>
+        <button class="route__replay" id="routeReplay" type="button">🔁 Replay the journey</button>
+        </div>
+        <p class="route__legend" aria-hidden="true">🎭 Met in the prop closet &nbsp;·&nbsp; 2015 &nbsp;→&nbsp; 🗽 NYC adventures &nbsp;→&nbsp; ⛺ Married at camp &nbsp;·&nbsp; 2026</p>
       </div>
     </div>
   </section>
@@ -619,26 +959,46 @@
       <div class="packing__col packing__col--right">
         <h2 class="packing__heading">Packing List</h2>
         <div class="backpack-meter" id="backpackMeter">
-          <svg class="backpack-meter__svg" viewBox="0 0 100 120" aria-hidden="true">
+          <svg class="backpack-meter__svg" viewBox="0 0 120 150" aria-hidden="true">
             <defs>
               <clipPath id="bpClip">
-                <path d="M50 8 C 32 8 27 23 27 36 L 22 36 C 16 36 12 42 12 50 L 12 104 C 12 110 16 114 22 114 L 78 114 C 84 114 88 110 88 104 L 88 50 C 88 42 84 36 78 36 L 73 36 C 73 23 68 8 50 8 Z" />
+                <path d="M60 10 C 38 10 32 28 32 44 L 26 44 C 18 44 13 51 13 61 L 13 130 C 13 138 18 143 26 143 L 94 143 C 102 143 107 138 107 130 L 107 61 C 107 51 102 44 94 44 L 88 44 C 88 28 82 10 60 10 Z" />
               </clipPath>
               <linearGradient id="bpFillGrad" x1="0" y1="1" x2="0" y2="0">
-                <stop offset="0%" stop-color="#345C0D" />
+                <stop offset="0%" stop-color="#1d3307" />
+                <stop offset="45%" stop-color="#345C0D" />
+                <stop offset="85%" stop-color="#4a7a1a" />
                 <stop offset="100%" stop-color="#f4a300" />
               </linearGradient>
+              <radialGradient id="bpShineGrad" cx="0.32" cy="0.28" r="0.6">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.32)" />
+                <stop offset="60%" stop-color="rgba(255,255,255,0.06)" />
+                <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+              </radialGradient>
             </defs>
+            <!-- Clipped interior: track, the liquid fill, floating bubbles, glow -->
             <g clip-path="url(#bpClip)">
-              <rect class="backpack-meter__track" x="0" y="0" width="100" height="120" />
-              <rect class="backpack-meter__fill" id="bpFill" x="0" y="0" width="100" height="120" fill="url(#bpFillGrad)" />
+              <rect class="backpack-meter__track" x="0" y="0" width="120" height="150" />
+              <rect class="backpack-meter__fill" id="bpFill" x="-4" y="0" width="128" height="150" fill="url(#bpFillGrad)" />
+              <!-- Wobbling liquid surface; animated via JS as the fill rises -->
+              <path class="backpack-meter__surface" id="bpSurface" d="" fill="url(#bpFillGrad)" />
+              <g class="backpack-meter__bubbles" id="bpBubbles"></g>
+              <rect class="backpack-meter__shine" x="0" y="0" width="120" height="150" fill="url(#bpShineGrad)" />
             </g>
-            <path class="backpack-meter__outline" d="M50 8 C 32 8 27 23 27 36 L 22 36 C 16 36 12 42 12 50 L 12 104 C 12 110 16 114 22 114 L 78 114 C 84 114 88 110 88 104 L 88 50 C 88 42 84 36 78 36 L 73 36 C 73 23 68 8 50 8 Z" fill="none" />
-            <path class="backpack-meter__strap" d="M41 36 C 41 20 39 12 33 9" fill="none" />
-            <path class="backpack-meter__strap" d="M59 36 C 59 20 61 12 67 9" fill="none" />
-            <path class="backpack-meter__pocket" d="M30 80 L 70 80 L 70 110 C 70 112 68 114 66 114 L 34 114 C 32 114 30 112 30 110 Z" fill="none" />
+            <!-- Structural outlines drawn over the fill -->
+            <path class="backpack-meter__outline" d="M60 10 C 38 10 32 28 32 44 L 26 44 C 18 44 13 51 13 61 L 13 130 C 13 138 18 143 26 143 L 94 143 C 102 143 107 138 107 130 L 107 61 C 107 51 102 44 94 44 L 88 44 C 88 28 82 10 60 10 Z" fill="none" />
+            <path class="backpack-meter__strap" d="M49 44 C 49 24 46 14 39 10" fill="none" />
+            <path class="backpack-meter__strap" d="M71 44 C 71 24 74 14 81 10" fill="none" />
+            <!-- Top grab handle -->
+            <path class="backpack-meter__strap" d="M54 10 C 54 4 66 4 66 10" fill="none" />
+            <path class="backpack-meter__pocket" d="M36 100 L 84 100 L 84 136 C 84 139 81 143 78 143 L 42 143 C 39 143 36 139 36 136 Z" fill="none" />
+            <!-- Zipper pull on the front pocket -->
+            <circle class="backpack-meter__zipper" cx="60" cy="100" r="2.4" />
           </svg>
-          <p class="backpack-meter__label" id="bpLabel">Start packing!</p>
+          <div class="backpack-meter__readout">
+            <p class="backpack-meter__label" id="bpLabel">Start packing!</p>
+            <p class="backpack-meter__count"><span id="bpCount">0</span><span class="backpack-meter__count-total" id="bpTotal">/17</span></p>
+          </div>
         </div>
         <ul class="packing__list" id="packingList">
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Comfortable clothes for outdoor activities</span></label></li>
@@ -1516,23 +1876,112 @@
     var packingCheckboxes = document.querySelectorAll('.packing__checkbox');
     var resetChecklistBtn = document.getElementById('resetChecklistBtn');
 
-    // Backpack Meter — fills as items are checked
+    // Backpack Meter — a chunky pack that fills like a liquid as you pack.
     var bpFill = document.getElementById('bpFill');
     var bpLabel = document.getElementById('bpLabel');
+    var bpCount = document.getElementById('bpCount');
+    var bpMeter = document.getElementById('backpackMeter');
+    var bpSurface = document.getElementById('bpSurface');
+    var bpBubbles = document.getElementById('bpBubbles');
+    var bpTotalItems = (packingCheckboxes && packingCheckboxes.length) || 17;
+    (function () { var t = document.getElementById("bpTotal"); if (t) t.textContent = "/" + bpTotalItems; })();
+    var bpWasFull = false;
+    var bpWobble = 0; // phase for the liquid surface wave
+
+    // viewBox is 0 0 120 150; the bag interior spans roughly y=44..143.
+    var BP_TOP = 44, BP_BOTTOM = 143, BP_LEFT = 13, BP_RIGHT = 107;
+
+    // Draw the wobbling liquid surface at the current fill level.
+    function drawBpSurface(level) {
+      if (!bpSurface) return;
+      if (level <= 0) { bpSurface.setAttribute('d', ''); return; }
+      var y = BP_BOTTOM - (BP_BOTTOM - BP_TOP) * level;
+      var segs = [];
+      var steps = 6;
+      for (var i = 0; i <= steps; i++) {
+        var t = i / steps;
+        var x = BP_LEFT + (BP_RIGHT - BP_LEFT) * t;
+        var wave = Math.sin(bpWobble + t * Math.PI * 2) * 1.6;
+        segs.push((i === 0 ? 'M' : 'L') + x.toFixed(1) + ' ' + (y + wave).toFixed(1));
+      }
+      // close down to the bottom corners to fill the liquid body
+      segs.push('L' + BP_RIGHT + ' ' + BP_BOTTOM);
+      segs.push('L' + BP_LEFT + ' ' + BP_BOTTOM + ' Z');
+      bpSurface.setAttribute('d', segs.join(' '));
+    }
+
+    // Spawn a few rising bubbles near the surface.
+    function spawnBpBubbles(level) {
+      if (!bpBubbles) return;
+      var count = 3;
+      for (var i = 0; i < count; i++) {
+        var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        var x = BP_LEFT + 10 + Math.random() * (BP_RIGHT - BP_LEFT - 20);
+        var y = BP_BOTTOM - 8 - Math.random() * 8;
+        c.setAttribute('cx', x.toFixed(1));
+        c.setAttribute('cy', y.toFixed(1));
+        c.setAttribute('r', (0.8 + Math.random() * 1.4).toFixed(1));
+        c.style.animationDelay = (Math.random() * 0.8) + 's';
+        bpBubbles.appendChild(c);
+        (function (node) { setTimeout(function () { if (node.parentNode) node.parentNode.removeChild(node); }, 2600); })(c);
+      }
+    }
+
     function updateBackpackMeter() {
       if (!packingCheckboxes || !packingCheckboxes.length) return;
       var done = 0;
       packingCheckboxes.forEach(function (cb) { if (cb.checked) done++; });
       var pct = done / packingCheckboxes.length;
-      if (bpFill) bpFill.style.transform = 'translateY(' + (120 * (1 - pct)) + 'px)';
+      // Rise the gradient fill rect up to match the level.
+      if (bpFill) bpFill.style.transform = 'translateY(' + (150 * (1 - pct)).toFixed(1) + 'px)';
+      if (bpCount) bpCount.textContent = done;
       if (bpLabel) {
         var msg = 'Start packing!';
-        if (pct >= 1) msg = 'Camp legend. Sir Nutsworth approves.';
+        if (pct >= 1) msg = 'Camp legend! Sir Nutsworth approves.';
+        else if (pct >= 0.75) msg = 'Almost ready for camp!';
         else if (pct >= 0.5) msg = 'Cabin-ready';
         else if (pct >= 0.25) msg = 'Light packer';
+        else if (pct > 0) msg = 'Getting packed…';
         bpLabel.textContent = msg;
       }
-      if (pct >= 1 && window.passportAward) window.passportAward('backpack');
+      // 100% celebration: confetti + passport stamp + the victory bounce class.
+      if (pct >= 1) {
+        if (!bpWasFull) {
+          bpWasFull = true;
+          if (bpMeter) bpMeter.classList.add('is-full');
+          if (!REDUCE_MOTION) {
+            var r = bpMeter && bpMeter.getBoundingClientRect();
+            if (r) confettiBurst(r.left + r.width / 2, r.top + r.height / 2, { count: 40, spread: 90, velocity: 34 });
+          }
+          if (window.passportAward) window.passportAward('backpack');
+        }
+      } else {
+        bpWasFull = false;
+        if (bpMeter) bpMeter.classList.remove('is-full');
+      }
+    }
+
+    // Animate the liquid surface wobble continuously while there is fill.
+    var bpReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!bpReduce && bpSurface) {
+      var bpCurrentLevel = 0;
+      function bpReadLevel() {
+        if (!packingCheckboxes || !packingCheckboxes.length) return 0;
+        var d = 0;
+        packingCheckboxes.forEach(function (cb) { if (cb.checked) d++; });
+        return d / packingCheckboxes.length;
+      }
+      var bpBubbleTimer = 0;
+      function bpLoop() {
+        bpWobble += 0.08;
+        var lvl = bpReadLevel();
+        drawBpSurface(lvl);
+        // Drift a few bubbles up every ~1.4s when partly filled.
+        bpBubbleTimer += 16;
+        if (lvl > 0.02 && lvl < 1 && bpBubbleTimer > 1400) { bpBubbleTimer = 0; spawnBpBubbles(lvl); }
+        window.requestAnimationFrame(bpLoop);
+      }
+      window.requestAnimationFrame(bpLoop);
     }
 
     // Load states on bootup
@@ -1703,67 +2152,134 @@
       });
     }
 
-    // ===== Route map draw-in + traveling camper =====
-    var routeMap = document.getElementById('routeMap');
-    var routeLine = document.getElementById('routeLine');
-    var routeTraveler = document.getElementById('routeTraveler');
-    var routeReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (routeMap) {
-      // Waypoints: fraction of path-length where each pin sits, so we can pop
-      // them in as the camper passes. (0 = start, 1 = end.)
-      var ROUTE_DUR = 1900; // ms, matches the CSS draw
+    // ===== ROUTE CINEMATIC START =====
+    // A small camera (the SVG viewBox) pans + zooms from scene to scene while
+    // the couple walks the trail; pins pop and the trail draws as they pass.
+    (function () {
+      var routeMap = document.getElementById('routeMap');
+      var routeSvg = routeMap && routeMap.querySelector('.route__svg');
+      var routeLine = document.getElementById('routeLine');
+      var couple = document.getElementById('routeCouple');
+      var replayBtn = document.getElementById('routeReplay');
+      var capEl = document.getElementById('routeCaption');
+      var capEyebrow = capEl && capEl.querySelector('.route__caption-eyebrow');
+      var capText = capEl && capEl.querySelector('.route__caption-text');
+      var routeReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!routeMap || !routeSvg || !routeLine || !routeLine.getTotalLength) return;
 
-      function runRoute() {
-        routeMap.classList.add('route--drawing');
-        // Reduced-motion: show the whole map statically, no draw/traveler.
-        if (routeReduce || !routeLine || !routeLine.getTotalLength) {
-          if (routeTraveler) routeTraveler.style.opacity = '0';
-          return;
+      var trailPaths = routeMap.querySelectorAll('.route__line, .route__line-body, .route__line-shadow');
+      var pins = routeMap.querySelectorAll('.route__pin');
+      var total = routeLine.getTotalLength();
+
+      // Camera shots — all keep the 800:440 (20:11) aspect so nothing distorts.
+      var FULL = [0, 0, 800, 440];
+      var THEATRE = [0, 146, 380, 209];
+      var NYC = [200, 146, 380, 209];
+      var CAMP = [420, 146, 380, 209];
+      // Timeline: time (s), camera viewBox, couple progress p along the trail.
+      var KF = [
+        { t: 0.0, vb: FULL, p: 0.03 },
+        { t: 1.2, vb: FULL, p: 0.03, ey: 'Their story', cap: 'Every love story needs a map…' },
+        { t: 2.4, vb: THEATRE, p: 0.04 },
+        { t: 4.0, vb: THEATRE, p: 0.07, ey: '2015 · Rutgers University', cap: 'We met in the prop closet 🎭' },
+        { t: 5.9, vb: NYC, p: 0.50 },
+        { t: 7.5, vb: NYC, p: 0.50, ey: 'The city years', cap: 'Adventures all over NYC 🗽' },
+        { t: 9.4, vb: CAMP, p: 0.96 },
+        { t: 10.6, vb: CAMP, p: 0.99, ey: '2026 · Kent, Connecticut', cap: 'We say “I do” at camp ⛺' },
+        { t: 12.2, vb: CAMP, p: 1.0, ey: '2026 · Kent, Connecticut', cap: 'We say “I do” at camp ⛺' },
+        { t: 13.6, vb: FULL, p: 1.0 }
+      ];
+      var DURATION = KF[KF.length - 1].t * 1000;
+      var PIN_THRESH = [0.04, 0.5, 0.96];
+      var popped = [false, false, false];
+      var rafId = null, startTs = null;
+
+      for (var ti = 0; ti < trailPaths.length; ti++) { trailPaths[ti].style.transition = 'none'; }
+
+      function easeInOut(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+      function lerp(a, b, u) { return a + (b - a) * u; }
+      function setVB(v) { routeSvg.setAttribute('viewBox', v[0] + ' ' + v[1] + ' ' + v[2] + ' ' + v[3]); }
+
+      var curCap = null;
+      function setCaption(ey, txt) {
+        if (!capEl) return;
+        var key = txt ? ((ey || '') + '|' + txt) : '';
+        if (key === curCap) return;
+        curCap = key;
+        if (txt) {
+          if (capEyebrow) capEyebrow.textContent = ey || '';
+          if (capText) capText.textContent = txt;
+          capEl.classList.add('is-shown');
+        } else {
+          capEl.classList.remove('is-shown');
         }
-        var total = routeLine.getTotalLength();
-        var travelerGroup = routeTraveler;
-        var popped = [false, false, false];
-        var start = null;
-        function frame(ts) {
-          if (start === null) start = ts;
-          var p = Math.min((ts - start) / ROUTE_DUR, 1);
-          // Ease-out-expo so the camper eases into each waypoint.
-          var eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
-          if (travelerGroup) {
-            var pt = routeLine.getPointAtLength(eased * total);
-            travelerGroup.setAttribute('transform', 'translate(' + pt.x + ' ' + pt.y + ')');
-            travelerGroup.style.opacity = '1';
-          }
-          // Pop waypoints at ~12%, ~52%, ~96% along the path.
-          var thresholds = [0.12, 0.52, 0.96];
-          for (var i = 0; i < thresholds.length; i++) {
-            if (!popped[i] && eased >= thresholds[i]) {
-              popped[i] = true;
-              var pin = routeMap.querySelector('.route__pin[data-pin="' + i + '"]');
-              if (pin) pin.classList.add('is-arrived');
-            }
-          }
-          if (p < 1) {
-            window.requestAnimationFrame(frame);
-          } else if (routeMap) {
-            routeMap.classList.add('route--arrived');
-          }
-        }
-        // Start one frame later so the CSS draw + JS share the same start tick.
-        window.requestAnimationFrame(frame);
       }
 
-      if ('IntersectionObserver' in window) {
-        var routeObs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) { runRoute(); routeObs.disconnect(); }
-          });
-        }, { threshold: 0.3 });
-        routeObs.observe(routeMap);
+      function applyP(p) {
+        p = Math.max(0, Math.min(1, p));
+        for (var i = 0; i < trailPaths.length; i++) { trailPaths[i].style.strokeDashoffset = (1 - p); }
+        if (couple) {
+          var pt = routeLine.getPointAtLength(p * total);
+          couple.setAttribute('transform', 'translate(' + pt.x + ' ' + pt.y + ')');
+          couple.style.opacity = '1';
+        }
+        for (var k = 0; k < PIN_THRESH.length; k++) {
+          if (!popped[k] && p >= PIN_THRESH[k]) {
+            popped[k] = true;
+            var pin = routeMap.querySelector('.route__pin[data-pin="' + k + '"]');
+            if (pin) pin.classList.add('is-arrived');
+          }
+        }
+      }
+
+      function frame(ts) {
+        if (startTs === null) startTs = ts;
+        var el = ts - startTs;
+        var s = Math.min(el, DURATION) / 1000;
+        var a = KF[0], b = KF[KF.length - 1];
+        for (var i = 0; i < KF.length - 1; i++) {
+          if (s >= KF[i].t && s <= KF[i + 1].t) { a = KF[i]; b = KF[i + 1]; break; }
+        }
+        var span = (b.t - a.t) || 1;
+        var u = easeInOut(Math.min(1, Math.max(0, (s - a.t) / span)));
+        setVB([lerp(a.vb[0], b.vb[0], u), lerp(a.vb[1], b.vb[1], u), lerp(a.vb[2], b.vb[2], u), lerp(a.vb[3], b.vb[3], u)]);
+        applyP(lerp(a.p, b.p, u));
+        // Show the narrative caption only while the camera is settled on a scene.
+        if (a.vb === b.vb && b.cap) { setCaption(b.ey, b.cap); } else { setCaption('', ''); }
+        if (el < DURATION) { rafId = window.requestAnimationFrame(frame); }
+        else { routeMap.classList.remove('route--playing'); routeMap.classList.add('route--arrived'); }
+      }
+
+      function play() {
+        if (rafId) window.cancelAnimationFrame(rafId);
+        startTs = null; popped = [false, false, false];
+        curCap = null; setCaption('', '');
+        routeMap.classList.remove('route--arrived');
+        for (var i = 0; i < pins.length; i++) { pins[i].classList.remove('is-arrived'); }
+        routeMap.classList.add('route--playing');
+        rafId = window.requestAnimationFrame(frame);
+      }
+
+      function showStatic() {
+        setVB(FULL); applyP(1.0);
+        for (var i = 0; i < pins.length; i++) { pins[i].classList.add('is-arrived'); }
+        routeMap.classList.add('route--arrived');
+      }
+
+      if (routeReduce) {
+        showStatic();
       } else {
-        runRoute();
+        setVB(FULL); applyP(0.03);
+        if ('IntersectionObserver' in window) {
+          var obs = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) { play(); obs.disconnect(); } });
+          }, { threshold: 0.4 });
+          obs.observe(routeMap);
+        } else { play(); }
       }
-    }
+      if (replayBtn) { replayBtn.addEventListener('click', function () { routeReduce ? showStatic() : play(); }); }
+    })();
+    // ===== ROUTE CINEMATIC END =====
 
     // ===== RSVP progress rail + Camp Pass =====
     (function () {
@@ -1777,6 +2293,17 @@
           li.classList.toggle('is-done', s < n);
         });
       }
+      // Mark every step complete (used after a successful submit) so the rail
+      // reflects a finished RSVP instead of freezing on the last-focused step.
+      function markAllDone() {
+        if (!stepper) return;
+        stepper.querySelectorAll('.footer__step').forEach(function (li) {
+          li.classList.remove('is-active');
+          li.classList.add('is-done');
+        });
+      }
+      window.rsvpStepperComplete = markAllDone;
+      window.rsvpStepperReset = function () { setActiveStep(1); };
       function stepForEl(el) {
         if (!el) return null;
         var id = el.id || '';
@@ -2222,6 +2749,7 @@
           }
 
           setTimeout(function () {
+            if (window.rsvpStepperComplete) window.rsvpStepperComplete();
             if (toast) {
               toast.classList.add('footer__toast--show');
             }
@@ -2235,6 +2763,7 @@
             }
             form.reset();
             syncAttendanceState();
+            if (window.rsvpStepperReset) window.rsvpStepperReset();
 
             setTimeout(function () {
               if (toast) toast.classList.remove('footer__toast--show');
@@ -2294,12 +2823,23 @@
           btn.setAttribute('disabled', 'true');
         }
 
-        // Show confirmation toast after a short delay
+        // Mark the stepper complete so the rail reflects a finished RSVP
+        // (without this it freezes on whichever step last had focus).
+        if (window.rsvpStepperComplete) window.rsvpStepperComplete();
+
         var passName = (firstNameInput && firstNameInput.value ? firstNameInput.value.trim() : '') || 'Friend';
         var passDeclining = declining;
-        setTimeout(function () {
+
+        // Fire the success UI when the hidden iframe actually finishes the POST
+        // to Google Forms, instead of a blind timer. We guard with a timeout
+        // fallback in case the load event never fires (e.g. offline/blocked).
+        var submittedIframe = document.getElementById('hidden_iframe');
+        var settled = false;
+        function showSuccess() {
+          if (settled) return;
+          settled = true;
           if (toastMsg) {
-            toastMsg.textContent = declining ? "RSVP received. We'll miss you around the campfire." : 'RSVP received! See you at camp!';
+            toastMsg.textContent = passDeclining ? "RSVP received. We'll miss you around the campfire." : 'RSVP received! See you at camp!';
           }
           if (toast) {
             toast.classList.add('footer__toast--show');
@@ -2312,13 +2852,21 @@
           }
           form.reset();
           syncAttendanceState();
+          if (window.rsvpStepperReset) window.rsvpStepperReset();
           if (window.showCampPass) window.showCampPass(passName, passDeclining);
 
           // Auto-dismiss toast
           setTimeout(function () {
             if (toast) toast.classList.remove('footer__toast--show');
           }, 4000);
-        }, 1200);
+        }
+        if (submittedIframe) {
+          // Google Forms responses are cross-origin so we can't read the body,
+          // but the load event is a reliable "POST completed" signal.
+          submittedIframe.addEventListener('load', showSuccess, { once: true });
+        }
+        // Fallback in case the load event never fires.
+        setTimeout(showSuccess, 3000);
       });
     }
   })();
