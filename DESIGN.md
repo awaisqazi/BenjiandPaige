@@ -6,10 +6,12 @@ This is the official **Save the Date / Wedding Information website** for **Paige
 
 The site serves as:
 1. A **Save the Date** announcement
-2. A **live countdown** to the ceremony
+2. A **live countdown** to the ceremony (a camp "departure board" of split-flap cards)
 3. A source of **event logistics** (venue, schedule, packing)
 4. A **camp atmosphere setter** to get guests excited
-5. A **roster sign-up form** so guests can register their email for the formal invite
+5. A **roster / RSVP sign-up form** so guests can register for the formal invite
+6. A **gift registry** ("The Adventure Fund" honeymoon fund, linking out to Honeyfund)
+7. A **playful collectible layer** — the Wedding Weekend Passport (stamps), Sir Nutsworth's acorn hunt, and hidden easter eggs that reward exploring
 
 ---
 
@@ -134,14 +136,15 @@ The entire site is a **single-page app** at `src/pages/index.astro`, with all se
 ---
 
 ### 2. Postcard / Countdown Section — `#postcard` / `.postcard`
-**File:** `src/pages/index.astro` lines ~52–82 | **CSS:** `src/styles/main.css` lines ~247–354
+**File:** `content/letter.html` | **CSS:** `public/styles/site.css` (Postcard / Countdown block)
 
-**Design:** A full-width postcard image (`public/images/campgetaway.png`) displayed at natural aspect ratio. A **live countdown timer** is absolutely positioned over the bottom-right of the image, in a navy glassmorphic pill (`rgba(4, 37, 71, 0.6)` with `backdrop-filter: blur`).
+**Design:** A full-width postcard image (`public/images/campgetaway.png`) displayed at natural aspect ratio. Over the bottom-right sits a **camp "departure board" countdown** styled as a warm wooden trail-sign plaque (amber border, slight `rotate(-1.2deg)`), headed "🔥 Days 'til Camp" in Caveat script.
 
-**Interactive elements:**
-- JavaScript countdown updates every second (`cdDays`, `cdHours`, `cdMins`, `cdSecs`) counting down to October 4, 2026 at 2:00 PM ET
+**Split-flap countdown cards:** Each unit (Days / Hrs / Min / Sec) is a **true split-flap card** (a Solari/airport departure board) that mechanically flips when its value changes. Each card is a green enamel camp-sign tile with a center hinge seam, brass rivets on the sides, and cream serif numbers. The Days card is widened (`.flip--wide`) to fit 3 digits.
 
-**Key classes:** `.postcard__countdown`, `.countdown__number`, `.countdown__sep`, `.countdown__label`
+**How the flip works:** each card has **four layers** — a static top half (`.flip__half--top`) and bottom half (`.flip__half--bottom`), plus an **upper flap** (`.flip__flap--upper`) that folds *down* (`rotateX 0 → -91deg`) and a **lower flap** (`.flip__flap--lower`) that swings *up* (`rotateX 91 → 0deg`). Every layer renders a **full-height glyph clipped to one half**, so the seam is a geometric crop at the card's centre — a 1px shadow + catch-light groove, never a bar slicing the digit. On a change the JS paints the new digit onto the static top + lower flap and the old digit onto the upper flap + static bottom; the upper flap folds away to reveal the new top, the lower flap drops the new bottom over the old, then commits all four layers to the new value — always forward, no reset flash. The fold is one CSS cycle gated by `.flip.is-flipping`, with a shade scrim and a small overshoot "thunk." Ticking is **aligned to the wall clock** (a `setTimeout` re-scheduled to each real second) so the seconds flap never drifts, skips, or double-flips. Targets October 4, 2026 at 2:00 PM ET (18:00 UTC). A visually-hidden `aria-live` mirror (`#cdReadout`) announces the remaining time, updated only when minutes-or-larger change.
+
+**Key classes:** `.postcard__countdown`, `.countdown__heading`, `.countdown__row`, `.flip`, `.flip--wide`, `.flip.is-flipping`, `.flip__card`, `.flip__half` (`--top` / `--bottom`), `.flip__flap` (`--upper` / `--lower`), `.flip__num`, `.flip__pin`, `.flip__label`. CSS vars `--cd-card-w` / `--cd-card-h` / `--cd-num` scale it (smaller at `max-width: 600px`).
 
 ---
 
@@ -194,9 +197,15 @@ The entire site is a **single-page app** at `src/pages/index.astro`, with all se
 - Typewriter body: their story text
 - Link to `cabarettheatre.org`
 
-**Context:** Paige and Benji met in 2015 at Rutgers University during a production of Avenue Q in a prop closet.
+**Context:** Paige and Benji met in 2015 at Rutgers University during a production of Avenue Q in a prop closet, where Benji was looking for peace and quiet and Paige immediately derailed that plan.
 
-**Key classes:** `.story__backdrop`, `.story__sign`, `.story__heading`, `.story__subheading`, `.story__text`
+**Easter egg — the prop-closet door (`#storyDoor`):** a little closet door that opens on tap to reveal a hiding squirrel ("Benji was trying to hide here"). Opening it also surfaces a green pulsing CTA (`#propPlayBtn`, "🎬 Watch Benji & Paige reenact the meet-cute").
+
+**Easter egg — "The Closet Where It Happened" (`#propShow`):** the CTA launches a full-screen mini-theatre overlay staging the meet-cute as a **two-squirrel interactive play** starring **Benji** (top hat + bow tie) and a new **Paige** squirrel (ear daisy, eyelashes, forest scarf, warmer fur). Both are drawn as inline SVG and injected once by JS, sharing one skeleton but swapping expressions via `data-pose` (calm / sleepy / startle / smitten). It runs as a **7-beat storybook** (`data-beat` 0–6 on `#propStage`): a title card → *Avenue Q* at Rutgers → Benji slips into the open closet (sleepy, 💤) → **Paige bursts in from the right** with a flash as Benji startles → a spark + floating hearts → an NYC-skyline montage → a campfire finale with confetti and the "next chapter with you" line. Scenery cross-fades behind them (theatre → NYC → camp) under a spotlight with drifting dust motes.
+
+The visitor can **drive the story** — tap the stage (or →/Space/Enter), use the ‹ / › buttons, jump via the dot scrubber, or poke the shelf props to wiggle them — and an **autoplay** ▶/⏸ toggle runs it hands-free (the first manual tap pauses it). Honours `prefers-reduced-motion` (opens straight to a static camp tableau with both squirrels), restores focus to the trigger on close, and closes via ✕, backdrop tap, or Escape, with an "🔁 Encore" replay.
+
+**Key classes:** `.story__backdrop`, `.story__sign`, `.story__heading`, `.story__subheading`, `.story__text`, `.story__door`, `.story__door-cta`, `.propshow`, `.propshow__stage`, `.ps-scene` (`--theatre`/`--nyc`/`--camp`), `.ps-motes`, `.propshow__closet`, `.propshow__door`, `.ps-actor` (`--benji`/`--paige`), `.ps-sq` (`--paige`), `.ps-doorburst`, `.ps-fire`, `.ps-title`, `.propshow__controls`, `.propshow__dot`, `.propshow__caption`, `.propshow__fly`
 
 ---
 
@@ -265,43 +274,89 @@ The entire site is a **single-page app** at `src/pages/index.astro`, with all se
 
 ---
 
+### 10. Gift Registry — `#registry` / `.registry`
+**File:** `content/letter.html` | **CSS:** `public/styles/site.css` (Gift Registry block)
+
+**Design:** "The Adventure Fund" — a cinematic **dusk** that begins in parchment (a seamless seam with the Vibe section above) and melts down through amber/rose into `--night`, handing off seamlessly into the footer's campfire night. Twinkling stars fill the lower half. There is **no traditional product registry**; it frames Honeyfund contributions as **recommended donations toward the honeymoon** (not purchases).
+
+**Pieces:**
+- A lantern-lit **camp trunk** panel (kraft + `campmap.png` texture, leather rope handle, spinning compass badge, flickering flame) with the primary CTA **"Contribute to Our Journey →"** linking to the couple's Honeyfund page (`target="_blank"`).
+- A strip of **luggage-tag "idea" cards** (S'mores Under New Skies, Sunset Canoe Paddle, A Day on the Trail, A Night Under the Stars) labelled "Suggested $25/$50/$100/$150" — clearly framed as inspiration, all linking to the same fund.
+- A hidden **acorn** (`data-acorn="registry"`) tucked in the trunk corner — the 6th of Sir Nutsworth's hunt (see below).
+
+**Key classes:** `.registry`, `.registry__stars`, `.registry__trunk`, `.registry__give-btn`, `.registry__ideas`, `.registry__tag`, `.registry__tag-amt`
+
+---
+
+### 11. The Journey (route map) — `#route` / `.route`
+**File:** `content/letter.html` | **CSS:** `public/styles/site.css` (route block)
+
+**Design:** A cinematic dusk **trail map** on a navy panel. A camera (the SVG `viewBox`) pans/zooms between three landmarks as an animated couple walks a drawn-in trail: **Cabaret Theatre (2015)**, **NYC adventures** (skyline + a verdigris Statue of Liberty silhouette), and **Camp Getaway (2026)** with a campfire finale. Caption placards and waypoint pins pop in as the traveller passes; there's a "🔁 Replay the journey" button. Honours reduced motion.
+
+**Key classes:** `.route`, `.route__map`, `.route__line`, `.route__landmark`, `.route__couple`, `.route__caption`, `.route__replay`
+
+---
+
+### 12. Wedding Weekend Passport + Easter Eggs — `#passport` / `.passport`
+**File:** `content/letter.html` | **CSS:** `public/styles/site.css` (Passport / acorn / cert blocks)
+
+**Design:** A fixed bottom-right **collectible HUD**. A pill tab shows progress (`stamps/10 · 🌰 acorns/6`); tapping it opens a passport panel that **slides + fades** open (and animates closed before it's `hidden`, for a11y). Tap-outside and Escape close it.
+
+**Stamps (10):** earned as guests explore — `envelope` (unlock), `film`, `postcard`, `cabin`, `schedule`, `story`, `backpack`, `badges`, `registry` (🧭 "Honeymoon Fund", earned by reaching the registry or tapping Contribute), `rsvp`. Most are awarded by an `IntersectionObserver` mapping section ids → stamp ids (`window.passportAward`). State persists in `localStorage` (`grecco_passport`).
+
+**Sir Nutsworth's Acorn Hunt (6):** six 🌰 acorns are hidden across the page (`.acorn[data-acorn]`: hero, bonfire, propcloset, packing, polaroid, registry). Each idles with a gentle bob + static amber glow, pops with confetti when collected, and updates the passport tally (`grecco_acorns`). Finding all six opens the **Certificate of Squirrelly Excellence** (`#certOverlay`). A `CERT_VERSION` flag re-shows the (updated) certificate for campers who had already completed the older 5-acorn hunt.
+
+**Sir Nutsworth III** is the site's recurring mascot (Benji as a tuxedo squirrel) — he co-stars with Paige in the prop-closet play, and appears solo in the certificate, the envelope seal bubble, and the Vibe polaroid easter egg.
+
+**Mobile/perf notes:** the panel uses contained overscroll + momentum scroll; interactive controls use `touch-action: manipulation` and a transparent tap highlight; the acorns' idle glow is a **static** drop-shadow (only the transform bob animates) to avoid continuous-repaint jank.
+
+**Key classes:** `.passport`, `.passport__tab`, `.passport__panel`, `.passport__grid`, `.passport__stamp`, `.passport__acorns`, `.acorn`, `.acorn--popping`, `.cert-overlay`, `.cert-card`
+
+---
+
 ## File Structure
 
 ```
 /
+├── content/
+│   └── letter.html                # THE REAL PAGE — all wedding markup + behaviour
+│                                   #   (plain JS in one IIFE). Edit here, then encrypt.
 ├── public/
+│   ├── styles/
+│   │   └── site.css               # ALL wedding-section styles (lazy-loaded post-unlock)
+│   ├── scripts/
+│   │   └── confetti.browser.js    # vendored canvas-confetti (loaded on demand)
 │   └── images/
-│       ├── campgetaway.png        # Postcard section background image
-│       ├── campmap.png            # Schedule paper background
+│       ├── campgetaway.png        # Postcard / countdown background image
+│       ├── campmap.png            # Schedule paper + registry trunk texture
 │       ├── corkboard.png          # Schedule corkboard texture
 │       ├── story.png              # Our Story section backdrop
 │       ├── backdrop.mp4           # Packing section video background
 │       ├── logistics.mp4          # Venue Info section video background
-│       ├── camp_archery_*.png     # Activities: archery photo
-│       ├── camp_zipline_*.png     # Activities: zip-lining photo
-│       ├── camp_waterski_*.png    # Activities: water skiing photo
-│       ├── camp_canoe_*.png       # Activities: canoeing photo
-│       ├── camp_ropes_*.png       # Activities: high ropes photo
-│       └── camp_smores_*.png      # Activities: s'mores photo
+│       ├── camp_*.png             # Activities photos (archery, zipline, canoe, ropes, smores…)
+│       └── og-cover.svg, …        # social share / favicons
 │
 ├── src/
 │   ├── layouts/
 │   │   └── Layout.astro           # HTML shell, Google Fonts, CSS variables (:root)
 │   ├── pages/
-│   │   └── index.astro            # ALL page content and JavaScript
-│   └── styles/
-│       └── main.css               # ALL styles (1500+ lines, section-commented)
+│   │   └── index.astro            # Envelope LOCK screen + decrypt/inject/unlock animation
+│   └── generated/
+│       └── letter.enc.json        # Encrypted ciphertext of content/letter.html (committed)
 │
-├── astro.config.mjs               # Astro config — base path: /BenjiandPaige
-├── DESIGN.md                      # This file
-└── README.md                      # Dev commands
+├── scripts/
+│   └── encrypt-content.mjs        # `npm run encrypt` — PBKDF2 → AES-GCM
+├── astro.config.mjs               # Astro config (honours PORT env for local preview)
+├── DESIGN.md / PUBLISHING.md / README.md
 ```
+
+> The wedding content is **not** in `index.astro` anymore — it lives in `content/letter.html` and ships only as the encrypted blob. See **Password Gate & Publishing Workflow** below.
 
 ---
 
 ## CSS Architecture
 
-All styles are in a **single flat CSS file** (`src/styles/main.css`), organized into clearly commented sections matching the page sections. Section comments use the format:
+All wedding-section styles live in a **single flat file** (`public/styles/site.css`), organized into clearly commented sections. It is **lazy-loaded only after unlock**. The envelope lock screen's own styles live inline in `src/pages/index.astro`. Section comment format:
 
 ```css
 /* ==============================
@@ -309,47 +364,40 @@ All styles are in a **single flat CSS file** (`src/styles/main.css`), organized 
    ============================== */
 ```
 
-**Section order in main.css:**
-1. Hero
-2. Postcard / Countdown
-3. Venue Info
-4. Section label/title/subtitle (shared utility classes)
-5. Schedule of Events
-6. Our Story
-7. Packing List
-8. Activities
-9. Vibe / Quirky
-10. Footer
-11. Responsive (global breakpoints)
+**Rough section order in site.css:** Hero → Postcard / Countdown (flip cards) → Venue → shared label/title/subtitle utilities → Schedule → Story (+ prop-closet show) → Packing → Activities → Vibe → camp-broadcast marquee → The Journey (route) → Footer → Passport / acorns / certificate → Gift Registry → Story CTA + two-squirrel prop-closet story (scenes, actors, controls). Responsive tweaks and `prefers-reduced-motion` overrides are co-located with their components.
 
-**CSS Variables** are defined in `src/layouts/Layout.astro` inside a `<style is:global>` block — this is also where the CSS Reset, scroll animation classes (`.reveal`, `.reveal-delay-N`), and `.section-container` utility live.
+**CSS Variables** are defined in `src/layouts/Layout.astro` inside a `<style is:global>` block — also home to the CSS reset, scroll-animation classes (`.reveal`, `.reveal-delay-N`), and `.section-container`.
 
 ---
 
 ## JavaScript
 
-All JavaScript is in a single `<script>` block at the bottom of `src/pages/index.astro`. Features:
+All behaviour is **plain JS** (no TypeScript) in one IIFE at the bottom of `content/letter.html`, executed once after the content is decrypted and injected. Features:
 
 | Feature | Description |
 |---------|-------------|
-| **Countdown Timer** | Updates every 1 second; targets Oct 4, 2026 18:00 UTC |
-| **Scroll Reveal** | `IntersectionObserver` adds `.visible` to `.reveal` elements |
-| **Star Field** | Generates 120 random star `div`s in the footer at DOM load |
-| **Sound Toggle** | Swaps YouTube iframe `src` between muted background and audio+controls mode |
-| **Form Submission** | Submits to Google Forms via hidden iframe; shows toast on success |
-| **Squirrel Easter Egg** | Click counter on the squirrel SVG — rotates + scales per click |
+| **Flip Countdown** | Per-unit **split-flap** controller — four layers (static halves + folding flaps); paints new/old digits and toggles `.is-flipping` for one fold per change. Wall-clock-aligned ticking; targets Oct 4, 2026 18:00 UTC |
+| **Scroll Reveal + Stamps** | `IntersectionObserver` adds `.visible` to `.reveal` and awards passport stamps for section ids |
+| **Wedding Weekend Passport** | Stamp grid (10) + Sir Nutsworth's acorn hunt (6) + Certificate; state in `localStorage`; animated open/close, tap-outside/Escape |
+| **Prop-Closet Story** | Two-squirrel (Benji + Paige) interactive overlay narrating the meet-cute — 7 tappable beats with autoplay, dot scrubber, pokeable props, cross-fading scenes, expression poses, confetti finale, encore |
+| **Star Field** | Generates 120 random star `div`s in the footer at load |
+| **Sound Toggle** | Swaps the hero YouTube iframe between muted background and audio+controls modes |
+| **Form Submission** | RSVP submits to Google Forms via hidden iframe; toast on success |
+| **Confetti** | Vendored canvas-confetti, loaded on demand for celebrations (unlock, acorns, finale) |
+| **Squirrel / misc easter eggs** | Vibe polaroid squirrel spin, postmark/stamp gags, etc. |
 
 ---
 
 ## Animations & Motion
 
-- **Scroll reveal:** `.reveal` elements start at `opacity: 0; transform: translateY(40px)` and transition to visible when they enter the viewport. Staggered with `.reveal-delay-1` through `.reveal-delay-5` (0.1s–0.5s).
-- **Hero arrow bounce:** `bounceArrow` keyframe animation
-- **Campfire flames:** `flicker` keyframe animation — three flames at different durations/delays
-- **Star twinkle:** `twinkle` keyframe (opacity + scale)
-- **Card hovers:** `transform: translateY()` + `box-shadow` transitions, duration 0.4s with `cubic-bezier(0.16, 1, 0.3, 1)` (ease-out-expo)
-- **Schedule item hover:** `translateY(-4px) scale(1.05)` with a spring cubic-bezier `(0.34, 1.56, 0.64, 1)`
-- **Form error shake:** `shake` keyframe on invalid submission
+- **Scroll reveal:** `.reveal` elements start at `opacity: 0; transform: translateY(40px)` and transition in on viewport entry. Staggered via `.reveal-delay-1`…`-5`.
+- **Flip countdown:** true split-flap — an upper flap folds down (`rotateX 0 → -91deg`) then a lower flap swings up (`rotateX 91 → 0deg`) with a small overshoot "thunk" and a shade scrim; `will-change` is scoped to the active `.is-flipping` cycle.
+- **Passport panel:** opacity + `translateY/scale` slide, with the panel kept in the DOM through the exit transition before `hidden` is set.
+- **Acorns:** continuous `transform` bob (compositor-friendly) + a **static** amber glow; pop + ring scatter on collect.
+- **Prop-closet story:** curtain part and doors swing open; the actor div handles stage position while the inner SVG carries character motion (Paige's burst-in, Benji's startle squash/stretch, the lean, idle bob, tail flick); scene cross-fades, dust motes, campfire flicker, prop "fly" bursts, confetti finale.
+- **Campfire flames / star twinkle / hero arrow bounce / card hovers / form-error shake** — as before.
+- A shared set of easing/duration tokens (`--ease-out-expo`, `--ease-overshoot`, `--t-*`) lives in `:root`.
+- Every animated component pairs with a `@media (prefers-reduced-motion: reduce)` override.
 
 ---
 
@@ -357,21 +405,24 @@ All JavaScript is in a single `<script>` block at the bottom of `src/pages/index
 
 | Breakpoint | Changes |
 |------------|---------|
-| `max-width: 900px` | Countdown repositions closer to edge |
+| `max-width: 900px` | Countdown plaque nudges toward the image edge |
 | `max-width: 768px` | Activities grid → 1 column; Packing grid → 1 column; schedule 4-col → 2-col |
-| `max-width: 600px` | Countdown scales down; Venue notebook loses tilt; postcard countdown pads reduce |
+| `max-width: 600px` | Countdown flip cards scale down (smaller `--cd-card-*` vars); registry idea cards → 2-col; Venue notebook loses tilt |
 | `max-width: 480px` | Activity card images shorter; schedule grids remain 2-col; sound button text hidden |
+
+Beyond breakpoints, most sizing is fluid via `clamp()`, and the countdown/registry/passport scale through CSS custom properties rather than hard breakpoints.
 
 ---
 
 ## Deployment
 
-- **Platform:** GitHub Pages
-- **Base path:** `/BenjiandPaige` (configured in `astro.config.mjs`)
-- **Live URL:** `https://awaisqazi.github.io/BenjiandPaige`
+- **Platform:** GitHub Pages with a custom domain
+- **Custom domain:** `mapouradventures.com` (via `public/CNAME`); Astro `site` is set to `https://mapouradventures.com`, served from the root (no subpath base)
 - **CI/CD:** GitHub Actions workflow auto-deploys on push to `master`
-- **Node version:** 22
-- All asset paths use `${base}/images/...` via `import.meta.env.BASE_URL` to support the subpath deployment
+- **Node version:** ≥ 22
+- Asset paths are root-absolute (`/images/...`, `/styles/site.css`)
+- `astro.config.mjs` honours a `PORT` env var so the local preview tooling can bind to an assigned port (no-op for normal `npm run dev`/`build`)
+- ⚠️ Remember to run `npm run encrypt` before pushing content changes (see below)
 
 ---
 
@@ -403,4 +454,4 @@ The site is **password-protected** with a sealed-envelope unlock animation. A vi
 ### ⚠️ Publishing rule
 After editing `content/letter.html`, **always run `npm run encrypt` before committing/pushing**, or the live site will keep the old content. Keep `content/letter.html`'s `<script>` as plain JS (no TypeScript syntax) — it runs in the browser as-is. Full step-by-step in **[PUBLISHING.md](./PUBLISHING.md)**.
 
-> Note: the section file paths/line numbers elsewhere in this document predate the password gate — the section *markup* now lives in `content/letter.html` rather than `src/pages/index.astro`, and styles in `public/styles/site.css` rather than `src/styles/main.css`.
+> Note: some older section entries above still cite `src/pages/index.astro` / `src/styles/main.css` line numbers from before the password gate. Treat those as historical — **all** wedding-section *markup + JS* now lives in `content/letter.html`, and **all** wedding-section *styles* in `public/styles/site.css`. The lock screen itself is `src/pages/index.astro`.
