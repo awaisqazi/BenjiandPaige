@@ -26,5 +26,9 @@ pnpm-debug.log*
 # local editor/agent config
 .claude/
 
+# local tooling checkouts
+ffmpeg/
+remotion-video/
+
 # large local media (screen recordings, etc.)
 *.mov
