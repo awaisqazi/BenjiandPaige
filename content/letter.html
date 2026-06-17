@@ -70,28 +70,57 @@
       <img src="/images/campgetaway.png" alt="Greetings from Camp Getaway - P + B are getting married" loading="eager" />
     </div>
 
-    <!-- Countdown: positioned bottom-right to avoid overlapping the letter -->
+    <!-- Countdown: a camp "departure board" of split-flap cards, bottom-right -->
     <div class="postcard__countdown reveal">
-      <div class="countdown" id="weddingCountdown">
-        <div class="countdown__block">
-          <span class="countdown__number" id="cdDays">---</span>
-          <span class="countdown__label">DAYS</span>
+      <div class="countdown" id="weddingCountdown" role="timer" aria-label="Countdown to the wedding">
+        <p class="countdown__heading"><span class="countdown__heading-icon" aria-hidden="true">🔥</span> Days 'til Camp</p>
+        <div class="countdown__row">
+          <div class="flip flip--wide" data-unit="days">
+            <div class="flip__card" aria-hidden="true">
+              <div class="flip__half flip__half--top"><span class="flip__num">--</span></div>
+              <div class="flip__half flip__half--bottom"><span class="flip__num">--</span></div>
+              <div class="flip__flap flip__flap--lower"><span class="flip__num">--</span></div>
+              <div class="flip__flap flip__flap--upper"><span class="flip__num">--</span></div>
+              <span class="flip__pin flip__pin--l" aria-hidden="true"></span>
+              <span class="flip__pin flip__pin--r" aria-hidden="true"></span>
+            </div>
+            <span class="flip__label">Days</span>
+          </div>
+          <div class="flip" data-unit="hours">
+            <div class="flip__card" aria-hidden="true">
+              <div class="flip__half flip__half--top"><span class="flip__num">--</span></div>
+              <div class="flip__half flip__half--bottom"><span class="flip__num">--</span></div>
+              <div class="flip__flap flip__flap--lower"><span class="flip__num">--</span></div>
+              <div class="flip__flap flip__flap--upper"><span class="flip__num">--</span></div>
+              <span class="flip__pin flip__pin--l" aria-hidden="true"></span>
+              <span class="flip__pin flip__pin--r" aria-hidden="true"></span>
+            </div>
+            <span class="flip__label">Hrs</span>
+          </div>
+          <div class="flip" data-unit="mins">
+            <div class="flip__card" aria-hidden="true">
+              <div class="flip__half flip__half--top"><span class="flip__num">--</span></div>
+              <div class="flip__half flip__half--bottom"><span class="flip__num">--</span></div>
+              <div class="flip__flap flip__flap--lower"><span class="flip__num">--</span></div>
+              <div class="flip__flap flip__flap--upper"><span class="flip__num">--</span></div>
+              <span class="flip__pin flip__pin--l" aria-hidden="true"></span>
+              <span class="flip__pin flip__pin--r" aria-hidden="true"></span>
+            </div>
+            <span class="flip__label">Min</span>
+          </div>
+          <div class="flip" data-unit="secs">
+            <div class="flip__card" aria-hidden="true">
+              <div class="flip__half flip__half--top"><span class="flip__num">--</span></div>
+              <div class="flip__half flip__half--bottom"><span class="flip__num">--</span></div>
+              <div class="flip__flap flip__flap--lower"><span class="flip__num">--</span></div>
+              <div class="flip__flap flip__flap--upper"><span class="flip__num">--</span></div>
+              <span class="flip__pin flip__pin--l" aria-hidden="true"></span>
+              <span class="flip__pin flip__pin--r" aria-hidden="true"></span>
+            </div>
+            <span class="flip__label">Sec</span>
+          </div>
         </div>
-        <span class="countdown__sep">:</span>
-        <div class="countdown__block">
-          <span class="countdown__number" id="cdHours">--</span>
-          <span class="countdown__label">HOURS</span>
-        </div>
-        <span class="countdown__sep">:</span>
-        <div class="countdown__block">
-          <span class="countdown__number" id="cdMins">--</span>
-          <span class="countdown__label">MINS</span>
-        </div>
-        <span class="countdown__sep">:</span>
-        <div class="countdown__block">
-          <span class="countdown__number" id="cdSecs">--</span>
-          <span class="countdown__label">SECS</span>
-        </div>
+        <p class="visually-hidden" id="cdReadout" aria-live="polite" aria-atomic="true"></p>
       </div>
     </div>
   </section>
@@ -553,9 +582,79 @@
             </span>
           </span>
         </button>
+        <button class="story__door-cta" id="propPlayBtn" type="button" hidden>🎬 Watch Benji &amp; Paige reenact the meet-cute</button>
       </div>
     </div>
   </section>
+
+  <!-- ===== EASTER EGG: Sir Nutsworth's prop-closet reenactment ===== -->
+  <div class="propshow" id="propShow" aria-hidden="true">
+    <div class="propshow__dialog" role="dialog" aria-modal="true" aria-labelledby="propShowTitle">
+      <button class="propshow__close" id="propShowClose" type="button" aria-label="Close the show">✕</button>
+      <h2 id="propShowTitle" class="visually-hidden">Benji &amp; Paige reenact the meet-cute</h2>
+
+      <div class="propshow__stage" id="propStage" data-beat="0" role="group" aria-roledescription="storybook stage" aria-label="Tap to advance the story" tabindex="0">
+        <!-- layered scenery: theatre -> NYC -> camp, cross-faded per beat -->
+        <div class="ps-scene ps-scene--theatre" aria-hidden="true"></div>
+        <div class="ps-scene ps-scene--nyc" aria-hidden="true"></div>
+        <div class="ps-scene ps-scene--camp" aria-hidden="true"></div>
+        <div class="propshow__spotlight" aria-hidden="true"></div>
+        <div class="ps-motes" aria-hidden="true"></div>
+        <div class="propshow__floor" aria-hidden="true"></div>
+
+        <!-- the prop closet, centre stage -->
+        <div class="propshow__closet" aria-hidden="true">
+          <div class="propshow__closet-inside">
+            <button class="propshow__shelf-prop" type="button" data-poke aria-label="poke a prop">🎭</button>
+            <button class="propshow__shelf-prop" type="button" data-poke aria-label="poke a prop">🧦</button>
+            <button class="propshow__shelf-prop" type="button" data-poke aria-label="poke a prop">🎪</button>
+            <button class="propshow__shelf-prop" type="button" data-poke aria-label="poke a prop">⭐</button>
+          </div>
+          <div class="propshow__door propshow__door--l"><span>PROP</span></div>
+          <div class="propshow__door propshow__door--r"><span>CLOSET</span></div>
+        </div>
+
+        <!-- "peace and quiet" cue at beat 2 -->
+        <div class="ps-peace" aria-hidden="true">💤</div>
+
+        <!-- the two squirrel actors; SVG injected once by JS -->
+        <div class="ps-actor ps-actor--benji" id="psBenji" aria-hidden="true"></div>
+        <div class="ps-actor ps-actor--paige" id="psPaige" aria-hidden="true"></div>
+
+        <!-- Paige's burst flash (beat 3) -->
+        <div class="ps-doorburst" aria-hidden="true"></div>
+
+        <!-- campfire glow (beat 6 only) -->
+        <div class="ps-fire" aria-hidden="true"></div>
+
+        <!-- flying props + hearts + confetti spawn here -->
+        <div class="propshow__fx" id="propFx" aria-hidden="true"></div>
+
+        <!-- red theatre curtains that part as the show starts -->
+        <div class="propshow__curtain propshow__curtain--l" aria-hidden="true"></div>
+        <div class="propshow__curtain propshow__curtain--r" aria-hidden="true"></div>
+
+        <!-- title card (beat 0) -->
+        <div class="ps-title" id="psTitle" aria-hidden="true">
+          <span class="ps-title-sub">a one-acorn play in two squirrels</span>
+          <span class="ps-title-main">The Closet<br/>Where It Happened</span>
+          <span class="ps-title-tap">tap to begin →</span>
+        </div>
+      </div>
+
+      <div class="propshow__marquee">
+        <span class="propshow__eyebrow" id="propEyebrow">🎭 A Two-Acorn Play</span>
+        <p class="propshow__caption" id="propCaption" aria-live="polite">Tap the stage to begin…</p>
+        <div class="propshow__controls" role="group" aria-label="Story controls">
+          <button class="propshow__nav" id="propPrev" type="button" aria-label="Previous beat" disabled>‹</button>
+          <div class="propshow__dots" id="propDots" aria-hidden="true"></div>
+          <button class="propshow__nav" id="propNext" type="button" aria-label="Next beat">›</button>
+          <button class="propshow__nav propshow__nav--play" id="propAuto" type="button" aria-pressed="false" aria-label="Auto-play the story">▶</button>
+        </div>
+        <button class="propshow__replay" id="propShowReplay" type="button" hidden>🔁 Encore!</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== ROUTE MAP SECTION ===== -->
   <section id="route" class="route">
@@ -1340,6 +1439,8 @@
         </a>
         <p class="registry__trunk-note">🔒 Securely handled by Honeyfund · any amount is a gift</p>
         <div class="registry__trunk-fire" aria-hidden="true"><span class="registry__trunk-flame"></span></div>
+        <!-- Easter egg: Sir Nutsworth stowed away in the honeymoon luggage -->
+        <span class="acorn acorn--registry" data-acorn="registry" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span>
       </div>
 
       <!-- Idea strip — luggage tags = suggested donation amounts; all link to the one fund -->
@@ -1641,7 +1742,7 @@
   <div id="passport" class="passport">
     <button id="passportTab" class="passport__tab" type="button" aria-expanded="false" aria-controls="passportPanel">
       <span class="passport__tab-icon">🎟️</span>
-      <span class="passport__tab-counts"><span id="passportStampCount">0</span>/9 · 🌰 <span id="passportAcornCount">0</span>/5</span>
+      <span class="passport__tab-counts"><span id="passportStampCount">0</span>/10 · 🌰 <span id="passportAcornCount">0</span>/6</span>
     </button>
     <section id="passportPanel" class="passport__panel" hidden aria-label="Wedding Weekend Passport">
       <header class="passport__head">
@@ -1657,11 +1758,12 @@
         <div class="passport__stamp" data-stamp="story"><span class="passport__stamp-emoji">🎭</span><span class="passport__stamp-name">Prop Closet Certified</span></div>
         <div class="passport__stamp" data-stamp="backpack"><span class="passport__stamp-emoji">🎒</span><span class="passport__stamp-name">S'more Supply Approved</span></div>
         <div class="passport__stamp" data-stamp="badges"><span class="passport__stamp-emoji">🏅</span><span class="passport__stamp-name">Activities Chosen</span></div>
+        <div class="passport__stamp" data-stamp="registry"><span class="passport__stamp-emoji">🧭</span><span class="passport__stamp-name">Honeymoon Fund</span></div>
         <div class="passport__stamp" data-stamp="rsvp"><span class="passport__stamp-emoji">📨</span><span class="passport__stamp-name">RSVP Sent</span></div>
       </div>
       <div class="passport__acorns">
         <span class="passport__acorns-label">Sir Nutsworth's Acorn Hunt</span>
-        <span class="passport__acorns-tally" id="passportAcornTally">🌰 0 / 5</span>
+        <span class="passport__acorns-tally" id="passportAcornTally">🌰 0 / 6</span>
       </div>
     </section>
   </div>
@@ -1671,7 +1773,7 @@
     <div class="cert-card" id="certCard" role="dialog" aria-modal="true" aria-label="Certificate of Squirrelly Excellence">
       <div class="cert-seal">🐿️🎩</div>
       <h3 class="cert-title">Certificate of Squirrelly Excellence</h3>
-      <p class="cert-body">Awarded to a Distinguished Camper for locating all five of Sir Nutsworth III's hidden acorns across the page.</p>
+      <p class="cert-body">Awarded to a Distinguished Camper for locating all six of Sir Nutsworth III's hidden acorns across the page.</p>
       <p class="cert-sig">— Sir Nutsworth III, Esq.</p>
       <button class="cert-close" id="certClose" type="button">Claim your nuts 🌰</button>
     </div>
@@ -1726,41 +1828,124 @@
     // ===== Live Countdown to October 4, 2026 at 2:00 PM ET =====
     // October 4, 2026, 2:00 PM ET = 18:00 UTC (ET is UTC-4 in October / EDT)
     var weddingDate = new Date('2026-10-04T18:00:00Z');
-    var cdDays = document.getElementById('cdDays');
-    var cdHours = document.getElementById('cdHours');
-    var cdMins = document.getElementById('cdMins');
-    var cdSecs = document.getElementById('cdSecs');
+    var cdRoot = document.getElementById('weddingCountdown');
 
     function pad(n) { return n.toString().padStart(2, '0'); }
+
+    // Each unit is a true split-flap card (a Solari departure board): a static top
+    // half + static bottom half, plus an upper flap that folds DOWN and a lower
+    // flap that swings UP, hinged on the seam. On a change we paint the NEW digit
+    // onto the static top (revealed behind the falling upper flap) and onto the
+    // lower flap (revealed as it swings up); the OLD digit stays on the upper flap
+    // and static bottom until the fold lands, then we commit. Each layer renders a
+    // full-height glyph clipped to one half, so the seam is a mechanical groove —
+    // never a line through the number. Always forward, no reset flash.
+    var cdReadout = document.getElementById('cdReadout');
+    var cdReduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var lastReadout = '';
+    var FLIP_MS = 760; // backstop > total fold (0.30s + 0.34s + buffer)
+
+    function makeFlipper(el) {
+      var topNum    = el.querySelector('.flip__half--top .flip__num');
+      var botNum    = el.querySelector('.flip__half--bottom .flip__num');
+      var upperNum  = el.querySelector('.flip__flap--upper .flip__num');
+      var lowerNum  = el.querySelector('.flip__flap--lower .flip__num');
+      var lowerFlap = el.querySelector('.flip__flap--lower');
+      if (!topNum || !botNum || !upperNum || !lowerNum || !lowerFlap) return function () {};
+      var current = null;
+      var timer = null;
+
+      function paintAll(v) {
+        topNum.textContent = v; botNum.textContent = v;
+        upperNum.textContent = v; lowerNum.textContent = v;
+      }
+      function commit(v) {
+        // Repaint every layer to NEW: when .is-flipping is removed the flaps snap
+        // back to their parked poses (upper -> flat, lower -> edge-on), so all four
+        // must already show NEW or the top half would flash back to the OLD digit.
+        paintAll(v);
+        el.classList.remove('is-flipping');
+        if (timer) { clearTimeout(timer); timer = null; }
+      }
+      // Commit when the lower flap finishes settling — it lands last.
+      lowerFlap.addEventListener('animationend', function (e) {
+        if (e.animationName === 'flapUp') commit(current);
+      });
+
+      return function set(val) {
+        val = String(val);
+        if (val === current) return;       // never flip an unchanged card
+        var prev = current;
+        current = val;
+
+        if (prev === null || cdReduceMotion) { paintAll(val); return; }
+
+        // If a previous flip is still mid-air (throttled/backgrounded tab), settle
+        // it instantly so flips never stack or run backwards.
+        if (timer) {
+          clearTimeout(timer); timer = null;
+          el.classList.remove('is-flipping');
+          paintAll(prev);
+          void el.offsetWidth;             // flush the class removal so re-add restarts the anim
+        }
+
+        topNum.textContent   = val;        // static top = NEW (revealed under the flap)
+        botNum.textContent   = prev;       // static bottom = OLD (still visible)
+        upperNum.textContent = prev;       // upper flap = OLD top (folds away)
+        lowerNum.textContent = val;        // lower flap = NEW bottom (swings up)
+
+        void el.offsetWidth;               // flush staged poses before animating
+        el.classList.add('is-flipping');
+        timer = setTimeout(function () { commit(val); }, FLIP_MS);
+      };
+    }
+
+    var flippers = {};
+    if (cdRoot) {
+      cdRoot.querySelectorAll('.flip').forEach(function (el) {
+        var u = el.getAttribute('data-unit');
+        if (u) flippers[u] = makeFlipper(el);
+      });
+    }
 
     function updateCountdown() {
       var now = new Date();
       var diff = weddingDate.getTime() - now.getTime();
-
-      if (diff <= 0) {
-        if (cdDays) cdDays.textContent = '0';
-        if (cdHours) cdHours.textContent = '00';
-        if (cdMins) cdMins.textContent = '00';
-        if (cdSecs) cdSecs.textContent = '00';
-        return;
+      var days = 0, hours = 0, mins = 0, secs = 0;
+      if (diff > 0) {
+        days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        secs = Math.floor((diff % (1000 * 60)) / 1000);
       }
+      if (flippers.days) flippers.days(pad(days));
+      if (flippers.hours) flippers.hours(pad(hours));
+      if (flippers.mins) flippers.mins(pad(mins));
+      if (flippers.secs) flippers.secs(pad(secs));
 
-      var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      var secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-      if (cdDays) cdDays.textContent = days.toString();
-      if (cdHours) cdHours.textContent = pad(hours);
-      if (cdMins) cdMins.textContent = pad(mins);
-      if (cdSecs) cdSecs.textContent = pad(secs);
+      // Screen-reader mirror: announce only when minutes-or-larger change, so the
+      // polite live region isn't spoken every single second.
+      if (cdReadout) {
+        var readout = (diff > 0)
+          ? (days + ' days, ' + hours + ' hours, ' + mins + ' minutes until camp.')
+          : 'The big day is here!';
+        if (readout !== lastReadout) { lastReadout = readout; cdReadout.textContent = readout; }
+      }
     }
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    // Align each tick to the wall-clock second so the seconds flap never drifts,
+    // skips, or double-flips (setInterval accumulates drift; this self-corrects).
+    function scheduleCountdownTick() {
+      updateCountdown();
+      setTimeout(scheduleCountdownTick, 1000 - (Date.now() % 1000));
+    }
+    scheduleCountdownTick();
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) updateCountdown();
+    });
 
     // ===== Intersection Observer for scroll reveal + passport stamps =====
-    var stampSections = { postcard: 'postcard', details: 'cabin', schedule: 'schedule', story: 'story' };
+    var stampSections = { postcard: 'postcard', details: 'cabin', schedule: 'schedule', story: 'story', registry: 'registry' };
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
@@ -1779,10 +1964,18 @@
     );
 
     document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
-    ['postcard', 'details', 'schedule', 'story'].forEach(function (id) {
+    ['postcard', 'details', 'schedule', 'story', 'registry'].forEach(function (id) {
       var sec = document.getElementById(id);
       if (sec) observer.observe(sec);
     });
+
+    // Tapping "Contribute to Our Journey" also earns the Honeymoon Fund stamp.
+    var giveBtn = document.querySelector('.registry__give-btn');
+    if (giveBtn) {
+      giveBtn.addEventListener('click', function () {
+        if (window.passportAward) window.passportAward('registry');
+      });
+    }
 
     // Force hero elements visible immediately
     document.querySelectorAll('.hero .reveal').forEach(function (el) {
@@ -1794,8 +1987,10 @@
       var STAMP_KEY = 'grecco_passport';
       var ACORN_KEY = 'grecco_acorns';
       var PENDING_KEY = 'grecco_passport_pending';
-      var STAMP_IDS = ['envelope', 'film', 'postcard', 'cabin', 'schedule', 'story', 'backpack', 'badges', 'rsvp'];
-      var TOTAL_ACORNS = 5;
+      var STAMP_IDS = ['envelope', 'film', 'postcard', 'cabin', 'schedule', 'story', 'backpack', 'badges', 'registry', 'rsvp'];
+      var TOTAL_ACORNS = 6;
+      // Bumped when the acorn count changes so finished campers get re-celebrated.
+      var CERT_VERSION = 2;
       var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       var passportEl = document.getElementById('passport');
@@ -1832,13 +2027,38 @@
       }
       window.passportAward = awardStamp;
 
+      // Animated open/close. The panel keeps its `hidden` attribute while fully
+      // closed (so it's out of the a11y tree + tab order), but we delay setting
+      // it on close until the slide-out transition has finished, and clear it
+      // before the slide-in on open — giving a smooth motion instead of a snap.
+      var closeTimer = null;
+      function isOpen() { return passportEl.classList.contains('is-open'); }
       function setOpen(open) {
-        if (panel) panel.hidden = !open;
-        if (tabBtn) tabBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        passportEl.classList.toggle('is-open', open);
+        if (open) {
+          if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+          if (panel) { panel.hidden = false; void panel.offsetWidth; panel.setAttribute('aria-hidden', 'false'); }
+          passportEl.classList.add('is-open');
+          if (tabBtn) tabBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          passportEl.classList.remove('is-open');
+          if (tabBtn) tabBtn.setAttribute('aria-expanded', 'false');
+          if (panel) panel.setAttribute('aria-hidden', 'true');
+          if (closeTimer) clearTimeout(closeTimer);
+          closeTimer = setTimeout(function () {
+            if (panel && !isOpen()) panel.hidden = true;
+            closeTimer = null;
+          }, reduceMotion ? 0 : 240);
+        }
       }
-      if (tabBtn) tabBtn.addEventListener('click', function () { setOpen(panel && panel.hidden); });
+      if (tabBtn) tabBtn.addEventListener('click', function () { setOpen(!isOpen()); });
       if (closeBtn) closeBtn.addEventListener('click', function () { setOpen(false); });
+      // Mobile-friendly dismissal: tap anywhere outside the passport, or Escape.
+      document.addEventListener('click', function (e) {
+        if (isOpen() && !passportEl.contains(e.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && isOpen()) setOpen(false);
+      });
 
       var toast = document.getElementById('confirmToast');
       var toastMsgEl = document.getElementById('toastMsg');
@@ -1880,8 +2100,8 @@
         updateAcornUi();
         var n = acornState.found.length;
         if (n >= TOTAL_ACORNS) {
-          if (!acornState.certificateSeen) {
-            acornState.certificateSeen = true; saveAcorns();
+          if (acornState.certVersion !== CERT_VERSION) {
+            acornState.certVersion = CERT_VERSION; acornState.certificateSeen = true; saveAcorns();
             // A grander celebration for finding every acorn.
             if (!reduceMotion) {
               confettiBurst(window.innerWidth / 2, window.innerHeight / 2, { count: 80, spread: 110, velocity: 45, ticks: 240 });
@@ -2288,12 +2508,270 @@
 
     // ===== Story prop-closet door =====
     var storyDoor = document.getElementById('storyDoor');
+    var propPlayBtn = document.getElementById('propPlayBtn');
     if (storyDoor) {
       storyDoor.addEventListener('click', function () {
         var open = storyDoor.classList.toggle('is-open');
         storyDoor.setAttribute('aria-expanded', open ? 'true' : 'false');
+        // Once the closet is open, offer the full reenactment.
+        if (propPlayBtn) propPlayBtn.hidden = !open;
       });
     }
+
+    // ===== Easter egg: Benji & Paige's prop-closet reenactment =====
+    // A tap-through (or auto-playing) two-squirrel stage play of the meet-cute.
+    (function () {
+      var overlay = document.getElementById('propShow');
+      if (!overlay) return;
+      var stage    = document.getElementById('propStage');
+      var caption  = document.getElementById('propCaption');
+      var eyebrow  = document.getElementById('propEyebrow');
+      var fx       = document.getElementById('propFx');
+      var benjiEl  = document.getElementById('psBenji');
+      var paigeEl  = document.getElementById('psPaige');
+      var dotsWrap = document.getElementById('propDots');
+      var prevBtn  = document.getElementById('propPrev');
+      var nextBtn  = document.getElementById('propNext');
+      var autoBtn  = document.getElementById('propAuto');
+      var closeBtn = document.getElementById('propShowClose');
+      var replayBtn = document.getElementById('propShowReplay');
+      var reduce   = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var timers   = [];
+      var lastFocus = null;
+
+      // --- The two actors, as inline SVG. Benji: top hat + bow tie. Paige:
+      // warmer fur, ear daisy, eyelashes, forest scarf. Both share a skeleton and
+      // swap expressions via data-pose (CSS opacity/transform on the parts). ---
+      var SVG_BENJI =
+        '<svg class="ps-sq" data-pose="calm" viewBox="0 0 100 120" role="img" aria-label="Benji squirrel" focusable="false">' +
+          '<g class="ps-tail">' +
+            '<path d="M24 98 C-4 88 2 46 28 52 C10 62 16 86 36 84 Z" fill="var(--ember)" stroke="var(--forest-deep)" stroke-width="1.5"/>' +
+            '<path d="M22 86 C8 80 12 60 26 60" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="3" stroke-linecap="round"/>' +
+          '</g>' +
+          '<ellipse cx="50" cy="86" rx="26" ry="30" fill="var(--ember)" stroke="var(--forest-deep)" stroke-width="1.5"/>' +
+          '<ellipse cx="50" cy="92" rx="15" ry="20" fill="var(--cream)" opacity="0.92"/>' +
+          '<ellipse cx="40" cy="114" rx="7" ry="4" fill="var(--forest-deep)"/>' +
+          '<ellipse cx="60" cy="114" rx="7" ry="4" fill="var(--forest-deep)"/>' +
+          '<g class="ps-head">' +
+            '<path d="M34 38 L28 22 L44 30 Z" fill="var(--ember)" stroke="var(--forest-deep)" stroke-width="1.3"/>' +
+            '<path d="M66 38 L72 22 L56 30 Z" fill="var(--ember)" stroke="var(--forest-deep)" stroke-width="1.3"/>' +
+            '<circle cx="50" cy="44" r="22" fill="var(--ember)" stroke="var(--forest-deep)" stroke-width="1.5"/>' +
+            '<circle cx="38" cy="52" r="6" fill="var(--cream)" opacity="0.8"/>' +
+            '<circle cx="62" cy="52" r="6" fill="var(--cream)" opacity="0.8"/>' +
+            '<g class="ps-eyes">' +
+              '<circle class="ps-eye" cx="43" cy="42" r="4.4" fill="var(--night)"/>' +
+              '<circle class="ps-eye" cx="57" cy="42" r="4.4" fill="var(--night)"/>' +
+              '<circle cx="44.5" cy="40.5" r="1.4" fill="var(--cream)"/>' +
+              '<circle cx="58.5" cy="40.5" r="1.4" fill="var(--cream)"/>' +
+            '</g>' +
+            '<ellipse cx="50" cy="50" rx="2.8" ry="2.1" fill="var(--night)"/>' +
+            '<path class="ps-mo ps-mo--calm" d="M46 56 q4 3 8 0" fill="none" stroke="var(--night)" stroke-width="1.6" stroke-linecap="round"/>' +
+            '<ellipse class="ps-mo ps-mo--gasp" cx="50" cy="57" rx="3" ry="3.6" fill="var(--night)"/>' +
+            '<path class="ps-mo ps-mo--grin" d="M44 55 q6 8 12 0 q-6 4 -12 0 Z" fill="var(--bark-dark)"/>' +
+            '<g class="ps-hat">' +
+              '<rect x="33" y="14" width="34" height="6" rx="3" fill="var(--night)"/>' +
+              '<rect x="40" y="-2" width="20" height="18" rx="2" fill="var(--night)"/>' +
+              '<rect x="40" y="6" width="20" height="4" fill="var(--fire-amber)"/>' +
+            '</g>' +
+          '</g>' +
+          '<path class="ps-bowtie" d="M44 66 L34 61 V71 Z M56 66 L66 61 V71 Z" fill="var(--ember)"/>' +
+          '<circle cx="50" cy="66" r="2.6" fill="var(--fire-amber)"/>' +
+        '</svg>';
+
+      var SVG_PAIGE =
+        '<svg class="ps-sq ps-sq--paige" data-pose="happy" viewBox="0 0 100 120" role="img" aria-label="Paige squirrel" focusable="false">' +
+          '<g class="ps-tail">' +
+            '<path d="M76 98 C104 88 98 46 72 52 C90 62 84 86 64 84 Z" fill="var(--fire-orange)" stroke="var(--forest-deep)" stroke-width="1.5"/>' +
+            '<path d="M78 86 C92 80 88 60 74 60" fill="none" stroke="rgba(0,0,0,0.16)" stroke-width="3" stroke-linecap="round"/>' +
+          '</g>' +
+          '<ellipse cx="50" cy="86" rx="26" ry="30" fill="var(--fire-orange)" stroke="var(--forest-deep)" stroke-width="1.5"/>' +
+          '<ellipse cx="50" cy="92" rx="15" ry="20" fill="var(--cream)" opacity="0.95"/>' +
+          '<ellipse cx="40" cy="114" rx="7" ry="4" fill="var(--forest-deep)"/>' +
+          '<ellipse cx="60" cy="114" rx="7" ry="4" fill="var(--forest-deep)"/>' +
+          '<g class="ps-head">' +
+            '<path d="M34 38 L28 22 L44 30 Z" fill="var(--fire-orange)" stroke="var(--forest-deep)" stroke-width="1.3"/>' +
+            '<path d="M66 38 L72 22 L56 30 Z" fill="var(--fire-orange)" stroke="var(--forest-deep)" stroke-width="1.3"/>' +
+            '<circle cx="50" cy="44" r="22" fill="var(--fire-orange)" stroke="var(--forest-deep)" stroke-width="1.5"/>' +
+            '<circle cx="38" cy="52" r="6" fill="#ffd9b0" opacity="0.85"/>' +
+            '<circle cx="62" cy="52" r="6" fill="#ffd9b0" opacity="0.85"/>' +
+            '<g class="ps-eyes">' +
+              '<circle class="ps-eye" cx="43" cy="43" r="4.4" fill="var(--night)"/>' +
+              '<circle class="ps-eye" cx="57" cy="43" r="4.4" fill="var(--night)"/>' +
+              '<circle cx="44.5" cy="41.5" r="1.4" fill="var(--cream)"/>' +
+              '<circle cx="58.5" cy="41.5" r="1.4" fill="var(--cream)"/>' +
+              '<path d="M37 40 l-3.5 -2 M43 38 l0 -3 M48 40 l3 -2.6" stroke="var(--night)" stroke-width="1.3" stroke-linecap="round" fill="none"/>' +
+              '<path d="M52 40 l-3 -2.6 M57 38 l0 -3 M63 40 l3.5 -2" stroke="var(--night)" stroke-width="1.3" stroke-linecap="round" fill="none"/>' +
+            '</g>' +
+            '<ellipse cx="50" cy="50" rx="2.8" ry="2.1" fill="var(--night)"/>' +
+            '<path class="ps-mo ps-mo--calm" d="M45 55 q5 5 10 0" fill="none" stroke="var(--night)" stroke-width="1.6" stroke-linecap="round"/>' +
+            '<ellipse class="ps-mo ps-mo--gasp" cx="50" cy="57" rx="3" ry="3.6" fill="var(--night)"/>' +
+            '<path class="ps-mo ps-mo--grin" d="M43 54 q7 9 14 0 q-7 5 -14 0 Z" fill="var(--bark-dark)"/>' +
+            '<g class="ps-flower" transform="translate(70 23)">' +
+              '<g fill="var(--cream)">' +
+                '<ellipse cx="0" cy="-5" rx="2.6" ry="3.8"/><ellipse cx="0" cy="5" rx="2.6" ry="3.8"/>' +
+                '<ellipse cx="-5" cy="0" rx="3.8" ry="2.6"/><ellipse cx="5" cy="0" rx="3.8" ry="2.6"/>' +
+              '</g>' +
+              '<circle r="2.6" fill="var(--fire-amber)"/>' +
+            '</g>' +
+          '</g>' +
+          '<path class="ps-scarf" d="M33 64 q17 9 34 0 l-2 8 q-15 7 -30 0 Z" fill="var(--forest-light)" stroke="var(--forest-deep)" stroke-width="1"/>' +
+          '<path class="ps-scarf-end" d="M59 70 q10 4 8 18 l-7 -1 q1 -11 -3 -15 Z" fill="var(--forest-mid)"/>' +
+        '</svg>';
+
+      if (benjiEl && !benjiEl.firstChild) benjiEl.innerHTML = SVG_BENJI;
+      if (paigeEl && !paigeEl.firstChild) paigeEl.innerHTML = SVG_PAIGE;
+      var benjiSvg = benjiEl ? benjiEl.querySelector('.ps-sq') : null;
+      var paigeSvg = paigeEl ? paigeEl.querySelector('.ps-sq') : null;
+
+      // beat index === data-beat. bp/pp = Benji/Paige poses. cap may contain HTML.
+      var BEATS = [
+        { cap: 'Tap the stage to begin…', eyebrow: '🎭 A Two-Acorn Play',                                bp: 'calm',    pp: 'happy',   hold: 1800 },
+        { cap: 'Rutgers, 2015. A production of <em>Avenue&nbsp;Q</em>.',                                      bp: 'calm',    pp: 'happy',   hold: 2600 },
+        { cap: 'Benji slipped into the prop closet, seeking peace and quiet…',                           bp: 'sleepy',  pp: 'happy',   hold: 2800 },
+        { cap: '…and Paige <em>immediately</em> derailed that plan.',                                    bp: 'startle', pp: 'happy',   fx: 'burst',   hold: 2900 },
+        { cap: 'A spark. Inseparable ever since.',                                                            bp: 'smitten', pp: 'smitten', fx: 'hearts',  hold: 2800 },
+        { cap: 'Through theatre, NYC adventures, and every little moment in between.',                        bp: 'smitten', pp: 'smitten', fx: 'montage', hold: 3200 },
+        { cap: 'Married at Camp Getaway — we can’t wait to celebrate this next chapter with you!',  bp: 'smitten', pp: 'smitten', fx: 'finale',  hold: 0 }
+      ];
+      var LAST = BEATS.length - 1;
+      var idx = 0, auto = false;
+
+      function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+      function later(fn, ms) { var t = setTimeout(fn, ms); timers.push(t); return t; }
+
+      function spawnFx(kind) {
+        if (!fx || reduce) return;
+        var set = kind === 'burst'   ? ['🎭', '🧦', '🎪', '⭐', '🎬', '📜']
+                : kind === 'hearts'  ? ['❤️', '💛', '💚', '✨']
+                : kind === 'montage' ? ['🎭', '🗽', '✨', '🚕', '🎟️']
+                :                      ['🌲', '🔥', '✨', '🎉', '⛺', '🌰'];
+        var n = kind === 'finale' ? 18 : 12;
+        for (var i = 0; i < n; i++) {
+          (function (i) {
+            later(function () {
+              var p = document.createElement('span');
+              p.className = 'propshow__fly';
+              p.textContent = set[Math.floor(Math.random() * set.length)];
+              p.style.left = (12 + Math.random() * 76) + '%';
+              p.style.setProperty('--fx-dx', (Math.random() * 160 - 80).toFixed(0) + 'px');
+              p.style.setProperty('--fx-rot', (Math.random() * 540 - 270).toFixed(0) + 'deg');
+              p.style.fontSize = (0.9 + Math.random() * 0.9).toFixed(2) + 'rem';
+              fx.appendChild(p);
+              setTimeout(function () { if (p.parentNode) p.parentNode.removeChild(p); }, 1700);
+            }, i * 70);
+          })(i);
+        }
+        // confettiBurst lives in this script's outer scope (not on window).
+        if (kind === 'finale' && typeof confettiBurst === 'function') {
+          confettiBurst(window.innerWidth / 2, window.innerHeight * 0.42,
+            { count: 80, spread: 130, velocity: 44, ticks: 240,
+              colors: ['#345C0D', '#f4a300', '#e8611a', '#FAF9F2', '#fdd835'] });
+        }
+      }
+
+      function render(n, fire) {
+        var b = BEATS[n];
+        stage.setAttribute('data-beat', String(n));
+        if (benjiSvg) benjiSvg.setAttribute('data-pose', b.bp);
+        if (paigeSvg) paigeSvg.setAttribute('data-pose', b.pp);
+        if (eyebrow && b.eyebrow) eyebrow.textContent = b.eyebrow;
+        caption.classList.remove('is-in');
+        void caption.offsetWidth;
+        caption.innerHTML = b.cap;
+        caption.classList.add('is-in');
+        if (fire && b.fx) spawnFx(b.fx);
+        prevBtn.disabled = (n <= 0);
+        nextBtn.disabled = (n >= LAST);
+        for (var k = 0; k < dotsWrap.children.length; k++) {
+          dotsWrap.children[k].setAttribute('aria-current', (k + 1) === n ? 'true' : 'false');
+        }
+        replayBtn.hidden = (n !== LAST);
+      }
+
+      function go(n, fire) {
+        clearTimers();
+        idx = Math.max(0, Math.min(LAST, n));
+        render(idx, fire !== false);
+        if (auto && idx < LAST) later(function () { go(idx + 1); }, BEATS[idx].hold || 2600);
+        else if (auto && idx >= LAST) stopAuto();
+      }
+      // tap / arrow advance: at the finale, stay put (Encore handles replay)
+      function next() { if (auto) stopAuto(); if (idx < LAST) go(idx + 1); }
+      function prev() { stopAuto(); if (idx > 0) go(idx - 1); }
+
+      function startAuto() {
+        if (reduce) return;
+        auto = true; autoBtn.setAttribute('aria-pressed', 'true'); autoBtn.textContent = '⏸';
+        if (idx >= LAST) idx = 0;
+        go(idx);
+      }
+      function stopAuto() {
+        auto = false; autoBtn.setAttribute('aria-pressed', 'false'); autoBtn.textContent = '▶';
+        clearTimers();
+      }
+      function toggleAuto() { auto ? stopAuto() : startAuto(); }
+
+      // build scrubber dots for beats 1..LAST (skip the title card)
+      for (var i = 1; i <= LAST; i++) {
+        (function (n) {
+          var d = document.createElement('button');
+          d.type = 'button'; d.className = 'propshow__dot';
+          d.setAttribute('aria-label', 'Go to beat ' + n);
+          d.addEventListener('click', function (e) { e.stopPropagation(); stopAuto(); go(n); });
+          dotsWrap.appendChild(d);
+        })(i);
+      }
+
+      // tap-to-advance on the stage; poking a shelf prop wiggles it instead
+      stage.addEventListener('click', function (e) {
+        var poke = e.target.closest ? e.target.closest('[data-poke]') : null;
+        if (poke) {
+          e.stopPropagation();
+          poke.classList.add('is-poked');
+          setTimeout(function () { poke.classList.remove('is-poked'); }, 300);
+          return;
+        }
+        next();
+      });
+      stage.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') { e.preventDefault(); next(); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+      });
+      prevBtn.addEventListener('click', function (e) { e.stopPropagation(); prev(); });
+      nextBtn.addEventListener('click', function (e) { e.stopPropagation(); next(); });
+      autoBtn.addEventListener('click', function (e) { e.stopPropagation(); toggleAuto(); });
+
+      function runShow() {
+        clearTimers();
+        if (fx) fx.innerHTML = '';
+        if (reduce) { auto = false; idx = LAST; render(LAST, false); return; }
+        idx = 0; render(0, false); startAuto();
+      }
+      function openShow() {
+        lastFocus = document.activeElement;
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        runShow();
+        later(function () { stage.focus(); }, 320);
+      }
+      function closeShow() {
+        stopAuto(); clearTimers();
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        if (fx) fx.innerHTML = '';
+        stage.setAttribute('data-beat', '0'); // park actors offstage; halt idle anims
+        if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
+        lastFocus = null;
+      }
+
+      if (propPlayBtn) propPlayBtn.addEventListener('click', openShow);
+      if (closeBtn) closeBtn.addEventListener('click', closeShow);
+      if (replayBtn) replayBtn.addEventListener('click', function (e) { e.stopPropagation(); stopAuto(); idx = 0; startAuto(); });
+      overlay.addEventListener('click', function (e) { if (e.target === overlay) closeShow(); });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeShow();
+      });
+    })();
 
     // ===== ROUTE CINEMATIC START =====
     // A small camera (the SVG viewBox) pans + zooms from scene to scene while
