@@ -167,7 +167,7 @@
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--t-base) var(--ease-out-expo);
   letter-spacing: 0.02em;
 }
 
@@ -832,7 +832,7 @@
   text-align: center;
   padding: 0.5rem 0.25rem;
   border-radius: 8px;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+  transition: transform 0.3s var(--ease-overshoot),
               background 0.3s ease,
               box-shadow 0.3s ease;
   cursor: default;
@@ -848,7 +848,7 @@
   width: clamp(48px, 8vw, 76px);
   height: clamp(48px, 8vw, 76px);
   margin: 0 auto 0.5rem;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s var(--ease-overshoot);
 }
 
 .schedule__item:hover .schedule__icon {
@@ -1602,7 +1602,7 @@
 }
 
 .awaits-egg-img--active {
-  animation: awaitsReveal 4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: awaitsReveal 4s var(--ease-overshoot) forwards;
 }
 
 @keyframes awaitsReveal {
@@ -1840,7 +1840,7 @@
   cursor: pointer;
   padding: 0;
   display: inline-block;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s var(--ease-overshoot);
   outline: none;
 }
 
@@ -1896,7 +1896,7 @@
 
 .squirrel-easter-egg {
   cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.4s var(--ease-overshoot);
   display: inline-block;
   user-select: none;
 }
@@ -2025,8 +2025,11 @@
 }
 
 @keyframes miniFlicker {
-  0% { transform: scale(1) rotate(-2deg); opacity: 0.8; }
-  100% { transform: scale(1.2) rotate(2deg); opacity: 1; }
+  0%   { transform: scaleY(1)    scaleX(1)    rotate(-3deg); opacity: 0.78; }
+  25%  { transform: scaleY(1.18) scaleX(0.9)  rotate(2deg);  opacity: 1; }
+  50%  { transform: scaleY(0.94) scaleX(1.08) rotate(-2deg); opacity: 0.9; }
+  75%  { transform: scaleY(1.12) scaleX(0.94) rotate(3deg);  opacity: 1; }
+  100% { transform: scaleY(0.9)  scaleX(1.02) rotate(-2deg); opacity: 0.84; }
 }
 
 /* Card hover scaling (without ruining tilts) */
@@ -2110,7 +2113,7 @@
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.5s var(--ease-out-expo);
 }
 
 .facetime-overlay--active {
@@ -2130,7 +2133,7 @@
   position: relative;
   overflow: hidden;
   transform: scale(0.9);
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.5s var(--ease-overshoot);
   color: #ffffff;
   font-family: var(--font-sans);
 }
@@ -2183,8 +2186,10 @@
 }
 
 @keyframes ringTwinkle {
-  0% { opacity: 0.4; }
-  100% { opacity: 1; }
+  0%   { opacity: 0.4; transform: scale(0.96); }
+  30%  { opacity: 1;   transform: scale(1.04); }
+  60%  { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 1;   transform: scale(1.02); }
 }
 
 .facetime-actions {
@@ -2205,7 +2210,7 @@
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+  transition: transform var(--t-base) var(--ease-overshoot), box-shadow var(--t-base);
 }
 
 .facetime-btn svg {
@@ -2273,7 +2278,7 @@
   font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: bold;
-  animation: bannerPopIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: bannerPopIn 0.5s var(--ease-overshoot) forwards;
 }
 
 @keyframes bannerPopIn {
@@ -2441,9 +2446,9 @@
   overflow: hidden;
   transform: translateY(0);
   transition:
-    max-height 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    max-height 0.55s var(--ease-out-expo),
     opacity 0.35s ease,
-    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.45s var(--ease-out-expo),
     margin 0.45s ease;
 }
 
@@ -2474,12 +2479,12 @@
   pointer-events: none;
   transform: translateY(-10px) rotate(0deg);
   transition:
-    max-height 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    max-height 0.55s var(--ease-out-expo),
     opacity 0.35s ease,
     padding 0.45s ease,
     border-color 0.35s ease,
     box-shadow 0.35s ease,
-    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    transform 0.45s var(--ease-out-expo);
 }
 
 .footer__form--declining .footer__decline-card {
@@ -2519,7 +2524,7 @@
   letter-spacing: 0.08em;
   cursor: pointer;
   transform: rotate(7deg);
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease;
+  transition: transform 0.2s var(--ease-overshoot), background 0.2s ease;
 }
 
 .footer__postcard-stamp:hover,
@@ -2576,7 +2581,7 @@
   transition:
     max-height 0.35s ease,
     opacity 0.3s ease,
-    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.35s var(--ease-out-expo),
     margin 0.3s ease;
 }
 
@@ -2885,6 +2890,24 @@
   }
 }
 
+/* Pre-wave animations (hero arrow, easter egg, campfire flames, FaceTime
+   ring/button/banner, and form-error shake) were never covered by the
+   per-wave reduced-motion blocks. Neutralize them all here. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__arrow,
+  .awaits-egg-img--active,
+  .vibe__mini-flame,
+  .facetime-ringing,
+  .facetime-btn--accept,
+  .facetime-banner,
+  .flame,
+  .footer__form-group .input--error,
+  .footer__radio-group.input--error .footer__radio-display {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /* Confirmation toast */
 .footer__toast {
   position: fixed;
@@ -2904,7 +2927,7 @@
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
   z-index: 9999;
   opacity: 0;
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s;
+  transition: transform 0.5s var(--ease-overshoot), opacity 0.4s;
   pointer-events: none;
 }
 
@@ -2951,5 +2974,1181 @@
 @media (max-width: 480px) {
   .activity-card__img-wrap {
     height: 160px;
+  }
+}
+
+/* ==============================
+   WAVE 1 — CAMP POLISH
+   ============================== */
+
+/* --- Hero: camcorder persona (film grain, pines, REC) --- */
+.hero__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.1;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hero__pines {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(90px, 18vh, 200px);
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.55;
+  line-height: 0;
+}
+
+.hero__pines svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__pines svg path {
+  fill: var(--forest-deep);
+}
+
+.hero__rec {
+  position: absolute;
+  top: 1.4rem;
+  left: 1.4rem;
+  z-index: 16;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-typewriter);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(250, 249, 242, 0.85);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.hero__rec-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #e8281c;
+  box-shadow: 0 0 8px 1px rgba(232, 40, 28, 0.7);
+  animation: recPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes recPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+/* --- Camp Broadcast marquee --- */
+.camp-broadcast {
+  overflow: hidden;
+  border-top: 2px dashed var(--fire-amber);
+  border-bottom: 2px dashed var(--fire-amber);
+  background: var(--bark-dark);
+  padding: 0.55rem 0;
+}
+
+.camp-broadcast--green { background: var(--forest-deep); }
+.camp-broadcast--amber { background: #0a2c52; }
+.camp-broadcast--navy { background: var(--night); }
+
+.camp-broadcast__track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: broadcastScroll 26s linear infinite;
+  will-change: transform;
+}
+
+.camp-broadcast:hover .camp-broadcast__track {
+  animation-play-state: paused;
+}
+
+.camp-broadcast__track > span {
+  display: inline-block;
+  font-family: var(--font-typewriter);
+  font-size: clamp(0.68rem, 1.6vw, 0.84rem);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--cream);
+  padding-right: 1.6rem;
+}
+
+.camp-broadcast__track > span::after {
+  content: '✦';
+  color: var(--fire-amber);
+  margin-left: 1.6rem;
+}
+
+@keyframes broadcastScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* --- Vibe discoverability hints --- */
+.vibe__hint {
+  display: block;
+  font-family: var(--font-script);
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--fire-amber);
+  text-align: center;
+  opacity: 0.4;
+  transform: rotate(-3deg);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  margin: 0.2rem 0 0;
+}
+
+.vibe__card:hover .vibe__hint {
+  opacity: 0.9;
+}
+
+/* --- Venue shuttle as perforated bus ticket --- */
+.venue__shuttle--ticket {
+  background: linear-gradient(180deg, #fffdf3 0%, var(--cream) 100%);
+  border: 2px dashed rgba(4, 37, 71, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(4, 37, 71, 0.1);
+}
+
+.venue__shuttle--ticket .venue__shuttle-header {
+  position: relative;
+  padding-bottom: 0.65rem;
+  margin-bottom: 0.8rem;
+  border-bottom: 2px dashed rgba(4, 37, 71, 0.28);
+}
+
+.venue__shuttle--ticket .venue__shuttle-header::before,
+.venue__shuttle--ticket .venue__shuttle-header::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(4, 37, 71, 0.12);
+}
+
+.venue__shuttle--ticket .venue__shuttle-header::before { left: -0.7rem; }
+.venue__shuttle--ticket .venue__shuttle-header::after { right: -0.7rem; }
+
+.venue__shuttle-route {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin: 0.1rem auto 0.9rem;
+  clip-path: inset(0 100% 0 0);
+}
+
+.venue__notebook.visible .venue__shuttle-route {
+  animation: routeDraw 1.3s var(--ease-out-expo) 0.35s forwards;
+}
+
+@keyframes routeDraw {
+  to { clip-path: inset(0 0 0 0); }
+}
+
+.venue__shuttle-route-stop {
+  fill: var(--fire-amber);
+  stroke: #ffffff;
+  stroke-width: 1;
+}
+
+.venue__shuttle-route-label {
+  font-family: var(--font-typewriter);
+  font-size: 9px;
+  fill: #042547;
+  letter-spacing: 0.02em;
+}
+
+/* --- Story theatre: curtains + marquee bulbs --- */
+.story__curtain {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(38px, 11vw, 120px);
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.55) 100%),
+    repeating-linear-gradient(90deg, #4a0c0f 0, #7c1518 13px, #5a0f12 26px, #8a181c 39px);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.4);
+}
+
+.story__curtain--left { left: 0; }
+.story__curtain--right { right: 0; transform: scaleX(-1); }
+
+.story__bulbs {
+  position: absolute;
+  top: -13px;
+  left: 6%;
+  right: 6%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.story__bulbs span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff6d5, #caa23a 70%, #8a6b1e);
+  opacity: 0.28;
+  transition: opacity 0.4s ease;
+}
+
+.story__content.visible .story__bulbs span {
+  animation: bulbFlicker 2.6s ease-in-out infinite alternate;
+}
+
+.story__content.visible .story__bulbs span:nth-child(1) { animation-delay: 0.05s; }
+.story__content.visible .story__bulbs span:nth-child(2) { animation-delay: 0.55s; }
+.story__content.visible .story__bulbs span:nth-child(3) { animation-delay: 0.2s; }
+.story__content.visible .story__bulbs span:nth-child(4) { animation-delay: 0.8s; }
+.story__content.visible .story__bulbs span:nth-child(5) { animation-delay: 0.35s; }
+.story__content.visible .story__bulbs span:nth-child(6) { animation-delay: 0.95s; }
+.story__content.visible .story__bulbs span:nth-child(7) { animation-delay: 0.15s; }
+.story__content.visible .story__bulbs span:nth-child(8) { animation-delay: 0.7s; }
+.story__content.visible .story__bulbs span:nth-child(9) { animation-delay: 0.45s; }
+.story__content.visible .story__bulbs span:nth-child(10) { animation-delay: 0.9s; }
+
+@keyframes bulbFlicker {
+  0% { opacity: 0.45; box-shadow: 0 0 4px 1px rgba(255, 214, 120, 0.35); }
+  100% { opacity: 1; box-shadow: 0 0 11px 3px rgba(255, 214, 120, 0.8); }
+}
+
+/* --- Wave 1 responsive --- */
+@media (max-width: 480px) {
+  .hero__rec { top: 1rem; left: 1rem; font-size: 0.62rem; }
+  .hero__pines { height: clamp(70px, 14vh, 130px); }
+  .story__curtain { width: clamp(24px, 9vw, 60px); }
+}
+
+/* --- Wave 1 reduced-motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .hero__rec-dot { animation: none !important; }
+  .camp-broadcast { overflow: visible; }
+  .camp-broadcast__track {
+    animation: none !important;
+    transform: none !important;
+    white-space: normal;
+    display: block;
+    text-align: center;
+    padding: 0 0.5rem;
+  }
+  .camp-broadcast__track > span.is-dup { display: none; }
+  .camp-broadcast__track > span { display: inline; padding-right: 0; }
+  .camp-broadcast__track > span::after { margin: 0 0.5rem; }
+  .vibe__hint { transition: none !important; }
+  .venue__shuttle-route,
+  .venue__notebook.visible .venue__shuttle-route {
+    clip-path: none !important;
+    animation: none !important;
+  }
+  .story__content.visible .story__bulbs span {
+    animation: none !important;
+    opacity: 1;
+    box-shadow: 0 0 8px 2px rgba(255, 214, 120, 0.6);
+  }
+}
+
+/* ==============================
+   WAVE 2 — INTERACTIVE COLLECTIBLES
+   ============================== */
+
+/* --- Backpack Meter --- */
+.backpack-meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 auto 1.2rem;
+}
+
+.backpack-meter__svg {
+  width: 78px;
+  height: auto;
+  overflow: visible;
+}
+
+.backpack-meter__track {
+  fill: rgba(250, 249, 242, 0.12);
+}
+
+.backpack-meter__fill {
+  transform: translateY(120px);
+  transition: transform 0.55s var(--ease-out-expo);
+}
+
+.backpack-meter__outline,
+.backpack-meter__pocket,
+.backpack-meter__strap {
+  stroke: var(--cream);
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.backpack-meter__label {
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  color: var(--fire-amber);
+  text-align: center;
+  margin: 0;
+}
+
+/* --- Camp Merit Badges --- */
+.merit-strip {
+  margin: 2.2rem auto 0;
+  max-width: 880px;
+  padding: 1rem 1.2rem;
+  border: 2px dashed rgba(250, 249, 242, 0.3);
+  border-radius: 12px;
+  background: rgba(4, 37, 71, 0.28);
+}
+
+.merit-strip__label {
+  font-family: var(--font-typewriter);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  color: var(--fire-amber);
+  margin: 0 0 0.7rem;
+  text-align: center;
+}
+
+.merit-strip__rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+  align-items: center;
+  min-height: 2.4rem;
+  overflow-x: auto;
+}
+
+.merit-strip__empty {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: rgba(250, 249, 242, 0.55);
+  margin: 0;
+  font-style: italic;
+}
+
+.merit-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.7rem;
+  border: 2px dashed var(--fire-amber);
+  border-radius: 8px;
+  background: rgba(250, 249, 242, 0.95);
+  font-family: var(--font-typewriter);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--bark-dark);
+  white-space: nowrap;
+  transform: rotate(-2deg);
+  animation: meritThunk 0.35s var(--ease-overshoot);
+}
+
+.merit-badge:nth-child(even) { transform: rotate(2deg); }
+.merit-badge__emoji { font-size: 1rem; }
+
+@keyframes meritThunk {
+  0% { transform: scale(1.5); opacity: 0; }
+  60% { transform: scale(0.92); opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.activity-card {
+  position: relative;
+  cursor: pointer;
+}
+
+.activity-card--stamped {
+  outline: 3px solid var(--fire-amber);
+  outline-offset: -3px;
+}
+
+.activity-card--stamped::after {
+  content: '✓';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 3;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fire-amber);
+  color: var(--bark-dark);
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Schedule field-note flips --- */
+.schedule__field-note {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin: 0;
+  font-family: var(--font-script);
+  font-size: 1rem;
+  line-height: 1.25;
+  color: var(--fire-orange);
+  transition: max-height 0.35s var(--ease-out-expo), opacity 0.3s ease, margin 0.3s ease;
+}
+
+.schedule__item--has-note { cursor: pointer; }
+
+.schedule__item--has-note:hover .schedule__field-note,
+.schedule__item--has-note.is-flipped .schedule__field-note {
+  max-height: 5rem;
+  opacity: 1;
+  margin-top: 0.4rem;
+}
+
+/* --- Story prop-closet door --- */
+.story__door {
+  display: block;
+  margin: 1.5rem auto 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  perspective: 700px;
+}
+
+.story__door-frame {
+  position: relative;
+  display: block;
+  width: 92px;
+  height: 118px;
+  margin: 0 auto;
+  border-radius: 6px;
+  background: #160d06;
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+.story__door-reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  text-align: center;
+  padding: 0.4rem;
+}
+
+.story__door-squirrel { font-size: 1.9rem; }
+
+.story__door-note {
+  font-family: var(--font-script);
+  font-size: 0.72rem;
+  color: var(--fire-amber);
+  line-height: 1.15;
+}
+
+.story__door-panel {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: linear-gradient(100deg, #6b3f1d, #855024 42%, #5a3318);
+  border: 2px solid #3f2410;
+  transform-origin: left center;
+  transition: transform 0.7s var(--ease-overshoot-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story__door-sign {
+  font-family: var(--font-typewriter);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  color: #f0d9a8;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.story__door-knob {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d8b54a;
+  transform: translateY(-50%);
+}
+
+.story__door.is-open .story__door-panel {
+  transform: rotateY(-105deg);
+}
+
+/* --- Wave 2 reduced-motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .backpack-meter__fill { transition: none !important; }
+  .merit-badge { animation: none !important; }
+  .schedule__field-note { transition: none !important; }
+  .story__door-panel { transition: none !important; }
+}
+
+/* ==============================
+   WAVE 3 — PASSPORT + ACORN HUNT
+   ============================== */
+
+.passport {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 9990;
+  font-family: var(--font-sans);
+}
+
+@supports (padding: max(0px)) {
+  .passport {
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+.passport__tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  border: 2px dashed var(--fire-amber);
+  border-radius: 999px;
+  background: var(--bark-dark);
+  color: var(--cream);
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  font-family: var(--font-typewriter);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  transition: transform 0.2s var(--ease-out-expo);
+}
+
+.passport__tab:hover { transform: translateY(-2px); }
+.passport__tab.is-pop { animation: passportPop 0.4s var(--ease-overshoot); }
+
+@keyframes passportPop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+.passport__tab-icon { font-size: 1.1rem; }
+.passport__tab-counts { white-space: nowrap; }
+
+.passport__panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.6rem);
+  width: min(92vw, 340px);
+  max-height: min(70vh, 520px);
+  overflow-y: auto;
+  background: var(--cream);
+  border: 2px solid var(--bark-dark);
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  padding: 0.9rem;
+}
+
+.passport__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+}
+
+.passport__title {
+  font-family: var(--font-typewriter);
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bark-dark);
+}
+
+.passport__close {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--bark-mid);
+  line-height: 1;
+  padding: 0.2rem;
+}
+
+.passport__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.passport__stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  text-align: center;
+  padding: 0.5rem 0.3rem;
+  min-height: 64px;
+  border: 2px dashed rgba(4, 37, 71, 0.22);
+  border-radius: 8px;
+  background: rgba(4, 37, 71, 0.03);
+}
+
+.passport__stamp-emoji {
+  font-size: 1.3rem;
+  filter: grayscale(1);
+  opacity: 0.4;
+}
+
+.passport__stamp-name {
+  font-family: var(--font-typewriter);
+  font-size: 0.52rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: rgba(4, 37, 71, 0.45);
+}
+
+.passport__stamp.is-earned {
+  border-color: var(--forest-mid);
+  background: rgba(52, 92, 13, 0.08);
+  transform: rotate(-3deg);
+}
+
+.passport__stamp.is-earned:nth-child(even) { transform: rotate(2deg); }
+.passport__stamp.is-earned .passport__stamp-emoji { filter: none; opacity: 1; }
+.passport__stamp.is-earned .passport__stamp-name { color: var(--forest-mid); }
+.passport__stamp.is-thunk { animation: passportThunk 0.4s var(--ease-overshoot); }
+
+@keyframes passportThunk {
+  0% { transform: rotate(-12deg) scale(1.6); }
+  50% { transform: rotate(-2deg) scale(0.9); }
+}
+
+.passport__acorns {
+  margin-top: 0.8rem;
+  padding-top: 0.7rem;
+  border-top: 2px dashed rgba(4, 37, 71, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.passport__acorns-label {
+  font-family: var(--font-script);
+  font-size: 1rem;
+  color: var(--forest-mid);
+}
+
+.passport__acorns-tally {
+  font-family: var(--font-typewriter);
+  font-size: 0.8rem;
+  color: var(--bark-dark);
+  white-space: nowrap;
+}
+
+/* --- Hidden acorns --- */
+/* Acorns sit quietly in the page at low opacity but keep a gentle idle
+   bobble + amber glow so a curious eye can spot them. On hover/focus they
+   perk up; on collect they pop + scatter before vanishing. */
+.acorn {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.05rem;
+  line-height: 1;
+  opacity: 0.55;
+  vertical-align: middle;
+  user-select: none;
+  filter: drop-shadow(0 0 0 rgba(244, 163, 0, 0));
+  animation: acornBobble 3.2s ease-in-out infinite,
+             acornGlow 3.2s ease-in-out infinite;
+  transition: transform 0.25s var(--ease-out-expo), opacity 0.25s ease, filter 0.25s ease;
+}
+
+/* Stagger the idle motion per acorn so the page doesn't pulse in sync. */
+.acorn:nth-child(odd)  { animation-delay: -0.6s, -0.9s; animation-duration: 3.6s, 3.6s; }
+.acorn:nth-child(3n)   { animation-delay: -1.4s, -1.1s; animation-duration: 2.9s, 2.9s; }
+.acorn:nth-child(5n)   { animation-delay: -2.1s, -1.7s; animation-duration: 4.1s, 4.1s; }
+
+.acorn:hover,
+.acorn:focus-visible {
+  opacity: 1;
+  transform: scale(1.35) rotate(-10deg);
+  filter: drop-shadow(0 0 6px rgba(244, 163, 0, 0.85));
+  outline: none;
+}
+
+/* Collection: a quick grow + amber ring expand, then shrink to nothing.
+   JS adds .acorn--popping first (≈0.52s of flourish) and .acorn--found
+   only afterwards, so the acorn plays out before it disappears. */
+.acorn--popping {
+  animation: acornPop 0.52s var(--ease-overshoot) forwards;
+  pointer-events: none;
+}
+
+.acorn--found { display: none; }
+.acorn--hero { margin-top: 0.6rem; }
+.acorn--story { display: inline-block; margin-bottom: 0.4rem; }
+
+@keyframes acornBobble {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%      { transform: translateY(-2px) rotate(3deg); }
+  50%      { transform: translateY(0) rotate(0deg); }
+  75%      { transform: translateY(2px) rotate(-3deg); }
+}
+
+@keyframes acornGlow {
+  0%, 100% { filter: drop-shadow(0 0 0 rgba(244, 163, 0, 0)); }
+  50%      { filter: drop-shadow(0 0 4px rgba(244, 163, 0, 0.55)); }
+}
+
+/* The ::before ring is drawn only during the pop, scaled from the acorn. */
+.acorn--popping::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 140%; height: 140%;
+  border-radius: 50%;
+  border: 2px solid rgba(244, 163, 0, 0.85);
+  transform: translate(-50%, -50%) scale(0.4);
+  opacity: 0.9;
+  animation: acornRing 0.52s ease-out forwards;
+}
+
+@keyframes acornPop {
+  0%   { transform: scale(1); opacity: 1; }
+  35%  { transform: scale(1.5) rotate(-12deg); opacity: 1; }
+  100% { transform: scale(0) rotate(20deg); opacity: 0; }
+}
+
+@keyframes acornRing {
+  0%   { transform: translate(-50%, -50%) scale(0.4); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+}
+
+/* --- Certificate of Squirrelly Excellence (mirrors FaceTime overlay) --- */
+.cert-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(2, 24, 48, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s var(--ease-out-expo);
+}
+
+.cert-overlay--active { opacity: 1; pointer-events: auto; }
+
+.cert-card {
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  padding: 2rem 1.6rem;
+  background: linear-gradient(160deg, #fffdf3, var(--cream));
+  border: 3px dashed var(--fire-amber);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9);
+  transition: transform 0.5s var(--ease-overshoot);
+}
+
+.cert-overlay--active .cert-card { transform: scale(1); }
+.cert-seal { font-size: 2.4rem; margin-bottom: 0.5rem; }
+
+.cert-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--bark-dark);
+  margin: 0 0 0.6rem;
+  line-height: 1.15;
+}
+
+.cert-body {
+  font-family: var(--font-typewriter);
+  font-size: 0.85rem;
+  color: var(--bark-mid);
+  line-height: 1.5;
+  margin: 0 0 0.8rem;
+}
+
+.cert-sig {
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  color: var(--forest-mid);
+  margin: 0 0 1.2rem;
+}
+
+.cert-close {
+  border: none;
+  background: var(--forest-mid);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.cert-close:hover { transform: scale(1.05); background: var(--forest-deep); }
+
+/* --- Wave 3 reduced-motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .passport__tab,
+  .passport__tab.is-pop,
+  .passport__stamp.is-thunk,
+  .acorn,
+  .cert-overlay,
+  .cert-card {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ==============================
+   WAVE 4 — ROUTE MAP
+   ============================== */
+.route {
+  background: var(--bark-dark);
+  padding: var(--section-pad) clamp(1rem, 4vw, 2rem);
+}
+
+.route__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.route__label-head { color: var(--cream); }
+
+.route__quip {
+  font-family: var(--font-script);
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  color: var(--fire-amber);
+  margin: 0.4rem 0 1.6rem;
+}
+
+.route__map {
+  background: linear-gradient(160deg, rgba(250, 249, 242, 0.06), rgba(250, 249, 242, 0.02));
+  border: 2px dashed rgba(250, 249, 242, 0.18);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.route__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* The dashed travel path: pathLength="1" lets us animate stroke-dashoffset
+   from 1 (fully hidden) to 0 (fully drawn) for a true line-draw reveal. */
+.route__line {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.9s var(--ease-out-expo);
+}
+.route__map.route--drawing .route__line { stroke-dashoffset: 0; }
+
+/* Pins start hidden, then overshoot in (routePinPop) as the camper arrives. */
+.route__pin {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: opacity 0.4s ease;
+}
+.route__pin.is-arrived {
+  animation: routePinPop 0.5s var(--ease-overshoot) forwards;
+}
+
+/* "You are here" ping on the final Camp Getaway pin once the camper arrives. */
+.route__map.route--arrived .route__pin--final circle:last-of-type {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: routePing 1.8s ease-out infinite;
+}
+
+@keyframes routePinPop {
+  0%   { opacity: 0; transform: translateY(8px) scale(0.4); }
+  60%  { opacity: 1; transform: translateY(-3px) scale(1.15); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes routePing {
+  0%   { opacity: 0.7; transform: scale(1); }
+  70%  { opacity: 0; transform: scale(2.4); }
+  100% { opacity: 0; transform: scale(2.4); }
+}
+
+/* Traveling camper (positioned by JS along the path). */
+.route__traveler {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+}
+
+.route__pin-label {
+  font-family: var(--font-typewriter);
+  font-size: 16px;
+  fill: var(--cream);
+  letter-spacing: 0.04em;
+}
+
+/* Campy legend caption beneath the map. */
+.route__legend {
+  font-family: var(--font-typewriter);
+  font-size: clamp(0.72rem, 2.4vw, 0.95rem);
+  color: var(--cream);
+  opacity: 0.85;
+  margin: 1rem 0 0;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 480px) {
+  .route__pin-label { font-size: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route__line,
+  .route__map.route--drawing .route__line {
+    stroke-dashoffset: 0 !important;
+    transition: none !important;
+  }
+  .route__pin,
+  .route__pin.is-arrived,
+  .route__traveler,
+  .route__map.route--arrived .route__pin--final circle:last-of-type {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+  }
+  .route__traveler { display: none; }
+}
+
+/* ==============================
+   WAVE 5 — RSVP RAIL + CAMP PASS
+   ============================== */
+.footer__stepper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.9rem;
+  list-style: none;
+  margin: 0 0 1.8rem;
+  padding: 0;
+}
+
+.footer__step {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  opacity: 0.45;
+  transition: opacity var(--t-base) var(--ease-out-expo);
+}
+
+.footer__step-dot {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px dashed rgba(250, 249, 242, 0.4);
+  font-family: var(--font-typewriter);
+  font-size: 0.8rem;
+  color: var(--cream);
+}
+
+.footer__step-label {
+  font-family: var(--font-typewriter);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cream);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer__step.is-active { opacity: 1; }
+.footer__step.is-active .footer__step-dot {
+  border-style: solid;
+  border-color: var(--fire-amber);
+  background: var(--fire-amber);
+  color: var(--bark-dark);
+}
+.footer__step.is-done { opacity: 0.8; }
+.footer__step.is-done .footer__step-dot {
+  border-style: solid;
+  border-color: var(--forest-mid);
+  background: var(--forest-mid);
+  /* A satisfying little settle when the step is marked complete. */
+  animation: stepSettle 0.4s var(--ease-overshoot);
+}
+@keyframes stepSettle {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+.footer__stepper--declining .footer__step[data-step="2"] { opacity: 0.55; }
+.footer__stepper--declining .footer__step[data-step="2"] .footer__step-label::after { content: ' · regrets'; }
+
+/* Camp Pass keepsake */
+.camp-pass {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(2, 24, 48, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s var(--ease-out-expo);
+}
+
+.camp-pass--show { opacity: 1; pointer-events: auto; }
+
+.camp-pass__card {
+  position: relative;
+  max-width: 380px;
+  width: 100%;
+  background: linear-gradient(180deg, #fffdf3, var(--cream));
+  border-radius: 16px;
+  border: 2px dashed rgba(4, 37, 71, 0.35);
+  padding: 1.6rem 1.5rem 1.4rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  transform: scale(0.9) rotate(-1deg);
+  transition: transform 0.45s var(--ease-overshoot);
+}
+
+.camp-pass--show .camp-pass__card { transform: scale(1) rotate(-1deg); }
+
+.camp-pass__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.7rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--bark-mid);
+  line-height: 1;
+}
+
+.camp-pass__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.8rem;
+  border-bottom: 2px dashed rgba(4, 37, 71, 0.25);
+}
+
+.camp-pass__brand {
+  font-family: var(--font-typewriter);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bark-mid);
+}
+
+.camp-pass__stamp {
+  font-family: var(--font-typewriter);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fire-orange);
+  border: 2px dashed var(--fire-orange);
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  transform: rotate(6deg);
+  white-space: nowrap;
+}
+
+.camp-pass--declined .camp-pass__stamp {
+  color: var(--bark-mid);
+  border-color: var(--bark-mid);
+}
+
+.camp-pass__camper {
+  font-family: var(--font-script);
+  font-size: 1.6rem;
+  color: var(--bark-dark);
+  margin: 0 0 0.3rem;
+}
+
+.camp-pass__cabin {
+  font-family: var(--font-typewriter);
+  font-size: 0.85rem;
+  color: var(--forest-mid);
+  margin: 0 0 0.8rem;
+}
+
+.camp-pass__msg {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--bark-mid);
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+.camp-pass__seal {
+  font-family: var(--font-script);
+  font-size: 1rem;
+  color: var(--forest-mid);
+  text-align: right;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .footer__step-label { display: none; }
+  .footer__step.is-active .footer__step-label { display: inline; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__step,
+  .footer__step.is-done .footer__step-dot,
+  .camp-pass,
+  .camp-pass__card {
+    transition: none !important;
+    animation: none !important;
   }
 }

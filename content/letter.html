@@ -32,6 +32,7 @@
       <h1 class="hero__names reveal reveal-delay-1">Paige <span class="hero__amp">&</span> Benji</h1>
       <p class="hero__tagline reveal reveal-delay-2">Campfires, S'mores & I Dos</p>
       <p class="hero__date reveal reveal-delay-3">October 4 – 5, 2026 &bull; Kent, Connecticut</p>
+      <span class="acorn acorn--hero" data-acorn="hero" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span>
     </div>
 
     <a href="#postcard" class="hero__scroll-cta" aria-label="Scroll to next section">
@@ -42,7 +43,7 @@
     </a>
 
     <!-- Floating Sound Toggle -->
-    <button id="soundToggle" class="hero__sound-btn" aria-label="Play with sound">
+    <button id="soundToggle" class="hero__sound-btn" aria-label="Watch the Save-the-Date Film">
       <svg id="soundOffIcon" class="hero__sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
         <path d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"/>
@@ -50,8 +51,17 @@
       <svg id="soundOnIcon" class="hero__sound-icon hero__sound-icon--hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
       </svg>
-      <span id="soundText">Play with Sound</span>
+      <span id="soundText">Watch the Save-the-Date Film</span>
     </button>
+
+    <!-- Camcorder persona: REC badge, film grain, pine treeline -->
+    <div class="hero__rec" aria-hidden="true"><span class="hero__rec-dot"></span>REC</div>
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="hero__pines" aria-hidden="true">
+      <svg viewBox="0 0 1440 200" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <path d="M0,200 L0,168 L70,168 L104,92 L138,168 L184,168 L224,118 L262,168 L312,168 L356,64 L398,168 L452,168 L492,108 L532,168 L592,168 L632,84 L672,168 L730,168 L772,128 L812,168 L872,168 L912,72 L952,168 L1012,168 L1052,112 L1092,168 L1150,168 L1192,90 L1232,168 L1290,168 L1330,120 L1368,168 L1440,168 L1440,200 Z"/>
+      </svg>
+    </div>
   </section>
 
   <!-- ===== POSTCARD / COUNTDOWN SECTION ===== -->
@@ -85,6 +95,16 @@
       </div>
     </div>
   </section>
+
+  <!-- ===== CAMP BROADCAST MARQUEE ===== -->
+  <div class="camp-broadcast camp-broadcast--green" role="presentation" aria-hidden="true">
+    <div class="camp-broadcast__track">
+      <span>📢 S'more rations are being emotionally prepared.</span>
+      <span>Color Wars applications now open — captains, assemble.</span>
+      <span class="is-dup">📢 S'more rations are being emotionally prepared.</span>
+      <span class="is-dup">Color Wars applications now open — captains, assemble.</span>
+    </div>
+  </div>
 
   <!-- ===== VENUE INFO SECTION ===== -->
   <section id="details" class="venue">
@@ -136,7 +156,7 @@
         </a>
 
         <!-- Camp Shuttle Info -->
-        <div class="venue__shuttle">
+        <div class="venue__shuttle venue__shuttle--ticket">
           <div class="venue__shuttle-header">
             <span class="venue__shuttle-icon">🚐</span>
             <h3 class="venue__shuttle-title">Camp Shuttle</h3>
@@ -144,6 +164,15 @@
           <p class="venue__shuttle-text">
             Taking the <strong>Metro North</strong> from Grand Central Station to <strong>Harlem Valley / Wingdale</strong>? A complimentary shuttle to Club Getaway is available!
           </p>
+          <svg class="venue__shuttle-route" viewBox="0 0 320 58" role="img" aria-label="Route: Grand Central to Harlem Valley / Wingdale to Camp Getaway">
+            <line class="venue__shuttle-route-line" x1="22" y1="22" x2="298" y2="22" stroke="#345C0D" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round" />
+            <circle class="venue__shuttle-route-stop" cx="22" cy="22" r="5" />
+            <circle class="venue__shuttle-route-stop" cx="160" cy="22" r="5" />
+            <circle class="venue__shuttle-route-stop" cx="298" cy="22" r="5" />
+            <text class="venue__shuttle-route-label" x="22" y="42" text-anchor="start">Grand Central</text>
+            <text class="venue__shuttle-route-label" x="160" y="42" text-anchor="middle">Wingdale</text>
+            <text class="venue__shuttle-route-label" x="298" y="42" text-anchor="end">Camp Getaway</text>
+          </svg>
           <div class="venue__shuttle-steps">
             <div class="venue__shuttle-step">
               <span class="venue__shuttle-step-num">1</span>
@@ -266,6 +295,7 @@
             </div>
             <p class="schedule__event-name">Ceremony</p>
             <p class="schedule__event-time">2:00pm</p>
+            <p class="schedule__field-note">Bring tissues, not bug spray.</p>
           </div>
 
           <div class="schedule__item">
@@ -288,6 +318,7 @@
             </div>
             <p class="schedule__event-name">Cocktail Hour</p>
             <p class="schedule__event-time">3:00pm</p>
+            <p class="schedule__field-note">Hydration, but fancy.</p>
           </div>
 
           <div class="schedule__item">
@@ -361,6 +392,8 @@
             </div>
             <p class="schedule__event-name">Bonfire</p>
             <p class="schedule__event-time">8:00pm</p>
+            <p class="schedule__field-note">Official s'more diplomacy begins.</p>
+            <span class="acorn" data-acorn="bonfire" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span>
           </div>
 
           <div class="schedule__item">
@@ -400,6 +433,7 @@
             </div>
             <p class="schedule__event-name">After Party</p>
             <p class="schedule__event-time">10:00pm</p>
+            <p class="schedule__field-note">Camp curfew has been ceremonially ignored.</p>
           </div>
         </div>
 
@@ -480,17 +514,78 @@
     </div>
   </section>
 
+  <!-- ===== CAMP BROADCAST MARQUEE ===== -->
+  <div class="camp-broadcast camp-broadcast--amber" role="presentation" aria-hidden="true">
+    <div class="camp-broadcast__track">
+      <span>Reminder: closed-toe shoes are not a suggestion.</span>
+      <span>Bug spray officially counts as a fragrance this weekend.</span>
+      <span class="is-dup">Reminder: closed-toe shoes are not a suggestion.</span>
+      <span class="is-dup">Bug spray officially counts as a fragrance this weekend.</span>
+    </div>
+  </div>
+
   <!-- ===== OUR STORY SECTION ===== -->
   <section id="story" class="story">
     <div class="story__backdrop"></div>
+    <div class="story__curtain story__curtain--left" aria-hidden="true"></div>
+    <div class="story__curtain story__curtain--right" aria-hidden="true"></div>
     <div class="story__content reveal">
       <div class="story__sign">
+        <div class="story__bulbs" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
         <h2 class="story__heading">Cabaret Theatre</h2>
         <p class="story__subheading">Our Story</p>
         <p class="story__text">
           We met in 2015 at Rutgers University during a production of Avenue Q. Our love story began exactly where most great romances do, in a prop closet, where Benji was searching for peace and quiet and Paige immediately derailed that plan. We've been inseparable ever since, laughing our way through theater, NYC adventures, and all the little moments in between. We can't wait to celebrate this next chapter with all of you!
         </p>
+        <span class="acorn acorn--story" data-acorn="propcloset" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span>
         <a href="https://www.cabarettheatre.org" target="_blank" rel="noopener noreferrer" class="story__link">[www.cabarettheatre.org]</a>
+        <button class="story__door" id="storyDoor" type="button" aria-label="Open the prop closet" aria-expanded="false">
+          <span class="story__door-frame">
+            <span class="story__door-reveal">
+              <span class="story__door-squirrel">🐿️</span>
+              <span class="story__door-note">Benji was trying to hide here.</span>
+            </span>
+            <span class="story__door-panel">
+              <span class="story__door-sign">PROP<br/>CLOSET</span>
+              <span class="story__door-knob"></span>
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ROUTE MAP SECTION ===== -->
+  <section id="route" class="route">
+    <div class="route__inner">
+      <h2 class="section-label route__label-head reveal">The Journey</h2>
+      <p class="route__quip reveal reveal-delay-1">"Recalculating… destination: I&nbsp;Do."</p>
+      <div class="route__map reveal reveal-delay-2" id="routeMap">
+        <svg class="route__svg" viewBox="0 0 800 300" role="img" aria-label="An illustrated route from the Cabaret Theatre prop closet through NYC adventures to Camp Getaway in Kent, Connecticut">
+          <path class="route__line" id="routeLine" d="M70 232 C 180 150, 250 250, 360 178 S 560 110, 730 72" fill="none" stroke="#4a7a1a" stroke-width="4" stroke-linecap="round" pathLength="1" />
+          <g class="route__pin" data-pin="0" transform="translate(70 232)">
+            <path d="M0 0 C -13 -16 -16 -26 -8 -33 C -2 -38 2 -38 8 -33 C 16 -26 13 -16 0 0 Z" fill="#f4a300" stroke="#bf360c" stroke-width="2" />
+            <circle cx="0" cy="-27" r="5" fill="#042547" />
+          </g>
+          <g class="route__pin" data-pin="1" transform="translate(360 178)">
+            <path d="M0 0 C -13 -16 -16 -26 -8 -33 C -2 -38 2 -38 8 -33 C 16 -26 13 -16 0 0 Z" fill="#f4a300" stroke="#bf360c" stroke-width="2" />
+            <circle cx="0" cy="-27" r="5" fill="#042547" />
+          </g>
+          <g class="route__pin route__pin--final" data-pin="2" transform="translate(730 72)">
+            <path d="M0 0 C -13 -16 -16 -26 -8 -33 C -2 -38 2 -38 8 -33 C 16 -26 13 -16 0 0 Z" fill="#f4a300" stroke="#bf360c" stroke-width="2" />
+            <circle cx="0" cy="-27" r="5" fill="#042547" />
+          </g>
+          <text class="route__pin-label" x="70" y="262" text-anchor="middle">Prop Closet</text>
+          <text class="route__pin-label" x="360" y="208" text-anchor="middle">NYC Adventures</text>
+          <text class="route__pin-label" x="730" y="104" text-anchor="middle">Camp Getaway</text>
+          <!-- Traveler rides the path during the draw-in (positioned by JS). -->
+          <g class="route__traveler" id="routeTraveler" aria-hidden="true">
+            <text font-size="26" text-anchor="middle" dy="0.35em">🏕️</text>
+          </g>
+        </svg>
+        <p class="route__legend" aria-hidden="true">🏠 Prop Closet &nbsp;→&nbsp; 🗽 NYC Adventures &nbsp;→&nbsp; ⛺ Camp Getaway &nbsp;·&nbsp; 2015 → 2026</p>
       </div>
     </div>
   </section>
@@ -523,6 +618,28 @@
 
       <div class="packing__col packing__col--right">
         <h2 class="packing__heading">Packing List</h2>
+        <div class="backpack-meter" id="backpackMeter">
+          <svg class="backpack-meter__svg" viewBox="0 0 100 120" aria-hidden="true">
+            <defs>
+              <clipPath id="bpClip">
+                <path d="M50 8 C 32 8 27 23 27 36 L 22 36 C 16 36 12 42 12 50 L 12 104 C 12 110 16 114 22 114 L 78 114 C 84 114 88 110 88 104 L 88 50 C 88 42 84 36 78 36 L 73 36 C 73 23 68 8 50 8 Z" />
+              </clipPath>
+              <linearGradient id="bpFillGrad" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#345C0D" />
+                <stop offset="100%" stop-color="#f4a300" />
+              </linearGradient>
+            </defs>
+            <g clip-path="url(#bpClip)">
+              <rect class="backpack-meter__track" x="0" y="0" width="100" height="120" />
+              <rect class="backpack-meter__fill" id="bpFill" x="0" y="0" width="100" height="120" fill="url(#bpFillGrad)" />
+            </g>
+            <path class="backpack-meter__outline" d="M50 8 C 32 8 27 23 27 36 L 22 36 C 16 36 12 42 12 50 L 12 104 C 12 110 16 114 22 114 L 78 114 C 84 114 88 110 88 104 L 88 50 C 88 42 84 36 78 36 L 73 36 C 73 23 68 8 50 8 Z" fill="none" />
+            <path class="backpack-meter__strap" d="M41 36 C 41 20 39 12 33 9" fill="none" />
+            <path class="backpack-meter__strap" d="M59 36 C 59 20 61 12 67 9" fill="none" />
+            <path class="backpack-meter__pocket" d="M30 80 L 70 80 L 70 110 C 70 112 68 114 66 114 L 34 114 C 32 114 30 112 30 110 Z" fill="none" />
+          </svg>
+          <p class="backpack-meter__label" id="bpLabel">Start packing!</p>
+        </div>
         <ul class="packing__list" id="packingList">
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Comfortable clothes for outdoor activities</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Layers: t-shirts, long sleeves, sweater/jacket</span></label></li>
@@ -536,7 +653,7 @@
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Shampoo &amp; conditioner</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Soap/body wash</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Sunscreen</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Mosquito repellent</span></label></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Mosquito repellent</span></label> <span class="acorn" data-acorn="packing" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Medications you normally take</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Towel <em class="packing__note-inline">(optional, towels are provided)</em></span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Water bottle</span></label></li>
@@ -663,8 +780,24 @@
           </div>
         </div>
       </div>
+      <div class="merit-strip reveal" id="meritStrip" aria-live="polite">
+        <p class="merit-strip__label">My Camp Plan</p>
+        <div class="merit-strip__rail" id="meritRail">
+          <p class="merit-strip__empty" id="meritEmpty">Tap an activity to pin its badge here.</p>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- ===== CAMP BROADCAST MARQUEE ===== -->
+  <div class="camp-broadcast camp-broadcast--navy" role="presentation" aria-hidden="true">
+    <div class="camp-broadcast__track">
+      <span>Lost &amp; found: one prop-closet meet-cute, last seen in 2015.</span>
+      <span>Sir Nutsworth III requests snacks at the front desk.</span>
+      <span class="is-dup">Lost &amp; found: one prop-closet meet-cute, last seen in 2015.</span>
+      <span class="is-dup">Sir Nutsworth III requests snacks at the front desk.</span>
+    </div>
+  </div>
 
   <!-- ===== VIBE / QUIRKY SECTION ===== -->
   <section id="vibe" class="vibe">
@@ -680,6 +813,7 @@
             <button class="vibe__tag-cycle-btn" id="outfitCycleBtn" title="Click to cycle outfits!">
               <span class="vibe__card-icon" id="outfitIcon">👗</span>
             </button>
+            <span class="vibe__hint">tap to cycle</span>
             <h3 id="outfitTitle">Dress Code</h3>
             <p id="outfitDesc">Dress to impress, but maybe leave the bug spray as perfume at home. Think "rustic chic meets ready for s'mores."</p>
           </div>
@@ -699,8 +833,10 @@
                 </svg>
               </div>
             </div>
+            <span class="vibe__hint vibe__hint--squirrel">tap the squirrel</span>
             <h3 style="display:none;">Official Mascot</h3>
             <div class="vibe__polaroid-caption">Sir Nutsworth III</div>
+            <span class="acorn" data-acorn="polaroid" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span>
             <p style="font-size:0.85rem; text-align:center; margin-top:0.25rem;">Keep your eyes peeled for our unofficial mascot. Spotting him brings good luck!</p>
           </div>
 
@@ -716,6 +852,7 @@
             <button class="vibe__cabin-btn" id="cabinNightBtn" title="Toggle Cabin Night Mode!">
               <span class="vibe__card-icon">⛺</span>
             </button>
+            <span class="vibe__hint">night mode?</span>
             <h3>What to Expect</h3>
             <ul class="vibe__expect-list">
               <li>Private cabin rooms with classic camp energy</li>
@@ -797,6 +934,14 @@
       <p class="footer__subtitle reveal reveal-delay-2">Let us know if you'll be joining the adventure</p>
 
       <form class="footer__form reveal reveal-delay-3" id="rosterForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdDL1uOp6ViYmHRkF3ZusEH93za_5QaKxnfkEqEQ37vlU7mQA/formResponse" method="POST" target="hidden_iframe" novalidate>
+
+        <!-- Camp Registration Desk — progress rail (decorative) -->
+        <ol class="footer__stepper" id="rsvpStepper" aria-hidden="true">
+          <li class="footer__step" data-step="1"><span class="footer__step-dot">1</span><span class="footer__step-label">Camper Info</span></li>
+          <li class="footer__step" data-step="2"><span class="footer__step-dot">2</span><span class="footer__step-label">Camp Plans</span></li>
+          <li class="footer__step" data-step="3"><span class="footer__step-dot">3</span><span class="footer__step-label">Field Notes</span></li>
+          <li class="footer__step" data-step="4"><span class="footer__step-dot">4</span><span class="footer__step-label">Send to Counselors</span></li>
+        </ol>
 
         <!-- Name Row -->
         <div class="footer__form-row">
@@ -970,9 +1115,64 @@
         <span class="footer__toast-msg" id="toastMsg">RSVP received! See you at camp!</span>
       </div>
 
+      <!-- Camp Pass — post-submit keepsake -->
+      <div class="camp-pass" id="campPass" aria-hidden="true">
+        <div class="camp-pass__card" role="dialog" aria-modal="true" aria-label="Your Camp Pass">
+          <button class="camp-pass__close" id="campPassClose" type="button" aria-label="Close">✕</button>
+          <div class="camp-pass__head">
+            <span class="camp-pass__brand">Club Getaway · Camp Pass</span>
+            <span class="camp-pass__stamp" id="campPassStamp">Admitted</span>
+          </div>
+          <p class="camp-pass__camper">Camper: <span id="campPassName">Friend</span></p>
+          <p class="camp-pass__cabin" id="campPassCabin">Cabin: Pinewood Bunk 4</p>
+          <p class="camp-pass__msg" id="campPassMsg">You're checked in! See you around the campfire.</p>
+          <p class="camp-pass__seal">🐿️🎩 Sir Nutsworth III, Esq.</p>
+        </div>
+      </div>
+
       <p class="footer__copyright">Paige & Benji · October 2026 · Made with 🤎 and campfire smoke</p>
     </div>
   </footer>
+
+  <!-- ===== WEDDING WEEKEND PASSPORT (sticky collectible) ===== -->
+  <div id="passport" class="passport">
+    <button id="passportTab" class="passport__tab" type="button" aria-expanded="false" aria-controls="passportPanel">
+      <span class="passport__tab-icon">🎟️</span>
+      <span class="passport__tab-counts"><span id="passportStampCount">0</span>/9 · 🌰 <span id="passportAcornCount">0</span>/5</span>
+    </button>
+    <section id="passportPanel" class="passport__panel" hidden aria-label="Wedding Weekend Passport">
+      <header class="passport__head">
+        <span class="passport__title">Wedding Weekend Passport</span>
+        <button id="passportClose" class="passport__close" type="button" aria-label="Close passport">✕</button>
+      </header>
+      <div class="passport__grid" id="passportGrid">
+        <div class="passport__stamp" data-stamp="envelope"><span class="passport__stamp-emoji">✉️</span><span class="passport__stamp-name">Adventure Admitted</span></div>
+        <div class="passport__stamp" data-stamp="film"><span class="passport__stamp-emoji">🎬</span><span class="passport__stamp-name">Film Watched</span></div>
+        <div class="passport__stamp" data-stamp="postcard"><span class="passport__stamp-emoji">📮</span><span class="passport__stamp-name">Postcard Found</span></div>
+        <div class="passport__stamp" data-stamp="cabin"><span class="passport__stamp-emoji">🛖</span><span class="passport__stamp-name">Cabin Permit Issued</span></div>
+        <div class="passport__stamp" data-stamp="schedule"><span class="passport__stamp-emoji">🗺️</span><span class="passport__stamp-name">Adventure Mapped</span></div>
+        <div class="passport__stamp" data-stamp="story"><span class="passport__stamp-emoji">🎭</span><span class="passport__stamp-name">Prop Closet Certified</span></div>
+        <div class="passport__stamp" data-stamp="backpack"><span class="passport__stamp-emoji">🎒</span><span class="passport__stamp-name">S'more Supply Approved</span></div>
+        <div class="passport__stamp" data-stamp="badges"><span class="passport__stamp-emoji">🏅</span><span class="passport__stamp-name">Activities Chosen</span></div>
+        <div class="passport__stamp" data-stamp="rsvp"><span class="passport__stamp-emoji">📨</span><span class="passport__stamp-name">RSVP Sent</span></div>
+      </div>
+      <div class="passport__acorns">
+        <span class="passport__acorns-label">Sir Nutsworth's Acorn Hunt</span>
+        <span class="passport__acorns-tally" id="passportAcornTally">🌰 0 / 5</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===== ACORN REWARD: Certificate of Squirrelly Excellence ===== -->
+  <div class="cert-overlay" id="certOverlay" aria-hidden="true">
+    <div class="cert-card" id="certCard" role="dialog" aria-modal="true" aria-label="Certificate of Squirrelly Excellence">
+      <div class="cert-seal">🐿️🎩</div>
+      <h3 class="cert-title">Certificate of Squirrelly Excellence</h3>
+      <p class="cert-body">Awarded to a Distinguished Camper for locating all five of Sir Nutsworth III's hidden acorns across the page.</p>
+      <p class="cert-sig">— Sir Nutsworth III, Esq.</p>
+      <button class="cert-close" id="certClose" type="button">Claim your nuts 🌰</button>
+    </div>
+  </div>
 
 <script>
   /* =========================================================================
@@ -983,6 +1183,43 @@
      thing runs exactly once.
      ========================================================================= */
   (function initLetter() {
+    // ===== Confetti (vendored canvas-confetti, loaded on demand) =====
+    // Camp palette shared with the envelope unlock screen.
+    var CONFETTI_COLORS = ['#e8611a', '#f4a300', '#fdd835', '#345C0D', '#4a7a1a', '#FAF9F2'];
+    var confettiPromise = null;
+    function loadConfetti() {
+      if (confettiPromise) return confettiPromise;
+      confettiPromise = new Promise(function (resolve) {
+        if (window.confetti) return resolve(window.confetti);
+        var s = document.createElement('script');
+        s.src = '/scripts/confetti.browser.js';
+        s.onload = function () { resolve(window.confetti || null); };
+        s.onerror = function () { resolve(null); };
+        document.head.appendChild(s);
+      });
+      return confettiPromise;
+    }
+    var REDUCE_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function confettiBurst(x, y, opts) {
+      opts = opts || {};
+      if (REDUCE_MOTION) return;
+      loadConfetti().then(function (fire) {
+        if (!fire) return;
+        fire({
+          particleCount: opts.count || 14,
+          spread: opts.spread || 55,
+          startVelocity: opts.velocity || 28,
+          gravity: opts.gravity != null ? opts.gravity : 0.9,
+          ticks: opts.ticks || 180,
+          scalar: opts.scalar || 0.9,
+          origin: { x: x / window.innerWidth, y: y / window.innerHeight },
+          colors: opts.colors || CONFETTI_COLORS,
+          shapes: opts.shapes || ['square', 'circle'],
+          disableForReducedMotion: false
+        });
+      });
+    }
+
     // ===== Live Countdown to October 4, 2026 at 2:00 PM ET =====
     // October 4, 2026, 2:00 PM ET = 18:00 UTC (ET is UTC-4 in October / EDT)
     var weddingDate = new Date('2026-10-04T18:00:00Z');
@@ -1019,12 +1256,19 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // ===== Intersection Observer for scroll reveal =====
+    // ===== Intersection Observer for scroll reveal + passport stamps =====
+    var stampSections = { postcard: 'postcard', details: 'cabin', schedule: 'schedule', story: 'story' };
     var observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
+          if (!entry.isIntersecting) return;
+          if (entry.target.classList.contains('reveal')) {
             entry.target.classList.add('visible');
+          }
+          var sid = entry.target.id;
+          if (sid && stampSections[sid]) {
+            if (window.passportAward) window.passportAward(stampSections[sid]);
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -1032,11 +1276,149 @@
     );
 
     document.querySelectorAll('.reveal').forEach(function (el) { observer.observe(el); });
+    ['postcard', 'details', 'schedule', 'story'].forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (sec) observer.observe(sec);
+    });
 
     // Force hero elements visible immediately
     document.querySelectorAll('.hero .reveal').forEach(function (el) {
       setTimeout(function () { el.classList.add('visible'); }, 300);
     });
+
+    // ===== Wedding Weekend Passport + Acorn Hunt =====
+    (function () {
+      var STAMP_KEY = 'grecco_passport';
+      var ACORN_KEY = 'grecco_acorns';
+      var PENDING_KEY = 'grecco_passport_pending';
+      var STAMP_IDS = ['envelope', 'film', 'postcard', 'cabin', 'schedule', 'story', 'backpack', 'badges', 'rsvp'];
+      var TOTAL_ACORNS = 5;
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var passportEl = document.getElementById('passport');
+      if (!passportEl) return;
+      var tabBtn = document.getElementById('passportTab');
+      var panel = document.getElementById('passportPanel');
+      var closeBtn = document.getElementById('passportClose');
+      var stampCountEl = document.getElementById('passportStampCount');
+      var acornCountEl = document.getElementById('passportAcornCount');
+      var acornTallyEl = document.getElementById('passportAcornTally');
+      var certOverlay = document.getElementById('certOverlay');
+      var certClose = document.getElementById('certClose');
+
+      var stampState = { v: 1, stamps: {} };
+      try { var s = localStorage.getItem(STAMP_KEY); if (s) { var p = JSON.parse(s); if (p && p.stamps) stampState = p; } } catch (e) {}
+      var acornState = { v: 1, found: [], certificateSeen: false };
+      try { var a = localStorage.getItem(ACORN_KEY); if (a) { var pa = JSON.parse(a); if (pa && pa.found) acornState = pa; } } catch (e) {}
+
+      function saveStamps() { try { localStorage.setItem(STAMP_KEY, JSON.stringify(stampState)); } catch (e) {} }
+      function saveAcorns() { try { localStorage.setItem(ACORN_KEY, JSON.stringify(acornState)); } catch (e) {} }
+      function stampCount() { var n = 0; STAMP_IDS.forEach(function (id) { if (stampState.stamps[id]) n++; }); return n; }
+
+      function awardStamp(id) {
+        if (STAMP_IDS.indexOf(id) === -1 || stampState.stamps[id]) return;
+        stampState.stamps[id] = true;
+        saveStamps();
+        var cell = passportEl.querySelector('.passport__stamp[data-stamp="' + id + '"]');
+        if (cell) {
+          cell.classList.add('is-earned');
+          if (!reduceMotion) { cell.classList.remove('is-thunk'); void cell.offsetWidth; cell.classList.add('is-thunk'); }
+        }
+        if (stampCountEl) stampCountEl.textContent = stampCount();
+        if (!reduceMotion && tabBtn) { tabBtn.classList.remove('is-pop'); void tabBtn.offsetWidth; tabBtn.classList.add('is-pop'); }
+      }
+      window.passportAward = awardStamp;
+
+      function setOpen(open) {
+        if (panel) panel.hidden = !open;
+        if (tabBtn) tabBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        passportEl.classList.toggle('is-open', open);
+      }
+      if (tabBtn) tabBtn.addEventListener('click', function () { setOpen(panel && panel.hidden); });
+      if (closeBtn) closeBtn.addEventListener('click', function () { setOpen(false); });
+
+      var toast = document.getElementById('confirmToast');
+      var toastMsgEl = document.getElementById('toastMsg');
+      var toastTimer = null;
+      function miniToast(msg) {
+        if (!toast) return;
+        if (toastMsgEl) toastMsgEl.textContent = msg;
+        toast.classList.add('footer__toast--show');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toast.classList.remove('footer__toast--show'); }, 2600);
+      }
+
+      function openCert() { if (certOverlay) { certOverlay.classList.add('cert-overlay--active'); certOverlay.setAttribute('aria-hidden', 'false'); } }
+      function closeCert() { if (certOverlay) { certOverlay.classList.remove('cert-overlay--active'); certOverlay.setAttribute('aria-hidden', 'true'); } }
+      if (certClose) certClose.addEventListener('click', closeCert);
+      if (certOverlay) certOverlay.addEventListener('click', function (e) { if (e.target === certOverlay) closeCert(); });
+
+      function updateAcornUi() {
+        if (acornCountEl) acornCountEl.textContent = acornState.found.length;
+        if (acornTallyEl) acornTallyEl.textContent = '🌰 ' + acornState.found.length + ' / ' + TOTAL_ACORNS;
+      }
+
+      function collectAcorn(id, el) {
+        if (acornState.found.indexOf(id) !== -1) return;
+        acornState.found.push(id);
+        saveAcorns();
+        // Celebration first, hide after. Burst from the acorn's center, then
+        // play a pop animation before removing it from the flow.
+        if (el) {
+          var rect = el.getBoundingClientRect();
+          var cx = rect.left + rect.width / 2;
+          var cy = rect.top + rect.height / 2;
+          confettiBurst(cx, cy, { count: 16, spread: 60, velocity: 30 });
+          el.setAttribute('aria-hidden', 'true');
+          el.setAttribute('tabindex', '-1');
+          el.classList.add('acorn--popping');
+          window.setTimeout(function () { el.classList.add('acorn--found'); }, reduceMotion ? 0 : 520);
+        }
+        updateAcornUi();
+        var n = acornState.found.length;
+        if (n >= TOTAL_ACORNS) {
+          if (!acornState.certificateSeen) {
+            acornState.certificateSeen = true; saveAcorns();
+            // A grander celebration for finding every acorn.
+            if (!reduceMotion) {
+              confettiBurst(window.innerWidth / 2, window.innerHeight / 2, { count: 80, spread: 110, velocity: 45, ticks: 240 });
+            }
+            openCert();
+          } else {
+            miniToast('🐿️ All ' + TOTAL_ACORNS + ' acorns found!');
+          }
+        } else {
+          miniToast('🐿️ Sir Nutsworth Sighted! (' + n + '/' + TOTAL_ACORNS + ')');
+        }
+      }
+
+      document.querySelectorAll('.acorn').forEach(function (el) {
+        var id = el.getAttribute('data-acorn');
+        if (!id) return;
+        if (acornState.found.indexOf(id) !== -1) { el.classList.add('acorn--found'); el.setAttribute('aria-hidden', 'true'); el.setAttribute('tabindex', '-1'); }
+        el.addEventListener('click', function (e) { e.stopPropagation(); e.preventDefault(); collectAcorn(id, el); });
+        el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); collectAcorn(id, el); } });
+      });
+
+      try {
+        var pend = localStorage.getItem(PENDING_KEY);
+        if (pend) {
+          var pj = JSON.parse(pend);
+          if (pj && pj.envelope) awardStamp('envelope');
+          localStorage.removeItem(PENDING_KEY);
+        }
+      } catch (e) {}
+
+      // initial render
+      STAMP_IDS.forEach(function (id) {
+        if (stampState.stamps[id]) {
+          var cell = passportEl.querySelector('.passport__stamp[data-stamp="' + id + '"]');
+          if (cell) cell.classList.add('is-earned');
+        }
+      });
+      if (stampCountEl) stampCountEl.textContent = stampCount();
+      updateAcornUi();
+    })();
 
     // ===== Star field in footer =====
     var starsContainer = document.getElementById('starsCanvas');
@@ -1134,6 +1516,25 @@
     var packingCheckboxes = document.querySelectorAll('.packing__checkbox');
     var resetChecklistBtn = document.getElementById('resetChecklistBtn');
 
+    // Backpack Meter — fills as items are checked
+    var bpFill = document.getElementById('bpFill');
+    var bpLabel = document.getElementById('bpLabel');
+    function updateBackpackMeter() {
+      if (!packingCheckboxes || !packingCheckboxes.length) return;
+      var done = 0;
+      packingCheckboxes.forEach(function (cb) { if (cb.checked) done++; });
+      var pct = done / packingCheckboxes.length;
+      if (bpFill) bpFill.style.transform = 'translateY(' + (120 * (1 - pct)) + 'px)';
+      if (bpLabel) {
+        var msg = 'Start packing!';
+        if (pct >= 1) msg = 'Camp legend. Sir Nutsworth approves.';
+        else if (pct >= 0.5) msg = 'Cabin-ready';
+        else if (pct >= 0.25) msg = 'Light packer';
+        bpLabel.textContent = msg;
+      }
+      if (pct >= 1 && window.passportAward) window.passportAward('backpack');
+    }
+
     // Load states on bootup
     try {
       var savedPackingState = localStorage.getItem('grecco_packing_list');
@@ -1153,6 +1554,8 @@
     } catch (err) {
       console.warn('LocalStorage packing list read failed:', err);
     }
+
+    updateBackpackMeter();
 
     // Save states on change
     packingCheckboxes.forEach(function (checkbox, index) {
@@ -1177,6 +1580,7 @@
         } catch (err) {
           console.warn('LocalStorage packing list write failed:', err);
         }
+        updateBackpackMeter();
       });
     });
 
@@ -1197,6 +1601,7 @@
         } catch (err) {
           console.warn('LocalStorage packing list remove failed:', err);
         }
+        updateBackpackMeter();
 
         // Play visual pop click bounce animation
         resetChecklistBtn.style.transform = 'scale(0.9) rotate(-3deg)';
@@ -1205,6 +1610,224 @@
         }, 150);
       });
     }
+
+    // ===== Camp Merit Badges =====
+    (function () {
+      var meritKey = 'grecco_merit_badges';
+      var meritNames = { archery: 'Archery Ace', zipline: 'Zipline Hero', minigolf: 'Mini Golf Legend', canoeing: 'Canoe Captain', ropes: 'Ropes Course Braveheart', smores: "S'more Sommelier" };
+      var cards = document.querySelectorAll('.activity-card');
+      var rail = document.getElementById('meritRail');
+      var empty = document.getElementById('meritEmpty');
+      if (!cards.length || !rail) return;
+
+      var chosen = [];
+      try { var saved = localStorage.getItem(meritKey); if (saved) chosen = JSON.parse(saved) || []; } catch (e) {}
+
+      function saveMerit() { try { localStorage.setItem(meritKey, JSON.stringify(chosen)); } catch (e) {} }
+
+      function renderRail() {
+        var existing = rail.querySelectorAll('.merit-badge');
+        existing.forEach(function (b) { b.remove(); });
+        chosen.forEach(function (act) {
+          var card = document.querySelector('.activity-card[data-activity="' + act + '"]');
+          var emojiEl = card ? card.querySelector('.activity-card__emoji') : null;
+          var emoji = emojiEl ? emojiEl.textContent : '🏕️';
+          var badge = document.createElement('span');
+          badge.className = 'merit-badge';
+          badge.setAttribute('data-activity', act);
+          badge.innerHTML = '<span class="merit-badge__emoji">' + emoji + '</span><span class="merit-badge__name">' + (meritNames[act] || act) + '</span>';
+          rail.appendChild(badge);
+        });
+        if (empty) empty.style.display = chosen.length ? 'none' : '';
+      }
+
+      function toggleActivity(act, card) {
+        var i = chosen.indexOf(act);
+        if (i === -1) { chosen.push(act); card.classList.add('activity-card--stamped'); }
+        else { chosen.splice(i, 1); card.classList.remove('activity-card--stamped'); }
+        saveMerit();
+        renderRail();
+        if (chosen.length && window.passportAward) window.passportAward('badges');
+      }
+
+      cards.forEach(function (card) {
+        var act = card.getAttribute('data-activity');
+        if (!act) return;
+        if (chosen.indexOf(act) !== -1) card.classList.add('activity-card--stamped');
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-pressed', chosen.indexOf(act) !== -1 ? 'true' : 'false');
+        card.addEventListener('click', function () { toggleActivity(act, card); card.setAttribute('aria-pressed', chosen.indexOf(act) !== -1 ? 'true' : 'false'); });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleActivity(act, card); card.setAttribute('aria-pressed', chosen.indexOf(act) !== -1 ? 'true' : 'false'); }
+        });
+      });
+
+      renderRail();
+    })();
+
+    // ===== Schedule field-note flips =====
+    (function () {
+      var notes = document.querySelectorAll('.schedule__field-note');
+      if (!notes.length) return;
+      var items = [];
+      notes.forEach(function (note) {
+        var item = note.closest('.schedule__item');
+        if (!item) return;
+        item.classList.add('schedule__item--has-note');
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('aria-expanded', 'false');
+        items.push(item);
+        function toggle() {
+          var open = item.classList.toggle('is-flipped');
+          item.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+        item.addEventListener('click', toggle);
+        item.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+      });
+      document.addEventListener('click', function (e) {
+        if (e.target.closest && e.target.closest('.schedule__item--has-note')) return;
+        items.forEach(function (it) { it.classList.remove('is-flipped'); it.setAttribute('aria-expanded', 'false'); });
+      });
+    })();
+
+    // ===== Story prop-closet door =====
+    var storyDoor = document.getElementById('storyDoor');
+    if (storyDoor) {
+      storyDoor.addEventListener('click', function () {
+        var open = storyDoor.classList.toggle('is-open');
+        storyDoor.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+
+    // ===== Route map draw-in + traveling camper =====
+    var routeMap = document.getElementById('routeMap');
+    var routeLine = document.getElementById('routeLine');
+    var routeTraveler = document.getElementById('routeTraveler');
+    var routeReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (routeMap) {
+      // Waypoints: fraction of path-length where each pin sits, so we can pop
+      // them in as the camper passes. (0 = start, 1 = end.)
+      var ROUTE_DUR = 1900; // ms, matches the CSS draw
+
+      function runRoute() {
+        routeMap.classList.add('route--drawing');
+        // Reduced-motion: show the whole map statically, no draw/traveler.
+        if (routeReduce || !routeLine || !routeLine.getTotalLength) {
+          if (routeTraveler) routeTraveler.style.opacity = '0';
+          return;
+        }
+        var total = routeLine.getTotalLength();
+        var travelerGroup = routeTraveler;
+        var popped = [false, false, false];
+        var start = null;
+        function frame(ts) {
+          if (start === null) start = ts;
+          var p = Math.min((ts - start) / ROUTE_DUR, 1);
+          // Ease-out-expo so the camper eases into each waypoint.
+          var eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
+          if (travelerGroup) {
+            var pt = routeLine.getPointAtLength(eased * total);
+            travelerGroup.setAttribute('transform', 'translate(' + pt.x + ' ' + pt.y + ')');
+            travelerGroup.style.opacity = '1';
+          }
+          // Pop waypoints at ~12%, ~52%, ~96% along the path.
+          var thresholds = [0.12, 0.52, 0.96];
+          for (var i = 0; i < thresholds.length; i++) {
+            if (!popped[i] && eased >= thresholds[i]) {
+              popped[i] = true;
+              var pin = routeMap.querySelector('.route__pin[data-pin="' + i + '"]');
+              if (pin) pin.classList.add('is-arrived');
+            }
+          }
+          if (p < 1) {
+            window.requestAnimationFrame(frame);
+          } else if (routeMap) {
+            routeMap.classList.add('route--arrived');
+          }
+        }
+        // Start one frame later so the CSS draw + JS share the same start tick.
+        window.requestAnimationFrame(frame);
+      }
+
+      if ('IntersectionObserver' in window) {
+        var routeObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { runRoute(); routeObs.disconnect(); }
+          });
+        }, { threshold: 0.3 });
+        routeObs.observe(routeMap);
+      } else {
+        runRoute();
+      }
+    }
+
+    // ===== RSVP progress rail + Camp Pass =====
+    (function () {
+      var stepper = document.getElementById('rsvpStepper');
+      var rosterForm = document.getElementById('rosterForm');
+      function setActiveStep(n) {
+        if (!stepper) return;
+        stepper.querySelectorAll('.footer__step').forEach(function (li) {
+          var s = parseInt(li.getAttribute('data-step'), 10);
+          li.classList.toggle('is-active', s === n);
+          li.classList.toggle('is-done', s < n);
+        });
+      }
+      function stepForEl(el) {
+        if (!el) return null;
+        var id = el.id || '';
+        if (['guestFirstName', 'guestLastName', 'guestEmail', 'guestPhone', 'guestAddress'].indexOf(id) !== -1) return 1;
+        if (id === 'guestComments') return 3;
+        if (el.closest && el.closest('.footer__submit')) return 4;
+        if (el.closest && (el.closest('#attendingGroup') || el.closest('#campDetailsGroup'))) return 2;
+        return null;
+      }
+      if (rosterForm) {
+        rosterForm.addEventListener('focusin', function (e) {
+          var n = stepForEl(e.target);
+          if (n) setActiveStep(n);
+        });
+      }
+      setActiveStep(1);
+
+      window.rsvpStepperDeclining = function (declining) {
+        if (stepper) stepper.classList.toggle('footer__stepper--declining', !!declining);
+      };
+
+      // Camp Pass
+      var campPass = document.getElementById('campPass');
+      var campPassName = document.getElementById('campPassName');
+      var campPassCabin = document.getElementById('campPassCabin');
+      var campPassMsg = document.getElementById('campPassMsg');
+      var campPassStamp = document.getElementById('campPassStamp');
+      var campPassClose = document.getElementById('campPassClose');
+      var cabins = ['Pinewood Bunk 4', 'Maple Lodge 2', 'Birchwood Cabin 7', 'Cedar Hollow 3', 'Lakeview Bunk 1', 'Acorn Hollow 5'];
+      function hashName(s) { var h = 0; for (var i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) % 100000; } return h; }
+      window.showCampPass = function (name, declining) {
+        if (!campPass) return;
+        if (campPassName) campPassName.textContent = name || 'Friend';
+        if (declining) {
+          if (campPassStamp) campPassStamp.textContent = 'Posted';
+          if (campPassCabin) campPassCabin.style.display = 'none';
+          if (campPassMsg) campPassMsg.textContent = "Wish-you-were-here postcard sent. We'll miss you around the campfire.";
+          campPass.classList.add('camp-pass--declined');
+        } else {
+          if (campPassStamp) campPassStamp.textContent = 'Admitted';
+          if (campPassCabin) { campPassCabin.style.display = ''; campPassCabin.textContent = 'Cabin: ' + cabins[hashName(name || 'Friend') % cabins.length]; }
+          if (campPassMsg) campPassMsg.textContent = "You're checked in! See you around the campfire.";
+          campPass.classList.remove('camp-pass--declined');
+        }
+        campPass.classList.add('camp-pass--show');
+        campPass.setAttribute('aria-hidden', 'false');
+      };
+      function closePass() { if (campPass) { campPass.classList.remove('camp-pass--show'); campPass.setAttribute('aria-hidden', 'true'); } }
+      if (campPassClose) campPassClose.addEventListener('click', closePass);
+      if (campPass) campPass.addEventListener('click', function (e) { if (e.target === campPass) closePass(); });
+    })();
 
     // ===== Vibe Section: Polaroid & FaceTime Call Easter Egg =====
     var squirrel = document.getElementById('squirrelEgg');
@@ -1306,6 +1929,7 @@
     var videoIsMuted = true;
 
     function enterWatchMode() {
+      if (window.passportAward) window.passportAward('film');
       // Fade out overlay, content, scroll CTA
       if (heroContent) heroContent.classList.add('hero__content--hidden');
       if (heroOverlay) heroOverlay.classList.add('hero__overlay--hidden');
@@ -1356,7 +1980,7 @@
           videoIsMuted = true;
           if (soundOffIcon) soundOffIcon.classList.remove('hero__sound-icon--hidden');
           if (soundOnIcon) soundOnIcon.classList.add('hero__sound-icon--hidden');
-          if (soundTextEl) soundTextEl.textContent = 'Play with Sound';
+          if (soundTextEl) soundTextEl.textContent = 'Watch the Save-the-Date Film';
           soundToggle.classList.remove('hero__sound-btn--active');
           exitWatchMode();
         }
@@ -1442,6 +2066,7 @@
       var declining = isDeclining();
 
       if (form) form.classList.toggle('footer__form--declining', declining);
+      if (window.rsvpStepperDeclining) window.rsvpStepperDeclining(declining);
       if (campDetailsGroup) campDetailsGroup.setAttribute('aria-hidden', declining ? 'true' : 'false');
       if (declinePostcard) declinePostcard.setAttribute('aria-hidden', declining ? 'false' : 'true');
 
@@ -1600,6 +2225,7 @@
             if (toast) {
               toast.classList.add('footer__toast--show');
             }
+            if (window.passportAward) window.passportAward('rsvp');
             if (botBtn) {
               botBtn.removeAttribute('disabled');
               setSubmitIdleLabel(isDeclining());
@@ -1669,6 +2295,8 @@
         }
 
         // Show confirmation toast after a short delay
+        var passName = (firstNameInput && firstNameInput.value ? firstNameInput.value.trim() : '') || 'Friend';
+        var passDeclining = declining;
         setTimeout(function () {
           if (toastMsg) {
             toastMsg.textContent = declining ? "RSVP received. We'll miss you around the campfire." : 'RSVP received! See you at camp!';
@@ -1676,6 +2304,7 @@
           if (toast) {
             toast.classList.add('footer__toast--show');
           }
+          if (window.passportAward) window.passportAward('rsvp');
           if (btn) {
             btn.style.background = '';
             btn.removeAttribute('disabled');
@@ -1683,6 +2312,7 @@
           }
           form.reset();
           syncAttendanceState();
+          if (window.showCampPass) window.showCampPass(passName, passDeclining);
 
           // Auto-dismiss toast
           setTimeout(function () {
