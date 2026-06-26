@@ -86,8 +86,8 @@ import letterEnc from '../generated/letter.enc.json';
             <svg viewBox="0 0 48 48">
               <circle cx="24" cy="24" r="21" fill="none" stroke="#f3d883" stroke-width="2" />
               <g class="env__compass-needle">
-                <path d="M24 8 L28 24 L24 24 Z" fill="#bf360c" />
-                <path d="M24 8 L20 24 L24 24 Z" fill="#e8611a" />
+                <path d="M24 8 L28 24 L24 24 Z" fill="#9c3b15" />
+                <path d="M24 8 L20 24 L24 24 Z" fill="#c2531c" />
                 <path d="M24 40 L28 24 L24 24 Z" fill="#7a3210" />
                 <path d="M24 40 L20 24 L24 24 Z" fill="#9a4418" />
               </g>
@@ -170,7 +170,7 @@ import letterEnc from '../generated/letter.enc.json';
       width: 130%;
       height: 60%;
       transform: translateX(-50%);
-      background: radial-gradient(closest-side, rgba(244, 163, 0, 0.30), rgba(232, 97, 26, 0.12) 52%, transparent 74%);
+      background: radial-gradient(closest-side, rgba(217, 154, 30, 0.30), rgba(194, 83, 28, 0.12) 52%, transparent 74%);
       pointer-events: none;
     }
     .env-stage__stars { position: absolute; inset: 0; pointer-events: none; }
@@ -386,7 +386,7 @@ import letterEnc from '../generated/letter.enc.json';
       border: none;
       cursor: pointer;
       border-radius: 50%;
-      background: radial-gradient(circle at 36% 30%, #4f821c, #345C0D 55%, #1d3307);
+      background: radial-gradient(circle at 36% 30%, #4f821c, #4a6318 55%, #2a3d11);
       box-shadow: 0 3px 9px rgba(0, 0, 0, 0.38), inset 0 2px 6px rgba(255, 255, 255, 0.28), inset 0 -5px 9px rgba(0, 0, 0, 0.4);
       display: flex;
       flex-direction: column;
@@ -403,7 +403,7 @@ import letterEnc from '../generated/letter.enc.json';
       inset: -3px;
       border-radius: 50%;
       background:
-        repeating-conic-gradient(from 0deg, #345C0D 0deg 12deg, #2a4a0a 12deg 24deg);
+        repeating-conic-gradient(from 0deg, #4a6318 0deg 12deg, #2a4a0a 12deg 24deg);
       z-index: -1;
       filter: blur(0.4px);
     }
@@ -577,9 +577,9 @@ import letterEnc from '../generated/letter.enc.json';
       transform: translate(-50%, -50%) rotate(-12deg) scale(0.6);
       z-index: 40;
       padding: 0.5rem 1.1rem;
-      border: 3px dashed #e8611a;
+      border: 3px dashed #c2531c;
       border-radius: 8px;
-      color: #e8611a;
+      color: #c2531c;
       font-family: var(--font-typewriter);
       font-size: clamp(1rem, 4vw, 1.6rem);
       letter-spacing: 0.08em;
@@ -635,7 +635,7 @@ import letterEnc from '../generated/letter.enc.json';
 
     // ---------- confetti (vendored canvas-confetti, loaded on demand) ----------
     // Camp palette - reused for every celebration across the site.
-    const CONFETTI_COLORS = ['#e8611a', '#f4a300', '#fdd835', '#345C0D', '#4a7a1a', '#FAF9F2'];
+    const CONFETTI_COLORS = ['#c2531c', '#d99a1e', '#e6c14a', '#4a6318', '#6f8a2e', '#FAF9F2'];
     let confettiPromise = null;
     function loadConfetti() {
       if (confettiPromise) return confettiPromise;

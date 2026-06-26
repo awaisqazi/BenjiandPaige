@@ -19,7 +19,7 @@
         id="hero-video"
         class="hero__video"
         src="https://www.youtube.com/embed/X2ShL6rGqBU?autoplay=1&mute=1&loop=1&playlist=X2ShL6rGqBU&controls=0&showinfo=0&modestbranding=1&playsinline=1&enablejsapi=1"
-        title="Camp Getaway Video"
+        title="Club Getaway Video"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         referrerpolicy="strict-origin-when-cross-origin"
@@ -293,7 +293,7 @@
               </svg>
             </div>
             <p class="schedule__event-name">Overnight Check-in / Guests Arrive</p>
-            <p class="schedule__event-time">1:30 PM</p>
+            <p class="schedule__event-time">1:30pm</p>
           </div>
 
           <div class="schedule__item">
@@ -368,7 +368,7 @@
               </svg>
             </div>
             <p class="schedule__event-name">Camp Activities Open</p>
-            <p class="schedule__event-time">4:00PM</p>
+            <p class="schedule__event-time">4:00pm</p>
           </div>
         </div>
 
@@ -403,7 +403,7 @@
               </svg>
             </div>
             <p class="schedule__event-name">Dinner Reception</p>
-            <p class="schedule__event-time">6:45PM</p>
+            <p class="schedule__event-time">6:45pm</p>
           </div>
 
           <div class="schedule__item">
@@ -566,7 +566,7 @@
         <h2 class="story__heading">Cabaret Theatre</h2>
         <p class="story__subheading">Our Story</p>
         <p class="story__text">
-          We met in 2015 at Rutgers University during a production of Avenue Q. Our love story began exactly where most great romances do, in a prop closet, where Benji was searching for peace and quiet and Paige immediately derailed that plan. We've been inseparable ever since, laughing our way through theater, NYC adventures, and all the little moments in between. We can't wait to celebrate this next chapter with all of you!
+          We met in 2015 at Rutgers University during a production of Avenue Q. Our love story began exactly where most great romances do, in a prop closet, where Benji was searching for peace and quiet and Paige immediately derailed that plan. We've been inseparable ever since, laughing our way through theatre, NYC adventures, and all the little moments in between. We can't wait to celebrate this next chapter with all of you!
         </p>
         <span class="acorn acorn--story" data-acorn="propcloset" role="button" tabindex="0" aria-label="A hidden acorn, collect it!" title="A hidden acorn!">🌰</span>
         <a href="https://www.cabarettheatre.org" target="_blank" rel="noopener noreferrer" class="story__link">[www.cabarettheatre.org]</a>
@@ -1277,12 +1277,12 @@
         <div class="vibe__cards">
           <!-- Card 1: Vintage Clothing Tag (Dress Code Tag) -->
           <div class="vibe__card vibe__card--tag reveal reveal-delay-1" id="dressCodeTag">
-            <span class="vibe__tag-badge" id="outfitBadge">Dress Code</span>
+            <span class="vibe__tag-badge" id="outfitBadge">Camp Couture</span>
             <button class="vibe__tag-cycle-btn" id="outfitCycleBtn" title="Click to cycle outfits!">
               <span class="vibe__card-icon" id="outfitIcon">👗</span>
             </button>
             <span class="vibe__hint">tap to cycle</span>
-            <h3 id="outfitTitle">Dress Code</h3>
+            <h3 id="outfitTitle">Camp Couture</h3>
             <p id="outfitDesc">Dress to impress, but maybe leave the bug spray as perfume at home. Think "rustic chic meets ready for s'mores."</p>
           </div>
 
@@ -1328,7 +1328,6 @@
           <!-- Wedding colors mood board - matchy-matchy inspo for guests -->
           <div class="wedding-colors">
             <h4 class="wedding-colors__title">Our Wedding Colors</h4>
-            <p class="wedding-colors__note">Want to matchy-matchy with our palette? Here's a little color inspo. Matching is never required, but you're always welcome to!</p>
             <ul class="wedding-colors__swatches">
               <li class="wedding-colors__swatch" style="--sw: var(--moss);"><span class="wedding-colors__chip"></span><span class="wedding-colors__name">Mossy Green</span></li>
               <li class="wedding-colors__swatch" style="--sw: var(--night-mid);"><span class="wedding-colors__chip"></span><span class="wedding-colors__name">Night Sky</span></li>
@@ -1438,7 +1437,7 @@
           help bring our dream honeymoon to life. There's nothing to buy and nothing to ship,
           just support for the trip ahead.
         </p>
-        <span class="registry__give-btn registry__give-btn--soon" role="text">
+        <span class="registry__give-btn registry__give-btn--soon">
           Link Coming Soon!
         </span>
         <p class="registry__trunk-note">🏕️ Our Honeyfund page is on its way. Check back soon!</p>
@@ -1916,14 +1915,6 @@
       if (sec) observer.observe(sec);
     });
 
-    // Tapping "Contribute to Our Journey" also earns the Honeymoon Fund stamp.
-    var giveBtn = document.querySelector('.registry__give-btn');
-    if (giveBtn) {
-      giveBtn.addEventListener('click', function () {
-        if (window.passportAward) window.passportAward('registry');
-      });
-    }
-
     // Force hero elements visible immediately
     document.querySelectorAll('.hero .reveal').forEach(function (el) {
       setTimeout(function () { el.classList.add('visible'); }, 300);
@@ -2116,9 +2107,9 @@
     // ===== Vibe Section: Outfit Cycling =====
     var outfits = [
       {
-        badge: "Dress Code",
+        badge: "Camp Couture",
         icon: "👗",
-        title: "Dress Code",
+        title: "Camp Couture",
         desc: "Dress to impress, but maybe leave the bug spray as perfume at home. Think 'rustic chic meets ready for s'mores.'"
       },
       {
@@ -2562,7 +2553,7 @@
         { cap: '…and Paige <em>immediately</em> derailed that plan.',                                    bp: 'startle', pp: 'happy',   fx: 'burst',   hold: 2900 },
         { cap: 'A spark. Inseparable ever since.',                                                            bp: 'smitten', pp: 'smitten', fx: 'hearts',  hold: 2800 },
         { cap: 'Through theatre, NYC adventures, and every little moment in between.',                        bp: 'smitten', pp: 'smitten', fx: 'montage', hold: 3200 },
-        { cap: 'Married at Club Getaway! We can’t wait to celebrate this next chapter with you!',  bp: 'smitten', pp: 'smitten', fx: 'finale',  hold: 0 }
+        { cap: 'Married at Club Getaway! We can\'t wait to celebrate this next chapter with you!',  bp: 'smitten', pp: 'smitten', fx: 'finale',  hold: 0 }
       ];
       var LAST = BEATS.length - 1;
       var idx = 0, auto = false;
@@ -2737,8 +2728,8 @@
         { t: 5.9, vb: NYC, p: 0.50 },
         { t: 7.5, vb: NYC, p: 0.50, ey: 'The city years', cap: 'Adventures all over NYC 🗽' },
         { t: 9.4, vb: CAMP, p: 0.96 },
-        { t: 10.6, vb: CAMP, p: 0.99, ey: '2026 · Kent, Connecticut', cap: 'We say “I do” at camp ⛺' },
-        { t: 12.2, vb: CAMP, p: 1.0, ey: '2026 · Kent, Connecticut', cap: 'We say “I do” at camp ⛺' },
+        { t: 10.6, vb: CAMP, p: 0.99, ey: '2026 · Kent, Connecticut', cap: 'We say "I do" at camp ⛺' },
+        { t: 12.2, vb: CAMP, p: 1.0, ey: '2026 · Kent, Connecticut', cap: 'We say "I do" at camp ⛺' },
         { t: 13.6, vb: FULL, p: 1.0 }
       ];
       var DURATION = KF[KF.length - 1].t * 1000;

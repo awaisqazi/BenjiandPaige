@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <!-- Campfire base -->
-  <path d="M16 52 L32 20 L48 52 Z" fill="#e8611a" opacity="0.8"/>
-  <path d="M22 52 L32 28 L42 52 Z" fill="#f4a300"/>
-  <path d="M26 52 L32 34 L38 52 Z" fill="#fdd835"/>
+  <path d="M16 52 L32 20 L48 52 Z" fill="#c2531c" opacity="0.8"/>
+  <path d="M22 52 L32 28 L42 52 Z" fill="#d99a1e"/>
+  <path d="M26 52 L32 34 L38 52 Z" fill="#e6c14a"/>
   <!-- Logs -->
   <rect x="12" y="50" width="40" height="5" rx="2.5" fill="#5d4037"/>
   <rect x="10" y="53" width="44" height="5" rx="2.5" fill="#3e2723" transform="rotate(-10 32 55)"/>
   <!-- Heart spark -->
-  <path d="M32 14 C30 10 24 10 24 16 C24 20 32 26 32 26 C32 26 40 20 40 16 C40 10 34 10 32 14Z" fill="#fdd835" opacity="0.6"/>
+  <path d="M32 14 C30 10 24 10 24 16 C24 20 32 26 32 26 C32 26 40 20 40 16 C40 10 34 10 32 14Z" fill="#e6c14a" opacity="0.6"/>
 </svg>

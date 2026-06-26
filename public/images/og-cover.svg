@@ -7,9 +7,9 @@
       <stop offset="100%" stop-color="#010d1d"/>
     </radialGradient>
     <radialGradient id="glow" cx="50%" cy="100%" r="70%">
-      <stop offset="0%" stop-color="#f4a300" stop-opacity="0.34"/>
-      <stop offset="55%" stop-color="#e8611a" stop-opacity="0.12"/>
-      <stop offset="100%" stop-color="#e8611a" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#d99a1e" stop-opacity="0.34"/>
+      <stop offset="55%" stop-color="#c2531c" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#c2531c" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ffffff"/>
@@ -17,8 +17,8 @@
     </linearGradient>
     <radialGradient id="wax" cx="38%" cy="32%" r="75%">
       <stop offset="0%" stop-color="#4f821c"/>
-      <stop offset="55%" stop-color="#345C0D"/>
-      <stop offset="100%" stop-color="#1d3307"/>
+      <stop offset="55%" stop-color="#4a6318"/>
+      <stop offset="100%" stop-color="#2a3d11"/>
     </radialGradient>
   </defs>
 
@@ -48,11 +48,11 @@
     <!-- top flap -->
     <path d="M-210 -130 L210 -130 L0 30 Z" fill="#f2ecdc" stroke="#d8cfb8" stroke-width="2"/>
     <!-- wax seal -->
-    <circle cx="0" cy="6" r="46" fill="url(#wax)" stroke="#1d3307" stroke-width="2"/>
+    <circle cx="0" cy="6" r="46" fill="url(#wax)" stroke="#2a3d11" stroke-width="2"/>
     <text x="0" y="16" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" fill="#eef3e2">P&amp;B</text>
   </g>
 
   <!-- words -->
   <text x="600" y="510" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="58" fill="#FAF9F2">You're Invited</text>
-  <text x="600" y="556" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" letter-spacing="6" fill="#f4a300">TAP THE SEAL &#183; ENTER THE PASSWORD</text>
+  <text x="600" y="556" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" letter-spacing="6" fill="#d99a1e">TAP THE SEAL &#183; ENTER THE PASSWORD</text>
 </svg>
