@@ -175,7 +175,7 @@
   background: var(--forest-mid);
   border-color: var(--forest-mid);
   transform: scale(1.05);
-  box-shadow: 0 8px 24px rgba(52, 92, 13, 0.4);
+  box-shadow: 0 8px 24px rgba(74, 99, 24, 0.4);
 }
 
 .hero__sound-btn--active {
@@ -278,7 +278,7 @@
     linear-gradient(160deg, rgba(61, 41, 22, 0.92), rgba(40, 26, 13, 0.94));
   padding: 0.7rem clamp(0.7rem, 2vw, 1.1rem) 0.6rem;
   border-radius: 14px;
-  border: 2px solid rgba(244, 163, 0, 0.35);
+  border: 2px solid rgba(217, 154, 30, 0.35);
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transform: rotate(-1.2deg);
 }
@@ -347,7 +347,7 @@
   top: 0;
   align-items: flex-start;
   border-radius: 9px 9px 0 0;
-  background: linear-gradient(180deg, #437214 0%, #345C0D 100%);
+  background: linear-gradient(180deg, #437214 0%, #4a6318 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 /* BOTTOM halves — slightly in shadow */
@@ -552,7 +552,7 @@
     to right,
     rgba(4, 37, 71, 0.5) 0%,
     rgba(4, 37, 71, 0.25) 45%,
-    rgba(52, 92, 13, 0.15) 100%
+    rgba(74, 99, 24, 0.15) 100%
   );
   z-index: 2;
 }
@@ -573,8 +573,8 @@
 .venue__notebook {
   position: relative;
   background:
-    linear-gradient(rgba(52, 92, 13, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(52, 92, 13, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(74, 99, 24, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 99, 24, 0.06) 1px, transparent 1px),
     #FAF9F2;
   background-size: 20px 20px;
   border-radius: 4px;
@@ -583,7 +583,7 @@
   width: 100%;
   box-shadow:
     4px 4px 24px rgba(0, 0, 0, 0.25),
-    0 0 0 1px rgba(52, 92, 13, 0.08);
+    0 0 0 1px rgba(74, 99, 24, 0.08);
   transform: rotate(-1.5deg);
 }
 
@@ -605,25 +605,25 @@
   opacity: 0.85;
 }
 
-.venue__tape-strip span:nth-child(20n+1)  { background: #345C0D; }
-.venue__tape-strip span:nth-child(20n+2)  { background: #e8611a; }
-.venue__tape-strip span:nth-child(20n+3)  { background: #f4a300; }
+.venue__tape-strip span:nth-child(20n+1)  { background: #4a6318; }
+.venue__tape-strip span:nth-child(20n+2)  { background: #c2531c; }
+.venue__tape-strip span:nth-child(20n+3)  { background: #d99a1e; }
 .venue__tape-strip span:nth-child(20n+4)  { background: #042547; }
 .venue__tape-strip span:nth-child(20n+5)  { background: #b5651d; }
-.venue__tape-strip span:nth-child(20n+6)  { background: #345C0D; }
+.venue__tape-strip span:nth-child(20n+6)  { background: #4a6318; }
 .venue__tape-strip span:nth-child(20n+7)  { background: #c0392b; }
 .venue__tape-strip span:nth-child(20n+8)  { background: #042547; }
-.venue__tape-strip span:nth-child(20n+9)  { background: #e8611a; }
-.venue__tape-strip span:nth-child(20n+10) { background: #f4a300; }
+.venue__tape-strip span:nth-child(20n+9)  { background: #c2531c; }
+.venue__tape-strip span:nth-child(20n+10) { background: #d99a1e; }
 .venue__tape-strip span:nth-child(20n+11) { background: #042547; }
-.venue__tape-strip span:nth-child(20n+12) { background: #345C0D; }
+.venue__tape-strip span:nth-child(20n+12) { background: #4a6318; }
 .venue__tape-strip span:nth-child(20n+13) { background: #b5651d; }
 .venue__tape-strip span:nth-child(20n+14) { background: #c0392b; }
-.venue__tape-strip span:nth-child(20n+15) { background: #345C0D; }
-.venue__tape-strip span:nth-child(20n+16) { background: #f4a300; }
+.venue__tape-strip span:nth-child(20n+15) { background: #4a6318; }
+.venue__tape-strip span:nth-child(20n+16) { background: #d99a1e; }
 .venue__tape-strip span:nth-child(20n+17) { background: #042547; }
-.venue__tape-strip span:nth-child(20n+18) { background: #e8611a; }
-.venue__tape-strip span:nth-child(20n+19) { background: #345C0D; }
+.venue__tape-strip span:nth-child(20n+18) { background: #c2531c; }
+.venue__tape-strip span:nth-child(20n+19) { background: #4a6318; }
 .venue__tape-strip span:nth-child(20n+20) { background: #c0392b; }
 
 /* Title */
@@ -657,7 +657,7 @@
   font-family: var(--font-sans);
   font-size: 1.05rem;
   font-weight: 600;
-  color: #345C0D;
+  color: #4a6318;
 }
 
 .venue__address {
@@ -674,7 +674,7 @@
   aspect-ratio: 4 / 3;
   border-radius: 6px;
   overflow: hidden;
-  border: 1.5px solid rgba(52, 92, 13, 0.2);
+  border: 1.5px solid rgba(74, 99, 24, 0.2);
   box-shadow: 0 2px 10px rgba(4, 37, 71, 0.1);
 }
 
@@ -695,7 +695,7 @@
   font-size: 0.88rem;
   font-weight: 600;
   color: #FAF9F2;
-  background: #345C0D;
+  background: #4a6318;
   padding: 0.55rem 1.4rem;
   border-radius: 50px;
   transition: all 0.3s;
@@ -712,9 +712,9 @@
 .venue__shuttle {
   margin-top: 1.4rem;
   padding: 1.2rem 1rem;
-  border: 1.5px dashed rgba(52, 92, 13, 0.35);
+  border: 1.5px dashed rgba(74, 99, 24, 0.35);
   border-radius: 6px;
-  background: rgba(52, 92, 13, 0.04);
+  background: rgba(74, 99, 24, 0.04);
 }
 
 .venue__shuttle-header {
@@ -733,7 +733,7 @@
   font-family: var(--font-typewriter);
   font-size: 1.05rem;
   font-weight: 700;
-  color: #345C0D;
+  color: #4a6318;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   margin: 0;
@@ -748,7 +748,7 @@
 }
 
 .venue__shuttle-text strong {
-  color: #345C0D;
+  color: #4a6318;
   font-weight: 600;
 }
 
@@ -772,7 +772,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #345C0D;
+  background: #4a6318;
   color: #FAF9F2;
   font-family: var(--font-sans);
   font-size: 0.7rem;
@@ -790,10 +790,10 @@
 }
 
 .venue__shuttle-phone {
-  color: #345C0D;
+  color: #4a6318;
   font-weight: 600;
   text-decoration: none;
-  border-bottom: 1px dotted rgba(52, 92, 13, 0.4);
+  border-bottom: 1px dotted rgba(74, 99, 24, 0.4);
   transition: color 0.2s, border-color 0.2s;
 }
 
@@ -1674,14 +1674,14 @@
 .lodging-pricing__btn--primary {
   background: linear-gradient(135deg, var(--forest-mid), var(--forest-light));
   color: var(--cream);
-  box-shadow: 0 10px 26px rgba(52, 92, 13, 0.28);
+  box-shadow: 0 10px 26px rgba(74, 99, 24, 0.28);
 }
 
 .lodging-pricing__btn--primary:hover,
 .lodging-pricing__btn--primary:focus-visible {
   background: linear-gradient(135deg, var(--forest-light), var(--fire-orange));
   transform: translateY(-2px);
-  box-shadow: 0 14px 34px rgba(52, 92, 13, 0.4);
+  box-shadow: 0 14px 34px rgba(74, 99, 24, 0.4);
   outline: none;
 }
 
@@ -1725,7 +1725,7 @@
 .lodging-pricing__phone a {
   color: var(--fire-amber);
   text-decoration: none;
-  border-bottom: 1px dotted rgba(244, 163, 0, 0.4);
+  border-bottom: 1px dotted rgba(217, 154, 30, 0.4);
   transition: color 0.2s;
 }
 
@@ -1831,7 +1831,7 @@
   left: -100px;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(52, 92, 13, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(74, 99, 24, 0.1) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -1859,7 +1859,7 @@
 .activity-card:hover {
   transform: translateY(-8px) scale(1.01);
   box-shadow: 0 24px 60px rgba(2, 24, 48, 0.4);
-  border-color: rgba(52, 92, 13, 0.4);
+  border-color: rgba(74, 99, 24, 0.4);
 }
 
 .activity-card__img-wrap {
@@ -1969,7 +1969,7 @@
 .vibe__card--tag {
   border-radius: 4px;
   transform: rotate(-2deg);
-  border: 1px solid rgba(52, 92, 13, 0.15);
+  border: 1px solid rgba(74, 99, 24, 0.15);
   border-top: 24px solid var(--forest-mid);
   clip-path: polygon(12% 0%, 88% 0%, 100% 12%, 100% 100%, 0% 100%, 0% 12%);
 }
@@ -2039,7 +2039,7 @@
   transform: translateX(-50%) rotate(-5deg);
   width: 90px;
   height: 28px;
-  background-color: rgba(232, 97, 26, 0.6); /* --fire-orange tint */
+  background-color: rgba(194, 83, 28, 0.6); /* --fire-orange tint */
   background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(250, 249, 242, 0.3) 10px, rgba(250, 249, 242, 0.3) 20px);
   border-left: 2px dashed rgba(255,255,255,0.4);
   border-right: 2px dashed rgba(255,255,255,0.4);
@@ -2167,7 +2167,7 @@
 }
 
 .vibe__card--pass-night .vibe__cabin-btn {
-  filter: drop-shadow(0 0 8px #f4a300);
+  filter: drop-shadow(0 0 8px #d99a1e);
 }
 
 /* Mini Campfire Animation on Expectation Night mode */
@@ -2319,7 +2319,7 @@
   border: 3px solid var(--fire-orange);
   position: relative;
   background: #253344;
-  box-shadow: 0 0 30px rgba(232, 97, 26, 0.4);
+  box-shadow: 0 0 30px rgba(194, 83, 28, 0.4);
   overflow: hidden;
 }
 
@@ -2506,7 +2506,7 @@
   transform: translateX(-50%);
   width: 500px;
   height: 200px;
-  background: radial-gradient(ellipse, rgba(52, 92, 13, 0.15) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(74, 99, 24, 0.15) 0%, transparent 70%);
   border-radius: 50%;
 }
 
@@ -2642,8 +2642,8 @@
   border: 0 dashed transparent;
   border-radius: 8px;
   background:
-    linear-gradient(90deg, rgba(52, 92, 13, 0.16) 0 1px, transparent 1px) 0 0 / 18px 18px,
-    linear-gradient(180deg, rgba(244, 163, 0, 0.08), rgba(250, 249, 242, 0.08));
+    linear-gradient(90deg, rgba(74, 99, 24, 0.16) 0 1px, transparent 1px) 0 0 / 18px 18px,
+    linear-gradient(180deg, rgba(217, 154, 30, 0.08), rgba(250, 249, 242, 0.08));
   box-shadow: inset 0 0 0 rgba(250, 249, 242, 0);
   pointer-events: none;
   transform: translateY(-10px) rotate(0deg);
@@ -2661,7 +2661,7 @@
   opacity: 1;
   padding: 1rem 1rem 1rem 1.1rem;
   border-width: 1px;
-  border-color: rgba(244, 163, 0, 0.28);
+  border-color: rgba(217, 154, 30, 0.28);
   box-shadow: inset 0 0 0 1px rgba(250, 249, 242, 0.05), 0 10px 24px rgba(2, 24, 48, 0.18);
   pointer-events: auto;
   transform: translateY(0) rotate(-0.4deg);
@@ -2672,7 +2672,7 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, transparent 0 16px, rgba(232, 97, 26, 0.18) 16px 18px, transparent 18px 100%),
+    linear-gradient(90deg, transparent 0 16px, rgba(194, 83, 28, 0.18) 16px 18px, transparent 18px 100%),
     radial-gradient(circle at 18% 20%, rgba(250, 249, 242, 0.08), transparent 35%);
   pointer-events: none;
 }
@@ -2682,7 +2682,7 @@
   z-index: 1;
   width: 58px;
   height: 58px;
-  border: 2px dashed rgba(244, 163, 0, 0.7);
+  border: 2px dashed rgba(217, 154, 30, 0.7);
   border-radius: 6px;
   background: rgba(4, 37, 71, 0.42);
   color: var(--fire-amber);
@@ -2698,7 +2698,7 @@
 
 .footer__postcard-stamp:hover,
 .footer__postcard-stamp:focus-visible {
-  background: rgba(52, 92, 13, 0.45);
+  background: rgba(74, 99, 24, 0.45);
   transform: rotate(3deg) scale(1.04);
   outline: none;
 }
@@ -2857,9 +2857,9 @@
 
 .footer__radio-card input[type="radio"]:checked + .footer__radio-display {
   border-color: var(--forest-mid);
-  background: rgba(52, 92, 13, 0.2);
+  background: rgba(74, 99, 24, 0.2);
   color: var(--cream);
-  box-shadow: 0 0 16px rgba(52, 92, 13, 0.15);
+  box-shadow: 0 0 16px rgba(74, 99, 24, 0.15);
 }
 
 .footer__radio-emoji {
@@ -2950,7 +2950,7 @@
   color: var(--fire-amber);
   text-decoration: none;
   font-weight: 600;
-  border-bottom: 1px dotted rgba(244, 163, 0, 0.4);
+  border-bottom: 1px dotted rgba(217, 154, 30, 0.4);
 }
 
 .footer__hint a:hover {
@@ -2975,7 +2975,7 @@
 
 .footer__submit:hover {
   transform: scale(1.04);
-  box-shadow: 0 8px 30px rgba(52, 92, 13, 0.5);
+  box-shadow: 0 8px 30px rgba(74, 99, 24, 0.5);
 }
 
 .footer__submit:active {
@@ -3446,7 +3446,7 @@
   margin: 0 auto 1.2rem;
   padding: 1rem 0.6rem 0.9rem;
   border-radius: 18px;
-  background: radial-gradient(120% 90% at 50% 15%, rgba(244, 163, 0, 0.16), rgba(4, 37, 71, 0.32) 70%);
+  background: radial-gradient(120% 90% at 50% 15%, rgba(217, 154, 30, 0.16), rgba(4, 37, 71, 0.32) 70%);
 }
 
 .backpack-meter__svg {
@@ -3508,7 +3508,7 @@
 }
 
 .backpack-meter.is-full .backpack-meter__label {
-  color: #fdd835;
+  color: #e6c14a;
 }
 
 .backpack-meter__count {
@@ -3894,7 +3894,7 @@
 
 .passport__stamp.is-earned {
   border-color: var(--forest-mid);
-  background: rgba(52, 92, 13, 0.08);
+  background: rgba(74, 99, 24, 0.08);
   transform: rotate(-3deg);
 }
 
@@ -3950,7 +3950,7 @@
   /* Static soft glow. Animating drop-shadow every frame (the old approach)
      repaints constantly and was a big source of mobile jank; only the
      transform bobble runs continuously now, which the compositor handles. */
-  filter: drop-shadow(0 0 3px rgba(244, 163, 0, 0.45));
+  filter: drop-shadow(0 0 3px rgba(217, 154, 30, 0.45));
   animation: acornBobble 3.4s ease-in-out infinite;
   transition: transform 0.25s var(--ease-out-expo), opacity 0.25s ease, filter 0.25s ease;
 }
@@ -3964,7 +3964,7 @@
 .acorn:focus-visible {
   opacity: 1;
   transform: scale(1.35) rotate(-10deg);
-  filter: drop-shadow(0 0 6px rgba(244, 163, 0, 0.85));
+  filter: drop-shadow(0 0 6px rgba(217, 154, 30, 0.85));
   outline: none;
 }
 
@@ -3996,7 +3996,7 @@
   top: 50%; left: 50%;
   width: 140%; height: 140%;
   border-radius: 50%;
-  border: 2px solid rgba(244, 163, 0, 0.85);
+  border: 2px solid rgba(217, 154, 30, 0.85);
   transform: translate(-50%, -50%) scale(0.4);
   opacity: 0.9;
   animation: acornRing 0.52s ease-out forwards;
@@ -4134,7 +4134,7 @@
   padding: 0;
   overflow: hidden;
   background: var(--parchment);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 0 0 3px rgba(244, 163, 0, 0.3), inset 0 0 0 6px rgba(250, 249, 242, 0.6);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 0 0 3px rgba(217, 154, 30, 0.3), inset 0 0 0 6px rgba(250, 249, 242, 0.6);
 }
 .route__map::after {
   content: "";
@@ -4249,8 +4249,8 @@
 .route__map.route--drawing .route__line-shadow { stroke-dashoffset: 0; }
 
 /* ---------- Waypoint pins ---------- */
-.route__pin-halo { fill: rgba(244, 163, 0, 0); transition: fill 0.4s ease; }
-.route__pin.is-arrived .route__pin-halo { fill: rgba(244, 163, 0, 0.3); }
+.route__pin-halo { fill: rgba(217, 154, 30, 0); transition: fill 0.4s ease; }
+.route__pin.is-arrived .route__pin-halo { fill: rgba(217, 154, 30, 0.3); }
 
 .route__pin {
   opacity: 0;
@@ -4278,9 +4278,9 @@
 }
 
 @keyframes routePing {
-  0%   { fill: rgba(244, 163, 0, 0.5); transform: scale(1); }
-  70%  { fill: rgba(244, 163, 0, 0); transform: scale(2.4); }
-  100% { fill: rgba(244, 163, 0, 0); transform: scale(2.4); }
+  0%   { fill: rgba(217, 154, 30, 0.5); transform: scale(1); }
+  70%  { fill: rgba(217, 154, 30, 0); transform: scale(2.4); }
+  100% { fill: rgba(217, 154, 30, 0); transform: scale(2.4); }
 }
 
 /* The couple walks the path; outer group positioned by JS, inner group bobs. */
@@ -4382,7 +4382,7 @@
   letter-spacing: 0.03em;
   color: var(--cream);
   background: rgba(2, 19, 42, 0.55);
-  border: 1px solid rgba(244, 163, 0, 0.6);
+  border: 1px solid rgba(217, 154, 30, 0.6);
   border-radius: 999px;
   cursor: pointer;
   opacity: 0;
@@ -4396,7 +4396,7 @@
   transform: translateY(0);
   pointer-events: auto;
 }
-.route__replay:hover { background: rgba(244, 163, 0, 0.85); color: var(--bark-dark); }
+.route__replay:hover { background: rgba(217, 154, 30, 0.85); color: var(--bark-dark); }
 
 /* ---------- Label placards ---------- */
 .route__placard { filter: drop-shadow(0 4px 8px rgba(2, 19, 42, 0.45)); }
@@ -4737,7 +4737,7 @@
   content: "";
   position: absolute;
   inset: -14% -10%;
-  background: radial-gradient(closest-side, rgba(244, 163, 0, 0.32), rgba(232, 97, 26, 0.1) 55%, transparent 76%);
+  background: radial-gradient(closest-side, rgba(217, 154, 30, 0.32), rgba(194, 83, 28, 0.1) 55%, transparent 76%);
   z-index: -1;
   pointer-events: none;
 }
@@ -4760,7 +4760,7 @@
   top: -26px; right: 18px;
   width: 52px; height: 52px;
   display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(circle at 36% 30%, #4f821c, #345C0D 60%, #1d3307);
+  background: radial-gradient(circle at 36% 30%, #4f821c, #4a6318 60%, #2a3d11);
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35), inset 0 2px 5px rgba(255, 255, 255, 0.25);
   transform: rotate(-8deg);
@@ -4807,13 +4807,13 @@
   padding: 0.95rem 1.9rem;
   border-radius: 50px;
   background: linear-gradient(135deg, var(--forest-mid), var(--forest-light));
-  box-shadow: 0 8px 20px rgba(52, 92, 13, 0.4);
+  box-shadow: 0 8px 20px rgba(74, 99, 24, 0.4);
   transition: transform 0.3s var(--ease-overshoot), box-shadow 0.3s, background 0.3s;
 }
 .registry__give-btn:hover {
   transform: translateY(-3px) scale(1.03);
   background: linear-gradient(135deg, var(--forest-light), var(--fire-orange));
-  box-shadow: 0 12px 26px rgba(232, 97, 26, 0.4);
+  box-shadow: 0 12px 26px rgba(194, 83, 28, 0.4);
 }
 
 .registry__trunk-note {
@@ -4839,7 +4839,7 @@
   background: radial-gradient(circle at 50% 70%, var(--fire-yellow), var(--fire-orange) 55%, var(--ember) 90%);
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
   transform-origin: 50% 90%;
-  filter: drop-shadow(0 0 8px rgba(244, 163, 0, 0.7));
+  filter: drop-shadow(0 0 8px rgba(217, 154, 30, 0.7));
   animation: registryFlicker 1.5s ease-in-out infinite alternate;
 }
 @keyframes registryFlicker {
@@ -4893,7 +4893,7 @@
 .registry__tag:nth-child(even) { transform: rotate(1.6deg); }
 .registry__tag:hover {
   transform: rotate(0deg) translateY(-5px);
-  box-shadow: 0 16px 34px rgba(244, 163, 0, 0.32);
+  box-shadow: 0 16px 34px rgba(217, 154, 30, 0.32);
 }
 /* punched hole + a hint of string, like a real luggage tag */
 .registry__tag-hole {
@@ -4939,7 +4939,7 @@
   white-space: nowrap;
   color: var(--fire-orange);
   padding: 0.24rem 0.7rem;
-  border: 1px dashed rgba(232, 97, 26, 0.55);
+  border: 1px dashed rgba(194, 83, 28, 0.55);
   border-radius: 40px;
 }
 
@@ -4973,7 +4973,7 @@
   padding: 0.55rem 1.05rem;
   border-radius: 999px;
   cursor: pointer;
-  box-shadow: 0 6px 16px rgba(52, 92, 13, 0.4);
+  box-shadow: 0 6px 16px rgba(74, 99, 24, 0.4);
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   animation: ctaPulse 2.2s ease-in-out infinite;
@@ -4983,8 +4983,8 @@
 .story__door-cta:hover { transform: translateY(-2px) scale(1.02); }
 .story__door-cta:active { transform: scale(0.97); }
 @keyframes ctaPulse {
-  0%, 100% { box-shadow: 0 6px 16px rgba(52, 92, 13, 0.4); }
-  50%      { box-shadow: 0 6px 24px rgba(244, 163, 0, 0.6); }
+  0%, 100% { box-shadow: 0 6px 16px rgba(74, 99, 24, 0.4); }
+  50%      { box-shadow: 0 6px 24px rgba(217, 154, 30, 0.6); }
 }
 
 /* ---- The reenactment overlay (a tiny theatre) ---- */
@@ -5009,7 +5009,7 @@
   position: relative;
   width: min(94vw, 560px);
   background: linear-gradient(180deg, #2a1810, #160d07);
-  border: 3px solid rgba(244, 163, 0, 0.4);
+  border: 3px solid rgba(217, 154, 30, 0.4);
   border-radius: 18px;
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
   overflow: hidden;
@@ -5076,7 +5076,7 @@
 }
 .ps-scene--theatre {
   background:
-    radial-gradient(80% 60% at 50% 18%, rgba(244, 163, 0, 0.18), transparent 70%),
+    radial-gradient(80% 60% at 50% 18%, rgba(217, 154, 30, 0.18), transparent 70%),
     linear-gradient(180deg, #2a1a3a 0%, #1a1228 60%, var(--night) 100%);
 }
 .ps-scene--nyc { background: linear-gradient(180deg, var(--bark-dark) 0%, var(--bark-mid) 100%); }
@@ -5325,7 +5325,7 @@
   touch-action: manipulation; -webkit-tap-highlight-color: transparent;
   transition: transform 0.2s var(--ease-overshoot), background 0.2s ease;
 }
-.propshow__nav:hover { background: rgba(244, 163, 0, 0.3); }
+.propshow__nav:hover { background: rgba(217, 154, 30, 0.3); }
 .propshow__nav:active { transform: scale(0.9); }
 .propshow__nav:disabled { opacity: 0.35; cursor: default; }
 .propshow__nav--play[aria-pressed="true"] { background: var(--forest-mid); }
@@ -5429,4 +5429,195 @@
   /* the static positions/poses still apply (declarative), so the reduced-motion
      view opens straight to the camp tableau with both squirrels, smitten */
   .ps-motes, .ps-doorburst, .ps-peace { display: none; }
+}
+
+/* ============================================================
+   DRESS CODE — real guidance + Paige's mood boards
+   (lives inside the Vibe section, after the scrapbook cards)
+   ============================================================ */
+.dresscode {
+  margin-top: 4rem;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.dresscode__title {
+  font-family: var(--font-script);
+  font-size: clamp(2.2rem, 5vw, 3.1rem);
+  line-height: 1;
+  color: var(--forest-mid);
+  margin-bottom: 0.6rem;
+}
+
+.dresscode__title::after {
+  content: '';
+  display: block;
+  width: 96px;
+  height: 4px;
+  margin: 0.7rem auto 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--moss), var(--mustard), var(--rust));
+}
+
+.dresscode__intro {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  line-height: 1.55;
+  color: var(--bark-dark);
+  max-width: 760px;
+  margin: 0 auto 2.6rem;
+}
+
+.dresscode__boards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.2rem;
+  margin-bottom: 3.2rem;
+}
+
+.dresscode__board {
+  background: var(--warm-white);
+  padding: 1rem 1rem 1.2rem;
+  border-radius: 6px;
+  box-shadow: 0 10px 28px rgba(4, 37, 71, 0.12);
+  border: 1px solid rgba(111, 125, 46, 0.25);
+  position: relative;
+}
+
+.dresscode__board:nth-child(odd)  { transform: rotate(-1deg); }
+.dresscode__board:nth-child(even) { transform: rotate(1deg); }
+
+.dresscode__board-label {
+  display: inline-block;
+  font-family: var(--font-typewriter);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--moss-deep);
+  padding: 0.34rem 0.9rem;
+  border-radius: 50px;
+  margin-bottom: 0.85rem;
+  box-shadow: 0 3px 8px rgba(77, 53, 30, 0.25);
+}
+
+.dresscode__board img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  display: block;
+}
+
+/* ---- Wedding colors mood board ---- */
+.wedding-colors {
+  background: linear-gradient(180deg, rgba(111,125,46,0.08), rgba(181,83,31,0.06));
+  border: 1px dashed rgba(107, 74, 43, 0.35);
+  border-radius: 14px;
+  padding: 2rem 1.5rem 2.2rem;
+}
+
+.wedding-colors__title {
+  font-family: var(--font-script);
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  line-height: 1;
+  color: var(--autumn-brown-deep);
+  margin-bottom: 0.5rem;
+}
+
+.wedding-colors__note {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  color: var(--bark-dark);
+  max-width: 620px;
+  margin: 0 auto 1.8rem;
+  line-height: 1.5;
+}
+
+.wedding-colors__swatches {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.4rem 1.8rem;
+  padding: 0;
+}
+
+.wedding-colors__swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  width: 92px;
+}
+
+.wedding-colors__chip {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--sw);
+  box-shadow: 0 6px 16px rgba(4, 37, 71, 0.25), inset 0 -6px 12px rgba(0,0,0,0.18);
+  border: 3px solid var(--warm-white);
+  transition: transform 0.35s var(--ease-overshoot);
+}
+
+.wedding-colors__swatch:hover .wedding-colors__chip {
+  transform: translateY(-5px) scale(1.06) rotate(-4deg);
+}
+
+.wedding-colors__name {
+  font-family: var(--font-typewriter);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--autumn-brown-deep);
+  text-align: center;
+  line-height: 1.25;
+}
+
+/* ---- Honeyfund "Link Coming Soon" pill ---- */
+.registry__give-btn--soon {
+  cursor: default;
+  background: linear-gradient(135deg, var(--autumn-brown), var(--rust));
+  box-shadow: 0 8px 20px rgba(107, 74, 43, 0.35);
+  opacity: 0.96;
+}
+.registry__give-btn--soon:hover {
+  transform: none;
+  background: linear-gradient(135deg, var(--autumn-brown), var(--rust));
+  box-shadow: 0 8px 20px rgba(107, 74, 43, 0.35);
+}
+
+@media (max-width: 600px) {
+  .dresscode { margin-top: 3rem; }
+  .wedding-colors__swatch { width: 78px; }
+  .wedding-colors__chip { width: 54px; height: 54px; }
+}
+
+/* Thread the wedding mood-board colors through the recurring camp marquees:
+   the decorative stars rotate through the autumn palette site-wide. */
+.camp-broadcast__track > span:nth-child(4n+1)::after { color: var(--mustard); }
+.camp-broadcast__track > span:nth-child(4n+2)::after { color: var(--harvest-gold); }
+.camp-broadcast__track > span:nth-child(4n+3)::after { color: var(--rust); }
+.camp-broadcast__track > span:nth-child(4n+4)::after { color: var(--fire-amber); }
+
+/* Wedding colors — Paige's photographic mood board, shown under the swatches */
+.wedding-colors__board {
+  margin: 2rem auto 0;
+  max-width: 440px;
+}
+.wedding-colors__board img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 4px solid var(--warm-white);
+  box-shadow: 0 12px 30px rgba(42, 61, 17, 0.28);
+}
+.wedding-colors__board figcaption {
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  color: var(--autumn-brown-deep);
+  text-align: center;
+  margin-top: 0.6rem;
+  transform: rotate(-1.5deg);
 }
