@@ -123,6 +123,20 @@ import letterEnc from '../generated/letter.enc.json';
     </div>
   </main>
 
+  <!-- Easter egg: typing "sadcamper" summons Sir Nutsworth to turn that frown upside down -->
+  <div class="sadcamp" id="sadCamp" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="A cheer-up from Sir Nutsworth">
+    <div class="sadcamp__card">
+      <div class="sadcamp__stage">
+        <div class="sadcamp__mood" id="sadMood" aria-hidden="true">🙁</div>
+        <div class="sadcamp__squirrel" id="sadSquirrel" aria-hidden="true">🐿️</div>
+        <div class="sadcamp__acorns" id="sadAcorns" aria-hidden="true"></div>
+      </div>
+      <p class="sadcamp__speech" id="sadSpeech" aria-live="polite" aria-atomic="true">Aww, a <em>sad</em> camper? Not on Sir Nutsworth's watch.</p>
+      <button class="sadcamp__btn" id="sadBtn" type="button">Cheer me up! 🌰</button>
+      <button class="sadcamp__close" id="sadClose" type="button">maybe later</button>
+    </div>
+  </div>
+
   <!-- decrypted content is injected here -->
   <div id="letter-mount"></div>
 
@@ -599,6 +613,113 @@ import letterEnc from '../generated/letter.enc.json';
       .env-stage, .env__card, .env__half--upper, .env__flap, .env__seal, .env__lock-shackle, #letter-mount { transition: none !important; animation: none !important; }
       .env__compass, .env__compass-needle, .env-inkblot, .env__admit, .env-wax-shard { animation: none !important; transition: none !important; }
     }
+
+    /* ===== Easter egg: "sadcamper" cheer-up overlay ===== */
+    .sadcamp {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: radial-gradient(circle at 50% 30%, rgba(13, 58, 107, 0.72), rgba(2, 24, 48, 0.94));
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .sadcamp[hidden] { display: none; }
+    .sadcamp.is-open { opacity: 1; }
+
+    .sadcamp__card {
+      position: relative;
+      width: min(420px, 92vw);
+      background: var(--cream, #FAF9F2);
+      border-radius: 18px;
+      padding: 2rem 1.6rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      border: 2px dashed rgba(74, 99, 24, 0.4);
+      transform: translateY(18px) scale(0.95);
+      transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .sadcamp.is-open .sadcamp__card { transform: translateY(0) scale(1); }
+
+    .sadcamp__stage { position: relative; height: 150px; margin-bottom: 0.3rem; }
+    .sadcamp__mood {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4.6rem; line-height: 1; z-index: 2;
+    }
+    .sadcamp__mood.is-flip { animation: sadFlip 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    @keyframes sadFlip {
+      0%   { transform: translate(-50%, -50%) rotate(0) scale(1); }
+      50%  { transform: translate(-50%, -50%) rotate(180deg) scale(1.45); }
+      100% { transform: translate(-50%, -50%) rotate(360deg) scale(1); }
+    }
+
+    .sadcamp__squirrel {
+      position: absolute; bottom: 8px; left: calc(50% - 108px);
+      font-size: 2.7rem; line-height: 1; z-index: 3;
+    }
+    .sadcamp__squirrel.is-wiggle { animation: sadWiggle 0.5s ease; }
+    @keyframes sadWiggle {
+      0%, 100% { transform: rotate(0) translateY(0); }
+      25%      { transform: rotate(-14deg) translateY(-5px); }
+      75%      { transform: rotate(14deg) translateY(-5px); }
+    }
+    .sadcamp__squirrel.is-cheer { animation: sadCheer 0.75s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    @keyframes sadCheer {
+      0%   { transform: scale(1) rotate(0) translateY(0); }
+      35%  { transform: scale(1.35) rotate(-12deg) translateY(-16px); }
+      65%  { transform: scale(1.15) rotate(12deg) translateY(-4px); }
+      100% { transform: scale(1.12) rotate(0) translateY(0); }
+    }
+
+    .sadcamp__acorns { position: absolute; inset: 0; pointer-events: none; z-index: 4; }
+    .sadcamp__acorn {
+      position: absolute; left: calc(50% - 96px); bottom: 22px;
+      font-size: 1.2rem;
+      animation: sadAcorn 1s ease-out forwards;
+    }
+    @keyframes sadAcorn {
+      0%   { transform: translate(0, 0) rotate(0); opacity: 1; }
+      100% { transform: translate(var(--dx, 40px), var(--dy, -80px)) rotate(var(--rot, 240deg)); opacity: 0; }
+    }
+
+    .sadcamp__speech {
+      font-family: var(--font-serif, serif);
+      font-size: 1.12rem; line-height: 1.45;
+      color: var(--bark-dark, #042547);
+      margin: 0.3rem 0 1.3rem;
+      min-height: 3.4em;
+    }
+    .sadcamp__speech em { color: var(--rust, #b5531f); font-style: italic; }
+
+    .sadcamp__btn {
+      font-family: var(--font-sans, sans-serif); font-weight: 600; font-size: 1rem;
+      color: var(--cream, #FAF9F2);
+      background: linear-gradient(135deg, var(--forest-mid, #4a6318), var(--forest-light, #6f8a2e));
+      border: none; border-radius: 40px; padding: 0.8rem 1.7rem; cursor: pointer;
+      box-shadow: 0 8px 20px rgba(74, 99, 24, 0.4);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .sadcamp__btn:hover { transform: translateY(-2px) scale(1.04); }
+    .sadcamp__btn:active { transform: scale(0.97); }
+
+    .sadcamp__close {
+      display: block; margin: 0.85rem auto 0;
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-sans, sans-serif); font-size: 0.82rem;
+      color: rgba(4, 37, 71, 0.5); text-decoration: underline; letter-spacing: 0.02em;
+    }
+    .sadcamp__close:hover { color: rgba(4, 37, 71, 0.8); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sadcamp, .sadcamp__card { transition: none; }
+      .sadcamp__mood, .sadcamp__squirrel, .sadcamp__acorn { animation: none !important; }
+    }
   </style>
 
   <script>
@@ -978,6 +1099,13 @@ import letterEnc from '../generated/letter.enc.json';
       const pw = passInput.value;
       if (!pw) return;
 
+      // Easter egg: a "sadcamper" gets cheered up by Sir Nutsworth (no real unlock).
+      if (pw.trim().toLowerCase() === 'sadcamper') {
+        if (passInput) passInput.value = '';
+        if (window.showSadCamper) window.showSadCamper();
+        return;
+      }
+
       unlockBtn.disabled = true;
       const originalLabel = unlockBtn.textContent;
       unlockBtn.textContent = 'Opening…';
@@ -1004,6 +1132,94 @@ import letterEnc from '../generated/letter.enc.json';
       opening = true;
       await playUnlock(html);
     });
+
+    // ===== Easter egg: "sadcamper" -> Sir Nutsworth turns the frown upside down =====
+    (function setupSadCamper() {
+      var ov = document.getElementById('sadCamp');
+      if (!ov) return;
+      var mood = document.getElementById('sadMood');
+      var squirrel = document.getElementById('sadSquirrel');
+      var acornsBox = document.getElementById('sadAcorns');
+      var speech = document.getElementById('sadSpeech');
+      var btn = document.getElementById('sadBtn');
+      var closeBtn = document.getElementById('sadClose');
+      var stage = 0;
+
+      var beats = [
+        { mood: '🙁', speech: 'Aww, a <em>sad</em> camper? Not on Sir Nutsworth\'s watch.', btn: 'Cheer me up! 🌰' },
+        { mood: '😐', speech: 'Hmm, tough crowd. He is just warming up…', btn: 'Keep going! 🌰' },
+        { mood: '🙂', speech: "There's a smile trying to escape. I can see it!", btn: 'Almost there! 🌰' },
+        { mood: '😄', speech: '🎉 THERE it is, a <em>happy</em> camper! Psst… that\'s the secret, too: swap "sad" for "happy" and you\'re in. 💛', btn: 'Let me in! →' }
+      ];
+
+      function render() {
+        var b = beats[stage];
+        if (mood) mood.textContent = b.mood;
+        if (speech) speech.innerHTML = b.speech;
+        if (btn) btn.textContent = b.btn;
+      }
+
+      function flick(el, cls) {
+        if (!el || reduceMotion()) return;
+        el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls);
+      }
+
+      function popAcorns(n) {
+        if (!acornsBox || reduceMotion()) return;
+        for (var i = 0; i < n; i++) {
+          var a = document.createElement('span');
+          a.className = 'sadcamp__acorn';
+          a.textContent = '🌰';
+          a.style.setProperty('--dx', ((i % 2 ? 1 : -1) * (40 + i * 22)) + 'px');
+          a.style.setProperty('--dy', (-80 - (i % 3) * 28) + 'px');
+          a.style.setProperty('--rot', ((i % 2 ? 1 : -1) * (220 + i * 30)) + 'deg');
+          acornsBox.appendChild(a);
+          (function (node) { setTimeout(function () { if (node.parentNode) node.parentNode.removeChild(node); }, 1100); })(a);
+        }
+      }
+
+      function open() {
+        stage = 0; render();
+        ov.hidden = false; ov.setAttribute('aria-hidden', 'false');
+        void ov.offsetWidth; ov.classList.add('is-open');
+        if (btn) setTimeout(function () { btn.focus(); }, 60);
+      }
+      function close() {
+        ov.classList.remove('is-open'); ov.setAttribute('aria-hidden', 'true');
+        setTimeout(function () { ov.hidden = true; }, 350);
+        if (passInput) setTimeout(function () { passInput.focus(); }, 360);
+      }
+      window.showSadCamper = open;
+
+      if (btn) btn.addEventListener('click', function () {
+        if (stage >= beats.length - 1) { close(); return; }
+        stage++;
+        render();
+        if (stage === beats.length - 1) {
+          flick(squirrel, 'is-cheer');
+          flick(mood, 'is-flip');
+          popAcorns(9);
+          if (typeof confettiBurst === 'function') {
+            confettiBurst(window.innerWidth / 2, window.innerHeight * 0.42, { count: 55, spread: 115, velocity: 40, ticks: 200 });
+          }
+        } else {
+          flick(squirrel, 'is-wiggle');
+          popAcorns(3);
+        }
+      });
+      if (closeBtn) closeBtn.addEventListener('click', close);
+      ov.addEventListener('click', function (e) { if (e.target === ov) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !ov.hidden) close(); });
+      // keep keyboard focus trapped inside the dialog while it is open
+      ov.addEventListener('keydown', function (e) {
+        if (e.key !== 'Tab' || ov.hidden) return;
+        var f = [btn, closeBtn].filter(Boolean);
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+    })();
 
     const wrongLines = [
       "That's not quite it. Try again.",

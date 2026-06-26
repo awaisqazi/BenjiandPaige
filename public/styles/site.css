@@ -1946,7 +1946,7 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 3rem 2rem;
   margin-top: 3.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* Base Scrapbook Card styles */
@@ -1958,60 +1958,49 @@
   position: relative;
 }
 
-/* Card 1: Vintage Clothing Tag (Dress Code) */
-.vibe__card--tag {
+/* Card 1: Camp Rules (fun house rules) */
+.vibe__card--rules {
+  background: #fffdf3;
   border-radius: 4px;
-  transform: rotate(-2deg);
+  transform: rotate(-1.5deg);
   border: 1px solid rgba(74, 99, 24, 0.15);
-  border-top: 24px solid var(--forest-mid);
-  clip-path: polygon(12% 0%, 88% 0%, 100% 12%, 100% 100%, 0% 100%, 0% 12%);
+  border-top: 10px solid var(--forest-mid);
+  display: flex;
+  flex-direction: column;
 }
 
-.vibe__card--tag::before {
-  content: '';
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 10px;
-  background: var(--parchment);
-  border-radius: 50%;
-  border: 1.5px solid rgba(4, 37, 71, 0.3);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 5;
-}
-
-/* Hanging String */
-.vibe__card--tag::after {
-  content: '';
-  position: absolute;
-  top: -45px;
-  left: 50%;
-  width: 2px;
-  height: 32px;
-  background: #c5b497;
-  transform: translateX(-50%) rotate(5deg);
-  z-index: 4;
-}
-
-/* Outfit Cycling Button Style */
-.vibe__tag-cycle-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
+.vibe__rules-list {
+  list-style: none;
   padding: 0;
-  display: inline-block;
-  transition: transform 0.3s var(--ease-overshoot);
-  outline: none;
+  margin: 0.4rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  flex: 1 1 auto;
 }
 
-.vibe__tag-cycle-btn:hover {
-  transform: scale(1.25) rotate(15deg);
+.vibe__rules-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--bark-dark);
 }
 
-.vibe__tag-cycle-btn:active {
-  transform: scale(0.95);
+.vibe__rules-emoji {
+  font-size: 1.15rem;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+
+.vibe__card .vibe__rules-foot {
+  font-family: var(--font-script);
+  font-size: 1.3rem;
+  color: var(--forest-mid);
+  text-align: right;
+  margin-top: 1.3rem;
 }
 
 /* Card 2: Polaroid Photo Card (Mascot) */
@@ -2044,7 +2033,7 @@
 /* Polaroid image box containing the cute squirrel */
 .vibe__polaroid-img-wrap {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: clamp(220px, 30vw, 290px);
   background: #f4f2e9;
   border: 1px solid rgba(4, 37, 71, 0.05);
   display: flex;
@@ -2064,8 +2053,8 @@
 }
 
 .squirrel-svg {
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
 }
 
@@ -2080,20 +2069,14 @@
 }
 
 /* Card hover scaling (without ruining tilts) */
-.vibe__card--tag:hover {
-  transform: rotate(-1deg) translateY(-8px);
+.vibe__card--rules:hover {
+  transform: rotate(-0.5deg) translateY(-8px);
   box-shadow: 0 16px 40px rgba(4, 37, 71, 0.12);
 }
 
 .vibe__card--polaroid:hover {
   transform: rotate(1deg) translateY(-8px);
   box-shadow: 0 20px 45px rgba(4, 37, 71, 0.15);
-}
-
-.vibe__card-icon {
-  font-size: 2.5rem;
-  display: block;
-  margin-bottom: 1rem;
 }
 
 .vibe__card h3 {
@@ -2110,7 +2093,7 @@
   color: var(--bark-mid);
   line-height: 1.6;
 }
-/* Vintage Outfit State Badge */
+/* "Official" stamp badge (Camp Rules card) */
 .vibe__tag-badge {
   display: inline-block;
   padding: 0.25rem 0.5rem;
