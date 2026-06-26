@@ -320,7 +320,7 @@
   perspective-origin: 50% 50%;
   border-radius: 9px;
   /* dark base matched to the bottom-half shadow, so any sub-pixel gap during the
-     fold reads as a shadow groove — never the plaque behind it */
+     fold reads as a shadow groove - never the plaque behind it */
   background: #1a2f08;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
@@ -341,7 +341,7 @@
   justify-content: center;
 }
 
-/* TOP halves — enamel lit from above */
+/* TOP halves - enamel lit from above */
 .flip__half--top,
 .flip__flap--upper {
   top: 0;
@@ -350,7 +350,7 @@
   background: linear-gradient(180deg, #437214 0%, #4a6318 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
-/* BOTTOM halves — slightly in shadow */
+/* BOTTOM halves - slightly in shadow */
 .flip__half--bottom,
 .flip__flap--lower {
   bottom: 0;
@@ -390,7 +390,7 @@
 .flip__half--bottom .flip__num,
 .flip__flap--lower  .flip__num { bottom: 0; }
 
-/* the seam: a 1px shadow + 1px catch-light at the join — a believable groove,
+/* the seam: a 1px shadow + 1px catch-light at the join - a believable groove,
    painted on the static halves only */
 .flip__half--top::after {
   content: "";
@@ -429,7 +429,7 @@
   pointer-events: none;
 }
 
-/* active flip — JS toggles .is-flipping on the .flip wrapper for one cycle.
+/* active flip - JS toggles .is-flipping on the .flip wrapper for one cycle.
    will-change is scoped here (not permanent) to spare iOS compositor memory. */
 .flip.is-flipping .flip__flap { will-change: transform; }
 .flip.is-flipping .flip__flap--upper {
@@ -452,13 +452,13 @@
 @keyframes flapUp {
   0%   { transform: rotateX(91deg); }
   72%  { transform: rotateX(0deg); }      /* lands flush */
-  84%  { transform: rotateX(-3deg); }     /* tiny overshoot — the "thunk" */
+  84%  { transform: rotateX(-3deg); }     /* tiny overshoot - the "thunk" */
   100% { transform: rotateX(0deg); }      /* settles */
 }
 @keyframes shadeIn  { 0% { opacity: 0; }    100% { opacity: 0.5; } }
 @keyframes shadeOut { 0% { opacity: 0.5; }  60% { opacity: 0.12; } 100% { opacity: 0; } }
 
-/* brass hinge rivets — sit on the seam, above every layer */
+/* brass hinge rivets - sit on the seam, above every layer */
 .flip__pin {
   position: absolute;
   top: 50%;
@@ -569,7 +569,7 @@
   align-items: center;
 }
 
-/* Notebook card — graph paper look */
+/* Notebook card - graph paper look */
 .venue__notebook {
   position: relative;
   background:
@@ -811,7 +811,7 @@
   text-align: center;
 }
 
-/* Responsive — venue */
+/* Responsive - venue */
 @media (max-width: 600px) {
   .venue__content {
     justify-content: center;
@@ -902,7 +902,7 @@
   border-image: linear-gradient(to bottom, #c9a355, #8b6930, #c9a355) 1;
 }
 
-/* Pushpins — positioned at corners of the paper */
+/* Pushpins - positioned at corners of the paper */
 .schedule__pin {
   position: absolute;
   z-index: 5;
@@ -3147,7 +3147,7 @@
 }
 
 /* ==============================
-   WAVE 1 — CAMP POLISH
+   WAVE 1 - CAMP POLISH
    ============================== */
 
 /* --- Hero: camcorder persona (film grain, pines, REC) --- */
@@ -3430,7 +3430,7 @@
 }
 
 /* ==============================
-   WAVE 2 — INTERACTIVE COLLECTIBLES
+   WAVE 2 - INTERACTIVE COLLECTIBLES
    ============================== */
 
 /* --- Backpack Meter --- */
@@ -3743,7 +3743,7 @@
 }
 
 /* ==============================
-   WAVE 3 — PASSPORT + ACORN HUNT
+   WAVE 3 - PASSPORT + ACORN HUNT
    ============================== */
 
 .passport {
@@ -4104,7 +4104,7 @@
 }
 
 /* ==============================
-   WAVE 4 — ROUTE MAP
+   WAVE 4 - ROUTE MAP
    ============================== */
 .route {
   background: var(--bark-dark);
@@ -4311,7 +4311,7 @@
   50%      { transform: rotate(12deg); }
 }
 
-/* Cinematic letterbox bars — slide in only while the camera is travelling. */
+/* Cinematic letterbox bars - slide in only while the camera is travelling. */
 .route__bar {
   position: absolute;
   left: 0;
@@ -4326,7 +4326,7 @@
 .route__bar--bottom { bottom: 0; }
 .route__map.route--playing .route__bar { height: 6.5%; }
 
-/* Narrative caption — a title card that fades in as the camera settles. */
+/* Narrative caption - a title card that fades in as the camera settles. */
 .route__caption {
   position: absolute;
   left: 50%;
@@ -4367,7 +4367,7 @@
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7);
 }
 
-/* Replay control — appears once the journey has played through. */
+/* Replay control - appears once the journey has played through. */
 .route__replay {
   position: absolute;
   top: 12px;
@@ -4423,7 +4423,7 @@
 .route__year--start { fill: var(--fire-amber); }
 .route__year--end { fill: var(--fire-yellow); }
 
-/* Narrative caption beneath the map — a parchment film-strip caption. */
+/* Narrative caption beneath the map - a parchment film-strip caption. */
 .route__legend {
   font-family: var(--font-typewriter);
   font-size: clamp(0.72rem, 2.2vw, 0.92rem);
@@ -4468,7 +4468,7 @@
 }
 
 /* ==============================
-   WAVE 5 — RSVP RAIL + CAMP PASS
+   WAVE 5 - RSVP RAIL + CAMP PASS
    ============================== */
 .footer__stepper {
   display: flex;
@@ -4665,7 +4665,7 @@
 }
 
 /* ==============================
-   GIFT REGISTRY — "The Adventure Fund"
+   GIFT REGISTRY - "The Adventure Fund"
    A cinematic dusk that begins in parchment (seam with .vibe) and melts
    down into --night (seam with the .footer campfire), echoing The Journey.
    ============================== */
@@ -5227,7 +5227,7 @@
 .propshow__stage[data-beat="5"] .ps-actor--paige,
 .propshow__stage[data-beat="6"] .ps-actor--paige { opacity: 1; }
 
-/* beat 4: a spark — lean together, centre stage, with a little bounce */
+/* beat 4: a spark - lean together, centre stage, with a little bounce */
 .propshow__stage[data-beat="4"] .ps-actor--benji { left: 43%; --lean: 9deg; }
 .propshow__stage[data-beat="4"] .ps-actor--paige { left: 57%; --lean: -9deg; }
 .propshow__stage[data-beat="4"] .ps-actor--benji .ps-sq { animation: psBounce 0.9s var(--ease-overshoot), psBob 2.6s var(--ease-in-out) 0.9s infinite; }
@@ -5432,7 +5432,7 @@
 }
 
 /* ============================================================
-   DRESS CODE — real guidance + Paige's mood boards
+   DRESS CODE - real guidance + Paige's mood boards
    (lives inside the Vibe section, after the scrapbook cards)
    ============================================================ */
 .dresscode {
@@ -5601,7 +5601,7 @@
 .camp-broadcast__track > span:nth-child(4n+3)::after { color: var(--rust); }
 .camp-broadcast__track > span:nth-child(4n+4)::after { color: var(--fire-amber); }
 
-/* Wedding colors — Paige's photographic mood board, shown under the swatches */
+/* Wedding colors - Paige's photographic mood board, shown under the swatches */
 .wedding-colors__board {
   margin: 2rem auto 0;
   max-width: 440px;

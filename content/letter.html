@@ -1,13 +1,13 @@
 <!--
   ============================================================================
-  PROTECTED WEDDING CONTENT — Paige & Benji
+  PROTECTED WEDDING CONTENT - Paige & Benji
   ============================================================================
   This file holds ALL the private wedding content + its behavior script.
   It is encrypted into src/generated/letter.enc.json by `npm run encrypt`
   and only decrypted in the browser after the correct password is entered.
 
   EDIT HERE, then run `npm run encrypt` before pushing. See PUBLISHING.md.
-  The behavior script below is PLAIN JS (no TypeScript) on purpose — it is
+  The behavior script below is PLAIN JS (no TypeScript) on purpose - it is
   injected and executed at runtime, so it must run in the browser as-is.
   ============================================================================
 -->
@@ -32,7 +32,7 @@
       <h1 class="hero__names reveal reveal-delay-1">Paige <span class="hero__amp">&</span> Benji</h1>
       <p class="hero__tagline reveal reveal-delay-2">Campfires, S'mores & I Dos</p>
       <p class="hero__date reveal reveal-delay-3">October 4 – 5, 2026 &bull; Kent, Connecticut</p>
-      <span class="acorn acorn--hero" data-acorn="hero" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span>
+      <span class="acorn acorn--hero" data-acorn="hero" role="button" tabindex="0" aria-label="A hidden acorn, collect it!" title="A hidden acorn!">🌰</span>
     </div>
 
     <a href="#postcard" class="hero__scroll-cta" aria-label="Scroll to next section">
@@ -129,9 +129,9 @@
   <div class="camp-broadcast camp-broadcast--green" role="presentation" aria-hidden="true">
     <div class="camp-broadcast__track">
       <span>📢 S'more rations are being emotionally prepared.</span>
-      <span>Color Wars applications now open — captains, assemble.</span>
+      <span>Color Wars applications now open. Captains, assemble.</span>
       <span class="is-dup">📢 S'more rations are being emotionally prepared.</span>
-      <span class="is-dup">Color Wars applications now open — captains, assemble.</span>
+      <span class="is-dup">Color Wars applications now open. Captains, assemble.</span>
     </div>
   </div>
 
@@ -422,7 +422,7 @@
             <p class="schedule__event-name">Bonfire</p>
             <p class="schedule__event-time">8:30pm</p>
             <p class="schedule__field-note">Official s'more diplomacy begins.</p>
-            <span class="acorn" data-acorn="bonfire" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span>
+            <span class="acorn" data-acorn="bonfire" role="button" tabindex="0" aria-label="A hidden acorn, collect it!" title="A hidden acorn!">🌰</span>
           </div>
 
           <div class="schedule__item">
@@ -568,7 +568,7 @@
         <p class="story__text">
           We met in 2015 at Rutgers University during a production of Avenue Q. Our love story began exactly where most great romances do, in a prop closet, where Benji was searching for peace and quiet and Paige immediately derailed that plan. We've been inseparable ever since, laughing our way through theater, NYC adventures, and all the little moments in between. We can't wait to celebrate this next chapter with all of you!
         </p>
-        <span class="acorn acorn--story" data-acorn="propcloset" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span>
+        <span class="acorn acorn--story" data-acorn="propcloset" role="button" tabindex="0" aria-label="A hidden acorn, collect it!" title="A hidden acorn!">🌰</span>
         <a href="https://www.cabarettheatre.org" target="_blank" rel="noopener noreferrer" class="story__link">[www.cabarettheatre.org]</a>
         <button class="story__door" id="storyDoor" type="button" aria-label="Open the prop closet" aria-expanded="false">
           <span class="story__door-frame">
@@ -977,15 +977,15 @@
           </g>
 
           <!-- year mile-markers -->
-          <text class="route__year route__year--start" x="110" y="424" text-anchor="middle">— 2015 —</text>
-          <text class="route__year route__year--end" x="690" y="424" text-anchor="middle">— 2026 —</text>
+          <text class="route__year route__year--start" x="110" y="424" text-anchor="middle">2015</text>
+          <text class="route__year route__year--end" x="690" y="424" text-anchor="middle">2026</text>
 
           <!-- the couple walks the trail (positioned by JS) -->
           <g class="route__couple" id="routeCouple" aria-hidden="true">
             <g class="route__couple-bob">
               <ellipse cx="0" cy="1.5" rx="14" ry="3" fill="#02132a" opacity="0.3" />
 
-              <!-- Paige — long auburn hair, olive sweater -->
+              <!-- Paige - long auburn hair, olive sweater -->
               <g class="route__walker">
                 <rect class="route__leg route__leg--a" x="-9.4" y="-12" width="3" height="13" rx="1.5" fill="#6b6152" />
                 <rect class="route__leg route__leg--b" x="-5.6" y="-12" width="3" height="13" rx="1.5" fill="#6b6152" />
@@ -997,7 +997,7 @@
                 <path class="route__arm" d="M-3.4 -20 C 0 -19 1.5 -17 1.2 -15.2" fill="none" stroke="#3d4a2a" stroke-width="2.6" stroke-linecap="round" />
               </g>
 
-              <!-- Benji — short dark hair, black glasses, mauve henley -->
+              <!-- Benji - short dark hair, black glasses, mauve henley -->
               <g class="route__walker">
                 <rect class="route__leg route__leg--b" x="3.4" y="-12" width="3.1" height="13" rx="1.5" fill="#33333c" />
                 <rect class="route__leg route__leg--a" x="7.4" y="-12" width="3.1" height="13" rx="1.5" fill="#33333c" />
@@ -1121,7 +1121,7 @@
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Shampoo &amp; conditioner</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Soap/body wash</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Sunscreen</span></label></li>
-          <li><label><input type="checkbox" class="packing__checkbox" /><span>Mosquito repellent</span></label> <span class="acorn" data-acorn="packing" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span></li>
+          <li><label><input type="checkbox" class="packing__checkbox" /><span>Mosquito repellent</span></label> <span class="acorn" data-acorn="packing" role="button" tabindex="0" aria-label="A hidden acorn, collect it!" title="A hidden acorn!">🌰</span></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Medications you normally take</span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Towel <em class="packing__note-inline">(optional, towels are provided)</em></span></label></li>
           <li><label><input type="checkbox" class="packing__checkbox" /><span>Water bottle</span></label></li>
@@ -1184,7 +1184,7 @@
       <div class="activities__grid">
         <div class="activity-card reveal" data-activity="archery">
           <div class="activity-card__img-wrap">
-            <img src="/images/update/archery.jpeg" alt="Archery at camp — taking aim at the targets" loading="lazy" />
+            <img src="/images/update/archery.jpeg" alt="Archery at camp, taking aim at the targets" loading="lazy" />
           </div>
           <div class="activity-card__body">
             <div class="activity-card__emoji">🏹</div>
@@ -1304,7 +1304,7 @@
             <span class="vibe__hint vibe__hint--squirrel">tap the squirrel</span>
             <h3 style="display:none;">Official Mascot</h3>
             <div class="vibe__polaroid-caption">Sir Nutsworth III</div>
-            <span class="acorn" data-acorn="polaroid" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span>
+            <span class="acorn" data-acorn="polaroid" role="button" tabindex="0" aria-label="A hidden acorn, collect it!" title="A hidden acorn!">🌰</span>
             <p style="font-size:0.85rem; text-align:center; margin-top:0.25rem;">Keep your eyes peeled for our unofficial mascot. Spotting him brings good luck!</p>
           </div>
 
@@ -1325,10 +1325,10 @@
             </figure>
           </div>
 
-          <!-- Wedding colors mood board — matchy-matchy inspo for guests -->
+          <!-- Wedding colors mood board - matchy-matchy inspo for guests -->
           <div class="wedding-colors">
             <h4 class="wedding-colors__title">Our Wedding Colors</h4>
-            <p class="wedding-colors__note">Want to matchy-matchy with our palette? Here's a little color inspo. Matching is never required — but you're always welcome to!</p>
+            <p class="wedding-colors__note">Want to matchy-matchy with our palette? Here's a little color inspo. Matching is never required, but you're always welcome to!</p>
             <ul class="wedding-colors__swatches">
               <li class="wedding-colors__swatch" style="--sw: var(--moss);"><span class="wedding-colors__chip"></span><span class="wedding-colors__name">Mossy Green</span></li>
               <li class="wedding-colors__swatch" style="--sw: var(--night-mid);"><span class="wedding-colors__chip"></span><span class="wedding-colors__name">Night Sky</span></li>
@@ -1417,7 +1417,7 @@
         adventure ahead.
       </p>
 
-      <!-- Main fund — a lantern-lit camp trunk / kraft sign -->
+      <!-- Main fund - a lantern-lit camp trunk / kraft sign -->
       <div class="registry__trunk reveal reveal-delay-2">
         <span class="registry__trunk-rope" aria-hidden="true"></span>
         <span class="registry__trunk-compass" aria-hidden="true">
@@ -1441,10 +1441,10 @@
         <span class="registry__give-btn registry__give-btn--soon" role="text">
           Link Coming Soon!
         </span>
-        <p class="registry__trunk-note">🏕️ Our Honeyfund page is on its way — check back soon!</p>
+        <p class="registry__trunk-note">🏕️ Our Honeyfund page is on its way. Check back soon!</p>
         <div class="registry__trunk-fire" aria-hidden="true"><span class="registry__trunk-flame"></span></div>
         <!-- Easter egg: Sir Nutsworth stowed away in the honeymoon luggage -->
-        <span class="acorn acorn--registry" data-acorn="registry" role="button" tabindex="0" aria-label="A hidden acorn — collect it!" title="A hidden acorn!">🌰</span>
+        <span class="acorn acorn--registry" data-acorn="registry" role="button" tabindex="0" aria-label="A hidden acorn, collect it!" title="A hidden acorn!">🌰</span>
       </div>
 
     </div>
@@ -1486,7 +1486,7 @@
 
       <form class="footer__form reveal reveal-delay-3" id="rosterForm" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdDL1uOp6ViYmHRkF3ZusEH93za_5QaKxnfkEqEQ37vlU7mQA/formResponse" method="POST" target="hidden_iframe" novalidate>
 
-        <!-- Camp Registration Desk — progress rail (decorative) -->
+        <!-- Camp Registration Desk - progress rail (decorative) -->
         <ol class="footer__stepper" id="rsvpStepper" aria-hidden="true">
           <li class="footer__step" data-step="1"><span class="footer__step-dot">1</span><span class="footer__step-label">Camper Info</span></li>
           <li class="footer__step" data-step="2"><span class="footer__step-dot">2</span><span class="footer__step-label">Camp Plans</span></li>
@@ -1666,7 +1666,7 @@
         <span class="footer__toast-msg" id="toastMsg">RSVP received! See you at camp!</span>
       </div>
 
-      <!-- Camp Pass — post-submit keepsake -->
+      <!-- Camp Pass - post-submit keepsake -->
       <div class="camp-pass" id="campPass" aria-hidden="true">
         <div class="camp-pass__card" role="dialog" aria-modal="true" aria-label="Your Camp Pass">
           <button class="camp-pass__close" id="campPassClose" type="button" aria-label="Close">✕</button>
@@ -1721,14 +1721,14 @@
       <div class="cert-seal">🐿️🎩</div>
       <h3 class="cert-title">Certificate of Squirrelly Excellence</h3>
       <p class="cert-body">Awarded to a Distinguished Camper for locating all six of Sir Nutsworth III's hidden acorns across the page.</p>
-      <p class="cert-sig">— Sir Nutsworth III, Esq.</p>
+      <p class="cert-sig">Sir Nutsworth III, Esq.</p>
       <button class="cert-close" id="certClose" type="button">Claim your nuts 🌰</button>
     </div>
   </div>
 
 <script>
   /* =========================================================================
-     Behavior for the protected content. PLAIN JS (no TypeScript) — this is
+     Behavior for the protected content. PLAIN JS (no TypeScript) - this is
      injected & executed at runtime after decryption, so it must run as-is.
      Wrapped in one IIFE that runs immediately: by injection time the DOM
      already exists, so there is no DOMContentLoaded wrapper and the whole
@@ -1785,7 +1785,7 @@
     // onto the static top (revealed behind the falling upper flap) and onto the
     // lower flap (revealed as it swings up); the OLD digit stays on the upper flap
     // and static bottom until the fold lands, then we commit. Each layer renders a
-    // full-height glyph clipped to one half, so the seam is a mechanical groove —
+    // full-height glyph clipped to one half, so the seam is a mechanical groove -
     // never a line through the number. Always forward, no reset flash.
     var cdReadout = document.getElementById('cdReadout');
     var cdReduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1814,7 +1814,7 @@
         el.classList.remove('is-flipping');
         if (timer) { clearTimeout(timer); timer = null; }
       }
-      // Commit when the lower flap finishes settling — it lands last.
+      // Commit when the lower flap finishes settling - it lands last.
       lowerFlap.addEventListener('animationend', function (e) {
         if (e.animationName === 'flapUp') commit(current);
       });
@@ -1977,7 +1977,7 @@
       // Animated open/close. The panel keeps its `hidden` attribute while fully
       // closed (so it's out of the a11y tree + tab order), but we delay setting
       // it on close until the slide-out transition has finished, and clear it
-      // before the slide-in on open — giving a smooth motion instead of a snap.
+      // before the slide-in on open - giving a smooth motion instead of a snap.
       var closeTimer = null;
       function isOpen() { return passportEl.classList.contains('is-open'); }
       function setOpen(open) {
@@ -2170,7 +2170,7 @@
     var packingCheckboxes = document.querySelectorAll('.packing__checkbox');
     var resetChecklistBtn = document.getElementById('resetChecklistBtn');
 
-    // Backpack Meter — a chunky pack that fills like a liquid as you pack.
+    // Backpack Meter - a chunky pack that fills like a liquid as you pack.
     var bpFill = document.getElementById('bpFill');
     var bpLabel = document.getElementById('bpLabel');
     var bpCount = document.getElementById('bpCount');
@@ -2562,7 +2562,7 @@
         { cap: '…and Paige <em>immediately</em> derailed that plan.',                                    bp: 'startle', pp: 'happy',   fx: 'burst',   hold: 2900 },
         { cap: 'A spark. Inseparable ever since.',                                                            bp: 'smitten', pp: 'smitten', fx: 'hearts',  hold: 2800 },
         { cap: 'Through theatre, NYC adventures, and every little moment in between.',                        bp: 'smitten', pp: 'smitten', fx: 'montage', hold: 3200 },
-        { cap: 'Married at Club Getaway — we can’t wait to celebrate this next chapter with you!',  bp: 'smitten', pp: 'smitten', fx: 'finale',  hold: 0 }
+        { cap: 'Married at Club Getaway! We can’t wait to celebrate this next chapter with you!',  bp: 'smitten', pp: 'smitten', fx: 'finale',  hold: 0 }
       ];
       var LAST = BEATS.length - 1;
       var idx = 0, auto = false;
@@ -2723,7 +2723,7 @@
       var pins = routeMap.querySelectorAll('.route__pin');
       var total = routeLine.getTotalLength();
 
-      // Camera shots — all keep the 800:440 (20:11) aspect so nothing distorts.
+      // Camera shots - all keep the 800:440 (20:11) aspect so nothing distorts.
       var FULL = [0, 0, 800, 440];
       var THEATRE = [0, 146, 380, 209];
       var NYC = [200, 146, 380, 209];
@@ -3368,7 +3368,7 @@
           return;
         }
 
-        // Validation passed — allow native submit to hidden_iframe (Google Forms)
+        // Validation passed - allow native submit to hidden_iframe (Google Forms)
         var btn = document.getElementById('submitBtn');
         if (btn) {
           btn.innerHTML = '<span>Sending… ✨</span>';

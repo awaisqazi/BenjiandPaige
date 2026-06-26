@@ -8,7 +8,7 @@ import letterEnc from '../generated/letter.enc.json';
 
 <Layout title="You're Invited">
   <!-- ============================================================
-       SEALED ENVELOPE — the only thing a locked visitor ever sees.
+       SEALED ENVELOPE - the only thing a locked visitor ever sees.
        No dates, venue, or schedule live out here.
        ============================================================ -->
   <main id="envelope-stage" class="env-stage" aria-label="A sealed invitation">
@@ -24,7 +24,7 @@ import letterEnc from '../generated/letter.enc.json';
         <!-- the folded card that lifts out and unfolds -->
         <div class="env__card" id="envCard">
           <div class="env__card3d" id="envCard3d">
-            <!-- lower half: bottom of the hero "cover" (names) — always present -->
+            <!-- lower half: bottom of the hero "cover" (names) - always present -->
             <div class="env__half env__half--lower">
               <div class="env__cover env__cover--lower">
                 <div class="env__cover-names">Paige <span>&amp;</span> Benji</div>
@@ -116,7 +116,7 @@ import letterEnc from '../generated/letter.enc.json';
           />
           <button class="env-unlock__btn" id="envUnlockBtn" type="submit">Unlock</button>
         </div>
-        <p class="env-unlock__err" id="envErr" hidden>That's not quite it — try again.</p>
+        <p class="env-unlock__err" id="envErr" hidden>That's not quite it. Try again.</p>
       </form>
 
       <p class="env-hint" id="envHint">🔒 Tap the wax seal to open</p>
@@ -131,7 +131,7 @@ import letterEnc from '../generated/letter.enc.json';
 
   <style is:global>
     /* ===========================================================
-       ENVELOPE UNLOCK SHELL — self-contained (does not need site.css)
+       ENVELOPE UNLOCK SHELL - self-contained (does not need site.css)
        =========================================================== */
     :root {
       --env-w: min(90vw, 460px);
@@ -602,9 +602,9 @@ import letterEnc from '../generated/letter.enc.json';
   </style>
 
   <script>
-    // @ts-nocheck — intentionally DOM-heavy plain JS; elements are known to exist at runtime.
+    // @ts-nocheck - intentionally DOM-heavy plain JS; elements are known to exist at runtime.
     // ===========================================================
-    //  Envelope unlock — crypto + animation. Generic code only;
+    //  Envelope unlock - crypto + animation. Generic code only;
     //  no wedding data lives here (it's all in the encrypted blob).
     // ===========================================================
     const ENC = JSON.parse(document.getElementById('letter-data').textContent);
@@ -634,7 +634,7 @@ import letterEnc from '../generated/letter.enc.json';
     const UNLOCK_CACHE_KEY = 'wedding_unlock_v1';
 
     // ---------- confetti (vendored canvas-confetti, loaded on demand) ----------
-    // Camp palette — reused for every celebration across the site.
+    // Camp palette - reused for every celebration across the site.
     const CONFETTI_COLORS = ['#e8611a', '#f4a300', '#fdd835', '#345C0D', '#4a7a1a', '#FAF9F2'];
     let confettiPromise = null;
     function loadConfetti() {
@@ -1006,7 +1006,7 @@ import letterEnc from '../generated/letter.enc.json';
     });
 
     const wrongLines = [
-      "That's not quite it — try again.",
+      "That's not quite it. Try again.",
       'Hmm. The camp office is checking its records…',
       'Still no. Have you tried asking Sir Nutsworth?',
       'The bunk-assignment desk is judging you (lovingly).',
