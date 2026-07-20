@@ -1676,8 +1676,13 @@
             <span class="camp-pass__stamp" id="campPassStamp">Admitted</span>
           </div>
           <p class="camp-pass__camper">Camper: <span id="campPassName">Friend</span></p>
-          <p class="camp-pass__cabin" id="campPassCabin">Cabin: Pinewood Bunk 4</p>
-          <p class="camp-pass__msg" id="campPassMsg">You're checked in! See you around the campfire.</p>
+          <div class="camp-pass__welcome" id="campPassWelcome" aria-hidden="true">
+            <span class="camp-pass__spark camp-pass__spark--1">🎉</span>
+            <div class="camp-pass__sq camp-pass__sq--benji" id="campPassBenji"></div>
+            <div class="camp-pass__sq camp-pass__sq--paige" id="campPassPaige"></div>
+            <span class="camp-pass__spark camp-pass__spark--2">✨</span>
+          </div>
+          <p class="camp-pass__msg" id="campPassMsg">You're checked in! Benji &amp; Paige can't wait to welcome you to camp!</p>
           <p class="camp-pass__seal">🐿️🎩 Sir Nutsworth III, Esq.</p>
         </div>
       </div>
@@ -2491,6 +2496,8 @@
 
       if (benjiEl && !benjiEl.firstChild) benjiEl.innerHTML = SVG_BENJI;
       if (paigeEl && !paigeEl.firstChild) paigeEl.innerHTML = SVG_PAIGE;
+      // Shared with the Camp Pass welcome animation.
+      window.PS_SVGS = { benji: SVG_BENJI, paige: SVG_PAIGE };
       var benjiSvg = benjiEl ? benjiEl.querySelector('.ps-sq') : null;
       var paigeSvg = paigeEl ? paigeEl.querySelector('.ps-sq') : null;
 
@@ -2820,24 +2827,36 @@
       // Camp Pass
       var campPass = document.getElementById('campPass');
       var campPassName = document.getElementById('campPassName');
-      var campPassCabin = document.getElementById('campPassCabin');
+      var campPassWelcome = document.getElementById('campPassWelcome');
+      var campPassBenji = document.getElementById('campPassBenji');
+      var campPassPaige = document.getElementById('campPassPaige');
       var campPassMsg = document.getElementById('campPassMsg');
       var campPassStamp = document.getElementById('campPassStamp');
       var campPassClose = document.getElementById('campPassClose');
-      var cabins = ['Pinewood Bunk 4', 'Maple Lodge 2', 'Birchwood Cabin 7', 'Cedar Hollow 3', 'Lakeview Bunk 1', 'Acorn Hollow 5'];
-      function hashName(s) { var h = 0; for (var i = 0; i < s.length; i++) { h = (h * 31 + s.charCodeAt(i)) % 100000; } return h; }
       window.showCampPass = function (name, declining) {
         if (!campPass) return;
         if (campPassName) campPassName.textContent = name || 'Friend';
         if (declining) {
           if (campPassStamp) campPassStamp.textContent = 'Posted';
-          if (campPassCabin) campPassCabin.style.display = 'none';
+          if (campPassWelcome) campPassWelcome.style.display = 'none';
           if (campPassMsg) campPassMsg.textContent = "Wish-you-were-here postcard sent. We'll miss you around the campfire.";
           campPass.classList.add('camp-pass--declined');
         } else {
           if (campPassStamp) campPassStamp.textContent = 'Admitted';
-          if (campPassCabin) { campPassCabin.style.display = ''; campPassCabin.textContent = 'Cabin: ' + cabins[hashName(name || 'Friend') % cabins.length]; }
-          if (campPassMsg) campPassMsg.textContent = "You're checked in! See you around the campfire.";
+          if (campPassWelcome) {
+            campPassWelcome.style.display = '';
+            // The squirrel art is shared with the story's prop show (window.PS_SVGS).
+            if (window.PS_SVGS) {
+              if (campPassBenji && !campPassBenji.firstChild) campPassBenji.innerHTML = window.PS_SVGS.benji;
+              if (campPassPaige && !campPassPaige.firstChild) campPassPaige.innerHTML = window.PS_SVGS.paige;
+              campPassWelcome.querySelectorAll('.ps-sq').forEach(function (sq) { sq.setAttribute('data-pose', 'happy'); });
+            }
+            // Restart the welcome bounce each time the pass opens.
+            campPassWelcome.classList.remove('camp-pass__welcome--go');
+            void campPassWelcome.offsetWidth;
+            campPassWelcome.classList.add('camp-pass__welcome--go');
+          }
+          if (campPassMsg) campPassMsg.textContent = "You're checked in! Benji & Paige can't wait to welcome you to camp!";
           campPass.classList.remove('camp-pass--declined');
         }
         campPass.classList.add('camp-pass--show');

@@ -4465,11 +4465,39 @@
   margin: 0 0 0.3rem;
 }
 
-.camp-pass__cabin {
-  font-family: var(--font-typewriter);
-  font-size: 0.85rem;
-  color: var(--forest-mid);
-  margin: 0 0 0.8rem;
+/* Benji & Paige squirrels bounce in to welcome the camper (art shared with the prop show) */
+.camp-pass__welcome {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.5rem;
+  margin: 0.2rem 0 0.8rem;
+}
+
+.camp-pass__sq { width: 72px; }
+.camp-pass__sq--benji { --lean: 6deg; }
+.camp-pass__sq--paige { --lean: -6deg; }
+
+.camp-pass__welcome--go .camp-pass__sq--benji .ps-sq {
+  animation: psBounce 0.9s var(--ease-overshoot), psBob 2.4s var(--ease-in-out) 0.9s infinite;
+}
+.camp-pass__welcome--go .camp-pass__sq--paige .ps-sq {
+  animation: psBounce 0.9s var(--ease-overshoot) 0.15s, psBob 2.4s var(--ease-in-out) 1.1s infinite;
+}
+
+.camp-pass__spark {
+  font-size: 1.1rem;
+  opacity: 0;
+  align-self: flex-start;
+}
+.camp-pass__welcome--go .camp-pass__spark { animation: campPassSpark 1.6s ease-out 0.4s infinite; }
+.camp-pass__welcome--go .camp-pass__spark--2 { animation-delay: 0.9s; }
+@keyframes campPassSpark {
+  0% { opacity: 0; transform: translateY(6px) scale(0.6); }
+  30% { opacity: 1; transform: translateY(-2px) scale(1.1); }
+  70% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px) scale(0.9); }
 }
 
 .camp-pass__msg {
@@ -4497,10 +4525,14 @@
   .footer__step,
   .footer__step.is-done .footer__step-dot,
   .camp-pass,
-  .camp-pass__card {
+  .camp-pass__card,
+  .camp-pass__welcome .ps-sq,
+  .camp-pass__welcome .ps-tail,
+  .camp-pass__spark {
     transition: none !important;
     animation: none !important;
   }
+  .camp-pass__spark { opacity: 1 !important; }
 }
 
 /* ==============================
