@@ -449,7 +449,7 @@ The site is **password-protected** with a sealed-envelope unlock animation. A vi
 - **Real content** lives in **`content/letter.html`** (all the markup that used to be in `index.astro` lines 8–957, plus its behavior as **plain JS** in one IIFE at the bottom).
 - **`npm run encrypt`** (`scripts/encrypt-content.mjs`) encrypts that file with the password via PBKDF2 → AES-GCM and writes **`src/generated/letter.enc.json`** (committed). The deployed site ships only this ciphertext; the password is never stored and is not visible in DevTools.
 - **`src/pages/index.astro`** is now the envelope lock screen + the decrypt/inject/animation logic. The wedding-section styles moved to **`public/styles/site.css`** and are lazy-loaded only after unlock.
-- **Password:** `PaigeAndBenji123!` (supplied only at encrypt time via the `WEDDING_PASSWORD` env var or prompt — never committed).
+- **Password:** `happycamper` (supplied only at encrypt time via the `WEDDING_PASSWORD` env var or prompt — never committed).
 
 ### ⚠️ Publishing rule
 After editing `content/letter.html`, **always run `npm run encrypt` before committing/pushing**, or the live site will keep the old content. Keep `content/letter.html`'s `<script>` as plain JS (no TypeScript syntax) — it runs in the browser as-is. Full step-by-step in **[PUBLISHING.md](./PUBLISHING.md)**.

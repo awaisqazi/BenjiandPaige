@@ -21,7 +21,7 @@ the password gate**.
   simply fails to decrypt — nothing is revealed, and the password is never stored
   anywhere in the page (so it can't be found in "Inspect Element").
 
-**The password is:** `PaigeAndBenji123!`
+**The password is:** `happycamper`
 (It is never committed to the repo — you supply it only when you run `npm run encrypt`.)
 
 ---
@@ -33,7 +33,7 @@ the password gate**.
    is plain JavaScript (no TypeScript) on purpose — keep it that way.
 2. **Re-encrypt:**
    ```bash
-   WEDDING_PASSWORD='PaigeAndBenji123!' npm run encrypt
+   WEDDING_PASSWORD='happycamper' npm run encrypt
    ```
    (or just run `npm run encrypt` and type the password when prompted.)
    This regenerates `src/generated/letter.enc.json`.
