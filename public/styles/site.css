@@ -5339,19 +5339,6 @@
   line-height: 1.25;
 }
 
-/* ---- Honeyfund "Link Coming Soon" pill ---- */
-.registry__give-btn--soon {
-  cursor: default;
-  background: linear-gradient(135deg, var(--autumn-brown), var(--rust));
-  box-shadow: 0 8px 20px rgba(107, 74, 43, 0.35);
-  opacity: 0.96;
-}
-.registry__give-btn--soon:hover {
-  transform: none;
-  background: linear-gradient(135deg, var(--autumn-brown), var(--rust));
-  box-shadow: 0 8px 20px rgba(107, 74, 43, 0.35);
-}
-
 @media (max-width: 600px) {
   .dresscode { margin-top: 3rem; }
   .wedding-colors__swatch { width: 78px; }
